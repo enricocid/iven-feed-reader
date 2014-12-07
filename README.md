@@ -1,6 +1,8 @@
 #LFFL FEED READER
 ================
 
+![ScreenShot](http://i.imgur.com/EGqAtNU.jpg{url})
+
 Lffl news Reader is a light and modern Android feed reader 
 
 
