@@ -14,7 +14,7 @@ http://www.lffl.org/
 ![ScreenShot](http://i.imgur.com/bhg8v2O.png{url})![ScreenShot](http://i.imgur.com/ToCBrls.png{url})![ScreenShot](http://i.imgur.com/svEapAP.png{url})![ScreenShot](http://i.imgur.com/JLvULBq.png{url})![ScreenShot](http://i.imgur.com/NuoBrJb.png{url})
 
 
-**LIBRARIES USED**
+**USED LIBRARIES**
 
 - Fading Action Bar by Manuel Peinado
 https://github.com/ManuelPeinado/FadingActionBar
