@@ -93,7 +93,7 @@ public class ListActivity extends Activity {
 		case R.id.share_option:
         	Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
-            i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.ivanenr.lfflfeedreader");
+            i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
             i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
             startActivity(Intent.createChooser(i, getString(R.string.share)));
 	        return true;
@@ -111,7 +111,7 @@ public class ListActivity extends Activity {
 	
 	public void rate(View view) {
 		  Intent intent = new Intent(Intent.ACTION_VIEW);
-		  intent.setData(Uri.parse("market://details?id=com.ivanenr.lfflfeedreader"));
+		  intent.setData(Uri.parse("market://details?id=com.iven.lfflfeedreader"));
 		  startActivity(intent);
 		}
 	public void refreshList(final MenuItem item) {
