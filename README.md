@@ -9,6 +9,10 @@ https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader
 
 http://www.lffl.org/
 
+**Screenshots**
+
+![ScreenShot](http://i.imgur.com/bhg8v2O.png{url})![ScreenShot](http://i.imgur.com/ToCBrls.png{url})![ScreenShot](http://i.imgur.com/svEapAP.png{url})![ScreenShot](http://i.imgur.com/JLvULBq.png{url})![ScreenShot](http://i.imgur.com/NuoBrJb.png{url})
+
 
 **LIBRARIES USED**
 
