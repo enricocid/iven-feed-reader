@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item
+        android:id="@+id/refresh_option"
+        android:icon="@drawable/action_refresh"
+        android:showAsAction="ifRoom"
+        android:title=""/>   
+    
+    
+ <item
+        android:id="@+id/file"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_overflow"
+        android:title="">
+        
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    
+    <item
+        android:id="@+id/share_option"     
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_share"
+        android:title="Share"/>
+    
+    <item
+        android:id="@+id/rate"
+        android:icon="@drawable/ic_action_important"
+        android:showAsAction="ifRoom"
+        android:title="Rate"/>
+    
+    <item
+        android:id="@+id/about_option"
+        android:icon="@drawable/action_about"
+        android:showAsAction="ifRoom"
+        android:title="About"/>
+ </menu>
+ </item>   
+   
+
+</menu>

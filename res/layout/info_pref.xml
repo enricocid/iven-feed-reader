@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <PreferenceCategory android:title="@string/Dev_cat" 
+        android:key="info"/>
+        
+    <Preference android:key="buddy1" 
+        android:title="@string/dev1" 
+        android:summary="XDA" 
+        android:icon="@drawable/ic_ivan"
+        />
+    
+   <Preference android:key="buddy2" 
+        android:title="@string/dev2" 
+        android:summary="XDA" 
+        android:icon="@drawable/ic_enrico"
+        />
+    
+    <Preference android:summary="ivandorte@gmail.com" 
+        android:title="@string/email" 
+        android:key="email"
+        android:icon="@drawable/ic_action_new_email"
+        />
+    
+     <PreferenceCategory android:title="@string/credits"/>
+     
+     <Preference android:summary="Roberto Ferramosca" 
+        android:title="@string/badmin" 
+        android:key="ferramosca"
+        android:icon="@drawable/ic_roberto"
+        />
+     
+     <Preference android:summary="Mazda" 
+        android:title="@string/ale" 
+        android:key="cruz"
+        android:icon="@drawable/ic_mazda"
+        />
+     <Preference android:summary="blinqipa" 
+        android:title="@string/qipa" 
+        android:key="blin"
+        android:icon="@drawable/ic_blin"
+        />
+     
+     <Preference android:summary="SimoneDev" 
+        android:title="@string/simon" 
+        android:key="simonedev"
+        android:icon="@drawable/ic_simone"
+        />
+    
+    <PreferenceCategory android:title="@string/follow"/>
+    
+    <Preference android:title="@string/tube" 
+        android:key="videos"
+        android:icon="@drawable/ic_tube"
+        />   
+          
+    <Preference android:title="@string/fb" 
+        android:key="facebook"
+        android:icon="@drawable/ic_fb"
+        />  
+            
+    <Preference android:title="@string/bird" 
+        android:icon="@drawable/ic_twitter"
+        android:key="twitter"
+        />
+    
+    <Preference android:title="@string/gplus" 
+        android:key="google"
+        android:icon="@drawable/ic_google"
+        /> 
+        
+    <PreferenceCategory android:title="@string/source" android:summary="@string/disc" />
+     
+     <Preference android:summary="itcuties" 
+        android:title="@string/lib" 
+        android:key="cuties"
+        android:icon="@drawable/ic_cuties"
+        />
+     <Preference android:title="@string/libc" 
+        android:key="cutiesc"
+        android:icon="@drawable/ic_license"
+        />
+     <Preference android:summary="@string/lib1sum" 
+        android:title="@string/lib1" 
+        android:key="github"
+        android:icon="@drawable/ic_git"
+        />
+     
+     <PreferenceCategory android:title="@string/usedlibs" />
+     
+     <Preference android:summary="by Manuel Peinado" 
+        android:title="@string/lib2" 
+        android:key="peinado"
+        android:icon="@drawable/ic_manuel"
+        />
+     
+      <Preference android:summary="by Benjamin Weiss" 
+        android:title="@string/crout" 
+        android:key="weiss"
+        android:icon="@drawable/ic_crouton"
+        />
+     
+     
+     
+     <Preference android:summary="by Jonathan Hedley" 
+        android:title="@string/lib5" 
+        android:key="js"
+        android:icon="@drawable/ic_jsoup"
+        />
+     
+     <Preference android:summary="by Fedor Vlasov" 
+        android:title="@string/lib6" 
+        android:key="thest"
+        android:icon="@drawable/ic_lazy"
+        />
+     
+     <PreferenceCategory android:title="@string/androidstyle" />
+     
+     <Preference android:summary="by Google Android" 
+        android:title="@string/style1" 
+        android:key="robot"
+        android:icon="@drawable/ic_action_edit"
+        />
+     <Preference android:title="@string/style2" 
+        android:key="robotlicense"
+        android:icon="@drawable/ic_license"
+        />
+     <Preference android:summary="by Google Android" 
+        android:title="@string/style3" 
+        android:key="studio"
+        android:icon="@drawable/ic_uitils"
+        />
+     
+     <Preference android:summary="by Canonical" 
+        android:title="@string/style4" 
+        android:key="ubuntu"
+        android:icon="@drawable/ic_ubuntu"
+        />
+
+</PreferenceScreen>

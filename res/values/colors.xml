@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_color_default">#00000C</color>
+    <color name="text_color_inverse">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lffl">#5E2750</color>
+    <color name="listview_style_color">#DBDBDB</color>
+    <color name="dialog_bcg">#272727</color>
+    <color name="transparent">#00000000</color> 
+    <color name="lffl2">#c0392b</color>   
+</resources>

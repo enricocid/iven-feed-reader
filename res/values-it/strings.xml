@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="follow">Segui lffl sui social</string>
+    <string name="emailC">Invia con</string>
+    <string name="credits">Ringraziamenti</string>
+    <string name="source">Sorgente</string>
+    <string name="disc">Questa app include porzioni di software disponibili sotto licensa open</string>
+    <string name="lib1sum">Codice sorgente</string>
+    <string name="usedlibs">Librerie usate</string>
+    <string name="androidstyle">Risorse</string>
+    <string name="style1">Iconografia</string>
+    <string name="style2">Licenza</string>  
+    <string name="intError">No internet. Controlla la tua connessione dati</string>
+    <string name="error">Errore</string>
+    <string name="croutInf">Informazioni</string>
+    <string name="changelog_full_title">Changelog</string>
+    <string name="changelog_ok_button">Chiudi</string>
+    <string name="share">Condividi con&#8230;</string>
+   
+</resources>
