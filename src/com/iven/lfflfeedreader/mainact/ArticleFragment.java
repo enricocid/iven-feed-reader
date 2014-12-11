@@ -30,9 +30,6 @@ public class ArticleFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View view = inflater
 				.inflate(R.layout.article_fragment, container, false);
-		// BinBash footer @author EnricoD
-        String str = "lffl linux freedom";
-	    TextView titleBin = (TextView)view.findViewById(R.id.IloveBinBash);
 		
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
@@ -47,7 +44,6 @@ public class ArticleFragment extends Fragment {
 
 		// Set the views
 		title.setText(fFeed.getItem(fPos).getTitle());
-		titleBin.setText(titleBin.getText()+str);
 		
 		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8", "UTF-8");
 		

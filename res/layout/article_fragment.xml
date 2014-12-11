@@ -23,31 +23,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 </RelativeLayout>
- <!-- Footer aligned to bottom -->
-
-    <RelativeLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true"
-        android:gravity="center" >
-    <TextView
-            android:id="@+id/IloveBinBash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text=""
-            android:textColor="@color/lffl2"
-            android:textStyle="italic"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="20sp" />
-    </RelativeLayout>
+ 
     <ScrollView
         android:id="@+id/sv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/footer"
         android:layout_below="@id/header" >
 
         <LinearLayout
