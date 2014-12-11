@@ -3,7 +3,7 @@
 
 ![ScreenShot](http://i.imgur.com/EGqAtNU.jpg{url})
 
-Lffl news Reader is a light and modern Android feed reader developed by #ivn888 (https://github.com/ivn888) and Me.
+Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 
 https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader
 
