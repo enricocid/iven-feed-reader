@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4c8bff"
+    android:background="@color/info_color"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:paddingTop="5dp"  
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/textView1"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_color_inverse"
             android:text="@string/croutInf" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_toRightOf="@+id/imageView1"
             android:layout_marginLeft="10dp"
             android:text="@string/app_name"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_color_inverse"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>

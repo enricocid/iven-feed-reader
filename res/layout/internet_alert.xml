@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#cc3333"
+    android:background="@color/alert_color"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:paddingTop="5dp"  
@@ -37,7 +37,7 @@
             android:layout_toRightOf="@+id/imageView1"
             android:layout_marginLeft="10dp"
             android:text="@string/app_name"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_color_inverse"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>

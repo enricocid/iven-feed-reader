@@ -3,24 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"  
+    android:background="@drawable/selector_card_background" 
+    android:descendantFocusability="afterDescendants"
+    android:divider="@null"
+    android:dividerHeight="10dp"
+    android:listSelector="@android:color/transparent" 
+    android:cacheColorHint="@android:color/transparent"
+    android:headerDividersEnabled="true"
+    android:footerDividersEnabled="true"
     android:padding="15dp" >
 
     <ImageView
         android:id="@+id/thumb"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="@string/app_name"        
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginRight="0dp"
+        android:contentDescription="@string/app_name" 
+        android:layout_alignParentRight="true"       
         android:src="@drawable/ic_action_picture" />
 
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/arrow"
-        android:layout_toRightOf="@+id/thumb"        
+        android:layout_toRightOf="@+id/title"
+        android:layout_toLeftOf="@+id/thumb"
         android:orientation="vertical" >
 
         <TextView
@@ -29,32 +37,26 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="#272727"          
+            android:textColor="@color/title_color"          
             android:text=""
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="0dp" />
 
         <TextView
             android:id="@+id/date"
+            android:layout_toLeftOf="@+id/thumb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="5dp"
             android:padding="2dp"
             android:text=""
-            android:textColor="#7F7F7F"
-            android:textSize="12sp" />
+            android:textColor="@color/date_color"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="0dp" />
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/action_next" />
-
 </RelativeLayout>
