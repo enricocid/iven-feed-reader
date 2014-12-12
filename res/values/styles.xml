@@ -10,16 +10,16 @@
 </style>
     
 <style name="cust_dialog" parent="@android:style/Theme.Holo.Dialog">
-    <item name="android:textColor">#c0392b</item>
+    <item name="android:textColor">@color/lffl2</item>
     <item name="android:typeface">monospace</item>   
 </style>
  
 <style name="MyTheme" parent="android:Theme.Holo.Dialog">
     <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
     <item name="android:windowBackground">@color/transparent</item>
-    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:textColorPrimary">@color/white</item>
     <item name="android:backgroundDimEnabled">false</item>
-    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textColor">@color/white</item>
     <item name="android:textStyle">normal</item>
     <item name="android:textSize">12sp</item>
 </style>
@@ -36,8 +36,7 @@
     <item name="android:topBright">@color/transparent</item>
     <item name="android:topDark">@color/transparent</item>
 </style>
-    
-    <color name="translucent">#88000000</color>  
+      
 <style name="TranslucentSplash" parent="android:Theme.Translucent.NoTitleBar.Fullscreen">  
     <item name="android:windowBackground">@color/translucent</item>  
 </style>  

@@ -3,14 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"  
-    android:descendantFocusability="afterDescendants"
     android:divider="@null"
     android:dividerHeight="10dp"
-    android:listSelector="@android:color/transparent" 
-    android:cacheColorHint="@android:color/transparent"
     android:headerDividersEnabled="true"
     android:footerDividersEnabled="true"
-    android:padding="15dp" >
+    android:padding="15dp">
 
     <ImageView
         android:id="@+id/thumb"
