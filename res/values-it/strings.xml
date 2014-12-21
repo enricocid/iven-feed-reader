@@ -13,8 +13,6 @@
     <string name="intError">No internet. Controlla la tua connessione dati</string>
     <string name="error">Errore</string>
     <string name="croutInf">Informazioni</string>
-    <string name="changelog_full_title">Changelog</string>
-    <string name="changelog_ok_button">Chiudi</string>
     <string name="share">Condividi con&#8230;</string>
    
 </resources>

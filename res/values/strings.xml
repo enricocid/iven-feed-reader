@@ -10,7 +10,6 @@
     <string name="email">Email</string>
     <string name="follow">Follow lffl on Social Networks</string>
     <string name="emailC">Send with</string>
-    <string name="menu_full_changelog">Changelog</string>
     <string name="gplus">Google +</string>
     <string name="fb">Facebook</string>
     <string name="bird">Twitter</string>
@@ -27,7 +26,6 @@
     <string name="lib1sum">Source code</string>
     <string name="usedlibs">Used libraries</string>
     <string name="lib2">FadingActionBar</string>
-    <string name="lib4">ckChangeLog</string>
     <string name="lib5">Jsoup</string>
     <string name="lib6">LazyList</string>
     <string name="androidstyle">Resources</string>
@@ -40,8 +38,6 @@
     <string name="simon">SimoneDev</string>
     <string name="crout">Crouton</string>
     <string name="croutInf">Informations</string>
-    <string name="changelog_full_title">Changelog</string>
-    <string name="changelog_ok_button">Close</string>
     <string name="share">Share with</string>
 
 </resources>
