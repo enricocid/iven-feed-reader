@@ -36,8 +36,7 @@ public class SplashActivity extends Activity {
 		if (cM.getActiveNetworkInfo() == null) {
 			// Inflate any custom view
 			View customView = getLayoutInflater().inflate(R.layout.internet_alert, null);
-			Crouton.show(SplashActivity.this, customView);
-			
+			Crouton.show(SplashActivity.this, customView);			
 				   new Handler().postDelayed(new Runnable() {
 					   public void run() {
 				   SplashActivity.this.finish();

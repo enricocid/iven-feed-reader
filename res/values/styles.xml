@@ -41,4 +41,8 @@
     <item name="android:windowBackground">@color/translucent</item>  
 </style>  
 
+<style name="Theme.Info" parent="android:Theme.Holo.Light">   
+    <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+    </style>
+
 </resources>

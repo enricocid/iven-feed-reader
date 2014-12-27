@@ -13,10 +13,8 @@
             android:textStyle="italic"/>
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleInverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/progress_bar_style"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
              />

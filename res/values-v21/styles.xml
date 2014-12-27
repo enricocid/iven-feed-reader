@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<style name="TranslucentSplash" parent="android:Theme.Material">  
+        <item name="android:colorPrimaryDark">@color/primary</item>
+        <item name="android:navigationBarColor">@color/translucent</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>   
+</style>  
+
+    <style name="Theme.TranslucentActionBar.ActionBar.Overlay" parent="android:Theme.Material.Light">
+        <item name="android:actionBarStyle">@style/Widget.ActionBar.Transparent</item>
+        <item name="android:windowActionBarOverlay">true</item>   
+        <item name="android:colorPrimaryDark">@color/title_color</item>
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:navigationBarColor">@color/title_color</item>
+        <item name="android:colorAccent">@color/primary</item>   
+    </style>
+    
+    <style name="Theme.Info" parent="android:Theme.Material.Light">  
+        <item name="android:colorPrimaryDark">@color/material_color2</item>
+        <item name="android:colorPrimary">@color/material_color</item>
+        <item name="android:navigationBarColor">@color/material_color2</item>
+        <item name="android:colorAccent">@color/accent</item>  
+    </style>
+
+</resources>

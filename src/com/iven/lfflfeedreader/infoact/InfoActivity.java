@@ -1,7 +1,9 @@
 package com.iven.lfflfeedreader.infoact;
 
 
+import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.R;
+
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import android.content.Context;
@@ -17,12 +19,10 @@ import android.view.View;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference email, facebook, twitter, google, developer, developer2,youtube, ale1, blin1,mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu;
+	Preference email, facebook, twitter, google, developer, developer2,youtube, ale1, blin1,mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign;
 	
 	Context context;
 	Intent intent;
-
-	
 
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class InfoActivity extends PreferenceActivity{
 		email.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick(Preference preference) {
 							
-				// TODO Auto-generated method stub
 			intent = new Intent(android.content.Intent.ACTION_SEND);			
 			intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "ivandorte@gmail.com" });			
 			intent.setType("message/rfc822");
@@ -60,7 +59,7 @@ public class InfoActivity extends PreferenceActivity{
 		facebook = (Preference) this.findPreference("facebook");
 		facebook.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pages/LinuX-Freedom-for-Live/290943601160"));
 			if(intent != null) {
 			startActivity(intent);
@@ -74,7 +73,7 @@ public class InfoActivity extends PreferenceActivity{
 		noti = (Preference) this.findPreference("weiss");
 		noti.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/keyboardsurfer/Crouton"));
 			if(intent != null) {
 			startActivity(intent);
@@ -88,7 +87,7 @@ public class InfoActivity extends PreferenceActivity{
 		twitter = (Preference) this.findPreference("twitter");
 		twitter.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/linuxfreedom"));
 			if(intent != null) {
 				startActivity(intent);
@@ -102,7 +101,7 @@ public class InfoActivity extends PreferenceActivity{
 		google = (Preference) this.findPreference("google");
 		google.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/+lffl/posts"));
 			if(intent != null) {
 				startActivity(intent);
@@ -116,7 +115,7 @@ public class InfoActivity extends PreferenceActivity{
 		ale1 = (Preference) this.findPreference("cruz");
 		ale1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/+AlexCruz/posts"));
 			if(intent != null) {
 				startActivity(intent);
@@ -130,7 +129,7 @@ public class InfoActivity extends PreferenceActivity{
 		blin1 = (Preference) this.findPreference("blin");
 		blin1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/106250186908628485422/posts"));
 			if(intent != null) {
 				startActivity(intent);
@@ -144,7 +143,7 @@ public class InfoActivity extends PreferenceActivity{
 		jso = (Preference) this.findPreference("js");
 		jso.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jhy/jsoup"));
 			if(intent != null) {
 				startActivity(intent);
@@ -158,7 +157,7 @@ public class InfoActivity extends PreferenceActivity{
 		mosca1 = (Preference) this.findPreference("ferramosca");
 		mosca1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/100021192050184001006/posts"));
 			if(intent != null) {
 				startActivity(intent);
@@ -172,7 +171,7 @@ public class InfoActivity extends PreferenceActivity{
 		simo = (Preference) this.findPreference("simonedev");
 		simo.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://simonedev.com/"));
 			if(intent != null) {
 				startActivity(intent);
@@ -186,7 +185,7 @@ public class InfoActivity extends PreferenceActivity{
 		youtube = (Preference) this.findPreference("videos");
 		youtube.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/user/linuxfreedomforlive"));
 			if(intent != null) {
 				startActivity(intent);
@@ -201,7 +200,7 @@ public class InfoActivity extends PreferenceActivity{
 		
 		developer.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
 			if(intent != null) {
 				startActivity(intent);
@@ -216,7 +215,7 @@ public class InfoActivity extends PreferenceActivity{
 		
 		developer2.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=5266287"));
 			if(intent != null) {
 				startActivity(intent);
@@ -231,7 +230,7 @@ public class InfoActivity extends PreferenceActivity{
 		
 		cut1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/itcuties/ITCutiesApp-1.0"));
 			if(intent != null) {
 				startActivity(intent);
@@ -246,7 +245,7 @@ public class InfoActivity extends PreferenceActivity{
 		
 		cut2.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.itcuties.com/copyright/"));
 			if(intent != null) {
 				startActivity(intent);
@@ -261,7 +260,7 @@ public class InfoActivity extends PreferenceActivity{
 		
 		gith.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
 			if(intent != null) {
 				startActivity(intent);
@@ -276,7 +275,7 @@ fade = (Preference) this.findPreference("peinado");
 		
 		fade.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ManuelPeinado/FadingActionBar"));
 			if(intent != null) {
 				startActivity(intent);
@@ -292,7 +291,7 @@ laz = (Preference) this.findPreference("thest");
 		
 		laz.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/thest1/LazyList"));
 			if(intent != null) {
 				startActivity(intent);
@@ -307,7 +306,7 @@ iconos = (Preference) this.findPreference("robot");
 		
 		iconos.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/style/iconography.html"));
 			if(intent != null) {
 				startActivity(intent);
@@ -322,7 +321,7 @@ glic = (Preference) this.findPreference("robotlicense");
 		
 		glic.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://source.android.com/license.html"));
 			if(intent != null) {
 				startActivity(intent);
@@ -337,7 +336,7 @@ gstud = (Preference) this.findPreference("studio");
 		
 		gstud.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://code.google.com/p/android-ui-utils/"));
 			if(intent != null) {
 				startActivity(intent);
@@ -352,7 +351,7 @@ ubu = (Preference) this.findPreference("ubuntu");
 		
 		ubu.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
-			// TODO Auto-generated method stub
+			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://design.ubuntu.com/brand/colour-palette"));
 			if(intent != null) {
 				startActivity(intent);
@@ -362,13 +361,28 @@ ubu = (Preference) this.findPreference("ubuntu");
 			return false;
 				}
 			});
+		
+		materialdesign = (Preference) this.findPreference("paletta");
+		
+		materialdesign.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.materialpalette.com"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+			}
+			return false;
+				}
+			});	
 	}
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 
 			case android.R.id.home:
-				// app icon in action bar clicked; finish activity to go home
+
 				finish();
 				return true;
 			}

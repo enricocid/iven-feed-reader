@@ -7,9 +7,13 @@
     <color name="dialog_bcg">#272727</color>
     <color name="transparent">#00000000</color>   
     <color name="info_color">#664c8bff</color> 
+    <color name="material_color">#009688</color> 
+    <color name="material_color2">#00796B</color> 
     <color name="alert_color">#88cc3333</color>
     <color name="title_color">#333333</color>
     <color name="date_color">#AEA79F</color>  
     <color name="lffl2">#c0392b</color>
-    <color name="translucent">#88000000</color>  
+    <color name="translucent">#88000000</color>
+    <color name="accent">#00BCD4</color>  
+    <color name="primary">#FB3101</color>     
 </resources>

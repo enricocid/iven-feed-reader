@@ -11,15 +11,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -45,8 +42,7 @@ public class ListActivity extends Activity {
         .headerLayout(R.layout.fab_header)
         .contentLayout(R.layout.lffl_feed_list);
          setContentView(helper.createView(this));
-         helper.initActionBar(this);
-        
+         helper.initActionBar(this);        
 
 		feedURL = new SplashActivity().LFFLFEEDURL;
 
@@ -120,11 +116,6 @@ public class ListActivity extends Activity {
 		ImageView lfflImage = (ImageView) inflater.inflate(R.layout.action_refresh,
 				null);
 
-		Animation rotation = AnimationUtils.loadAnimation(getApplication(),
-				R.anim.refresh_rotate);
-		rotation.setRepeatCount(Animation.INFINITE);
-		lfflImage.startAnimation(rotation);
-
 		item.setActionView(lfflImage);
 
 		
@@ -140,8 +131,6 @@ public class ListActivity extends Activity {
 					public void run() {
 						if (feed != null && feed.getItemCount() > 0) {
 							adapter.notifyDataSetChanged();
-							item.getActionView().clearAnimation();
-							item.setActionView(null);
 						}
 					}
 				});
