@@ -3,10 +3,14 @@
     
 <style name="Widget.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
      <item name="android:background">@drawable/ab_background</item>
+     <item name="android:displayOptions">showTitle</item>
+     <item name="android:actionBarSize">56dp</item>    
 </style>
 
 <style name="Widget.ActionBar.Transparent">
      <item name="android:background">@android:color/transparent</item>
+     <item name="android:displayOptions">showTitle</item>
+     <item name="android:actionBarSize">56dp</item>  
 </style>
     
 <style name="cust_dialog" parent="@android:style/Theme.Holo.Dialog">
@@ -43,6 +47,8 @@
 
 <style name="Theme.Info" parent="android:Theme.Holo.Light">   
     <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+    <item name="android:displayOptions">showTitle</item>
+    <item name="android:actionBarSize">56dp</item>  
     </style>
 
 </resources>
