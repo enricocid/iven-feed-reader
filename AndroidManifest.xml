@@ -38,12 +38,14 @@
             android:theme="@style/Theme.TranslucentActionBar.ActionBar.Overlay"
             android:screenOrientation="portrait" />
         <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity" 
-            android:screenOrientation="portrait" 
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Info"
             />
         <activity 
     	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
     	android:label="@string/informations"
-    	android:screenOrientation="portrait">
+    	android:screenOrientation="portrait"
+    	android:theme="@style/Theme.Info">
     	      			
 	</activity>
     </application>
