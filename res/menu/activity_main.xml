@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-  
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+  <item		  
+        android:id="@+id/refresh_option"		
+        android:icon="@drawable/action_refresh"		
+        android:showAsAction="always"		
+        android:title="Refresh"
+        tools:ignore="AlwaysShowAction"/>   
+
  <item
         android:id="@+id/file"
         android:showAsAction="ifRoom"
@@ -8,13 +15,7 @@
         android:title="">
         
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
-      <item
-        android:id="@+id/refresh_option"
-        android:icon="@drawable/action_refresh"
-        android:showAsAction="ifRoom"
-        android:title="Refresh"/>
-      
+          
     <item
         android:id="@+id/share_option"     
         android:showAsAction="ifRoom"

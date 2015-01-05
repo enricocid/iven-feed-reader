@@ -17,6 +17,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.view.animation.Animation;		
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -42,7 +45,7 @@ public class ListActivity extends Activity {
         .headerLayout(R.layout.fab_header)
         .contentLayout(R.layout.lffl_feed_list);
          setContentView(helper.createView(this));
-         helper.initActionBar(this);        
+         helper.initActionBar(this);  
 
 		feedURL = new SplashActivity().LFFLFEEDURL;
 
@@ -84,8 +87,7 @@ public class ListActivity extends Activity {
 		case R.id.refresh_option:
 			refreshList(item);
 			return (true);
-
-
+			 
 		case R.id.share_option:
         	Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
@@ -104,7 +106,6 @@ public class ListActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
 	public void rate(View view) {
 		  Intent intent = new Intent(Intent.ACTION_VIEW);
 		  intent.setData(Uri.parse("market://details?id=com.iven.lfflfeedreader"));
@@ -115,7 +116,13 @@ public class ListActivity extends Activity {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		ImageView lfflImage = (ImageView) inflater.inflate(R.layout.action_refresh,
 				null);
-
+		 
+		RotateAnimation rAnim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF, 0.5f);
+		rAnim.setRepeatCount(Animation.INFINITE);
+		rAnim.setInterpolator(new LinearInterpolator());
+		rAnim.setDuration(1000);
+		lfflImage.startAnimation(rAnim);
+				
 		item.setActionView(lfflImage);
 
 		
@@ -131,6 +138,9 @@ public class ListActivity extends Activity {
 					public void run() {
 						if (feed != null && feed.getItemCount() > 0) {
 							adapter.notifyDataSetChanged();
+							
+							item.getActionView().clearAnimation();		
+							item.setActionView(null);
 						}
 					}
 				});
