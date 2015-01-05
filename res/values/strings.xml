@@ -40,5 +40,6 @@
     <string name="croutInf">Informations</string>
     <string name="share">Share with</string>
     <string name="palette">Material palette</string>
+    <string name="maticons">materialdesignicons.com</string>
 
 </resources>

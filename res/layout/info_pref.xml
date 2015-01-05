@@ -120,5 +120,10 @@
         android:title="@string/palette" 
         android:key="paletta"
         />
+     
+     <Preference android:summary="Material design icons" 
+        android:title="@string/maticons" 
+        android:key="mater"
+        />
 
 </PreferenceScreen>
