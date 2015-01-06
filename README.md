@@ -18,7 +18,7 @@ http://www.lffl.org/
 
 **USED LIBRARIES**
 
-- Fading Action Bar by Manuel Peinado
+**- Fading Action Bar by Manuel Peinado**
 
 Git page:
 https://github.com/ManuelPeinado/FadingActionBar
