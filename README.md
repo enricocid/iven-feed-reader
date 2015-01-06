@@ -26,6 +26,8 @@ https://github.com/ManuelPeinado/FadingActionBar
 Download:
 https://github.com/ManuelPeinado/FadingActionBar/archive/master.zip
 
+Import only the standard build to Your project.
+
 **- Crouton by Benjamin Weiss**
 
 Git page:
