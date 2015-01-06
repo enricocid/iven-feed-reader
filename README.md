@@ -43,7 +43,7 @@ inside libs folder, then refresh, clean and build Your workspace
 
 **- Jsoup by Jonathan Hedley**
 
-Import as an external library and be sure to tickmark jsoup-1.x.jar on "Import and Export" tab in Eclipse (i.e add jsoup lib as referecend librairies or the splash activity will crash at boot!).
+Import as an external library and be sure to tickmark jsoup-1.x.jar on "Import and Export" tab in Eclipse (i.e add jsoup lib as referenced library or the splash activity will crash at boot!).
 
 Homepage:
 http://jsoup.org/
