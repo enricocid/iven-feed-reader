@@ -1,10 +1,20 @@
 #LFFL FEED READER
 ================
 
+
 ![ScreenShot](http://i.imgur.com/EGqAtNU.jpg{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design for Lollipop Devices!
+
+
+This work is 100% Free and is released under gpl license. 
+
+1. **RESPECT THE LICENSE!**
+
+2. **DO NOT REDISTRIBUTE THIS FOR SALE!**
+
+3. **ABSOLUTELY DO NOT REMOVE CREDITS!**
 
 https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader
 
@@ -74,7 +84,7 @@ Copy the JAR file from your Android SDK installation directory <sdk>/extras/andr
 
 
 
-![ScreenShot](http://s24.postimg.org/iu8218mkl/xda_Logo.png{url})
+
 
 
 ivn888
