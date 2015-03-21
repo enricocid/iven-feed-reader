@@ -172,7 +172,7 @@ public class InfoActivity extends PreferenceActivity{
 		simo.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://simonedev.com/"));
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://simonedev.blogspot.it/"));
 			if(intent != null) {
 				startActivity(intent);
 			} else {
