@@ -3,7 +3,6 @@
     <color name="text_color_default">#00000C</color>
     <color name="text_color_inverse">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
-    <color name="lffl">#5E2750</color>
     <color name="dialog_bcg">#272727</color>
     <color name="transparent">#00000000</color>   
     <color name="info_color">#66666666</color> 
@@ -13,6 +12,5 @@
     <color name="lffl2">#c0392b</color>
     <color name="lffl3">#ac3326</color>
     <color name="translucent">#88000000</color>
-    <color name="accent">#666666</color>  
-    <color name="primary">#FB3101</color>     
+    <color name="accent">#666666</color>     
 </resources>

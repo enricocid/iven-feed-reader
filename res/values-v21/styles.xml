@@ -2,9 +2,9 @@
 <resources>
 
 <style name="TranslucentSplash" parent="android:Theme.Material">  
-        <item name="android:colorPrimaryDark">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/lffl2</item>
         <item name="android:navigationBarColor">@color/translucent</item>
-        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:colorAccent">@color/lffl2</item>
         <item name="android:windowBackground">@color/translucent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item> 
@@ -14,8 +14,8 @@
         <item name="android:actionBarStyle">@style/Widget.ActionBar.Transparent</item>
         <item name="android:windowActionBarOverlay">true</item>   
         <item name="android:colorPrimaryDark">@color/title_color</item>
-        <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:colorAccent">@color/primary</item>  
+        <item name="android:colorPrimary">@color/lffl2</item>
+        <item name="android:colorAccent">@color/lffl2</item>  
         <item name="android:displayOptions">showTitle</item> 
         <item name="android:actionBarSize">56dp</item>  
     </style>
