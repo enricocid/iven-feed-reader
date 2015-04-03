@@ -87,8 +87,4 @@ Copy the JAR file from your Android SDK installation directory <sdk>/extras/andr
 
 
 
-ivn888
-http://forum.xda-developers.com/member.php?u=4884893
 
-EnricoD
-http://forum.xda-developers.com/member.php?u=5266287
