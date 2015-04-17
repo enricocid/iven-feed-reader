@@ -216,7 +216,7 @@ public class InfoActivity extends PreferenceActivity{
 		developer2.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=5266287"));
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodortenzio/"));
 			if(intent != null) {
 				startActivity(intent);
 			} else {

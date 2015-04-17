@@ -12,7 +12,7 @@
     
    <Preference android:key="buddy2" 
         android:title="@string/dev2" 
-        android:summary="XDA" 
+        android:summary="Disqus" 
         />
     
     <Preference android:summary="ivandorte@gmail.com" 
