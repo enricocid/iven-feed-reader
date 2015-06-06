@@ -12,7 +12,7 @@
         android:id="@+id/file"
         android:showAsAction="ifRoom"
         android:icon="@drawable/ic_action_overflow"
-        android:title="">
+        android:title="@string/press_overflow">
         
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
           
