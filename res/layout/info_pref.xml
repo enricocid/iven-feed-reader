@@ -27,6 +27,11 @@
         android:key="ferramosca"
         />
      
+     <Preference android:summary="Tushar Paliwal" 
+        android:title="@string/tushar" 
+        android:key="pal"
+        />
+     
      <Preference android:summary="SimoneDev" 
         android:title="@string/simon" 
         android:key="simonedev"

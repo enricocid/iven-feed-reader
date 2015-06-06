@@ -25,8 +25,9 @@
         <item name="android:colorPrimary">@color/lffl2</item>
         <item name="android:colorAccent">@color/title_color</item>  
         <item name="android:textColor">@color/accent</item>
+        <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="android:actionBarSize">56dp</item>
         <item name="android:displayOptions">showTitle</item>
-        <item name="android:actionBarSize">56dp</item>  
     </style>
 
 </resources>
