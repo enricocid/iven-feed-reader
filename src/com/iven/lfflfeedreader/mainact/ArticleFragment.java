@@ -29,25 +29,24 @@ public class ArticleFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater
-				.inflate(R.layout.article_fragment, container, false);
-		
+				.inflate(R.layout.article_fragment, container, false);			
+        
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
 
 		ScrollView sv = (ScrollView) view.findViewById(R.id.sv);
-		sv.setVerticalFadingEdgeEnabled(false);
+		sv.setVerticalFadingEdgeEnabled(true);
+		sv.setPadding(15, 15, 15, 0);
 
 		// Set webview settings
 		WebSettings ws = wb.getSettings();
-		ws.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+		ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 		
-
 		// Set the views
-		title.setText(fFeed.getItem(fPos).getTitle());
+				
+		title.setText(fFeed.getItem(fPos).getTitle()) ;
 		
-		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8", "UTF-8");
-		
-		
+		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "UTF-8") ;
 		
 		return view;
 	}
