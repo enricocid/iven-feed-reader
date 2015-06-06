@@ -35,7 +35,7 @@ public class ArticleFragment extends Fragment {
 		WebView wb = (WebView) view.findViewById(R.id.desc);
 
 		ScrollView sv = (ScrollView) view.findViewById(R.id.sv);
-		sv.setVerticalFadingEdgeEnabled(true);
+		sv.setVerticalFadingEdgeEnabled(false);
 
 		// Set webview settings
 		WebSettings ws = wb.getSettings();
