@@ -2,9 +2,9 @@
 <resources>
 
 <style name="TranslucentSplash" parent="android:Theme.Material">  
-        <item name="android:colorPrimaryDark">@color/lffl2</item>
-        <item name="android:navigationBarColor">@color/translucent</item>
-        <item name="android:colorAccent">@color/lffl2</item>
+        <item name="android:colorPrimaryDark">@color/materialish</item>
+        <item name="android:navigationBarColor">@color/materialish</item>
+        <item name="android:colorAccent">@color/materialish</item>
         <item name="android:windowBackground">@color/translucent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item> 

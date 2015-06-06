@@ -71,6 +71,14 @@ https://github.com/thest1/LazyList
 Download:
 https://github.com/thest1/LazyList/archive/master.zip
 
+**- Materialish progress by pnikosis**
+
+Git page:
+https://github.com/pnikosis/materialish-progress
+
+Download:
+https://github.com/pnikosis/materialish-progress/archive/master.zip
+
 **Do not forget to add android-support-v4 library in Your project**
 
 In Eclipse: Right click on your project > Android tools > Select add support library 

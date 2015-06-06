@@ -19,7 +19,7 @@ import android.view.View;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference email, facebook, twitter, google, developer, developer2,youtube, mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign, materialicons;
+	Preference email, facebook, twitter, google, developer, developer2,youtube, mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign, materialicons, prog;
 	
 	Context context;
 	Intent intent;
@@ -354,6 +354,20 @@ ubu = (Preference) this.findPreference("ubuntu");
 			public boolean onPreferenceClick (Preference preference) {
 			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://materialdesignicons.com/"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+			}
+			return false;
+				}
+			});
+		
+		prog = (Preference) this.findPreference("progressish");
+		prog.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/pnikosis/materialish-progress"));
 			if(intent != null) {
 				startActivity(intent);
 			} else {

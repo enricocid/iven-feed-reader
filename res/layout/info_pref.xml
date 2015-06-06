@@ -88,6 +88,11 @@
         android:key="thest"
         />
      
+     <Preference android:summary="by pnikosis" 
+        android:title="@string/materialish" 
+        android:key="progressish"
+        />
+     
      <PreferenceCategory android:title="@string/androidstyle" />
      
      <Preference android:summary="by Google Android" 

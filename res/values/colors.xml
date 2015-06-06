@@ -12,5 +12,6 @@
     <color name="lffl2">#c0392b</color>
     <color name="lffl3">#ac3326</color>
     <color name="translucent">#88000000</color>
-    <color name="accent">#666666</color>     
+    <color name="accent">#666666</color>
+    <color name="materialish">#5588FF</color>  
 </resources>
