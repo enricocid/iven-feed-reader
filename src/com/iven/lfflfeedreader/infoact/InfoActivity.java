@@ -19,7 +19,7 @@ import android.view.View;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference email, facebook, twitter, google, developer, developer2,youtube, ale1, blin1,mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign, materialicons;
+	Preference email, facebook, twitter, google, developer, developer2,youtube, mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign, materialicons;
 	
 	Context context;
 	Intent intent;
@@ -103,34 +103,6 @@ public class InfoActivity extends PreferenceActivity{
 			public boolean onPreferenceClick (Preference preference) {
 			
 			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/+lffl/posts"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-		ale1 = (Preference) this.findPreference("cruz");
-		ale1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/+AlexCruz/posts"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-		blin1 = (Preference) this.findPreference("blin");
-		blin1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/106250186908628485422/posts"));
 			if(intent != null) {
 				startActivity(intent);
 			} else {

@@ -27,15 +27,6 @@
         android:key="ferramosca"
         />
      
-     <Preference android:summary="Mazda" 
-        android:title="@string/ale" 
-        android:key="cruz"
-        />
-     <Preference android:summary="blinqipa" 
-        android:title="@string/qipa" 
-        android:key="blin"
-        />
-     
      <Preference android:summary="SimoneDev" 
         android:title="@string/simon" 
         android:key="simonedev"
