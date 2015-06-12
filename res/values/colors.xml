@@ -7,8 +7,8 @@
     <color name="transparent">#00000000</color>   
     <color name="info_color">#66666666</color> 
     <color name="alert_color">#88cc3333</color>
-    <color name="title_color">#333333</color>
-    <color name="date_color">#AEA79F</color>  
+    <color name="title_color">#212121</color>
+    <color name="date_color">#757575</color>  
     <color name="lffl2">#c0392b</color>
     <color name="lffl3">#ac3326</color>
     <color name="translucent">#88000000</color>
