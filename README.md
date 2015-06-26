@@ -45,13 +45,6 @@ https://github.com/keyboardsurfer/Crouton
 Download:
 https://github.com/keyboardsurfer/Crouton/archive/master.zip
 
-Solve "import cannot be resolved" problem:
-
-Please add the .jar
-http://mvnrepository.com/artifact/de.keyboardsurfer.android.widget/crouton/
-
-inside libs folder, then refresh, clean and build Your workspace
-
 **- Jsoup by Jonathan Hedley**
 
 Import as an external library and be sure to tickmark jsoup-1.x.jar on "Import and Export" tab in Eclipse (i.e add jsoup lib as referenced library or the splash activity will crash at boot!).
@@ -85,7 +78,10 @@ or
 Copy the JAR file from your Android SDK installation directory <sdk>/extras/android/support/v4/android-support-v4.jar) into the application's project libs/ directory.
 
 
+NOTE:
 
+Most of the libraries are Android studio projects!
+If You want to import them into eclipse just cut&paste com folder from java to src, solve the imports (android support v4, just add this library), clean and build!
 
 
 
