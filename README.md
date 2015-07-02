@@ -12,6 +12,8 @@ This work is 100% Free and is released under gpl license.
 
 1. **RESPECT THE LICENSE!**
 
+AND:
+
 2. **DO NOT REDISTRIBUTE THIS FOR SALE!**
 
 3. **ABSOLUTELY DO NOT REMOVE CREDITS!**
