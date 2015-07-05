@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+      
+     <PreferenceCategory android:title="@string/credits"/>
+     
+     <Preference android:summary="Roberto Ferramosca" 
+        android:title="@string/badmin" 
+        android:key="ferramosca"
+        />
+     
+     <Preference android:summary="Tushar Paliwal" 
+        android:title="@string/tushar" 
+        android:key="pal"
+        />
+     
+     <Preference android:summary="stackoverflow.com" 
+        android:title="@string/stack" 
+        android:key="stackover"
+        />
+     
+     <Preference android:summary="guides.codepath.com/android" 
+        android:title="@string/codepath" 
+        android:key="codepathguides"
+        />
+     
+     <Preference android:summary="SimoneDev" 
+        android:title="@string/simon" 
+        android:key="simonedev"
+        />
+    
+    <PreferenceCategory android:title="@string/follow"/>
+    
+    <Preference android:title="@string/tube" 
+        android:key="videos"
+        />   
+          
+    <Preference android:title="@string/fb" 
+        android:key="facebook"
+        />  
+            
+    <Preference android:title="@string/bird" 
+        android:key="twitter"
+        />
+    
+    <Preference android:title="@string/gplus" 
+        android:key="google"
+        /> 
+     
+     <PreferenceCategory android:title="@string/usedlibs" />
+     
+    <Preference android:summary="by Google" 
+        android:title="@string/design" 
+        android:key="support"
+        />
+
+     <Preference android:summary="by Jonathan Hedley" 
+        android:title="@string/lib5" 
+        android:key="js"
+        />
+     
+     <Preference android:summary="by Fedor Vlasov" 
+        android:title="@string/lib6" 
+        android:key="thest"
+        />
+     
+     <Preference android:summary="by pnikosis" 
+        android:title="@string/materialish" 
+        android:key="progressish"
+        />
+     
+     <Preference android:summary="by Mr.Bao" 
+        android:title="@string/pull" 
+        android:key="pullrefresh"
+        />
+     
+     <PreferenceCategory android:title="@string/androidstyle" />
+     
+     <Preference android:summary="by Google Android" 
+        android:title="@string/style1" 
+        android:key="robot"
+        />
+     <Preference android:title="@string/style2" 
+        android:key="robotlicense"
+        />
+     <Preference android:summary="by Google Android" 
+        android:title="@string/style3" 
+        android:key="studio"
+        />
+     
+     <Preference android:summary="Material design icons" 
+        android:title="@string/maticons" 
+        android:key="mater"
+        />
+
+</PreferenceScreen>

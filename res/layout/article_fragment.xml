@@ -1,9 +1,17 @@
+<android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"        
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     >
+        android:fitsSystemWindows="true"
+        android:clipToPadding="false">
+        
+<include layout="@layout/toolbar2" />
 
     <RelativeLayout
         android:id="@+id/header"
@@ -21,11 +29,12 @@
         android:text=""
         android:gravity="center"
         android:textSize="20sp" 
+        android:textColor="@color/white" 
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 </RelativeLayout>
  
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/sv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -45,6 +54,20 @@
                 android:layout_marginTop="5dp"
                 android:scrollbarStyle="insideOverlay"
                 android:text="@string/desc" />
+            
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
+<android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/chevron_back"
+        android:id="@+id/fab"
+        app:layout_anchor="@id/sv"
+        app:backgroundTint="@color/lffl6"
+        app:borderWidth="0dp"
+        app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"
+        app:layout_anchorGravity="bottom|right|end"/>
+ </android.support.design.widget.CoordinatorLayout>

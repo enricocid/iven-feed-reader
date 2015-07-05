@@ -1,13 +1,13 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.iven.lfflfeedreader.R;
@@ -25,10 +25,10 @@ public class ArticleActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail);
-		
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
 
+		Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        
 		// Get the feed object and the position from the Intent
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		pos = getIntent().getExtras().getInt("pos");
@@ -41,6 +41,11 @@ public class ArticleActivity extends FragmentActivity {
 		pager.setAdapter(adapter);
 		pager.setCurrentItem(pos);
 	}		
+
+	private void setSupportActionBar(Toolbar toolbar) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

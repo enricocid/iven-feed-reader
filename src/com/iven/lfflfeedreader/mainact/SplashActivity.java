@@ -6,19 +6,17 @@ import android.app.Activity;
 import android.content.Context;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.view.View;
-
-
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
-
-import de.keyboardsurfer.android.widget.crouton.Crouton;
 
 public class SplashActivity extends Activity {
 
@@ -35,8 +33,11 @@ public class SplashActivity extends Activity {
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (cM.getActiveNetworkInfo() == null) {
 			// Inflate any custom view
-			View customView = getLayoutInflater().inflate(R.layout.internet_alert, null);
-			Crouton.show(SplashActivity.this, customView);			
+			
+			Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.internet_alert, Snackbar.LENGTH_LONG);
+            View view = snack.getView();
+            view.setBackgroundColor(Color.RED); 
+            snack.show();	
 				   new Handler().postDelayed(new Runnable() {
 					   public void run() {
 				   SplashActivity.this.finish();

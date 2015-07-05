@@ -4,17 +4,23 @@
     <string name="emailC">Invia con</string>
     <string name="credits">Ringraziamenti</string>
     <string name="source">Sorgente</string>
-    <string name="disc">Questa app include porzioni di software disponibili sotto licensa open</string>
+    <string name="disc">Questa app include minime parti di</string>
     <string name="lib1sum">Codice sorgente</string>
     <string name="usedlibs">Librerie usate</string>
     <string name="androidstyle">Risorse</string>
-    <string name="style1">Iconografia</string>
+    <string name="style1">Risorse per il design</string>
     <string name="style2">Licenza</string>  
-    <string name="intError">No internet. Controlla la tua connessione dati</string>
-    <string name="error">Errore</string>
-    <string name="croutInf">Informazioni</string>
+    <string name="error">Questo è un problema amico</string>
     <string name="share">Condividi con&#8230;</string>
     <string name="tushar">Amico e themer</string>
+    <string name="badmin">Blog admin, amico &amp; tester</string>
     <string name="press_overflow">Wtf, premi e basta!</string>
+    <string name="internet_alert">No internet. Per favore controlla la connessione</string>
+    <string name="design">Librerie supporto</string>
+    <string name="email">Mandaci una email</string>
+    <string name="Dev_cat">Sviluppatori</string>    
     <string name="chooser_title">Scegli il browser ...</string>
+    <string name="more"> ... Altro</string>
+    <string name="contact_us">Contatti</string>
+    
 </resources>

@@ -4,58 +4,57 @@ package com.iven.lfflfeedreader.infoact;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.R;
 
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference email, facebook, twitter, google, developer, developer2,youtube, mosca1, cut1, cut2, gith, fade, iconos, glic, gstud, simo, noti,jso, laz,ubu, materialdesign, materialicons, prog, tushpal;
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, swipy, stacking, path;
 	
 	Context context;
 	Intent intent;
+	Toolbar mToolbar;
 
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.addPreferencesFromResource(R.layout.info_pref);
-		
-		getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-        getActionBar().setDisplayHomeAsUpEnabled(true);	
-        getActionBar().setTitle("");	
-        
-        View customView = getLayoutInflater().inflate(R.layout.info_alert, null);
-		Crouton.show(InfoActivity.this, customView);
-        
+		final ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
+        LinearLayout content = (LinearLayout) root.getChildAt(0);
+        LinearLayout toolbarContainer = (LinearLayout) View.inflate(this, R.layout.activity_pref, null);
 
+        root.removeAllViews();
+        toolbarContainer.addView(content);
+        root.addView(toolbarContainer);
+
+        mToolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar3);
+    
+		addPreferencesFromResource(R.xml.info_pref);
+    
+		mToolbar.setTitle(R.string.informations);
+		mToolbar.setNavigationIcon(R.drawable.ic_back);
+		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        setSupportActionBar(mToolbar);
+               
 		context = getBaseContext();
 				
-		email = (Preference) this.findPreference("email");
-		email.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick(Preference preference) {
-							
-			intent = new Intent(android.content.Intent.ACTION_SEND);			
-			intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "ivandorte@gmail.com" });			
-			intent.setType("message/rfc822");
-			if(intent != null) {
-				startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-
-			}
-			return false;
-			}
-		});
-
 		facebook = (Preference) this.findPreference("facebook");
 		facebook.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
@@ -64,26 +63,15 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 			startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 			}
 	});
-		
-		noti = (Preference) this.findPreference("weiss");
-		noti.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/keyboardsurfer/Crouton"));
-			if(intent != null) {
-			startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-			}
-	});
-		
+
 		twitter = (Preference) this.findPreference("twitter");
 		twitter.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
@@ -92,7 +80,10 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
@@ -106,7 +97,10 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
@@ -120,7 +114,10 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
@@ -134,7 +131,10 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
@@ -148,7 +148,10 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
@@ -162,102 +165,14 @@ public class InfoActivity extends PreferenceActivity{
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
 			});
-
-		developer = (Preference) this.findPreference("buddy1");
-		
-		developer.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-        developer2 = (Preference) this.findPreference("buddy2");
-		
-		developer2.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodortenzio/"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-		cut1 = (Preference) this.findPreference("cuties");
-		
-		cut1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/itcuties/ITCutiesApp-1.0"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-	    cut2 = (Preference) this.findPreference("cutiesc");
-		
-		cut2.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.itcuties.com/copyright/"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-        gith = (Preference) this.findPreference("github");
-		
-		gith.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-fade = (Preference) this.findPreference("peinado");
-		
-		fade.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ManuelPeinado/FadingActionBar"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
 		
 laz = (Preference) this.findPreference("thest");
 		
@@ -268,7 +183,10 @@ laz = (Preference) this.findPreference("thest");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
@@ -279,11 +197,14 @@ iconos = (Preference) this.findPreference("robot");
 		iconos.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/style/iconography.html"));
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/"));
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
@@ -298,7 +219,10 @@ glic = (Preference) this.findPreference("robotlicense");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
@@ -313,41 +237,14 @@ gstud = (Preference) this.findPreference("studio");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
 			});
-		
-ubu = (Preference) this.findPreference("ubuntu");
-		
-		ubu.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://design.ubuntu.com/brand/colour-palette"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});
-		
-		materialdesign = (Preference) this.findPreference("paletta");
-		
-		materialdesign.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.materialpalette.com"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
-			}
-			return false;
-				}
-			});	
 		
 		materialicons = (Preference) this.findPreference("mater");
 		materialicons.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -357,7 +254,10 @@ ubu = (Preference) this.findPreference("ubuntu");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
@@ -371,7 +271,10 @@ ubu = (Preference) this.findPreference("ubuntu");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show(); 
 			}
 			return false;
 				}
@@ -385,12 +288,87 @@ ubu = (Preference) this.findPreference("ubuntu");
 			if(intent != null) {
 				startActivity(intent);
 			} else {
-				Crouton.showText(InfoActivity.this, getString(R.string.error),Style.ALERT);
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
 			}
 			return false;
 				}
 			});
-
+		
+		compat = (Preference) this.findPreference("support");
+		compat.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/tools/support-library/index.html"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		swipy = (Preference) this.findPreference("pullrefresh");
+		swipy.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/baoyongzhang/android-PullRefreshLayout"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		stacking = (Preference) this.findPreference("stackover");
+		stacking.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://stackoverflow.com/"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		path = (Preference) this.findPreference("codepathguides");
+		path.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://guides.codepath.com/android"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.RED); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+    }
+	
+		private void setSupportActionBar(Toolbar toolbar) {
+		// TODO Auto-generated method stub
+		
 	}
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {

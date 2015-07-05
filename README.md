@@ -2,11 +2,12 @@
 ================
 
 
-![ScreenShot](http://i.imgur.com/EGqAtNU.jpg{url})
+![ScreenShot](http://i.imgur.com/RM9aPBd.png{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design for Lollipop Devices!
 
+Little video: https://www.youtube.com/watch?v=vbmcluSLMpc
 
 This work is 100% Free and is released under gpl license. 
 
@@ -24,28 +25,24 @@ http://www.lffl.org/
 
 **Screenshots**
 
-![ScreenShot](http://i.imgur.com/6viY9t7.png{url})![ScreenShot](http://i.imgur.com/nsVusl8.png{url})![ScreenShot](http://i.imgur.com/t6tjbOk.png{url})![ScreenShot](http://i.imgur.com/QjMMzCq.png{url})![ScreenShot](http://i.imgur.com/67UJrh4.png{url})![ScreenShot]
+![ScreenShot](http://i.imgur.com/t4UFPYZ.png{url})![ScreenShot](http://i.imgur.com/owze6X6.png{url})![ScreenShot](http://i.imgur.com/9y358pv.png{url})![ScreenShot](http://i.imgur.com/fVTlM6V.png{url})![ScreenShot](http://i.imgur.com/t9xrAJW.png{url})![ScreenShot](http://i.imgur.com/TCMgU1m.png{url})![ScreenShot](http://i.imgur.com/0vSjYWH.png{url})
 
 
 **USED LIBRARIES**
 
-**- Fading Action Bar by Manuel Peinado**
+**- Android Support Libraries**
+
+- Android support v4
+- Android support appcompatv7
+- Android Design Support Library
+
+**- android-PullRefreshLayout by Mr. Bao**
 
 Git page:
-https://github.com/ManuelPeinado/FadingActionBar
+https://github.com/baoyongzhang/android-PullRefreshLayout
 
 Download:
-https://github.com/ManuelPeinado/FadingActionBar/archive/master.zip
-
-Import only the standard build to Your project.
-
-**- Crouton by Benjamin Weiss**
-
-Git page:
-https://github.com/keyboardsurfer/Crouton
-
-Download:
-https://github.com/keyboardsurfer/Crouton/archive/master.zip
+https://github.com/baoyongzhang/android-PullRefreshLayout/archive/master.zip
 
 **- Jsoup by Jonathan Hedley**
 
@@ -72,19 +69,6 @@ https://github.com/pnikosis/materialish-progress
 
 Download:
 https://github.com/pnikosis/materialish-progress/archive/master.zip
-
-**Do not forget to add android-support-v4 library in Your project**
-
-In Eclipse: Right click on your project > Android tools > Select add support library 
-or 
-Copy the JAR file from your Android SDK installation directory <sdk>/extras/android/support/v4/android-support-v4.jar) into the application's project libs/ directory.
-
-
-NOTE:
-
-Most of the libraries are Android studio projects!
-If You want to import them into eclipse just cut&paste com folder from java to src, solve the imports (android support v4, just add this library), clean and build!
-
 
 
 
