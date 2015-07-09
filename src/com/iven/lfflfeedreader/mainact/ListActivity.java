@@ -130,7 +130,7 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 				Intent intent = new Intent(ListActivity.this,
 						ArticleActivity.class);
 				intent.putExtras(bundle);
-				intent.putExtra("pos", pos-1);
+				intent.putExtra("pos", pos);
 				startActivity(intent);
 
 			}
