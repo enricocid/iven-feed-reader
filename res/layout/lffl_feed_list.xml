@@ -14,22 +14,18 @@
          
     <include layout="@layout/toolbar" />
     
-    <View
-           android:layout_width="match_parent"
-           android:layout_marginTop="0dp"
-           android:layout_height="6dp"
-           android:background="@drawable/toolbar_dropshadow" />
-        <com.baoyz.widget.PullRefreshLayout
+        <android.support.v4.widget.SwipeRefreshLayout
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
 <ListView 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@android:id/list" />
-</com.baoyz.widget.PullRefreshLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
 
   <android.support.design.widget.NavigationView
@@ -37,10 +33,9 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/white"
     app:headerLayout="@layout/drawer_header"
-    app:itemIconTint="@color/lffl3"
-    app:itemTextColor="@color/title_color"
+    app:itemIconTint="@drawable/state_list"
+    app:itemTextColor="@drawable/state_list"
     app:menu="@menu/drawer"/>
  
 </android.support.v4.widget.DrawerLayout>

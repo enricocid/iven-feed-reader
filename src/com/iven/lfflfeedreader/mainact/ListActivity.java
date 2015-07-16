@@ -1,12 +1,13 @@
 package com.iven.lfflfeedreader.mainact;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,21 +18,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.ThemeSingleton;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.imageparserutils.ImageLoader;
+import com.iven.lfflfeedreader.infoact.ChangelogDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import com.baoyz.widget.PullRefreshLayout;
-import com.baoyz.widget.PullRefreshLayout.OnRefreshListener;
+import android.support.v4.widget.SwipeRefreshLayout;
 
-public class ListActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener, OnRefreshListener {
+public class ListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 	 
 	  private static final long DRAWER_CLOSE_DELAY_MS = 250;
 	  private static final String NAV_ITEM_ID = "navItemId";
@@ -46,7 +49,13 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 	CustomListAdapter adapter;
 	String feedURL;
 	Intent intent;
-	PullRefreshLayout pulltorefresh;
+	SwipeRefreshLayout swiperefresh;
+	
+	public boolean onCreateOptionsMenu (Menu menu){
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.activity_main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,26 +69,21 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 	         } else {
 	           mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
 	         }
-	      // listen for navigation events
+
 	         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
 	         navigationView.setNavigationItemSelectedListener(this);
 	      
-	         // select the correct nav menu item
 	         navigationView.getMenu().findItem(mNavItemId).setChecked(true);
 	      
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		if (toolbar != null) {
-		    setSupportActionBar(toolbar);
-		} 
+		setSupportActionBar(toolbar);
 		
         toolbar.setTitle(R.string.app_name);
-        toolbar.inflateMenu(R.menu.activity_main);
-        // set up the hamburger icon to open and close the drawer
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
             R.string.app_name);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-       
         navigate(mNavItemId);
 
         toolbar.setOnMenuItemClickListener(
@@ -107,13 +111,13 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
                     }	
             	});
 
-
 		feedURL = new SplashActivity().LFFLFEEDURL;
 
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 
-		pulltorefresh = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-		pulltorefresh.setOnRefreshListener(this);
+		swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+		swiperefresh.setOnRefreshListener(this);
+		swiperefresh.setColorSchemeResources(R.color.lffl10, R.color.lffl4, R.color.lffl8, R.color.lffl11);
 		
 		list = (ListView) findViewById(android.R.id.list);
 		adapter = new CustomListAdapter(this);
@@ -137,14 +141,8 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 		});
 
 	}
-	
-	private void setSupportActionBar(Toolbar toolbar) {
-	// TODO Auto-generated method stub
-	
-}
 
 	private void navigate(int mNavItemId2) {
-	// TODO Auto-generated method stub
 	
 }
 
@@ -168,7 +166,7 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 						if (feed != null && feed.getItemCount() > 0) {
 							adapter.notifyDataSetChanged();
 							
-							pulltorefresh.setRefreshing(false);
+							swiperefresh.setRefreshing(false);
 						}
 					}
 				});
@@ -236,12 +234,9 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 
 	@Override
 	 public boolean onNavigationItemSelected(final MenuItem menuItem) {
-	    // update highlighted item in the navigation menu
+
 	    menuItem.setChecked(true);
-	    mNavItemId = menuItem.getItemId();
-	     
-	    // allow some time after closing the drawer before performing real navigation
-	    // so the user can see what is happening
+	    mNavItemId = menuItem.getItemId();   
 	    mDrawerLayout.closeDrawer(GravityCompat.START);
 	    mDrawerActionHandler.postDelayed(new Runnable() {
 	      @Override
@@ -271,6 +266,10 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 	        case R.id.developer2:
 	        	Intent ii6 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodchem/"));
 	        	startActivity(ii6);
+		        	 }
+	        	switch (menuItem.getItemId()) {
+		        case R.id.changelog:
+		        	showChangelog();
 	        	
 		        	 }
 		        	 switch (menuItem.getItemId()) {
@@ -285,6 +284,16 @@ public class ListActivity extends Activity implements NavigationView.OnNavigatio
 
 	      }
 	    }
+
+		private void showChangelog() {
+			int accentColor = ThemeSingleton.get().widgetColor;
+	        if (accentColor == 0)
+	            accentColor = getResources().getColor(R.color.lffl2);
+
+	        ChangelogDialog.create(accentColor)
+	                .show(getSupportFragmentManager(), "changelog");
+			
+		}
 	    }, DRAWER_CLOSE_DELAY_MS);
 	    return true;
 	    

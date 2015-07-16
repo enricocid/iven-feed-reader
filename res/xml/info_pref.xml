@@ -1,96 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-      
-     <PreferenceCategory android:title="@string/credits"/>
+    
+     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/credits"/>
      
-     <Preference android:summary="Roberto Ferramosca" 
-        android:title="@string/badmin" 
+     <com.jenzz.materialpreference.Preference android:summary="@string/badmin" 
+        android:title="Roberto Ferramosca" 
         android:key="ferramosca"
         />
      
-     <Preference android:summary="Tushar Paliwal" 
-        android:title="@string/tushar" 
+     <com.jenzz.materialpreference.Preference android:summary="@string/tushar" 
+        android:title="Tushar Paliwal" 
         android:key="pal"
         />
      
-     <Preference android:summary="stackoverflow.com" 
+     <com.jenzz.materialpreference.Preference android:summary="stackoverflow.com" 
         android:title="@string/stack" 
         android:key="stackover"
         />
      
-     <Preference android:summary="guides.codepath.com/android" 
+     <com.jenzz.materialpreference.Preference android:summary="guides.codepath.com/android" 
         android:title="@string/codepath" 
         android:key="codepathguides"
         />
      
-     <Preference android:summary="SimoneDev" 
+     <com.jenzz.materialpreference.Preference android:summary="simonedev.blogspot.it" 
         android:title="@string/simon" 
         android:key="simonedev"
         />
     
-    <PreferenceCategory android:title="@string/follow"/>
+    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/follow"/>
     
-    <Preference android:title="@string/tube" 
+    <com.jenzz.materialpreference.Preference android:summary="youtube.com/user/linuxfreedomforlive"
+        android:title="@string/tube" 
         android:key="videos"
         />   
           
-    <Preference android:title="@string/fb" 
+    <com.jenzz.materialpreference.Preference android:summary="facebook.com/pages/LinuX-Freedom-for-Live/290943601160"
+        android:title="@string/fb" 
         android:key="facebook"
         />  
             
-    <Preference android:title="@string/bird" 
+    <com.jenzz.materialpreference.Preference android:summary="twitter.com/linuxfreedom"
+        android:title="@string/bird" 
         android:key="twitter"
         />
     
-    <Preference android:title="@string/gplus" 
+    <com.jenzz.materialpreference.Preference android:summary="plus.google.com/+lffl/posts"
+        android:title="@string/gplus" 
         android:key="google"
         /> 
      
-     <PreferenceCategory android:title="@string/usedlibs" />
+     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/usedlibs" />
      
-    <Preference android:summary="by Google" 
+    <com.jenzz.materialpreference.Preference android:summary="by Google Inc." 
         android:title="@string/design" 
         android:key="support"
         />
 
-     <Preference android:summary="by Jonathan Hedley" 
+     <com.jenzz.materialpreference.Preference android:summary="by Jonathan Hedley" 
         android:title="@string/lib5" 
         android:key="js"
         />
      
-     <Preference android:summary="by Fedor Vlasov" 
+     <com.jenzz.materialpreference.Preference android:summary="by Fedor Vlasov" 
         android:title="@string/lib6" 
         android:key="thest"
         />
      
-     <Preference android:summary="by pnikosis" 
+     <com.jenzz.materialpreference.Preference android:summary="by pnikosis" 
         android:title="@string/materialish" 
         android:key="progressish"
         />
      
-     <Preference android:summary="by Mr.Bao" 
-        android:title="@string/pull" 
-        android:key="pullrefresh"
+     <com.jenzz.materialpreference.Preference android:summary="by Jens Driller" 
+        android:title="@string/preferencelib" 
+        android:key="matpref"
         />
      
-     <PreferenceCategory android:title="@string/androidstyle" />
+     <com.jenzz.materialpreference.Preference android:summary="by Aidan Follestad" 
+        android:title="@string/dialogs" 
+        android:key="matdialogs"
+        />
      
-     <Preference android:summary="by Google Android" 
+     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/androidstyle" />
+     
+     <com.jenzz.materialpreference.Preference android:summary="by Google Inc." 
         android:title="@string/style1" 
         android:key="robot"
         />
-     <Preference android:title="@string/style2" 
+     <com.jenzz.materialpreference.Preference android:title="@string/style2" 
         android:key="robotlicense"
         />
-     <Preference android:summary="by Google Android" 
+     <com.jenzz.materialpreference.Preference android:summary="by Google Inc." 
         android:title="@string/style3" 
         android:key="studio"
         />
      
-     <Preference android:summary="Material design icons" 
+     <com.jenzz.materialpreference.Preference android:summary="materialdesignicons.com" 
         android:title="@string/maticons" 
         android:key="mater"
+        />
+     
+      <com.jenzz.materialpreference.Preference android:summary="materialpalette.com" 
+        android:title="@string/palette" 
+        android:key="palettes"
         />
 
 </PreferenceScreen>

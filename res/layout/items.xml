@@ -7,11 +7,10 @@
 
     <ImageView
         android:id="@+id/thumb"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginRight="0dp"
-        android:contentDescription="@string/app_name" 
-        android:layout_alignParentRight="true"       
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="4dp"     
         android:src="@drawable/ic_action_picture" />
 
     <RelativeLayout
@@ -31,8 +30,7 @@
             android:textColor="@color/title_color"          
             android:text=""
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="0dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/date"
@@ -42,12 +40,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
-            android:padding="2dp"
             android:text=""
             android:textColor="@color/date_color"
             android:textSize="14sp"
-            android:textStyle="italic"
-            android:layout_marginLeft="0dp" />
+            android:textStyle="italic" />
     </RelativeLayout>
 </RelativeLayout>

@@ -8,10 +8,5 @@
         android:clipToPadding="false">
 
     <include layout="@layout/toolbar3" />
-<View
-           android:layout_width="match_parent"
-           android:layout_below="@+id/toolbar"
-           android:layout_marginTop="0dp"
-           android:layout_height="6dp"
-           android:background="@drawable/toolbar_dropshadow" />
+
 </LinearLayout>

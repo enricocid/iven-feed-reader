@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.TextView;
 
 public class ArticleFragment extends Fragment {
+	
 	private int fPos;
 	RSSFeed fFeed;
 	@Override
@@ -32,24 +32,18 @@ public class ArticleFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View view = inflater
 				.inflate(R.layout.article_fragment, container, false);			
-        
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
-
 		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
-		NestedScrollView sv = (NestedScrollView) view.findViewById(R.id.sv);
-		sv.setVerticalFadingEdgeEnabled(true);
 		
-		// Set webview settings
 		WebSettings ws = wb.getSettings();
 		ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
-		
-		// Set the views
-				
-		title.setText(fFeed.getItem(fPos).getTitle()) ;
-		
+	
+		title.setText(fFeed.getItem(fPos).getTitle());
+
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
             public void onClick(View v) {
@@ -57,7 +51,9 @@ public class ArticleFragment extends Fragment {
             }
 
 		});
-		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "UTF-8") ;
+
+		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "UTF-8");
+
 		wb.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -68,18 +64,6 @@ public class ArticleFragment extends Fragment {
 				return true;
             }
 
-        @Override
-        public void onLoadResource(WebView view, String url) {
-            // Notice Here.
-            view.clearHistory();
-            super.onLoadResource(view, url);
-        }
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            // And Here.
-            view.clearHistory();
-            super.onPageFinished(view,url);
-        }
 });
 		return view;
 	}

@@ -10,17 +10,16 @@
     android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:clipToPadding="false">
-        
-<include layout="@layout/toolbar2" />
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" 
+        android:layout_alignParentTop="true"
+        android:background="@color/lffl4" 
         android:gravity="center">
-
+                    
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -29,16 +28,19 @@
         android:text=""
         android:gravity="center"
         android:textSize="20sp" 
-        android:textColor="@color/white" 
+        android:textColor="@android:color/white" 
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
+
 </RelativeLayout>
- 
+                                    
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/sv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/header" >
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:layout_below="@id/header" > 
 
         <LinearLayout
             android:id="@+id/lin"
@@ -50,10 +52,7 @@
             <WebView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:scrollbarStyle="insideOverlay"
-                android:text="@string/desc" />
+                android:layout_height="wrap_content" />
             
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

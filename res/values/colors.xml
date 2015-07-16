@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="text_color_default">#00000C</color>
-    <color name="text_color_inverse">#FFFFFF</color>
-    <color name="white">#FFFFFF</color>
-    <color name="transparent">#00000000</color>   
-    <color name="title_color">#212121</color>
-    <color name="date_color">#757575</color>  
-    <color name="lffl2">#009688</color>
-    <color name="lffldark">#00796B</color>    
-    <color name="translucent">#88000000</color>
-    <color name="accent">#666666</color>
-    <color name="lffl3">#D8453C</color>   
+    <color name="title_color">#37474F</color>
+    <color name="date_color">#7F8B8F</color>      
+    <color name="translucent">#94000000</color>
+    <color name="lffl1">#D8453C</color>
+    <color name="lffl2">#009688</color> 
+    <color name="lffl3">#00796B</color>  
     <color name="lffl4">#c0392b</color>
     <color name="lffl5">#902B20</color>
     <color name="lffl6">#607D8B</color>
+    <color name="lffl7">#212121</color>
+    <color name="lffl8">#4caf50</color>
+    <color name="lffl9">#388e3c</color>
+    <color name="lffl10">#2196f3</color>
+    <color name="lffl11">#ffc107</color>
 </resources>

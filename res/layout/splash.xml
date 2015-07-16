@@ -19,9 +19,8 @@
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        wheel:matProg_barColor="@color/lffl2"
-        wheel:matProg_progressIndeterminate="true"
-        wheel:matProg_fillRadius="true" />
+        wheel:matProg_barColor="@color/lffl10"
+        wheel:matProg_progressIndeterminate="true" />
         
         <include layout="@layout/alert_internet" />
         

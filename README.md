@@ -7,7 +7,7 @@
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design for Lollipop Devices!
 
-Little video: https://www.youtube.com/watch?v=vbmcluSLMpc
+Little video: https://www.youtube.com/watch?v=8rFjqGO0SfU
 
 This work is 100% Free and is released under gpl license. 
 
@@ -23,26 +23,41 @@ https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader
 
 http://www.lffl.org/
 
+
 **Screenshots**
 
-![ScreenShot](http://i.imgur.com/t4UFPYZ.png{url})![ScreenShot](http://i.imgur.com/BNosOKo.png{url})![ScreenShot](http://i.imgur.com/owze6X6.png{url})![ScreenShot](http://i.imgur.com/9y358pv.png{url})![ScreenShot](http://i.imgur.com/fVTlM6V.png{url})![ScreenShot](http://i.imgur.com/t9xrAJW.png{url})![ScreenShot](http://i.imgur.com/TCMgU1m.png{url})![ScreenShot](http://i.imgur.com/0vSjYWH.png{url})
+![ScreenShot](http://i.imgur.com/eMhBuOO.png{url})![ScreenShot](http://i.imgur.com/T9N5X8n.png{url})![ScreenShot](http://i.imgur.com/7IxvnVT.png{url})![ScreenShot](http://i.imgur.com/dWBSSM7.png{url})![ScreenShot](http://i.imgur.com/9CFuxCP.png{url})![ScreenShot](http://i.imgur.com/1g3B0tr.png{url})![ScreenShot](http://i.imgur.com/48ZoHd9.png{url})![ScreenShot](http://i.imgur.com/shmEULJ.png{url})![ScreenShot](http://i.imgur.com/fgrofqX.png{url})
+
+ ... On Kitkat
+ 
+![ScreenShot](http://i.imgur.com/7Qo41S6.png{url})![ScreenShot](http://i.imgur.com/gtgD1b8.png{url})![ScreenShot](http://i.imgur.com/3k411BE.png{url})![ScreenShot](http://i.imgur.com/uSRglg4.png{url})
+
+
 
 
 **USED LIBRARIES**
 
 **- Android Support Libraries**
 
-- Android support v4
-- Android support appcompatv7
-- Android Design Support Library
+- Android support v4;
+- Android support appcompatv7;
+- Android Design Support Library;
 
-**- android-PullRefreshLayout by Mr. Bao**
+**- material-dialogs by Aidan Follestad**
 
 Git page:
-https://github.com/baoyongzhang/android-PullRefreshLayout
+https://github.com/afollestad/material-dialogs
 
 Download:
-https://github.com/baoyongzhang/android-PullRefreshLayout/archive/master.zip
+https://github.com/afollestad/material-dialogs/archive/master.zip
+
+**- Android-MaterialPreference by Jens Driller**
+
+Git page:
+https://github.com/jenzz/Android-MaterialPreference
+
+Download:
+https://github.com/jenzz/Android-MaterialPreference/archive/master.zip
 
 **- Jsoup by Jonathan Hedley**
 

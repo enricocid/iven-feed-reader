@@ -21,7 +21,7 @@ public class DOMParser {
 	private RSSFeed _feed = new RSSFeed();
 
 	public RSSFeed parseXml(String xml) {
-
+		
 		// _feed.clearList();
 
 		URL url = null;
@@ -61,7 +61,7 @@ public class DOMParser {
 						String nodeName = thisNode.getNodeName();
 						if ("title".equals(nodeName)) {
 							_item.setTitle(theString);
-	 
+	
 						}
 
 						else if ("description".equals(nodeName)) {
@@ -72,18 +72,17 @@ public class DOMParser {
 									.parse(html);
 							Elements imgEle = docHtml.select("img");
 							_item.setImage(imgEle.attr("src"));
-
+                            
 						}
 
 						else if ("pubDate".equals(nodeName)) {
 
 							String formatedDate = theString.replace(" +0000","");
 							
-							
 							//change date format
                             SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
                             Date dateObj = curFormater.parse(formatedDate);
-                            SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.M.yyyy HH:mm",  java.util.Locale.US);
+                            SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  java.util.Locale.US);
                             String newDateStr = postFormater.format(dateObj);
                             
                             

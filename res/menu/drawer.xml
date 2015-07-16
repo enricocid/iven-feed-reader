@@ -4,6 +4,10 @@
       android:id="@+id/source_code"
       android:icon="@drawable/action_github" 
       android:title="@string/lib1sum" />
+        <item
+        android:id="@+id/changelog"
+        android:icon="@drawable/ic_changelog"
+        android:title="changelog"/>
     <item
         android:id="@+id/about_option"
         android:icon="@drawable/action_about"

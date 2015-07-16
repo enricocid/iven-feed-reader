@@ -1,14 +1,13 @@
 <resources>
 
     <string name="app_name">Lffl Feed Reader</string>
-    <string name="desc">Description goes here!</string>
     <string name="informations">Info</string>
     <string name="Dev_cat">Developers</string>
     <string name="dev1">ivn888</string>
     <string name="dev2">EnricoD</string>
     <string name="email">Send us an email</string>
     <string name="contact_us">Contacts</string>
-    <string name="follow">Follow lffl on Social Networks</string>
+    <string name="follow">Follow lffl on social networks</string>
     <string name="more"> ... More</string>
     <string name="emailC">Send with</string>
     <string name="gplus">Google +</string>
@@ -29,18 +28,20 @@
     <string name="style2">License</string>
     <string name="style3">Android assets studio</string>
     <string name="error">That\'s an error buddy</string>
-    <string name="simon">SimoneDev</string>
+    <string name="simon">Simone Dev</string>
     <string name="share">Share with</string>
-    <string name="maticons">materialdesignicons.com</string>
+    <string name="maticons">Material design icons</string>
     <string name="materialish">Materialish progress</string>
     <string name="tushar">Friend and themer</string>
-    <string name="press_overflow">Wtf, just press!</string>
-    <string name="internet_alert">No internet. Please check your connection</string>
-    <string name="design">Support libraries</string>
+    <string name="press_overflow">Just press man ...</string>
+    <string name="internet_alert">Data network unavailable</string>
+    <string name="design">Support libraries (v4, v7, design)</string>
     <string name="site_name">lffl</string>
     <string name="chooser_title">Choose your browser ...</string>
-    <string name="pull">PullRefreshLayout</string>
     <string name="stack">Stack overflow</string>
     <string name="codepath">Codepath</string>
-
+    <string name="preferencelib">Android-MaterialPreference</string>
+    <string name="palette">Material palette</string>
+    <string name="changelog">Changelog</string>
+    <string name="dialogs">material-dialogs</string>
 </resources>

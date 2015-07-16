@@ -1,8 +1,6 @@
 package com.iven.lfflfeedreader.mainact;
 
 
-import android.app.Activity;
-
 import android.content.Context;
 
 import android.content.Intent;
@@ -12,18 +10,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
-	String LFFLFEEDURL = "http://feeds.feedburner.com/lffl/";
+	String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
 	RSSFeed lfflfeed;
 	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class SplashActivity extends Activity {
 			
 			Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.internet_alert, Snackbar.LENGTH_LONG);
             View view = snack.getView();
-            view.setBackgroundColor(Color.RED); 
+            view.setBackgroundColor(Color.rgb(216,69,60)); 
             snack.show();	
 				   new Handler().postDelayed(new Runnable() {
 					   public void run() {

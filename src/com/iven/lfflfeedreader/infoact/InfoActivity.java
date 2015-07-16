@@ -14,14 +14,13 @@ import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, swipy, stacking, path;
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs;
 	
 	Context context;
 	Intent intent;
@@ -65,7 +64,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -82,7 +81,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -99,7 +98,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
@@ -116,7 +115,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
@@ -133,7 +132,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -150,7 +149,7 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -167,15 +166,14 @@ public class InfoActivity extends PreferenceActivity{
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
 				}
 			});
 		
-laz = (Preference) this.findPreference("thest");
-		
+        laz = (Preference) this.findPreference("thest");		
 		laz.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
@@ -185,15 +183,14 @@ laz = (Preference) this.findPreference("thest");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
 				}
 			});
 		
-iconos = (Preference) this.findPreference("robot");
-		
+        iconos = (Preference) this.findPreference("robot");		
 		iconos.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
@@ -203,15 +200,14 @@ iconos = (Preference) this.findPreference("robot");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
 				}
 			});
 		
-glic = (Preference) this.findPreference("robotlicense");
-		
+        glic = (Preference) this.findPreference("robotlicense");		
 		glic.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
@@ -221,15 +217,14 @@ glic = (Preference) this.findPreference("robotlicense");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
 				}
 			});
 		
-gstud = (Preference) this.findPreference("studio");
-		
+        gstud = (Preference) this.findPreference("studio");		
 		gstud.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 			
@@ -239,7 +234,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -256,7 +251,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
@@ -273,7 +268,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show(); 
 			}
 			return false;
@@ -290,7 +285,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -307,24 +302,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
-	            snack.show();
-			}
-			return false;
-				}
-			});
-		
-		swipy = (Preference) this.findPreference("pullrefresh");
-		swipy.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-			
-			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/baoyongzhang/android-PullRefreshLayout"));
-			if(intent != null) {
-				startActivity(intent);
-			} else {
-				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
-	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -341,7 +319,7 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -358,7 +336,58 @@ gstud = (Preference) this.findPreference("studio");
 			} else {
 				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
 	            View view = snack.getView();
-	            view.setBackgroundColor(Color.RED); 
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		materialpreferences = (Preference) this.findPreference("matpref");
+		materialpreferences.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jenzz/Android-MaterialPreference"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		matpal = (Preference) this.findPreference("palettes");
+		matpal.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialpalette.com"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
+	            snack.show();
+			}
+			return false;
+				}
+			});
+		
+		materialdialogs = (Preference) this.findPreference("matdialogs");
+		materialdialogs.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+			
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/afollestad/material-dialogs"));
+			if(intent != null) {
+				startActivity(intent);
+			} else {
+				Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+	            View view = snack.getView();
+	            view.setBackgroundColor(Color.rgb(216,69,60)); 
 	            snack.show();
 			}
 			return false;
@@ -366,19 +395,8 @@ gstud = (Preference) this.findPreference("studio");
 			});
     }
 	
-		private void setSupportActionBar(Toolbar toolbar) {
-		// TODO Auto-generated method stub
-		
+		private void setSupportActionBar(Toolbar toolbar) {		
 	}
-		@Override
-		public boolean onOptionsItemSelected(MenuItem item) {
-			switch (item.getItemId()) {
-
-			case android.R.id.home:
-
-				finish();
-				return true;
-			}
-			return super.onOptionsItemSelected(item);
+		
 		}
-}
+
