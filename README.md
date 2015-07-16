@@ -2,7 +2,7 @@
 ================
 
 
-![ScreenShot](http://imgur.com/mZMxNh9{url})
+![ScreenShot](http://imgur.com/mZMxNh9.png{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design for Lollipop Devices!
