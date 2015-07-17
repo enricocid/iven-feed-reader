@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -21,6 +22,7 @@ import com.iven.lfflfeedreader.R;
  */
 
 public class ChangelogDialog extends DialogFragment {
+	
 	
 	public static ChangelogDialog create(int accentColor) {
         ChangelogDialog dialog = new ChangelogDialog();
@@ -46,10 +48,10 @@ public class ChangelogDialog extends DialogFragment {
                 .build();
 
         final WebView webView = (WebView) customView.findViewById(R.id.changelog);
-            // Load from changelog.html in the raw folder
+        WebSettings websettings = webView.getSettings();
+        websettings.setDefaultTextEncodingName("utf-8");
         webView.setBackgroundColor(Color.TRANSPARENT);
-        	webView.loadUrl("file:///android_res/raw/changelog.html");
-
+        webView.loadUrl("file:///android_res/raw/changelog.html");
         return dialog;
 	}
 }

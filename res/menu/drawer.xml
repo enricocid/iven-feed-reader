@@ -7,7 +7,7 @@
         <item
         android:id="@+id/changelog"
         android:icon="@drawable/ic_changelog"
-        android:title="changelog"/>
+        android:title="@string/changelog"/>
     <item
         android:id="@+id/about_option"
         android:icon="@drawable/action_about"
