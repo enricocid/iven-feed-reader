@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.ThemeSingleton;
 import com.iven.lfflfeedreader.R;
@@ -41,6 +45,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	 
 	  private final Handler mDrawerActionHandler = new Handler();
 	  private DrawerLayout mDrawerLayout;
+	  private FrameLayout lfflhead;
 	  private ActionBarDrawerToggle mDrawerToggle;
 	  private int mNavItemId;
 
@@ -63,7 +68,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		
 		setContentView(R.layout.lffl_feed_list);
 	      mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-	      // load saved navigation state if present
+
 	         if (null == savedInstanceState) {
 	           mNavItemId = R.id.about_option;
 	         } else {
@@ -74,7 +79,16 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	         navigationView.setNavigationItemSelectedListener(this);
 	      
 	         navigationView.getMenu().findItem(mNavItemId).setChecked(true);
-	      
+	         
+	         lfflhead = (FrameLayout) findViewById(R.id.head);
+	         lfflhead.setOnLongClickListener(new OnLongClickListener() {
+	        	 @Override
+	             public boolean onLongClick(View v) {
+	        		 showTorvalds();
+					return true;
+	        	 }
+	         });
+
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		
@@ -140,6 +154,17 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			}
 		});
 
+	}
+
+	private void showTorvalds() {
+		Toast toast = new Toast(this);
+	    ImageView view = new ImageView(this); 
+	    view.setImageResource(R.drawable.expect);
+	    
+	    toast.setView(view); 
+	    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+	    toast.show();
+		
 	}
 
 	private void navigate(int mNavItemId2) {
