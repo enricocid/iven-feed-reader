@@ -2,10 +2,9 @@
         android:id="@+id/main_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"               
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"        
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
 <RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,11 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" 
-        android:background="@color/lffl4"
-        android:gravity="center"
-        android:elevation="6dp">
-
+        android:layout_alignParentTop="true"
+        android:background="@color/lffl4" 
+        android:gravity="center">
+                    
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -30,18 +28,19 @@
         android:text=""
         android:gravity="center"
         android:textSize="20sp" 
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/white" 
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
-</RelativeLayout>
 
-    <android.support.v4.widget.NestedScrollView
+</RelativeLayout>
+                                    
+    <ScrollView
         android:id="@+id/sv"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbars="vertical"
         android:scrollbarStyle="insideOverlay"
-        android:layout_below="@id/header" >
+        android:layout_below="@id/header" > 
 
         <LinearLayout
             android:id="@+id/lin"
@@ -49,16 +48,15 @@
       android:layout_height="wrap_content"
       android:gravity="center_horizontal"
       android:orientation="vertical" >
-            
+      
             <WebView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             
         </LinearLayout>
-     </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 </RelativeLayout>
-
 <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,10 +65,9 @@
         android:src="@drawable/chevron_back"
         android:id="@+id/fab"
         app:layout_anchor="@id/sv"
-        app:layout_anchorGravity="bottom|right|end"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
         app:backgroundTint="@color/lffl6"
-        app:rippleColor="@color/lffl4"
-        app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"/>
+        app:borderWidth="0dp"
+        app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"
+        app:layout_anchorGravity="bottom|right|end"
+        android:visibility="gone"/>
  </android.support.design.widget.CoordinatorLayout>

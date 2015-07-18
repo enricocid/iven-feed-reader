@@ -14,13 +14,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 import com.iven.lfflfeedreader.R;
 
-/**
- * @author Enrico D'Ortenzio (EnricoD)
- */
-/**
- * @Original_implementation_by Aidan Follestad (afollestad)
- */
-
 public class ChangelogDialog extends DialogFragment {
 	
 	

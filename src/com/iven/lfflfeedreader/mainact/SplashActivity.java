@@ -30,7 +30,6 @@ public class SplashActivity extends AppCompatActivity {
 
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (cM.getActiveNetworkInfo() == null) {
-			// Inflate any custom view
 			
 			Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.internet_alert, Snackbar.LENGTH_LONG);
             View view = snack.getView();

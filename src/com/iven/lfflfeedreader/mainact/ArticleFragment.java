@@ -5,6 +5,7 @@ import com.iven.lfflfeedreader.domparser.RSSFeed;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -40,10 +41,16 @@ public class ArticleFragment extends Fragment {
 		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
 		
 		WebSettings ws = wb.getSettings();
-		ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
-	
+		ws.setDefaultTextEncodingName("utf-8");
+		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
+		}
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
+		}
 		title.setText(fFeed.getItem(fPos).getTitle());
 
+		
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
             public void onClick(View v) {
@@ -52,8 +59,7 @@ public class ArticleFragment extends Fragment {
 
 		});
 
-		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "UTF-8");
-
+		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "utf-8");
 		wb.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -63,7 +69,7 @@ public class ArticleFragment extends Fragment {
             	startActivity(chooser);
 				return true;
             }
-
+            
 });
 		return view;
 	}

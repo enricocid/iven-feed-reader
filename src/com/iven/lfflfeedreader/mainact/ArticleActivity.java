@@ -24,15 +24,12 @@ public class ArticleActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail);
         
-		// Get the feed object and the position from the Intent
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		pos = getIntent().getExtras().getInt("pos");
 
-		// Initialize the views
 		adapter = new DescAdapter(getSupportFragmentManager());
 		pager = (ViewPager) findViewById(R.id.pager);
 
-		// Set Adapter to pager:
 		pager.setAdapter(adapter);
 		pager.setCurrentItem(pos);
 	}		

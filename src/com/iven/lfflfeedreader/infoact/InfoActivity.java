@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -29,6 +30,7 @@ public class InfoActivity extends PreferenceActivity{
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 		final ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         LinearLayout content = (LinearLayout) root.getChildAt(0);
         LinearLayout toolbarContainer = (LinearLayout) View.inflate(this, R.layout.activity_pref, null);
@@ -38,9 +40,12 @@ public class InfoActivity extends PreferenceActivity{
         root.addView(toolbarContainer);
 
         mToolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar3);
-    
+	}
 		addPreferencesFromResource(R.xml.info_pref);
-    
+		
+
+		    
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 		mToolbar.setTitle(R.string.informations);
 		mToolbar.setNavigationIcon(R.drawable.ic_back);
 		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -49,8 +54,7 @@ public class InfoActivity extends PreferenceActivity{
                 onBackPressed();
             }
         });
-
-        setSupportActionBar(mToolbar);
+		}
                
 		context = getBaseContext();
 				
@@ -394,9 +398,5 @@ public class InfoActivity extends PreferenceActivity{
 				}
 			});
     }
-	
-		private void setSupportActionBar(Toolbar toolbar) {		
-	}
-		
-		}
+}
 
