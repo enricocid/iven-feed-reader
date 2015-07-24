@@ -157,11 +157,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	}
 
 	private void showTorvalds() {
-		Toast toast = new Toast(this);
-	    ImageView view = new ImageView(this); 
-	    view.setImageResource(R.drawable.expect);
-	    
-	    toast.setView(view); 
+		Context context = getApplicationContext();
+		CharSequence text = "What did You expect?!?? a easter egg?";
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, text, duration);
 	    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 	    toast.show();
 		
