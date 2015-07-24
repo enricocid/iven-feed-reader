@@ -64,13 +64,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@drawable/chevron_back"
+        android:src="@drawable/ic_back"
         android:id="@+id/fab"
         app:layout_anchor="@id/sv"
         app:layout_anchorGravity="bottom|right|end"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
-        app:backgroundTint="@color/lffl6"
-        app:rippleColor="@color/lffl4"
+        app:backgroundTint="@color/lffl8"
+        app:rippleColor="@color/lffl11"
         app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"/>
  </android.support.design.widget.CoordinatorLayout>
