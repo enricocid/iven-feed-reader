@@ -8,7 +8,7 @@
     <string name="email">Send us an email</string>
     <string name="contact_us">Contacts</string>
     <string name="follow">Follow lffl on social networks</string>
-    <string name="more"> ... More</string>
+    <string name="more"> &#8230; More</string>
     <string name="emailC">Send with</string>
     <string name="gplus">Google +</string>
     <string name="fb">Facebook</string>
@@ -33,11 +33,11 @@
     <string name="maticons">Material design icons</string>
     <string name="materialish">Materialish progress</string>
     <string name="tushar">Friend and themer</string>
-    <string name="press_overflow">Just press man ...</string>
+    <string name="press_overflow">Just press man &#8230;</string>
     <string name="internet_alert">Data network unavailable</string>
     <string name="design">Support libraries (v4, v7, design)</string>
     <string name="site_name">lffl</string>
-    <string name="chooser_title">Choose your browser ...</string>
+    <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="stack">Stack overflow</string>
     <string name="codepath">Codepath</string>
     <string name="preferencelib">Android-MaterialPreference</string>

@@ -23,7 +23,7 @@
     </menu>
     </item>
      <item
-    android:id="@+id/navigation_subheader"
+    android:id="@+id/navigation_subheader1"
     android:title="@string/Dev_cat">
     <menu>
         <item
@@ -35,7 +35,7 @@
     </menu>
     </item>
     <item
-    android:id="@+id/navigation_subheader"
+    android:id="@+id/navigation_subheader2"
     android:title="@string/disc">
     <menu>
         <item
