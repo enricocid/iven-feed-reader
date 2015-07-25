@@ -98,7 +98,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             R.string.app_name);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-        navigate(mNavItemId);
 
         toolbar.setOnMenuItemClickListener(
                 new Toolbar.OnMenuItemClickListener() {
@@ -165,10 +164,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	    toast.show();
 		
 	}
-
-	private void navigate(int mNavItemId2) {
-	
-}
 
 	public void rate(View view) {
 		  Intent intent = new Intent(Intent.ACTION_VIEW);
