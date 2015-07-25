@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Lffl Feed Reader</string>
+    <string name="desc"></string>
     <string name="informations">Info</string>
     <string name="Dev_cat">Developers</string>
     <string name="dev1">ivn888</string>
