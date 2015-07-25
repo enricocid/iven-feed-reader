@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@color/lffl4" 
         android:gravity="center">
@@ -42,25 +43,17 @@
         android:scrollbarStyle="insideOverlay"
         android:layout_below="@id/header" > 
 
-        <LinearLayout
-            android:id="@+id/lin"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:gravity="center_horizontal"
-      android:orientation="vertical" >
-      
             <WebView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
             
-        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
 <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_back"
         android:id="@+id/fab"

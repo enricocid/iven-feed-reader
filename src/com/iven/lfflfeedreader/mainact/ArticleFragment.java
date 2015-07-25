@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,11 @@ public class ArticleFragment extends Fragment {
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
 		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
-		
+		NestedScrollView nested = (NestedScrollView) view.findViewById(R.id.sv);
+		nested.setSmoothScrollingEnabled(true);
+		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+             nested.setFillViewport(true);
+		}
 		WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
 		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
