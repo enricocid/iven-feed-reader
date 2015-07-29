@@ -1,7 +1,7 @@
 #LFFL FEED READER
 ================
 
-![ScreenShot](http://i.utdstc.com/icons/256/android-studio-.png{url})
+![ScreenShot](http://i.imgur.com/VuFpWTt.png{url})
 
 ![ScreenShot](http://i.imgur.com/6sCJfiz.png{url})
 
