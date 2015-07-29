@@ -7,8 +7,6 @@
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design and pre-ICS Devices!
 
-Little video: https://www.youtube.com/watch?v=LsE-pUMzYxg
-
 This work is 100% Free and is released under gpl license. 
 
 1. **RESPECT THE LICENSE!**
@@ -74,8 +72,7 @@ http://jsoup.org/download
 Git page:
 https://github.com/thest1/LazyList
 
-Download:
-https://github.com/thest1/LazyList/archive/master.zip
+You don't need to import it.
 
 **- Materialish progress by pnikosis**
 
