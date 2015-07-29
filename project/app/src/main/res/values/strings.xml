@@ -1,48 +1,48 @@
 <resources>
 
-    <string name="app_name">Lffl Feed Reader</string>
-    <string name="desc"></string>
-    <string name="informations">Info</string>
+    <string name="app_name" translatable="false">Lffl Feed Reader</string>
+    <string name="desc" translatable="false"></string>
+    <string name="informations" translatable="false">Info</string>
     <string name="Dev_cat">Developers</string>
-    <string name="dev1">ivn888</string>
-    <string name="dev2">EnricoD</string>
+    <string name="dev1" translatable="false">ivn888</string>
+    <string name="dev2" translatable="false">EnricoD</string>
     <string name="email">Send us an email</string>
     <string name="contact_us">Contacts</string>
     <string name="follow">Follow lffl on social networks</string>
     <string name="more"> &#8230; More</string>
     <string name="emailC">Send with</string>
-    <string name="gplus">Google +</string>
-    <string name="fb">Facebook</string>
-    <string name="bird">Twitter</string>
-    <string name="tube">YouTube</string>
+    <string name="gplus" translatable="false">Google +</string>
+    <string name="fb" translatable="false">Facebook</string>
+    <string name="bird" translatable="false">Twitter</string>
+    <string name="tube" translatable="false">YouTube</string>
     <string name="credits">Special thanks</string>
     <string name="badmin">Blog admin, friend &amp; tester</string>
     <string name="source">Source</string>
     <string name="disc">This app includes few portions of</string>
-    <string name="lib">ITCutiesApp</string>
+    <string name="lib" translatable="false">ITCutiesApp</string>
     <string name="lib1sum">Source code</string>
     <string name="usedlibs">Used libraries</string>
-    <string name="lib5">Jsoup</string>
-    <string name="lib6">LazyList</string>
+    <string name="lib5" translatable="false">Jsoup</string>
+    <string name="lib6" translatable="false">LazyList</string>
     <string name="androidstyle">Resources</string>
     <string name="style1">Design resources</string>
     <string name="style2">License</string>
-    <string name="style3">Android assets studio</string>
+    <string name="style3" translatable="false">Android assets studio</string>
     <string name="error">That\'s an error buddy</string>
-    <string name="simon">Simone Dev</string>
+    <string name="simon" translatable="false">Simone Dev</string>
     <string name="share">Share with</string>
-    <string name="maticons">Material design icons</string>
-    <string name="materialish">Materialish progress</string>
+    <string name="maticons" translatable="false">Material design icons</string>
+    <string name="materialish" translatable="false">Materialish progress</string>
     <string name="tushar">Friend and themer</string>
     <string name="press_overflow">Just press man &#8230;</string>
     <string name="internet_alert">Data network unavailable</string>
     <string name="design">Support libraries (v4, v7, design)</string>
-    <string name="site_name">lffl</string>
+    <string name="site_name" translatable="false">lffl</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
-    <string name="stack">Stack overflow</string>
-    <string name="codepath">Codepath</string>
-    <string name="preferencelib">Android-MaterialPreference</string>
-    <string name="palette">Material palette</string>
-    <string name="changelog">Changelog</string>
-    <string name="dialogs">material-dialogs</string>
+    <string name="stack" translatable="false">Stack overflow</string>
+    <string name="codepath" translatable="false">Codepath</string>
+    <string name="preferencelib" translatable="false">Android-MaterialPreference</string>
+    <string name="palette" translatable="false">Material palette</string>
+    <string name="changelog" translatable="false">Changelog</string>
+    <string name="dialogs" translatable="false">material-dialogs</string>
 </resources>
