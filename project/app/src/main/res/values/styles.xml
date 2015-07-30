@@ -2,9 +2,9 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     
 <style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">  
-        <item name="android:colorPrimaryDark">@color/lffl10</item>
+        <item name="colorPrimaryDark">@color/lffl10</item>
         <item name="android:navigationBarColor">@color/lffl10</item>
-        <item name="android:colorAccent">@color/lffl10</item>
+        <item name="colorAccent">@color/lffl10</item>
         <item name="android:windowBackground">@color/translucent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item> 
@@ -16,9 +16,9 @@
         <item name="android:windowActionBarOverlay">true</item> 
         <item name="android:windowActionBar">false</item> 
         <item name="android:windowNoTitle">true</item>
-        <item name="android:colorPrimaryDark">@color/lffl3</item>
-        <item name="android:colorPrimary">@color/lffl2</item>
-        <item name="android:colorAccent">@color/lffl2</item> 
+        <item name="colorPrimaryDark">@color/lffl3</item>
+        <item name="colorPrimary">@color/lffl2</item>
+        <item name="colorAccent">@color/lffl2</item> 
         <item name="android:textColorPrimary">@android:color/white</item>  
         <item name="popupTheme">@style/Theme.AppCompat.Light</item> 
     </style>
@@ -27,10 +27,10 @@
         <item name="android:actionModeStyle">@style/ActionMode</item>
         <item name="android:windowActionBar">false</item> 
         <item name="android:windowNoTitle">true</item>
-        <item name="android:colorPrimaryDark">@color/lffl5</item>
-        <item name="android:colorPrimary">@color/lffl4</item>
+        <item name="colorPrimaryDark">@color/lffl5</item>
+        <item name="colorPrimary">@color/lffl4</item>
         <item name="popupTheme">@style/Theme.AppCompat.Light</item>  
-        <item name="android:colorAccent">@color/lffl4</item>  
+        <item name="colorAccent">@color/lffl4</item>  
         <item name="android:textColorPrimary">@android:color/white</item>  
         <item name="android:actionBarSize">56dp</item>
         <item name="android:displayOptions">showTitle</item>
@@ -43,10 +43,10 @@
         <style name="Theme_lffl_info" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item> 
         <item name="android:windowNoTitle">true</item>
-        <item name="android:colorPrimaryDark">@color/lffl9</item>
-        <item name="android:colorPrimary">@color/lffl8</item>
+        <item name="colorPrimaryDark">@color/lffl9</item>
+        <item name="colorPrimary">@color/lffl8</item>
         <item name="popupTheme">@style/Theme.AppCompat.Light</item>  
-        <item name="android:colorAccent">@color/lffl8</item>  
+        <item name="colorAccent">@color/lffl8</item>  
         <item name="android:textColorPrimary">@color/lffl7</item>  
         <item name="android:actionBarSize">56dp</item>
         <item name="android:displayOptions">showTitle</item>
