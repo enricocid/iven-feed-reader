@@ -64,5 +64,5 @@
         app:pressedTranslationZ="12dp"
         app:backgroundTint="@color/lffl8"
         app:rippleColor="@color/lffl11"
-        app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"/>
+        app:layout_behavior="com.iven.lfflfeedreader.utils.fabscroll"/>
  </android.support.design.widget.CoordinatorLayout>

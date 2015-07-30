@@ -60,7 +60,7 @@
         app:layout_anchor="@id/header"
         app:backgroundTint="@color/lffl8"
         app:borderWidth="0dp"
-        app:layout_behavior="com.iven.lfflfeedreader.mainact.fabscroll"
+        app:layout_behavior="com.iven.lfflfeedreader.utils.fabscroll"
         app:layout_anchorGravity="bottom|right|end"
         android:visibility="gone"/>
  </android.support.design.widget.CoordinatorLayout>
