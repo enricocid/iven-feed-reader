@@ -2,12 +2,14 @@ package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 
@@ -21,6 +23,8 @@ public class ArticleActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Preferences.applyTheme(this);
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail);
         

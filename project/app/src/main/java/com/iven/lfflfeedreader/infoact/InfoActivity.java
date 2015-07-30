@@ -1,11 +1,11 @@
 package com.iven.lfflfeedreader.infoact;
 
 
-import com.iven.lfflfeedreader.infoact.InfoActivity;
+import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
-
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -21,7 +21,9 @@ import android.widget.LinearLayout;
 
 public class InfoActivity extends PreferenceActivity{
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs;
+	private SharedPreferences.OnSharedPreferenceChangeListener mListener;
+
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86;
 	
 	Context context;
 	Intent intent;
@@ -30,6 +32,17 @@ public class InfoActivity extends PreferenceActivity{
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+			@Override
+			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+				Preferences.sync(getPreferenceManager(), key);
+				if (key.equals(getString(R.string.pref_theme)) ||
+						key.equals(getString(R.string.pref_theme))) {
+					finish();
+
+			}
+			}
+		};
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 		final ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         LinearLayout content = (LinearLayout) root.getChildAt(0);
@@ -42,9 +55,8 @@ public class InfoActivity extends PreferenceActivity{
         mToolbar = (Toolbar) toolbarContainer.findViewById(R.id.toolbar3);
 	}
 		addPreferencesFromResource(R.xml.info_pref);
-		
 
-		    
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 		mToolbar.setTitle(R.string.informations);
 		mToolbar.setNavigationIcon(R.drawable.ic_back);
@@ -397,6 +409,22 @@ public class InfoActivity extends PreferenceActivity{
 			return false;
 				}
 			});
+
+		geecko86 = (Preference) this.findPreference("geecko");
+		geecko86.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+
+				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/geecko86"));
+				if(intent != null) {
+					startActivity(intent);
+				} else {
+					Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+					View view = snack.getView();
+					view.setBackgroundColor(Color.rgb(216,69,60));
+					snack.show();
+				}
+				return false;
+			}
+		});
     }
 }
-

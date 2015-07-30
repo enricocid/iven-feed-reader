@@ -4,6 +4,7 @@ import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class ArticleFragment extends Fragment {
 	
 	private int fPos;
 	RSSFeed fFeed;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class ArticleFragment extends Fragment {
 		}
 		WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
+		wb.setBackgroundColor(Color.TRANSPARENT);
 		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 		}
@@ -58,13 +61,20 @@ public class ArticleFragment extends Fragment {
 		
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
-            public void onClick(View v) {
+			public void onClick(View v) {
 				getActivity().onBackPressed();
-            }
+			}
 
 		});
 
-		wb.loadData(fFeed.getItem(fPos).getDescription(), "text/html; charset=utf-8;", "utf-8");
+		String base = fFeed.getItem(fPos).getDescription()
+				.toString();
+		String html = "<!DOCTYPE html>";
+		html += base;
+		html += "<body  text=\"#888888\" align=\"justify\";></body>";
+		html += "</html>";
+		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
+
 		wb.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

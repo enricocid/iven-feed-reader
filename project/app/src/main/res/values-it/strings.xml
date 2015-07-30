@@ -22,4 +22,7 @@
     <string name="chooser_title">Scegli il browser &#8230;</string>
     <string name="more"> &#8230; Altro</string>
     <string name="contact_us">Contatti</string>
+    <string name="moreopts">Opzioni aggiuntive</string>
+    <string name="pref_theme_title">Modalità di lettura</string>
+    <string name="appcompatlistpreference">Creatore della classe AppCompatListPreference</string>
 </resources>
