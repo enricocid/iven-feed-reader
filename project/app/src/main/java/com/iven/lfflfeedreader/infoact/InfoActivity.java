@@ -23,7 +23,7 @@ public class InfoActivity extends PreferenceActivity{
 
 	private SharedPreferences.OnSharedPreferenceChangeListener mListener;
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86;
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung;
 	
 	Context context;
 	Intent intent;
@@ -415,6 +415,23 @@ public class InfoActivity extends PreferenceActivity{
 			public boolean onPreferenceClick (Preference preference) {
 
 				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/geecko86"));
+				if(intent != null) {
+					startActivity(intent);
+				} else {
+					Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.error, Snackbar.LENGTH_LONG);
+					View view = snack.getView();
+					view.setBackgroundColor(Color.rgb(216,69,60));
+					snack.show();
+				}
+				return false;
+			}
+		});
+
+		trung = (Preference) this.findPreference("duy");
+		trung.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+
+				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/"));
 				if(intent != null) {
 					startActivity(intent);
 				} else {

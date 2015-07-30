@@ -30,6 +30,11 @@
         android:key="geecko"
         />
 
+    <com.jenzz.materialpreference.Preference android:summary="@string/themeguide"
+        android:title="@string/themeguidecreator"
+        android:key="duy"
+        />
+
      <com.jenzz.materialpreference.Preference android:summary="stackoverflow.com"
         android:title="@string/stack" 
         android:key="stackover"

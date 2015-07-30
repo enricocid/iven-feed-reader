@@ -52,4 +52,6 @@
     <string name="moreopts">Additional options</string>
     <string name="appcompatlistpreference">AppCompatListPreference class creator</string>
     <string name="listpref" translatable="false">geecko86 (Guillaume)</string>
+    <string name="themeguidecreator" translatable="false">Ha Duy Trung</string>
+    <string name="themeguide">Support multiple themes in Android guide</string>
 </resources>

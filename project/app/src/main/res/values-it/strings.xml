@@ -25,4 +25,5 @@
     <string name="moreopts">Opzioni aggiuntive</string>
     <string name="pref_theme_title">Modalità di lettura</string>
     <string name="appcompatlistpreference">Creatore della classe AppCompatListPreference</string>
+    <string name="themeguide">Guida per supportare temi multipli in Android</string>
 </resources>
