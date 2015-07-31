@@ -44,16 +44,16 @@ public class ArticleFragment extends Fragment {
 		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
 		NestedScrollView nested = (NestedScrollView) view.findViewById(R.id.sv);
 		nested.setSmoothScrollingEnabled(true);
-		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
              nested.setFillViewport(true);
 		}
 		WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
 		wb.setBackgroundColor(Color.TRANSPARENT);
-		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 		}
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
 		}
 		title.setText(fFeed.getItem(fPos).getTitle());
