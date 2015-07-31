@@ -1,12 +1,12 @@
 <android.support.design.widget.CoordinatorLayout
         android:id="@+id/main_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<RelativeLayout 
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
         android:fitsSystemWindows="true"
         android:clipToPadding="false">
 
@@ -33,33 +33,21 @@
         android:textStyle="bold" />
 
 </RelativeLayout>
-                                    
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/sv"
-            android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:scrollbarStyle="insideOverlay"
         android:layout_below="@id/header"> 
-      
+
             <WebView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-           
+                android:layout_height="wrap_content" />
+
     </android.support.v4.widget.NestedScrollView>
+
 </RelativeLayout>
-<android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_back"
-        android:id="@+id/fab"
-        app:layout_anchor="@id/sv"
-        app:backgroundTint="@color/lffl8"
-        app:borderWidth="0dp"
-        app:layout_behavior="com.iven.lfflfeedreader.utils.fabscroll"
-        app:layout_anchorGravity="bottom|right|end"
-        android:visibility="gone"/>
  </android.support.design.widget.CoordinatorLayout>

@@ -21,7 +21,7 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.TextView;
 
 public class ArticleFragment extends Fragment {
-	
+
 	private int fPos;
 	RSSFeed fFeed;
 
@@ -41,15 +41,17 @@ public class ArticleFragment extends Fragment {
 				.inflate(R.layout.article_fragment, container, false);			
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
-		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
+
 		NestedScrollView nested = (NestedScrollView) view.findViewById(R.id.sv);
 		nested.setSmoothScrollingEnabled(true);
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-             nested.setFillViewport(true);
+            nested.setFillViewport(true);
 		}
 		WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
 		wb.setBackgroundColor(Color.TRANSPARENT);
+        wb.setScrollContainer(false);
+
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 		}
@@ -58,7 +60,8 @@ public class ArticleFragment extends Fragment {
 		}
 		title.setText(fFeed.getItem(fPos).getTitle());
 
-		
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -66,12 +69,21 @@ public class ArticleFragment extends Fragment {
 			}
 
 		});
+		}
 
 		String base = fFeed.getItem(fPos).getDescription()
 				.toString();
 		String html = "<!DOCTYPE html>";
 		html += base;
-		html += "<body  text=\"#888888\" align=\"justify\";></body>";
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+		html += "<head><style type='text/css'>body{margin:1 1; color: #888888; max-width: 100%;}" +
+				" img{display:inline-block; width:105%;} a:link{color:#c0392b;  text-decoration: none; text-shadow: 1px 0px #888888;" +
+				"-webkit-tap-highlight-color: rgba(0, 0, 0, 0);} a:active {color:#009688;" +
+				"text-decoration: none; text-shadow: 1px 0px #888888}</style></head>";
+		}
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+			html += "<body  text=\"#888888\" align=\"justify\";></body>";
+		}
 		html += "</html>";
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
 
