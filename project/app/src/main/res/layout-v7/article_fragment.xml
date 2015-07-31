@@ -2,7 +2,6 @@
         android:id="@+id/main_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"        
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <RelativeLayout 
@@ -57,7 +56,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_back"
         android:id="@+id/fab"
-        app:layout_anchor="@id/header"
+        app:layout_anchor="@id/sv"
         app:backgroundTint="@color/lffl8"
         app:borderWidth="0dp"
         app:layout_behavior="com.iven.lfflfeedreader.utils.fabscroll"
