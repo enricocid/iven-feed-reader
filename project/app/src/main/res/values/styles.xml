@@ -5,10 +5,7 @@
     <attr name="title_color" format="reference"/>
     <attr name="fab_back" format="reference" />
 
-<style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">  
-        <item name="colorPrimaryDark">@color/lffl10</item>
-        <item name="android:navigationBarColor">@color/lffl10</item>
-        <item name="colorAccent">@color/lffl10</item>
+<style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/translucent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item> 

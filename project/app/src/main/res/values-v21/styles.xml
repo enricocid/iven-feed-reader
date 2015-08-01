@@ -12,5 +12,14 @@
         <item name="android:textColorPrimary">@android:color/white</item>  
         <item name="popupTheme">@style/Theme.AppCompat.Light</item>
     </style>
-    
+
+    <style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="popupTheme">@style/Theme.AppCompat.Light</item>
+    </style>
+
 </resources>

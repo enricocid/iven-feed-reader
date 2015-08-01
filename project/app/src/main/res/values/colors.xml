@@ -2,7 +2,7 @@
 <resources>
     <color name="title_color">#37474F</color>
     <color name="date_color">#7F8B8F</color>      
-    <color name="translucent">#94000000</color>
+    <color name="translucent">#95000000</color>
     <color name="lffl1">#D8453C</color>
     <color name="lffl2">#009688</color> 
     <color name="lffl3">#00796B</color>
