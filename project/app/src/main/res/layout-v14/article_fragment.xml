@@ -1,51 +1,45 @@
 <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<RelativeLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:clipToPadding="false">
 
     <RelativeLayout
-        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/lffl4" 
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text=""
-        android:gravity="center"
-        android:textSize="20sp" 
-        android:textColor="@android:color/white" 
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAllCaps="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textSize="20sp"
+            android:textColor="?attr/title_color"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
-</RelativeLayout>
-                                    
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/sv"
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:layout_below="@+id/title"
+            android:id="@+id/divider"
+            android:layerType="software"
+            android:background="?attr/dotted_divider" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/sv"
             android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-        android:scrollbars="vertical"
-        android:scrollbarStyle="insideOverlay"
-        android:layout_below="@id/header"> 
-      
+            android:layout_height="match_parent"
+            android:layout_below="@+id/divider">
+
             <WebView
                 android:id="@+id/desc"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
            
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
@@ -54,10 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_back"
+        android:src="?attr/fab_back"
         android:id="@+id/fab"
         app:layout_anchor="@id/sv"
-        app:backgroundTint="@color/lffl8"
+        app:backgroundTint="@color/lffl4"
         app:borderWidth="0dp"
         app:layout_behavior="com.iven.lfflfeedreader.utils.fabscroll"
         app:layout_anchorGravity="bottom|right|end" />

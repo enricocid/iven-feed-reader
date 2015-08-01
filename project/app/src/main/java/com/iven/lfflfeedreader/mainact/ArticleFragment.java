@@ -42,10 +42,9 @@ public class ArticleFragment extends Fragment {
 		TextView title = (TextView) view.findViewById(R.id.title);
 		WebView wb = (WebView) view.findViewById(R.id.desc);
 
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 		NestedScrollView nested = (NestedScrollView) view.findViewById(R.id.sv);
 		nested.setSmoothScrollingEnabled(true);
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            nested.setFillViewport(true);
 		}
 		WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
@@ -61,9 +60,9 @@ public class ArticleFragment extends Fragment {
 		title.setText(fFeed.getItem(fPos).getTitle());
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-		FloatingActionButton fab = (FloatingActionButton)  view.findViewById(R.id.fab);
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
+		FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+			fab.setOnClickListener(new View.OnClickListener() {
+				@Override
 			public void onClick(View v) {
 				getActivity().onBackPressed();
 			}
@@ -82,9 +81,9 @@ public class ArticleFragment extends Fragment {
 				"text-decoration: none; text-shadow: 1px 0px #888888}</style></head>";
 		}
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			html += "<body  text=\"#888888\" align=\"justify\";></body>";
+			html += "<body  text=\"#888888\";></body>";
 		}
-		html += "</html>";
+
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
 
 		wb.setWebViewClient(new WebViewClient(){

@@ -5,7 +5,7 @@
     <color name="translucent">#94000000</color>
     <color name="lffl1">#D8453C</color>
     <color name="lffl2">#009688</color> 
-    <color name="lffl3">#00796B</color>  
+    <color name="lffl3">#00796B</color>
     <color name="lffl4">#c0392b</color>
     <color name="lffl5">#902B20</color>
     <color name="lffl6">#607D8B</color>
@@ -14,4 +14,8 @@
     <color name="lffl9">#388e3c</color>
     <color name="lffl10">#2196f3</color>
     <color name="lffl11">#ffc107</color>
+    <color name="lffl12">#666666</color>
+    <color name="lffl12_dark">#999999</color>
+    <color name="lffl13">#dddddd</color>
+    <color name="lffl13_dark">#222222</color>
 </resources>
