@@ -1,12 +1,11 @@
 #LFFL FEED READER
 ================
 
-![ScreenShot](http://i.imgur.com/VuFpWTt.png{url})
 
 ![ScreenShot](http://i.imgur.com/6sCJfiz.png{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
-It now supports Material Design and pre-ICS Devices!
+It now supports Material Design and pre-ICS (minSdK="9") Devices!
 
 This work is 100% Free and is released under gpl license. 
 
@@ -25,8 +24,7 @@ http://www.lffl.org/
 
 **Screenshots**
 
-![ScreenShot](http://i.imgur.com/eMhBuOO.png{url})![ScreenShot](http://i.imgur.com/T9N5X8n.png{url})![ScreenShot](http://i.imgur.com/7IxvnVT.png{url})![ScreenShot](http://i.imgur.com/qWufDf2.png{url})![ScreenShot](http://i.imgur.com/nRNNmug.png{url})![ScreenShot](http://i.imgur.com/vrMKraf.png{url})![ScreenShot](http://i.imgur.com/1g3B0tr.png{url})![ScreenShot](http://i.imgur.com/7ZMfHN8.png{url})![ScreenShot](http://i.imgur.com/7VWpCqF.png{url})![ScreenShot](http://i.imgur.com/jATySLW.png{url})
-
+![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png{url})
 
 
 **USED LIBRARIES**
