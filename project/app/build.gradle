@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.iven.lfflfeedreader"
-        minSdkVersion 7
+        minSdkVersion 9
         targetSdkVersion 22
     }
 
