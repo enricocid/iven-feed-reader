@@ -26,4 +26,5 @@
     <string name="pref_theme_title">Modalità di lettura</string>
     <string name="appcompatlistpreference">Creatore della classe AppCompatListPreference</string>
     <string name="themeguide">Guida per supportare temi multipli in Android</string>
+    <string name="easter">Cosa ti aspettavi?!?? un easter egg?</string>
 </resources>

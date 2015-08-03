@@ -45,7 +45,6 @@
     <string name="palette" translatable="false">Material palette</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="dialogs" translatable="false">material-dialogs</string>
-    <!-- preferences -->
     <string name="pref_dark_theme" translatable="false">pref_dark_theme</string>
     <string name="pref_theme" translatable="false">pref_theme</string>
     <string name="pref_theme_title">Reading mode</string>
@@ -54,4 +53,5 @@
     <string name="listpref" translatable="false">geecko86 (Guillaume)</string>
     <string name="themeguidecreator" translatable="false">Ha Duy Trung</string>
     <string name="themeguide">Support multiple themes in Android guide</string>
+    <string name="easter">What did You expect?!?? a easter egg?</string>
 </resources>

@@ -39,7 +39,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 public class ListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
-	 
+
 	  private static final long DRAWER_CLOSE_DELAY_MS = 250;
 	  private static final String NAV_ITEM_ID = "navItemId";
 	 
@@ -55,17 +55,19 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	String feedURL;
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
-	
+
+
 	public boolean onCreateOptionsMenu (Menu menu){
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.activity_main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.lffl_feed_list);
 	      mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -157,9 +159,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 	private void showTorvalds() {
 		Context context = getApplicationContext();
-		CharSequence text = "What did You expect?!?? a easter egg?";
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, text, duration);
+		Toast toast = Toast.makeText(context, R.string.easter, Toast.LENGTH_SHORT);
 	    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 	    toast.show();
 		
