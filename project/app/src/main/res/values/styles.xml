@@ -2,8 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <attr name="dotted_divider" format="reference"/>
-    <attr name="title_color" format="reference"/>
-    <attr name="fab_back" format="reference" />
+    <attr name="title_color" format="color"/>
 
 <style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/translucent</item>
@@ -30,7 +29,6 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="dotted_divider">@drawable/horizontal_divider</item>
         <item name="title_color">@color/lffl12</item>
-        <item name="fab_back">@drawable/ic_back_dark</item>
          </style>
 
     <style name="Theme_lffl_article_dark" parent="Theme.AppCompat.NoActionBar">
@@ -42,7 +40,6 @@
         <item name="colorAccent">@color/lffl4</item>
         <item name="dotted_divider">@drawable/horizontal_divider_dark</item>
         <item name="title_color">@color/lffl12_dark</item>
-        <item name="fab_back">@drawable/ic_back</item>
     </style>
     
         <style name="Theme_lffl_info" parent="Theme.AppCompat.Light.NoActionBar">

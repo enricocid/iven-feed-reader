@@ -32,12 +32,10 @@
         <item name="android:displayOptions">showTitle</item>
         <item name="dotted_divider">@drawable/horizontal_divider</item>
         <item name="title_color">@color/lffl12</item>
-        <item name="fab_back">@drawable/ic_back_dark</item>
          </style>
 
     <style name="Theme_lffl_article_dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowActionBar">false</item>
-        <item name="android:actionModeStyle">@style/ActionMode</item>
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/lffl5</item>
         <item name="colorPrimary">@color/lffl4</item>
@@ -48,7 +46,6 @@
         <item name="android:displayOptions">showTitle</item>
         <item name="dotted_divider">@drawable/horizontal_divider_dark</item>
         <item name="title_color">@color/lffl12_dark</item>
-        <item name="fab_back">@drawable/ic_back</item>
     </style>
 
         <style name="ActionMode" parent="Widget.AppCompat.ActionMode"> 
