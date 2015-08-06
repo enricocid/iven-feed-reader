@@ -2,7 +2,6 @@
 
     <string name="app_name" translatable="false">Lffl Feed Reader</string>
     <string name="desc" translatable="false"></string>
-    <string name="informations" translatable="false">Info</string>
     <string name="Dev_cat">Developers</string>
     <string name="dev1" translatable="false">ivn888</string>
     <string name="dev2" translatable="false">EnricoD</string>

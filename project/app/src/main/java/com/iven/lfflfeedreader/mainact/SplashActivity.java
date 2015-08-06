@@ -55,7 +55,6 @@ public class SplashActivity extends AppCompatActivity {
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("feed", lfflfeed);
 
-		// launch List activity
 		Intent i = new Intent(SplashActivity.this, ListActivity.class);
 		i.putExtras(bundle);
 		startActivity(i);
@@ -68,7 +67,6 @@ public class SplashActivity extends AppCompatActivity {
 		@Override
 		protected Void doInBackground(Void... params) {
 
-			// Obtain feed
 			DOMParser Do = new DOMParser();
 			lfflfeed = Do.parseXml(LFFLFEEDURL);
 			

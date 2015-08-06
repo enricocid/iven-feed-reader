@@ -1,5 +1,6 @@
 package com.iven.lfflfeedreader.infoact;
 
+import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 
 import android.content.ActivityNotFoundException;
@@ -27,6 +28,8 @@ public class InfoActivity extends PreferenceActivity{
 	
 	Context context;
 
+	String versionName = BuildConfig.VERSION_NAME;
+
 	@SuppressWarnings("deprecation")
 	protected void onCreate(Bundle savedInstanceState) {
 		getDelegate().installViewFactory();
@@ -34,7 +37,7 @@ public class InfoActivity extends PreferenceActivity{
 		super.onCreate(savedInstanceState);
 		setToolbar();
 		addPreferencesFromResource(R.xml.info_pref);
-               
+
 		context = getBaseContext();
 				
 		facebook = this.findPreference("facebook");
@@ -481,8 +484,9 @@ public class InfoActivity extends PreferenceActivity{
 
 	private void setToolbar() {
 		setContentView(R.layout.activity_pref);
-		setSupportActionBar((Toolbar) findViewById(R.id.toolbar3));
+		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+		getSupportActionBar().setSubtitle(versionName);
 		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
 				ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 	}
@@ -501,4 +505,5 @@ public class InfoActivity extends PreferenceActivity{
 		}
 		return mDelegate;
 	}
+
 }

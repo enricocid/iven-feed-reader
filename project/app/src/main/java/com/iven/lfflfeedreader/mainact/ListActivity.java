@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -57,10 +56,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	SwipeRefreshLayout swiperefresh;
 
 
-	public boolean onCreateOptionsMenu (Menu menu){
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.activity_main, menu);
-		return super.onCreateOptionsMenu(menu);
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
 	}
 
 	@Override
@@ -132,7 +131,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 		swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 		swiperefresh.setOnRefreshListener(this);
-		swiperefresh.setColorSchemeResources(R.color.lffl10, R.color.lffl4, R.color.lffl8, R.color.lffl11);
+		swiperefresh.setColorSchemeResources(R.color.lffl2);
 		
 		list = (ListView) findViewById(android.R.id.list);
 		adapter = new CustomListAdapter(this);
@@ -307,7 +306,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		private void showChangelog() {
 			int accentColor = ThemeSingleton.get().widgetColor;
 	        if (accentColor == 0)
-	            accentColor = getResources().getColor(R.color.lffl2);
+	            accentColor = getResources().getColor(R.color.lffl4);
 
 	        ChangelogDialog.create(accentColor)
 	                .show(getSupportFragmentManager(), "changelog");

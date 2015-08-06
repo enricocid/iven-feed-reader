@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Theme -->
+    
     <string-array name="pref_theme_options">
         <item>Day</item>
         <item>Night</item>

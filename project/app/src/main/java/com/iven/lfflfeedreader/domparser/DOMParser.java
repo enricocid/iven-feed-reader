@@ -1,9 +1,13 @@
 package com.iven.lfflfeedreader.domparser;
 
+import android.content.res.Resources;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,7 +25,7 @@ public class DOMParser {
 	private RSSFeed _feed = new RSSFeed();
 
 	public RSSFeed parseXml(String xml) {
-		
+
 		// _feed.clearList();
 
 		URL url = null;
@@ -61,10 +65,20 @@ public class DOMParser {
 						String nodeName = thisNode.getNodeName();
 						if ("title".equals(nodeName)) {
 							_item.setTitle(theString);
-	
+
 						}
 
-						else if ("description".equals(nodeName)) {
+						else if ("link".equals(nodeName)) {
+								_item.setLink(theString);
+
+						} else if ("author".equals(nodeName)) {
+								_item.setAuthor(theString);
+							String formatedAuthor = theString.replace("noreply@blogger.com (","");
+							_item.setAuthor(formatedAuthor);
+							String formatedAuthor2 = formatedAuthor.replace(")","");
+							_item.setAuthor(formatedAuthor2);
+
+							} else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
 
 							String html = theString;
@@ -77,19 +91,19 @@ public class DOMParser {
 
 						else if ("pubDate".equals(nodeName)) {
 
-							String formatedDate = theString.replace(" +0000","");
-							
-							//change date format
+							String formatedDate = theString.replace(" +0000", "");
+							Locale loc = Resources.getSystem().getConfiguration().locale;
+
                             SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
                             Date dateObj = curFormater.parse(formatedDate);
-                            SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  java.util.Locale.US);
+                            SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
+							postFormater.setTimeZone(TimeZone.getTimeZone("GMT+04:00"));
                             String newDateStr = postFormater.format(dateObj);
-                            
-                            
+
+
                             _item.setDate(newDateStr);
 							
 						}
-
 					}
 				}
 
