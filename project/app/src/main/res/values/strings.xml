@@ -22,7 +22,7 @@
     <string name="lib1sum">Source code</string>
     <string name="usedlibs">Used libraries</string>
     <string name="lib5" translatable="false">Jsoup</string>
-    <string name="lib6" translatable="false">LazyList</string>
+    <string name="lib6" translatable="false">Glide</string>
     <string name="androidstyle">Resources</string>
     <string name="style1">Design resources</string>
     <string name="style2">License</string>

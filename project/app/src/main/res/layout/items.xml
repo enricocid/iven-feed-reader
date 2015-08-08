@@ -8,8 +8,8 @@
     <ImageView
         android:contentDescription="@string/desc"
         android:id="@+id/thumb"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="130dp"
+        android:layout_height="106dp"
         android:layout_alignParentRight="true" 
         android:layout_alignParentEnd="true" 
         android:layout_marginLeft="4dp"   

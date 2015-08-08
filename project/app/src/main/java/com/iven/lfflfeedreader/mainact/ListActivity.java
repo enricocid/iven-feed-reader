@@ -1,5 +1,6 @@
 package com.iven.lfflfeedreader.mainact;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,10 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.ThemeSingleton;
+import com.bumptech.glide.Glide;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
-import com.iven.lfflfeedreader.imageparserutils.ImageLoader;
 import com.iven.lfflfeedreader.infoact.ChangelogDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 
@@ -41,7 +42,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 	  private static final long DRAWER_CLOSE_DELAY_MS = 250;
 	  private static final String NAV_ITEM_ID = "navItemId";
-	 
 	  private final Handler mDrawerActionHandler = new Handler();
 	  private DrawerLayout mDrawerLayout;
 	  private FrameLayout lfflhead;
@@ -55,14 +55,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
 
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
 
-	@Override
+		@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -83,12 +82,12 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	         
 	         lfflhead = (FrameLayout) findViewById(R.id.head);
 	         lfflhead.setOnLongClickListener(new OnLongClickListener() {
-	        	 @Override
-	             public boolean onLongClick(View v) {
-	        		 showTorvalds();
-					return true;
-	        	 }
-	         });
+				 @Override
+				 public boolean onLongClick(View v) {
+					 showTorvalds();
+					 return true;
+				 }
+			 });
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
@@ -157,11 +156,12 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	}
 
 	private void showTorvalds() {
+
 		Context context = getApplicationContext();
 		Toast toast = Toast.makeText(context, R.string.easter, Toast.LENGTH_SHORT);
 	    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 	    toast.show();
-		
+
 	}
 
 	public void rate(View view) {
@@ -196,20 +196,17 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		adapter.imageLoader.clearCache();
 		adapter.notifyDataSetChanged();
 	}
 
 	class CustomListAdapter extends BaseAdapter {
 
 		private LayoutInflater layoutInflater;
-		public ImageLoader imageLoader;
 
 		public CustomListAdapter(ListActivity activity) {
 
 			layoutInflater = (LayoutInflater) activity
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			imageLoader = new ImageLoader(activity.getApplicationContext());
 		}
 
 		@Override
@@ -231,6 +228,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
+			Activity activity = ListActivity.this;
 			View listItem = convertView;
 			int pos = position;
 			if (listItem == null) {
@@ -240,8 +238,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 			TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
 			TextView pubDate = (TextView) listItem.findViewById(R.id.date);
+			Glide.with(activity).load(feed.getItem(pos).getImage())
+							.into(lfflImage);
 
-			imageLoader.DisplayImage(feed.getItem(pos).getImage(), lfflImage);
 			lfflTitle.setText(feed.getItem(pos).getTitle());
 			pubDate.setText(feed.getItem(pos).getDate());
 
@@ -254,68 +253,67 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	 public boolean onNavigationItemSelected(final MenuItem menuItem) {
 
 	    menuItem.setChecked(true);
-	    mNavItemId = menuItem.getItemId();   
-	    mDrawerLayout.closeDrawer(GravityCompat.START);
-	    mDrawerActionHandler.postDelayed(new Runnable() {
-	      @Override
-	      public void run() {
-	    	  switch (menuItem.getItemId()) {
-	        case R.id.about_option:
-	        	Intent ii = new Intent(ListActivity.this,InfoActivity.class);
-	    		startActivity(ii);
-	    	  }
-	    		 switch (menuItem.getItemId()) {
-	        case R.id.cuties:
-	        	Intent ii2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/itcuties/ITCutiesApp-1.0"));
-	        	startActivity(ii2);
-	    		 }
-		        	 switch (menuItem.getItemId()) {
-	        case R.id.source_code:
-	        	Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
-	        	startActivity(ii4);
-		        	 }
-		        	 switch (menuItem.getItemId()) {
-	        case R.id.developer1:
-	        	Intent ii5 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
-	        	startActivity(ii5);
-	        	
-		        	 }
-		        	 switch (menuItem.getItemId()) {
-	        case R.id.developer2:
-	        	Intent ii6 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodchem/"));
-	        	startActivity(ii6);
-		        	 }
-	        	switch (menuItem.getItemId()) {
-		        case R.id.changelog:
-		        	showChangelog();
-	        	
-		        	 }
-		        	 switch (menuItem.getItemId()) {
-	        case R.id.mail:
-	        	intent = new Intent(android.content.Intent.ACTION_SEND);			
-				intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "ivandorte@gmail.com" });			
-				intent.setType("message/rfc822");
-				if(intent != null) {
-					startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
+	    mNavItemId = menuItem.getItemId();
+		mDrawerLayout.closeDrawer(GravityCompat.START);
+		mDrawerActionHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				switch (menuItem.getItemId()) {
+					case R.id.about_option:
+						Intent ii = new Intent(ListActivity.this, InfoActivity.class);
+						startActivity(ii);
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.cuties:
+						Intent ii2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/itcuties/ITCutiesApp-1.0"));
+						startActivity(ii2);
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.source_code:
+						Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
+						startActivity(ii4);
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.developer1:
+						Intent ii5 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
+						startActivity(ii5);
 
-	    	  }
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.developer2:
+						Intent ii6 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodchem/"));
+						startActivity(ii6);
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.changelog:
+						showChangelog();
 
-	      }
-	    }
+				}
+				switch (menuItem.getItemId()) {
+					case R.id.mail:
+						intent = new Intent(android.content.Intent.ACTION_SEND);
+						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivandorte@gmail.com"});
+						intent.setType("message/rfc822");
+						if (intent != null) {
+							startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
 
-		private void showChangelog() {
-			int accentColor = ThemeSingleton.get().widgetColor;
-	        if (accentColor == 0)
-	            accentColor = getResources().getColor(R.color.lffl4);
+						}
 
-	        ChangelogDialog.create(accentColor)
-	                .show(getSupportFragmentManager(), "changelog");
-			
-		}
-	    }, DRAWER_CLOSE_DELAY_MS);
+				}
+			}
+
+			private void showChangelog() {
+				int accentColor = ThemeSingleton.get().widgetColor;
+				if (accentColor == 0)
+					accentColor = getResources().getColor(R.color.lffl4);
+
+				ChangelogDialog.create(accentColor)
+						.show(getSupportFragmentManager(), "changelog");
+
+			}
+		}, DRAWER_CLOSE_DELAY_MS);
 	    return true;
 	    
     	}
 		
 	}
-	

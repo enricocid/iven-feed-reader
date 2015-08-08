@@ -84,9 +84,9 @@
         android:key="js"
         />
 
-     <com.jenzz.materialpreference.Preference android:summary="by Fedor Vlasov"
+     <com.jenzz.materialpreference.Preference android:summary="by Bump Technologies"
         android:title="@string/lib6" 
-        android:key="thest"
+        android:key="glideimagemanager"
         />
 
      <com.jenzz.materialpreference.Preference android:summary="by pnikosis"
