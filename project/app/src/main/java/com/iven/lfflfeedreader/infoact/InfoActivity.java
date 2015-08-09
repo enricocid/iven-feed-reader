@@ -24,7 +24,7 @@ public class InfoActivity extends PreferenceActivity{
 
 	private AppCompatDelegate mDelegate;
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, laz, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung;
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung;
 	
 	Context context;
 
@@ -35,6 +35,7 @@ public class InfoActivity extends PreferenceActivity{
 		getDelegate().installViewFactory();
 		getDelegate().onCreate(savedInstanceState);
 		super.onCreate(savedInstanceState);
+
 		setToolbar();
 		addPreferencesFromResource(R.xml.info_pref);
 
@@ -166,13 +167,13 @@ public class InfoActivity extends PreferenceActivity{
 			}
 			});
 		
-        laz = this.findPreference("thest");
-		laz.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        glide = this.findPreference("glideimagemanager");
+		glide.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
 
 				try
 				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/thest1/LazyList")));
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/bumptech/glide")));
 				} catch (ActivityNotFoundException anfe)
 				{
 					Context context = getApplicationContext();
