@@ -18,11 +18,13 @@
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-<ListView 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@android:id/list" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@android:id/list"
+                />
+
 </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
 
@@ -35,5 +37,5 @@
     app:itemIconTint="@drawable/state_list"
     app:itemTextColor="@drawable/state_list"
     app:menu="@menu/drawer"/>
- 
+
 </android.support.v4.widget.DrawerLayout>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="title_color">#37474F</color>
-    <color name="date_color">#7F8B8F</color>      
     <color name="translucent">#95000000</color>
     <color name="lffl1">#D8453C</color>
     <color name="lffl2">#c0392b</color>
@@ -11,8 +9,15 @@
     <color name="lffl6">#4caf50</color>
     <color name="lffl7">#388e3c</color>
     <color name="lffl8">#212121</color>
-    <color name="lffl9">#666666</color>
+    <color name="lffl9">#757575</color>
     <color name="lffl10">#999999</color>
     <color name="lffl11">#dddddd</color>
     <color name="lffl12">#222222</color>
+    <color name="lffl_ripple">#ffa000</color>
+    <color name="article_text_dark_grey">#222222</color>
+    <color name="article_text_light_grey">#AEA79F</color>
+    <color name="textcolorPrimary">@android:color/black</color>
+    <color name="textcolorSecondary">#66000000</color>
+    <color name="text_title">#4E4E4E</color>
+    <color name="text_date">#A1A1A1</color>
 </resources>

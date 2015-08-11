@@ -18,15 +18,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-
-
 public class DOMParser {
 
 	private RSSFeed _feed = new RSSFeed();
 
 	public RSSFeed parseXml(String xml) {
-
-		// _feed.clearList();
 
 		URL url = null;
 		try {
@@ -59,7 +55,6 @@ public class DOMParser {
 					 if (thisNode != null && thisNode.getFirstChild() != null) {
 				            theString = nchild.item(j).getFirstChild().getNodeValue();
 				        }
-					
 
 					if (theString != null) {
 						String nodeName = thisNode.getNodeName();
@@ -84,6 +79,7 @@ public class DOMParser {
 							String html = theString;
 							org.jsoup.nodes.Document docHtml = Jsoup
 									.parse(html);
+
 							Elements imgEle = docHtml.select("img");
 							_item.setImage(imgEle.attr("src"));
                             
@@ -99,7 +95,6 @@ public class DOMParser {
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
 							postFormater.setTimeZone(TimeZone.getTimeZone("GMT+04:00"));
                             String newDateStr = postFormater.format(dateObj);
-
 
                             _item.setDate(newDateStr);
 							

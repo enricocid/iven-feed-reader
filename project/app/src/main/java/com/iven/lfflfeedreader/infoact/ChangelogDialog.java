@@ -15,8 +15,7 @@ import com.afollestad.materialdialogs.Theme;
 import com.iven.lfflfeedreader.R;
 
 public class ChangelogDialog extends DialogFragment {
-	
-	
+
 	public static ChangelogDialog create(int accentColor) {
         ChangelogDialog dialog = new ChangelogDialog();
         Bundle args = new Bundle();

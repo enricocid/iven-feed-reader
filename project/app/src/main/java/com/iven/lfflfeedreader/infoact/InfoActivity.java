@@ -24,7 +24,7 @@ public class InfoActivity extends PreferenceActivity{
 
 	private AppCompatDelegate mDelegate;
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud, simo,jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung;
+	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud,jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung, textjust, responsive;
 	
 	Context context;
 
@@ -120,24 +120,6 @@ public class InfoActivity extends PreferenceActivity{
 				try
 				{
 					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/100021192050184001006/posts")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-		simo = this.findPreference("simonedev");
-		simo.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://simonedev.blogspot.it/")));
 				} catch (ActivityNotFoundException anfe)
 				{
 					Context context = getApplicationContext();
@@ -437,6 +419,44 @@ public class InfoActivity extends PreferenceActivity{
 				return false;
 			}
 		});
+
+		textjust = this.findPreference("whs");
+		textjust.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+
+				try
+				{
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/suwhs/wATL")));
+				} catch (ActivityNotFoundException anfe)
+				{
+					Context context = getApplicationContext();
+					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
+					toast.show();
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
+
+				}
+				return false;
+			}
+		});
+
+		responsive = this.findPreference("respotool");
+		responsive.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			public boolean onPreferenceClick (Preference preference) {
+
+				try
+				{
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129")));
+				} catch (ActivityNotFoundException anfe)
+				{
+					Context context = getApplicationContext();
+					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
+					toast.show();
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
+
+				}
+				return false;
+			}
+		});
     }
 
 	@Override
@@ -486,7 +506,6 @@ public class InfoActivity extends PreferenceActivity{
 	private void setToolbar() {
 		setContentView(R.layout.activity_pref);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
 		getSupportActionBar().setSubtitle(versionName);
 		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
 				ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);

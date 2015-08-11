@@ -35,6 +35,11 @@
         android:key="duy"
         />
 
+    <com.jenzz.materialpreference.Preference android:summary="@string/toolbarguide"
+        android:title="@string/responsiveauthor"
+        android:key="respotool"
+        />
+
      <com.jenzz.materialpreference.Preference android:summary="stackoverflow.com"
         android:title="@string/stack" 
         android:key="stackover"
@@ -43,11 +48,6 @@
      <com.jenzz.materialpreference.Preference android:summary="guides.codepath.com/android"
         android:title="@string/codepath" 
         android:key="codepathguides"
-        />
-
-     <com.jenzz.materialpreference.Preference android:summary="simonedev.blogspot.it"
-        android:title="@string/simon" 
-        android:key="simonedev"
         />
 
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/follow"/>
@@ -77,6 +77,11 @@
     <com.jenzz.materialpreference.Preference android:summary="by Google Inc."
         android:title="@string/design" 
         android:key="support"
+        />
+
+    <com.jenzz.materialpreference.Preference android:summary="by suwhs"
+        android:title="@string/justify"
+        android:key="whs"
         />
 
      <com.jenzz.materialpreference.Preference android:summary="by Jonathan Hedley"

@@ -1,31 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.iven.lfflfeedreader.mainact.ListActivity">  
 
- <item
-        android:id="@+id/file"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_action_overflow"
-        android:title="@string/press_overflow">
-        
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.iven.lfflfeedreader.mainact.ListActivity" >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
           
     <item
         android:id="@+id/share_option"     
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_action_share"
+        app:showAsAction="never"
+        android:orderInCategory="100"
         android:title="Share"/>
     
     <item
         android:id="@+id/rate"
-        android:icon="@drawable/ic_action_important"
-        app:showAsAction="ifRoom"
-        android:title="Rate"/>
+        app:showAsAction="never"
+        android:orderInCategory="200"
+        android:title="Rate" />
     
  </menu>
- </item>   
-</menu>

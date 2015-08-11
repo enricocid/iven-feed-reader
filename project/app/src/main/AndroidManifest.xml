@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="false"
-        tools:replace="android:allowBackup"
+        tools:replace="android:allowBackup, android:icon"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme_lffl">
@@ -20,6 +20,7 @@
     <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip"/>
     <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip"/>
     <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip"/>
+
         <activity
             android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
             android:theme="@style/TranslucentSplash">

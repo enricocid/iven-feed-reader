@@ -23,17 +23,46 @@ It's also on Google Play:
 </a>
 
 
-**Screenshots**
+
+
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
 
 
+
+
+
+
+**THANKS TO**
+
+**- Lucas Urbas**
+
+Making android toolbar responsive: 
+https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
+
+**- Ha Duy Trung**
+
+Support multiple themes in your Android app:
+http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
+
+**- geecko86 (Guillaume)**
+
+The creator of the AppCompatListPreference class:
+https://github.com/geecko86
+
+
 **USED LIBRARIES**
+
 
 **- Android Support Libraries**
 - Android support v4;
 - Android support appcompatv7;
 - Android Design Support Library;
+
+**- wATL by suwhs**
+
+Git page:
+https://github.com/suwhs/wATL
 
 **- material-dialogs by Aidan Follestad**
 
@@ -50,12 +79,11 @@ https://github.com/jenzz/Android-MaterialPreference
 Homepage:
 http://jsoup.org/
 
-**- LazyList by Fedor Vaslov**
+**- Glide by Bump Technologies**
 
 Git page:
-https://github.com/thest1/LazyList
+https://github.com/bumptech/glide
 
-You don't need to import it.
 
 **- Materialish progress by pnikosis**
 

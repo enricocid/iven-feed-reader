@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import com.iven.lfflfeedreader.utils.Preferences;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 
@@ -17,28 +20,42 @@ public class ArticleActivity extends AppCompatActivity {
 
 	RSSFeed feed;
 	int pos;
-	private DescAdapter adapter;
 	private ViewPager pager;
+	private PagerAdapter mPagerAdapter;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Preferences.applyTheme(this);
 
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.article_activity);
 
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		pos = getIntent().getExtras().getInt("pos");
-		adapter = new DescAdapter(getSupportFragmentManager());
+
+		mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
 		pager = (ViewPager) findViewById(R.id.pager);
-		pager.setAdapter(adapter);
-		pager.setCurrentItem(pos);
+		pager.setAdapter(mPagerAdapter);
+        pager.setCurrentItem(pos);
+        pager.setClipToPadding(false);
+
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+	    setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+				overridePendingTransition(0, 0);
+            }
+		});
 
 	}
 
-	public class DescAdapter extends FragmentStatePagerAdapter {
-						public DescAdapter(FragmentManager fm) {
+	private class MyPagerAdapter extends FragmentStatePagerAdapter {
+
+						public MyPagerAdapter(FragmentManager fm) {
 
 							super(fm);
 						}
@@ -56,11 +73,13 @@ public class ArticleActivity extends AppCompatActivity {
 							return frag;
 
 						}
+		@Override
+		public int getCount() {
+			return feed.getItemCount();
+		}
+			}
+		 }
 
-						@Override
-						public int getCount() {
-							return feed.getItemCount();
-						}
 
-					}
-}
+
+

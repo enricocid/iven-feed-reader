@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:fitsSystemWindows="true"
-  android:elevation="7dp">
+  android:elevation="6dp">
   
   <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-        android:clipToPadding="false">
+    android:clipToPadding="false">
         
     <include layout="@layout/toolbar" />
 
@@ -38,5 +38,5 @@
     app:itemIconTint="@drawable/state_list"
     app:itemTextColor="@drawable/state_list"
     app:menu="@menu/drawer"/>
- 
+
 </android.support.v4.widget.DrawerLayout>

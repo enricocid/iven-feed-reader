@@ -14,7 +14,6 @@
     <string name="share">Condividi con&#8230;</string>
     <string name="tushar">Amico e themer</string>
     <string name="badmin">Blog admin, amico &amp; tester</string>
-    <string name="press_overflow">Premi amico &#8230;</string>
     <string name="internet_alert">Rete di dati non disponibile</string>
     <string name="design">Librerie di supporto (v4, v7, design)</string>
     <string name="email">Mandaci una email</string>
@@ -25,6 +24,9 @@
     <string name="moreopts">Opzioni aggiuntive</string>
     <string name="pref_theme_title">Modalità di lettura</string>
     <string name="appcompatlistpreference">Creatore della classe AppCompatListPreference</string>
-    <string name="themeguide">Guida per supportare temi multipli in Android</string>
+    <string name="themeguide">Guida \"Support multiple themes in your Android app\"</string>
     <string name="easter">Cosa ti aspettavi?!?? un easter egg?</string>
+    <string name="more_read">Continue a leggere ...</string>
+    <string name="btn_share">Condividi</string>
+    <string name="toolbarguide">Guida \"Making android toolbar responsive\"</string>
 </resources>

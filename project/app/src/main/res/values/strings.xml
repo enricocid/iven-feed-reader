@@ -28,12 +28,10 @@
     <string name="style2">License</string>
     <string name="style3" translatable="false">Android assets studio</string>
     <string name="error">That\'s an error buddy</string>
-    <string name="simon" translatable="false">Simone Dev</string>
     <string name="share">Share with</string>
     <string name="maticons" translatable="false">Material design icons</string>
     <string name="materialish" translatable="false">Materialish progress</string>
     <string name="tushar">Friend and themer</string>
-    <string name="press_overflow">Just press man &#8230;</string>
     <string name="internet_alert">Data network unavailable</string>
     <string name="design">Support libraries (v4, v7, design)</string>
     <string name="site_name" translatable="false">lffl</string>
@@ -51,6 +49,11 @@
     <string name="appcompatlistpreference">AppCompatListPreference class creator</string>
     <string name="listpref" translatable="false">geecko86 (Guillaume)</string>
     <string name="themeguidecreator" translatable="false">Ha Duy Trung</string>
-    <string name="themeguide">Support multiple themes in Android guide</string>
+    <string name="themeguide">\"Support multiple themes in your Android app\" guide</string>
     <string name="easter">What did You expect?!?? a easter egg?</string>
+    <string name="more_read">Continue reading ...</string>
+    <string name="btn_share">Share</string>
+    <string name="justify" translatable="false">wATL</string>
+    <string name="toolbarguide">\"Making android toolbar responsive\" guide</string>
+    <string name="responsiveauthor" translatable="false">Lucas Urbas</string>
 </resources>

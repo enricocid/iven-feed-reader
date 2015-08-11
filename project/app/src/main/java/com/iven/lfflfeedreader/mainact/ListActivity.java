@@ -58,7 +58,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 
 		@Override
@@ -111,14 +111,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
                         i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
                         startActivity(Intent.createChooser(i, getString(R.string.share)));
-
                         return true;
                     }
 
             			switch (item.getItemId()) {
             			case R.id.rate:
             				rate(list);
-            				return (true);
+            				return true;
             			}
 						return false;
                     }	
@@ -237,6 +236,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 			ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 			TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
+
 			TextView pubDate = (TextView) listItem.findViewById(R.id.date);
 			Glide.with(activity).load(feed.getItem(pos).getImage())
 							.into(lfflImage);
@@ -277,7 +277,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 					case R.id.developer1:
 						Intent ii5 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
 						startActivity(ii5);
-
 				}
 				switch (menuItem.getItemId()) {
 					case R.id.developer2:
@@ -287,7 +286,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				switch (menuItem.getItemId()) {
 					case R.id.changelog:
 						showChangelog();
-
 				}
 				switch (menuItem.getItemId()) {
 					case R.id.mail:
@@ -296,7 +294,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 						intent.setType("message/rfc822");
 						if (intent != null) {
 							startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
-
 						}
 
 				}
