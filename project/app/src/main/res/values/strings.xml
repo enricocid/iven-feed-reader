@@ -1,0 +1,59 @@
+<resources>
+
+    <string name="app_name" translatable="false">Lffl Feed Reader</string>
+    <string name="desc" translatable="false"></string>
+    <string name="Dev_cat">Developers</string>
+    <string name="dev1" translatable="false">ivn888</string>
+    <string name="dev2" translatable="false">EnricoD</string>
+    <string name="email">Send us an email</string>
+    <string name="contact_us">Contacts</string>
+    <string name="follow">Follow lffl on social networks</string>
+    <string name="more"> &#8230; More</string>
+    <string name="emailC">Send with</string>
+    <string name="gplus" translatable="false">Google +</string>
+    <string name="fb" translatable="false">Facebook</string>
+    <string name="bird" translatable="false">Twitter</string>
+    <string name="tube" translatable="false">YouTube</string>
+    <string name="credits">Special thanks</string>
+    <string name="badmin">Blog admin, friend &amp; tester</string>
+    <string name="source">Source</string>
+    <string name="disc">This app includes few portions of</string>
+    <string name="lib" translatable="false">ITCutiesApp</string>
+    <string name="lib1sum">Source code</string>
+    <string name="usedlibs">Used libraries</string>
+    <string name="lib5" translatable="false">Jsoup</string>
+    <string name="lib6" translatable="false">Glide</string>
+    <string name="androidstyle">Resources</string>
+    <string name="style1">Design resources</string>
+    <string name="style2">License</string>
+    <string name="style3" translatable="false">Android assets studio</string>
+    <string name="error">That\'s an error buddy</string>
+    <string name="share">Share with</string>
+    <string name="maticons" translatable="false">Material design icons</string>
+    <string name="materialish" translatable="false">Materialish progress</string>
+    <string name="tushar">Friend and themer</string>
+    <string name="internet_alert">Data network unavailable</string>
+    <string name="design">Support libraries (v4, v7, design)</string>
+    <string name="site_name" translatable="false">lffl</string>
+    <string name="chooser_title">Choose your browser &#8230;</string>
+    <string name="stack" translatable="false">Stack overflow</string>
+    <string name="codepath" translatable="false">Codepath</string>
+    <string name="preferencelib" translatable="false">Android-MaterialPreference</string>
+    <string name="palette" translatable="false">Material palette</string>
+    <string name="changelog" translatable="false">Changelog</string>
+    <string name="dialogs" translatable="false">material-dialogs</string>
+    <string name="pref_dark_theme" translatable="false">pref_dark_theme</string>
+    <string name="pref_theme" translatable="false">pref_theme</string>
+    <string name="pref_theme_title">Reading mode</string>
+    <string name="moreopts">Additional options</string>
+    <string name="appcompatlistpreference">AppCompatListPreference class creator</string>
+    <string name="listpref" translatable="false">geecko86 (Guillaume)</string>
+    <string name="themeguidecreator" translatable="false">Ha Duy Trung</string>
+    <string name="themeguide">\"Support multiple themes in your Android app\" guide</string>
+    <string name="easter">What did You expect?!?? a easter egg?</string>
+    <string name="more_read">Continue reading ...</string>
+    <string name="btn_share">Share</string>
+    <string name="justify" translatable="false">wATL</string>
+    <string name="toolbarguide">\"Making android toolbar responsive\" guide</string>
+    <string name="responsiveauthor" translatable="false">Lucas Urbas</string>
+</resources>

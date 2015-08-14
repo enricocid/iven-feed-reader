@@ -1,0 +1,52 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.iven.lfflfeedreader"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="false"
+        tools:replace="android:allowBackup, android:icon"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme_lffl">
+        
+    <uses-library android:required="false" android:name="com.sec.android.app.multiwindow"/>
+    <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
+    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip"/>
+    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip"/>
+    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip"/>
+    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip"/>
+
+        <activity
+            android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
+            android:theme="@style/TranslucentSplash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iven.lfflfeedreader.mainact.ListActivity"
+            android:theme="@style/Theme_lffl"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_lffl_article"
+            />
+
+        <activity 
+    	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
+    	android:label="@string/app_name"
+    	android:screenOrientation="portrait"
+    	android:theme="@style/Theme_lffl_info">
+    	      		
+	</activity>
+	
+    </application>
+
+</manifest>

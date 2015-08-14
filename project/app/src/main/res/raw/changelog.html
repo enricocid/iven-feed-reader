@@ -1,0 +1,157 @@
+<html>
+<head>
+    <style type="text/css">
+        * {
+        word-wrap: break-word;
+        }
+        {style-placeholder}
+        a {
+        color: #{link-color};
+        }
+        a:active {
+        color: #{link-color-active};
+        }
+        ol {
+        list-style-position: inside;
+        padding-left: 0;
+        padding-right: 0;
+        }
+        li:not(:first-child) {
+        padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Version 5.1</h3>
+
+<ol>
+    <li><b>NEW:</b> Use Glide lib for pictures loading</li>
+    <li><b>NEW:</b> Goodbye WebView: introducing justified textview + Glide to reduce memory usage</li>
+    <li><b>NEW:</b> Articles view: add "Continue reading ..." and "share" buttons</li>
+    <li><b>IMPROVE:</b> Introducing "responsive toolbar" design</li>
+    <li><b>IMPROVE:</b> Toolbar: use appcompat default icons</li>
+    <li><b>IMPROVE:</b> List items design (... following Google guidelines about cards)</li>
+    <li><b>IMPROVE:</b> Toolbar in articles has a fixed position and will not slide anymore with the viewpager during swiping</li>
+    <li><b>IMPROVE:</b> Improve tablets interface</li>
+    <li><b>FIX:</b> General fixes to the theme</li>
+    <li><b>MISC:</b> Code cleaning</li>
+</ol>
+
+<h3>Version 5.0</h3>
+
+<ol>
+    <li><b>LIB UPDATE:</b> Jsoup: 1.8.2 → 1.8.3</li>
+    <li><b>IMPROVE:</b> Info: toolbar for all devices</li>
+    <li><b>IMPROVE:</b> ArticleFragment: toolbar (remove fab) for all devices</li>
+    <li><b>NOTICE:</b> We now provide same UI on all android versions from 2.3 to latest Android version</li>
+    <li><b>IMPROVE:</b> ArticleFragment: Share button</li>
+    <li><b>IMPROVE:</b> Added methods to get article's author & url</li>
+    <li><b>IMPROVE:</b> ArticleFragment: added author and date inside articles</li>
+    <li><b>IMPROVE:</b> ArticleFragment: scrollview revenge</li>
+    <li><b>IMPROVE:</b> Added method to set locale depending on device settings</li>
+    <li><b>IMPROVE:</b> Info: added app version to toolbar's subtitle</li>
+    <li><b>IMPROVE:</b> Info: dialog radio buttons accent color</li>
+    <li><b>FIX:</b> Info: fix "browser not found exception" method</li>
+    <li><b>FIX:</b> ListActivity: fix onCreateOptionsMenu method</li>
+    <li><b>MISC:</b> Splash: changed progress bar color</li>
+    <li><b>MISC:</b> ListActivity: changed swipe to refresh color</li>
+    <li><b>MISC:</b> Modalità lettura: big code cleaning</li>
+    <li><b>MISC:</b> Reading mode: big code cleaning</li>
+    <li><b>MISC:</b> Styles, colors & strings changes/reorganization/clean</li>
+    <li><b>MISC:</b> Remove unused code</li>
+</ol>
+
+<h3>Version 4.2</h3>
+
+<ol>
+    <li><b>IMPROVE:</b> Introducing the new articles UI</li>
+    <li><b>IMPROVE:</b> Splash changes</li>
+    <li><b>IMPROVE:</b> Reading mode enhancements</li>
+    <li><b>FIX:</b> Fix text overlapping problems inside articlefragment on pre-ICS devices</li>
+    <li><b>MISC:</b> Set minSdk to 9</li>
+    <li><b>MISC:</b> Remove unused code</li>
+</ol>
+
+<h3>Version 4.1</h3>
+
+<ol>
+    <li><b>IMPROVE:</b> WebView: new look on >=ICS devices</li>
+    <li><b>IMPROVE:</b> WebView: articles images are now center</li>
+    <li><b>MISC:</b> Removed fab button on pre-ICS devices</li>
+    <li><b>MISC:</b> Removed unused declarations</li>
+    <li><b>FIX:</b> Fix fab position on pre-lollipop devices</li>
+    <li><b>FIX:</b> Fix crashes on ICS</li>
+
+</ol>
+
+<h3>Version 4.0</h3>
+
+<ol>
+    <li><b>NEW:</b> Introducing "reading mode" option for ArticleActivity</li>
+    <li><b>FIX:</b> Styles fixes</li>
+    <li><b>IMPROVE:</b> Remove unused icon</li>
+
+</ol>
+
+<h3>Version 3.3</h3>
+
+<ol>
+    <li><b>NOTICE:</b> Android studio migration</li>
+    <li><b>IMPROVE:</b> Remove unused icons</li>
+    <li><b>IMPROVE:</b> Change fab & icon colors</li>
+    <li><b>IMPROVE:</b> "What did You expect?" clean</li>
+    <li><b>IMPROVE:</b> NestedScrollView enhancements</li>
+    <li><b>IMPROVE:</b> NavigationView clean</li>
+    <li><b>IMPROVE:</b> Items (UI) tweaks</li>
+    <li><b>IMPROVE:</b> HQ stub_id</li>
+    <li><b>FIX:</b> General fixes</li>
+</ol>
+
+<h3>Version 3.2</h3>
+
+<ol>
+    <li><b>NEW:</b> Pre-ICS compatibility!</li>
+    <li><b>IMPROVE:</b> ArticleFragment: utf-8 codification</li>
+
+</ol>
+
+<h3>Version 3.1.1</h3>
+
+<ol>
+    <li><b>NEW:</b> What did You expect?</li>
+    <li><b>IMPROVE:</b> Changelog Dialog: utf-8 encoding</li>
+	<li><b>IMPROVE:</b> Changelog Dialog: Show vertical scrollbars</li>
+    <li><b>FIX:</b> Fix capitalization</li>
+
+</ol>
+
+<h3>Version 3.1</h3>
+
+<ol>
+    <li><b>NEW:</b> Material theme on infos also for pre-lollipop devices</li>
+	<li><b>NEW:</b> Changelog dialog</li>
+	<li><b>NEW:</b> ArticleUI: toolbar removed, there's already an header</li>
+    <li><b>IMPROVE:</b> ListActivity extends AppCompatActivity now</li>
+	<li><b>IMPROVE:</b> SplashActivity extends AppCompatActivity now</li>
+	<li><b>IMPROVE:</b> SwipeRefreshLayout (android supportv4) replaces PullRefreshLayout</li>
+	<li><b>IMPROVE:</b> SwipeRefreshLayout features all the primary colors!</li>
+	<li><b>IMPROVE:</b> ListActivity UI tweaks</li>
+	<li><b>IMPROVE:</b> Changed date format</li>
+	<li><b>IMPROVE:</b> WebView history clear removed</li>
+	<li><b>IMPROVE:</b> Navigation Layout tweaks: itemIconTint/temTextColor selected&pressed colors</li>
+	<li><b>IMPROVE:</b> Removed useless code</li>
+    <li><b>FIX:</b> Listview on ItemClick gives wrong position</li>
+	<li><b>FIX:</b> ApplicationContext is null in ApplicationStatus</li>
+    <li><b>FIX:</b> ArticleUI: Header behaviour</li>
+    <li><b>FIX:</b> ArticleUI: action buttons Style</li>
+    <li><b>MISC:</b> Progressbar fillRadius removed</li>
+	<li><b>MISC:</b> Pre-lollipop devices will not show toolbar simulated elevation anymore</li>
+	<li><b>MISC:</b> Palette tweaks (thanks to materialpalette.com)</li>
+	<li><b>MISC:</b> ic_back color change</li>
+	<li><b>MISC:</b> Snackbar color change</li>
+	<li><b>MISC:</b> added some new infos</li>
+
+</ol>
+
+</body>

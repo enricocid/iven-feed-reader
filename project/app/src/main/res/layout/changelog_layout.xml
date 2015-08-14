@@ -1,0 +1,14 @@
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16sp"
+    android:paddingRight="16sp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+                
+    <WebView
+        android:id="@+id/changelog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+
+</FrameLayout>

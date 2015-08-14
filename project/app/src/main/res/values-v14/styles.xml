@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+        <style name="Theme_lffl_article" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowActionBar">false</item> 
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/lffl3</item>
+        <item name="colorPrimary">@color/lffl2</item>
+        <item name="colorAccent">@color/lffl2</item>
+        <item name="android:displayOptions">showTitle</item>
+        <item name="title_color">@color/lffl9</item>
+        <item name="article_text_color">@color/article_text_dark_grey</item>
+        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+         </style>
+
+    <style name="Theme_lffl_article_dark" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/lffl3</item>
+        <item name="colorPrimary">@color/lffl2</item>
+        <item name="android:background">@color/lffl8</item>
+        <item name="colorAccent">@color/lffl2</item>
+        <item name="android:displayOptions">showTitle</item>
+        <item name="title_color">@color/lffl10</item>
+        <item name="article_text_color">@color/article_text_light_grey</item>
+        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+    </style>
+
+</resources>

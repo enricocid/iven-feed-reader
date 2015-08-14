@@ -1,0 +1,88 @@
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16sp">
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lin"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8sp"
+            android:descendantFocusability="blocksDescendants">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:maxLines="3"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textColor="?attr/title_color"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textColor="?attr/title_color"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/title" />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_marginTop="4sp"
+                android:layout_marginBottom="4sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <su.whs.watl.ui.TextViewEx
+                android:id="@+id/webv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/article_text_color"
+                android:textSize="@dimen/txtSize"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/webv"
+                android:layout_gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/more_read"/>
+
+            <Button
+                android:id="@+id/button_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button"
+                android:layout_gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/btn_share"
+                android:layout_marginBottom="16sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

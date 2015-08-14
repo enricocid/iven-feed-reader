@@ -2,90 +2,93 @@
 ================
 
 
-![ScreenShot](http://i.imgur.com/EGqAtNU.jpg{url})
+![ScreenShot](http://i.imgur.com/6sCJfiz.png{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
-It now supports Material Design for Lollipop Devices!
-
+It now supports Material Design and pre-ICS (minSdK="9") Devices!
 
 This work is 100% Free and is released under gpl license. 
 
-1. **RESPECT THE LICENSE!**
 
-AND:
 
-2. **DO NOT REDISTRIBUTE THIS FOR SALE!**
 
-3. **ABSOLUTELY DO NOT REMOVE CREDITS!**
 
-https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader
+You can download the latest signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
-http://www.lffl.org/
+It's also on Google Play:
 
-**Screenshots**
+<a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+</a>
 
-![ScreenShot](http://i.imgur.com/6viY9t7.png{url})![ScreenShot](http://i.imgur.com/nsVusl8.png{url})![ScreenShot](http://i.imgur.com/t6tjbOk.png{url})![ScreenShot](http://i.imgur.com/QjMMzCq.png{url})![ScreenShot](http://i.imgur.com/67UJrh4.png{url})![ScreenShot]
+
+
+
+
+![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
+
+
+
+
+
+
+**THANKS TO**
+
+**- Lucas Urbas**
+
+Making android toolbar responsive: 
+https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
+
+**- Ha Duy Trung**
+
+Support multiple themes in your Android app:
+http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
+
+**- geecko86 (Guillaume)**
+
+The creator of the AppCompatListPreference class:
+https://github.com/geecko86
 
 
 **USED LIBRARIES**
 
-**- Fading Action Bar by Manuel Peinado**
+
+**- Android Support Libraries**
+- Android support v4;
+- Android support appcompatv7;
+- Android Design Support Library;
+
+**- wATL by suwhs**
 
 Git page:
-https://github.com/ManuelPeinado/FadingActionBar
+https://github.com/suwhs/wATL
 
-Download:
-https://github.com/ManuelPeinado/FadingActionBar/archive/master.zip
-
-Import only the standard build to Your project.
-
-**- Crouton by Benjamin Weiss**
+**- material-dialogs by Aidan Follestad**
 
 Git page:
-https://github.com/keyboardsurfer/Crouton
+https://github.com/afollestad/material-dialogs
 
-Download:
-https://github.com/keyboardsurfer/Crouton/archive/master.zip
+**- Android-MaterialPreference by Jens Driller**
+
+Git page:
+https://github.com/jenzz/Android-MaterialPreference
 
 **- Jsoup by Jonathan Hedley**
-
-Import as an external library and be sure to tickmark jsoup-1.x.jar on "Import and Export" tab in Eclipse (i.e add jsoup lib as referenced library or the splash activity will crash at boot!).
 
 Homepage:
 http://jsoup.org/
 
-Download:
-http://jsoup.org/download
-
-**- LazyList by Fedor Vaslov**
+**- Glide by Bump Technologies**
 
 Git page:
-https://github.com/thest1/LazyList
+https://github.com/bumptech/glide
 
-Download:
-https://github.com/thest1/LazyList/archive/master.zip
 
 **- Materialish progress by pnikosis**
 
 Git page:
 https://github.com/pnikosis/materialish-progress
-
-Download:
-https://github.com/pnikosis/materialish-progress/archive/master.zip
-
-**Do not forget to add android-support-v4 library in Your project**
-
-In Eclipse: Right click on your project > Android tools > Select add support library 
-or 
-Copy the JAR file from your Android SDK installation directory <sdk>/extras/android/support/v4/android-support-v4.jar) into the application's project libs/ directory.
-
-
-NOTE:
-
-Most of the libraries are Android studio projects!
-If You want to import them into eclipse just cut&paste com folder from java to src, solve the imports (android support v4, just add this library), clean and build!
-
-
 
 
 
