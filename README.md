@@ -9,7 +9,7 @@ It now supports Material Design and pre-ICS (minSdK="9") Devices!
 
 This work is 100% Free and is released under gpl license. 
 
-**notice: the app has reached a certain stability and everything is working good.also graphics is good (&uniform) an all android vesions...i don't think i'm interested in adding features or everything else, so lffl feed resder developments will stop but, maybe, it will receive some maintenance updates (libs updates, support for android m etc).**
+**notice: the app has reached a certain stability and everything is working good.also graphics is good (&uniform) an all android vesions...i don't think i'm interested in adding features, so lffl feed reader developments will stop (maybe, it will receive some maintenance updates (libs updates, support for android m etc)).**
 
 
 
