@@ -22,7 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.ThemeSingleton;
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
