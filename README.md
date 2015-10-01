@@ -7,9 +7,7 @@
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design and pre-ICS (minSdK="9") Devices!
 
-This work is 100% Free and is released under gpl license. 
-
-**notice: the app has reached a certain stability and everything is working good.also graphics is good (&uniform) on all android vesions...i don't think i'm interested in adding features, so lffl feed reader developments will stop (maybe, it will receive some maintenance updates (libs updates, support for android m etc)).**
+This work is 100% Free and is released under gpl license.
 
 
 
