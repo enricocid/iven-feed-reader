@@ -9,7 +9,7 @@ public class Preferences {
 
     public static boolean darkThemeEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("Theme", true);
+                .getBoolean("Theme", false);
         }
 
     public static void applyTheme(ContextThemeWrapper contextThemeWrapper) {

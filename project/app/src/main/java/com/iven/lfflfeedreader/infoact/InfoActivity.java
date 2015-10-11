@@ -53,13 +53,23 @@ public class InfoActivity extends PreferenceActivity {
 		mListenerTheme = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String id) {
+				if (android.os.Build.VERSION.SDK_INT <= 11) {
+					Intent newIntent = new Intent(InfoActivity.this,SplashActivity.class);
+					newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					finish();
+					startActivity(newIntent);
+					overridePendingTransition(0, 0);
+				}
+				else {
 
-				finish();
 				final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
 						InfoActivity.this, SplashActivity.class));
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-				startActivity(intent);
+					finish();
+					startActivity(intent);
 				overridePendingTransition(0, 0);
+
+				}
 			}
 		};
 

@@ -10,5 +10,4 @@
     <attr name="navview_text" format="reference"/>
     <attr name="popup_theme" format="reference"/>
 
-
 </resources>
