@@ -20,4 +20,6 @@
     <color name="textcolorSecondary">#66000000</color>
     <color name="text_title">#4E4E4E</color>
     <color name="text_date">#A1A1A1</color>
+    <color name="material_red_400">#EF5350</color>
+
 </resources>
