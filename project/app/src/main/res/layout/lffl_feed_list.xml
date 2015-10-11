@@ -4,7 +4,8 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:fitsSystemWindows="true">
+  android:fitsSystemWindows="true"
+  android:background="?attr/theme_background">
   
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@android:id/list"
+                android:background="?attr/theme_background"
                 />
 
 </android.support.v4.widget.SwipeRefreshLayout>

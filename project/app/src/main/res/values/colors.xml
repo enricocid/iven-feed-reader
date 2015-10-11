@@ -13,6 +13,8 @@
     <color name="lffl10">#999999</color>
     <color name="lffl11">#dddddd</color>
     <color name="lffl12">#222222</color>
+    <color name="lffl13">#dedede</color>
+    <color name="lffl14">#303030</color>
     <color name="lffl_ripple">#ffa000</color>
     <color name="article_text_dark_grey">#222222</color>
     <color name="article_text_light_grey">#AEA79F</color>
@@ -20,6 +22,10 @@
     <color name="textcolorSecondary">#66000000</color>
     <color name="text_title">#4E4E4E</color>
     <color name="text_date">#A1A1A1</color>
+    <color name="text_title_dark">#b1b1b1</color>
+    <color name="text_date_dark">#5e5e5e</color>
+    <color name="material_indigo_500">#3F51B5</color>
+    <color name="material_indigo_600">#3949AB</color>
     <color name="material_red_400">#EF5350</color>
-
+    <color name="text_black_divider_12">#1F000000</color>
 </resources>

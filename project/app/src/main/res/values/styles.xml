@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <attr name="dotted_divider" format="reference"/>
-    <attr name="title_color" format="color"/>
-    <attr name="article_text_color" format="color"/>
-
 <style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/translucent</item>
         <item name="android:windowNoTitle">true</item>
@@ -19,6 +15,25 @@
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@android:color/white</item>
+        <item name="text_title_theme">@color/text_title</item>
+        <item name="text_date_theme">@color/text_date</item>
+        <item name="navview_text">@drawable/state_list</item>
+        <item name="popup_theme">@style/Theme.Popup</item>
+    </style>
+
+    <style name="Theme_lffl_dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/lffl5</item>
+        <item name="colorPrimary">@color/lffl4</item>
+        <item name="colorAccent">@color/lffl4</item>
+        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@color/lffl14</item>
+        <item name="text_title_theme">@color/text_title_dark</item>
+        <item name="text_date_theme">@color/text_date_dark</item>
+        <item name="navview_text">@drawable/state_list_dark</item>
     </style>
     
         <style name="Theme_lffl_article" parent="Theme.AppCompat.Light.NoActionBar">
@@ -39,7 +54,7 @@
         <item name="colorPrimary">@color/lffl2</item>
         <item name="colorAccent">@color/lffl2</item>
         <item name="title_color">@color/lffl10</item>
-        <item name="android:background">@color/lffl8</item>
+        <item name="android:background">@color/lffl14</item>
         <item name="article_text_color">@color/lffl11</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
@@ -55,10 +70,31 @@
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@android:color/white</item>
+        <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
+    </style>
+
+    <style name="Theme_lffl_info_dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/lffl7</item>
+        <item name="colorPrimary">@color/lffl6</item>
+        <item name="colorAccent">@color/lffl6</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
+        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@color/lffl14</item>
+        <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
     </style>
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColorPrimary">@color/lffl8</item>
+        <item name="colorAccent">@color/lffl6</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyleDark" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/lffl13</item>
+        <item name="android:background">@color/lffl14</item>
         <item name="colorAccent">@color/lffl6</item>
     </style>
 
@@ -81,4 +117,9 @@
         <item name="android:paddingRight">0dp</item>
     </style>
 
+    <style name="Theme.Popup.Dark" parent="Theme.AppCompat">
+    </style>
+
+    <style name="Theme.Popup" parent="Theme.AppCompat.Light">
+    </style>
 </resources>

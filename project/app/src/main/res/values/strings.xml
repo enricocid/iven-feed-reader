@@ -2,31 +2,17 @@
 
     <string name="app_name" translatable="false">Lffl Feed Reader</string>
     <string name="desc" translatable="false"></string>
-    <string name="Dev_cat">Developers</string>
-    <string name="dev1" translatable="false">ivn888</string>
-    <string name="dev2" translatable="false">EnricoD</string>
     <string name="email">Send us an email</string>
-    <string name="contact_us">Contacts</string>
-    <string name="follow">Follow lffl on social networks</string>
     <string name="more"> &#8230; More</string>
     <string name="emailC">Send with</string>
-    <string name="gplus" translatable="false">Google +</string>
-    <string name="fb" translatable="false">Facebook</string>
-    <string name="bird" translatable="false">Twitter</string>
-    <string name="tube" translatable="false">YouTube</string>
     <string name="credits">Special thanks</string>
-    <string name="badmin">Blog admin, friend &amp; tester</string>
     <string name="source">Source</string>
-    <string name="disc">This app includes few portions of</string>
-    <string name="lib" translatable="false">ITCutiesApp</string>
     <string name="lib1sum">Source code</string>
     <string name="usedlibs">Used libraries</string>
     <string name="lib5" translatable="false">Jsoup</string>
     <string name="lib6" translatable="false">Glide</string>
     <string name="androidstyle">Resources</string>
     <string name="style1">Design resources</string>
-    <string name="style2">License</string>
-    <string name="style3" translatable="false">Android assets studio</string>
     <string name="error">That\'s an error buddy</string>
     <string name="share">Share with</string>
     <string name="maticons" translatable="false">Material design icons</string>
@@ -42,12 +28,8 @@
     <string name="palette" translatable="false">Material palette</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="dialogs" translatable="false">material-dialogs</string>
-    <string name="pref_dark_theme" translatable="false">pref_dark_theme</string>
-    <string name="pref_theme" translatable="false">pref_theme</string>
-    <string name="pref_theme_title">Reading mode</string>
+    <string name="pref_theme_title">App theme</string>
     <string name="moreopts">Additional options</string>
-    <string name="appcompatlistpreference">AppCompatListPreference class creator</string>
-    <string name="listpref" translatable="false">geecko86 (Guillaume)</string>
     <string name="themeguidecreator" translatable="false">Ha Duy Trung</string>
     <string name="themeguide">\"Support multiple themes in your Android app\" guide</string>
     <string name="easter">What did You expect?!?? a easter egg?</string>
@@ -56,4 +38,23 @@
     <string name="justify" translatable="false">wATL</string>
     <string name="toolbarguide">\"Making android toolbar responsive\" guide</string>
     <string name="responsiveauthor" translatable="false">Lucas Urbas</string>
+    <string name="themesum">The app needs to be restarted</string>
+    <string name="social" translatable="false">Social networks</string>
+    <string name="about" translatable="false">About devs</string>
+    <string name="about_body"><![CDATA[
+        Lffl news reader, an app designed by <b>Enrico & Ivan D</b>.<br/>
+        <a href=\'http://forum.xda-developers.com/member.php?u=4884893\'>Ivan\'s XDA</a>&nbsp;&nbsp;
+        <a href=\'https://disqus.com/by/enricodchem\'>Enrico\'s disqus</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/itcuties/ITCutiesApp-1.0\'>This app includes few portions of ITCutiesApp</a>&nbsp;&nbsp;<br/>
+        Special thanks goes to the blog\'s creator and admin<br/><b>Roberto Ferramosca</b>
+        <a href=\'https://plus.google.com/u/0/100021192050184001006/posts\'>G+ page</a>&nbsp;&nbsp;
+    ]]></string>
+
+    <string name="social_networks"><![CDATA[
+        Follow <b>lffl</b> also on social!<br/>
+        <a href=\'https://twitter.com/linuxfreedom\'>Twitter</a>&nbsp;&nbsp;<br/>
+        <a href=\'https://plus.google.com/+lffl/posts\'>Google+</a>&nbsp;&nbsp;<br/>
+        <a href=\'https://www.youtube.com/user/linuxfreedomforlive\'>YouTube</a>&nbsp;&nbsp;<br/>
+        <a href=\'https://www.facebook.com/pages/LinuX-Freedom-for-Live/290943601160\'>Facebook</a>&nbsp;&nbsp;
+    ]]></string>
 </resources>

@@ -2,8 +2,8 @@
 <resources>
 
     <string-array name="pref_theme_options">
-        <item>Giorno</item>
-        <item>Notte</item>
+        <item>Chiaro</item>
+        <item>Scuro</item>
     </string-array>
 
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="title_color" format="color"/>
+    <attr name="article_text_color" format="color"/>
+    <attr name="theme_background" format="color"/>
+    <attr name="theme_icon" format="reference"/>
+    <attr name="text_title_theme" format="reference"/>
+    <attr name="text_date_theme" format="reference"/>
+    <attr name="navview_text" format="reference"/>
+    <attr name="popup_theme" format="reference"/>
+
+
+</resources>

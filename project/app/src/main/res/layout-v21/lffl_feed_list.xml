@@ -5,7 +5,8 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:fitsSystemWindows="true"
-  android:elevation="6dp">
+  android:elevation="6dp"
+  android:background="?attr/theme_background">
   
   <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -35,8 +36,9 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     app:headerLayout="@layout/drawer_header"
-    app:itemIconTint="@drawable/state_list"
-    app:itemTextColor="@drawable/state_list"
-    app:menu="@menu/drawer"/>
+    app:itemIconTint="?attr/navview_text"
+    app:itemTextColor="?attr/navview_text"
+    app:menu="@menu/drawer"
+    android:background="?attr/theme_background"/>
 
 </android.support.v4.widget.DrawerLayout>

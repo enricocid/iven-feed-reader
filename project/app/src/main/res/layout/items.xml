@@ -33,7 +33,7 @@
             android:maxLines="2"
             android:lines="2"
             android:ellipsize="end"
-            android:textColor="@color/text_title"
+            android:textColor="?attr/text_title_theme"
             android:textSize="14sp"
             android:textStyle="bold"/>
 
@@ -45,7 +45,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="@color/text_date"
+            android:textColor="?attr/text_date_theme"
             android:textSize="12sp"
             android:layout_marginTop="21sp"
             android:layout_marginBottom="16sp"

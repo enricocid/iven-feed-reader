@@ -3,9 +3,11 @@ package com.iven.lfflfeedreader.mainact;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,13 +24,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
+import com.iven.lfflfeedreader.infoact.AboutDialog;
 import com.iven.lfflfeedreader.infoact.ChangelogDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
+import com.iven.lfflfeedreader.utils.Preferences;
 
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,7 +73,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-
+			Preferences.applyTheme2(this);
 		setContentView(R.layout.lffl_feed_list);
 	      mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -264,29 +272,25 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 						startActivity(ii);
 				}
 				switch (menuItem.getItemId()) {
-					case R.id.cuties:
-						Intent ii2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/itcuties/ITCutiesApp-1.0"));
-						startActivity(ii2);
-				}
-				switch (menuItem.getItemId()) {
 					case R.id.source_code:
 						Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
 						startActivity(ii4);
 				}
 				switch (menuItem.getItemId()) {
-					case R.id.developer1:
-						Intent ii5 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://forum.xda-developers.com/member.php?u=4884893"));
-						startActivity(ii5);
-				}
-				switch (menuItem.getItemId()) {
-					case R.id.developer2:
-						Intent ii6 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://disqus.com/by/enricodchem/"));
-						startActivity(ii6);
-				}
-				switch (menuItem.getItemId()) {
 					case R.id.changelog:
 						showChangelog();
 				}
+
+				switch (menuItem.getItemId()) {
+					case R.id.developers:
+						AboutDialog.show(ListActivity.this);
+				}
+
+				switch (menuItem.getItemId()) {
+					case R.id.social:
+						showSocial();
+				}
+
 				switch (menuItem.getItemId()) {
 					case R.id.mail:
 						intent = new Intent(android.content.Intent.ACTION_SEND);
@@ -307,6 +311,22 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				ChangelogDialog.create(accentColor)
 						.show(getSupportFragmentManager(), "changelog");
 
+			}
+
+			private void showSocial() {
+				new MaterialDialog.Builder(ListActivity.this)
+						.title(R.string.social)
+						.content(Html.fromHtml(getString(R.string.social_networks)))
+						.contentLineSpacing(1.6f)
+						.theme(Theme.DARK)
+						.positiveColor(Color.WHITE)
+						.titleGravity(GravityEnum.CENTER)
+						.titleColorRes(R.color.material_red_400)
+						.backgroundColorRes(R.color.material_blue_grey_800)
+						.dividerColorRes(R.color.lffl8)
+						.btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
+						.positiveText(android.R.string.ok)
+						.show();
 			}
 		}, DRAWER_CLOSE_DELAY_MS);
 	    return true;

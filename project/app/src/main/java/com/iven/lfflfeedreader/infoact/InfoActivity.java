@@ -2,10 +2,14 @@ package com.iven.lfflfeedreader.infoact;
 
 import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
+import com.iven.lfflfeedreader.mainact.SplashActivity;
+import com.iven.lfflfeedreader.utils.Preferences;
 
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -13,6 +17,7 @@ import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
@@ -20,81 +25,44 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class InfoActivity extends PreferenceActivity{
+public class InfoActivity extends PreferenceActivity {
+
+	private SharedPreferences.OnSharedPreferenceChangeListener mListenerTheme;
 
 	private AppCompatDelegate mDelegate;
 
-	Preference facebook, twitter, google, youtube, mosca1, iconos, glic, gstud,jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, geecko86, trung, textjust, responsive;
+	Preference iconos, jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, trung, textjust, responsive;
 	
 	Context context;
 
 	String versionName = BuildConfig.VERSION_NAME;
 
-	@SuppressWarnings("deprecation")
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+
 		getDelegate().installViewFactory();
 		getDelegate().onCreate(savedInstanceState);
+		Preferences.applyTheme3(this);
 		super.onCreate(savedInstanceState);
 
 		setToolbar();
 		addPreferencesFromResource(R.xml.info_pref);
 
 		context = getBaseContext();
-				
-		facebook = this.findPreference("facebook");
-		facebook.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
 
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pages/LinuX-Freedom-for-Live/290943601160")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
+		mListenerTheme = new SharedPreferences.OnSharedPreferenceChangeListener() {
+			@Override
+			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String id) {
+
+				finish();
+				final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+						InfoActivity.this, SplashActivity.class));
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+				startActivity(intent);
+				overridePendingTransition(0, 0);
 			}
-	});
+		};
 
-		twitter = this.findPreference("twitter");
-		twitter.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/linuxfreedom")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-		google = this.findPreference("google");
-		google.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/+lffl/posts")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
 		jso = this.findPreference("js");
 		jso.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
@@ -111,42 +79,6 @@ public class InfoActivity extends PreferenceActivity{
 				}
 				return false;
 				}
-			});
-		
-		mosca1 = this.findPreference("ferramosca");
-		mosca1.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/u/0/100021192050184001006/posts")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-		youtube = this.findPreference("videos");
-		youtube.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/user/linuxfreedomforlive")));
-			} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-			}
 			});
 		
         glide = this.findPreference("glideimagemanager");
@@ -174,42 +106,6 @@ public class InfoActivity extends PreferenceActivity{
 				try
 				{
 					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-        glic = this.findPreference("robotlicense");
-		glic.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://source.android.com/license.html")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-        gstud = this.findPreference("studio");
-		gstud.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://code.google.com/p/android-ui-utils/")));
 				} catch (ActivityNotFoundException anfe)
 				{
 					Context context = getApplicationContext();
@@ -383,24 +279,6 @@ public class InfoActivity extends PreferenceActivity{
 				}
 			});
 
-		geecko86 = this.findPreference("geecko");
-		geecko86.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/geecko86")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-			}
-		});
-
 		trung = this.findPreference("duy");
 		trung.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			public boolean onPreferenceClick (Preference preference) {
@@ -463,6 +341,7 @@ public class InfoActivity extends PreferenceActivity{
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		getDelegate().onPostCreate(savedInstanceState);
+
 	}
 
 	@Override
@@ -492,6 +371,12 @@ public class InfoActivity extends PreferenceActivity{
 	}
 
 	@Override
+	        public void onResume() {
+		                super.onResume();
+		getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerTheme);
+	}
+
+	@Override
 	protected void onStop() {
 		super.onStop();
 		getDelegate().onStop();
@@ -503,6 +388,11 @@ public class InfoActivity extends PreferenceActivity{
 		getDelegate().onDestroy();
 	}
 
+	@Override
+	        public void onPause() {
+		super.onPause();
+		                getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerTheme);
+	}
 	private void setToolbar() {
 		setContentView(R.layout.activity_pref);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));

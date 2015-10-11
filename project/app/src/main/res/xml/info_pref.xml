@@ -4,73 +4,12 @@
 
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/moreopts"/>
 
-    <com.iven.lfflfeedreader.utils.AppCompatListPreference
-        android:key="@string/pref_theme"
+    <com.jenzz.materialpreference.SwitchPreference
+        android:key="Theme"
         android:title="@string/pref_theme_title"
-        android:entries="@array/pref_theme_options"
-        android:entryValues="@array/pref_theme_values"
-        android:defaultValue="@string/pref_theme_value_light"
-        android:icon="@drawable/ic_invert_colors"
-        android:dialogIcon="@drawable/ic_invert_colors"/>
-
-    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/credits"/>
-
-     <com.jenzz.materialpreference.Preference android:summary="@string/badmin"
-        android:title="Roberto Ferramosca" 
-        android:key="ferramosca"
-        />
-
-     <com.jenzz.materialpreference.Preference android:summary="@string/tushar"
-        android:title="Tushar Paliwal" 
-        android:key="pal"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="@string/appcompatlistpreference"
-        android:title="@string/listpref"
-        android:key="geecko"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="@string/themeguide"
-        android:title="@string/themeguidecreator"
-        android:key="duy"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="@string/toolbarguide"
-        android:title="@string/responsiveauthor"
-        android:key="respotool"
-        />
-
-     <com.jenzz.materialpreference.Preference android:summary="stackoverflow.com"
-        android:title="@string/stack" 
-        android:key="stackover"
-        />
-
-     <com.jenzz.materialpreference.Preference android:summary="guides.codepath.com/android"
-        android:title="@string/codepath" 
-        android:key="codepathguides"
-        />
-
-    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/follow"/>
-
-    <com.jenzz.materialpreference.Preference android:summary="youtube.com/user/linuxfreedomforlive"
-        android:title="@string/tube" 
-        android:key="videos"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="facebook.com/pages/LinuX-Freedom-for-Live/290943601160"
-        android:title="@string/fb" 
-        android:key="facebook"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="twitter.com/linuxfreedom"
-        android:title="@string/bird" 
-        android:key="twitter"
-        />
-
-    <com.jenzz.materialpreference.Preference android:summary="plus.google.com/+lffl/posts"
-        android:title="@string/gplus" 
-        android:key="google"
-        />
+        android:summary="@string/themesum"
+        android:icon="?attr/theme_icon"
+        android:defaultValue="false" />
 
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/usedlibs" />
 
@@ -115,13 +54,6 @@
         android:title="@string/style1" 
         android:key="robot"
         />
-     <com.jenzz.materialpreference.Preference android:title="@string/style2"
-        android:key="robotlicense"
-        />
-     <com.jenzz.materialpreference.Preference android:summary="by Google Inc."
-        android:title="@string/style3" 
-        android:key="studio"
-        />
 
      <com.jenzz.materialpreference.Preference android:summary="materialdesignicons.com"
         android:title="@string/maticons" 
@@ -131,6 +63,33 @@
       <com.jenzz.materialpreference.Preference android:summary="materialpalette.com"
         android:title="@string/palette" 
         android:key="palettes"
+        />
+
+    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/credits"/>
+
+    <com.jenzz.materialpreference.Preference android:summary="@string/tushar"
+        android:title="Tushar Paliwal"
+        android:key="pal"
+        />
+
+    <com.jenzz.materialpreference.Preference android:summary="@string/themeguide"
+        android:title="@string/themeguidecreator"
+        android:key="duy"
+        />
+
+    <com.jenzz.materialpreference.Preference android:summary="@string/toolbarguide"
+        android:title="@string/responsiveauthor"
+        android:key="respotool"
+        />
+
+    <com.jenzz.materialpreference.Preference android:summary="stackoverflow.com"
+        android:title="@string/stack"
+        android:key="stackover"
+        />
+
+    <com.jenzz.materialpreference.Preference android:summary="guides.codepath.com/android"
+        android:title="@string/codepath"
+        android:key="codepathguides"
         />
 
 </PreferenceScreen>

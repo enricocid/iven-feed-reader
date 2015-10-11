@@ -1,47 +1,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <group android:checkableBehavior="single">
+  <group
+      android:id="@+id/menu_top"
+      android:checkableBehavior="single">
+
     <item
       android:id="@+id/source_code"
-      android:icon="@drawable/action_github" 
+      android:icon="@drawable/action_github"
       android:title="@string/lib1sum" />
         <item
         android:id="@+id/changelog"
         android:icon="@drawable/ic_changelog"
         android:title="@string/changelog"/>
-    <item
-        android:id="@+id/about_option"
-        android:icon="@drawable/action_about"
-        android:title="@string/more"/>
-    <item
-    android:id="@+id/navigation_subheader"
-    android:title="@string/contact_us">
-    <menu>
         <item
-        android:id="@+id/mail"
-        android:title="@string/email"
-        android:icon="@drawable/action_mail"/>
-    </menu>
-    </item>
-     <item
-    android:id="@+id/navigation_subheader1"
-    android:title="@string/Dev_cat">
-    <menu>
+          android:id="@+id/about_option"
+          android:icon="@drawable/action_about"
+          android:title="@string/more"/>
+  </group>
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="single">
+          <item
+              android:id="@+id/social"
+              android:title="@string/social"
+              android:icon="@drawable/ic_tag_faces"/>
+          <item
+              android:id="@+id/mail"
+              android:title="@string/email"
+              android:icon="@drawable/action_mail"/>
         <item
-        android:id="@+id/developer1"
-        android:title="@string/dev1"/>
-    <item
-        android:id="@+id/developer2"
-        android:title="@string/dev2"/>
-    </menu>
-    </item>
-    <item
-    android:id="@+id/navigation_subheader2"
-    android:title="@string/disc">
-    <menu>
-        <item
-        android:id="@+id/cuties"
-        android:title="@string/lib"/>
-    </menu>
-</item>
+            android:id="@+id/developers"
+            android:title="@string/about"
+            android:icon="@drawable/ic_worker"/>
   </group>
 </menu>

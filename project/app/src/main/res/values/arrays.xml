@@ -2,8 +2,8 @@
 <resources>
     
     <string-array name="pref_theme_options">
-        <item>Day</item>
-        <item>Night</item>
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
     <string-array name="pref_theme_values">
         <item>@string/pref_theme_value_light</item>
