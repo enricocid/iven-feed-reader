@@ -8,5 +8,5 @@
     <dimen name="drawer_height">196dp</dimen>
     <dimen name="launchscreens_lffl_icon_bottom">16.0dip</dimen>
     <dimen name="launchscreens_lffl_logo_bottom">48.0dip</dimen>
-
+    <dimen name="margin_text">16dp</dimen>
     </resources>

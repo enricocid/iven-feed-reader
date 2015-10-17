@@ -30,6 +30,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
+import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
@@ -78,7 +79,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	      mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 	         if (null == savedInstanceState) {
-	           mNavItemId = R.id.about_option;
+	           mNavItemId = R.id.option;
 	         } else {
 	           mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
 	         }
@@ -107,29 +108,41 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
+		String versionName;
+
+			try {
+				versionName = BuildConfig.VERSION_NAME;
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+
+		TextView versiontext = (TextView) findViewById(R.id.version);
+
+		versiontext.setText(getString(R.string.version) + " " + versionName);
+
         toolbar.setOnMenuItemClickListener(
-                new Toolbar.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
+				new Toolbar.OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
 
-                    	switch (item.getItemId()) {
-                    	case R.id.share_option:
-                    	Intent i = new Intent(Intent.ACTION_SEND);
-                        i.setType("text/plain");
-                        i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
-                        i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
-                        startActivity(Intent.createChooser(i, getString(R.string.share)));
-                        return true;
-                    }
+						switch (item.getItemId()) {
+							case R.id.share_option:
+								Intent i = new Intent(Intent.ACTION_SEND);
+								i.setType("text/plain");
+								i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
+								i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
+								startActivity(Intent.createChooser(i, getString(R.string.share)));
+								return true;
+						}
 
-            			switch (item.getItemId()) {
-            			case R.id.rate:
-            				rate(list);
-            				return true;
-            			}
+						switch (item.getItemId()) {
+							case R.id.rate:
+								rate(list);
+								return true;
+						}
 						return false;
-                    }	
-            	});
+					}
+				});
 
 		feedURL = new SplashActivity().LFFLFEEDURL;
 
@@ -267,7 +280,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			@Override
 			public void run() {
 				switch (menuItem.getItemId()) {
-					case R.id.about_option:
+					case R.id.option:
 						Intent ii = new Intent(ListActivity.this, InfoActivity.class);
 						startActivity(ii);
 				}
@@ -292,6 +305,11 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				}
 
 				switch (menuItem.getItemId()) {
+					case R.id.about_option_more:
+						showInfo();
+				}
+
+				switch (menuItem.getItemId()) {
 					case R.id.mail:
 						intent = new Intent(android.content.Intent.ACTION_SEND);
 						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivandorte@gmail.com"});
@@ -311,6 +329,21 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				ChangelogDialog.create(accentColor)
 						.show(getSupportFragmentManager(), "changelog");
 
+			}
+
+			private void showInfo() {
+				new MaterialDialog.Builder(ListActivity.this)
+						.title(R.string.info)
+						.content(Html.fromHtml(getString(R.string.infos)))
+						.contentLineSpacing(1.6f)
+						.positiveColor(Color.WHITE)
+						.titleGravity(GravityEnum.CENTER)
+						.titleColorRes(R.color.material_red_400)
+						.backgroundColorRes(R.color.material_blue_grey_800)
+						.dividerColorRes(R.color.lffl8)
+						.btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
+						.positiveText(android.R.string.ok)
+						.show();
 			}
 
 			private void showSocial() {

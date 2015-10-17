@@ -1,6 +1,5 @@
 package com.iven.lfflfeedreader.mainact;
 
-
 import android.content.Context;
 
 import android.content.Intent;
@@ -19,13 +18,13 @@ import com.iven.lfflfeedreader.domparser.RSSFeed;
 
 public class SplashActivity extends AppCompatActivity {
 
-	String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
+
+    String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
 	RSSFeed lfflfeed;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.splash);
 
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

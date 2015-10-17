@@ -28,8 +28,8 @@
     <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip"/>
 
         <activity
-            android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
-            android:theme="@style/TranslucentSplash">
+        android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
+        android:theme="@style/TranslucentSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

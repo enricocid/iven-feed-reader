@@ -1,6 +1,5 @@
 package com.iven.lfflfeedreader.mainact;
 
-
 import com.bumptech.glide.Glide;
 
 
