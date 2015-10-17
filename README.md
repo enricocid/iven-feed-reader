@@ -2,7 +2,7 @@
 ================
 
 
-![ScreenShot](http://i.imgur.com/6sCJfiz.png{url})
+![ScreenShot](http://i.imgur.com/zuPCN0U.png{url})
 
 Lffl news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me.
 It now supports Material Design and pre-ICS (minSdK="9") Devices!
@@ -11,7 +11,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (5.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
@@ -42,12 +42,6 @@ https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 
 Support multiple themes in your Android app:
 http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
-
-**- geecko86 (Guillaume)**
-
-The creator of the AppCompatListPreference class:
-https://github.com/geecko86
-
 
 **USED LIBRARIES**
 

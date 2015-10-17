@@ -48,7 +48,6 @@
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="theme_background">@android:color/white</item>
         <item name="theme_icon">@drawable/ic_invert_colors</item>
-
     </style>
 
     <style name="Theme_lffl_info_dark" parent="Theme.AppCompat.NoActionBar">
