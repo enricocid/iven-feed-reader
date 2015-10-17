@@ -32,9 +32,8 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.pnikosis:materialish-progress:1.+'
     compile 'com.jenzz:materialpreference:1.+'
-    compile('com.afollestad.material-dialogs:core:0.8.1.0@aar') {
+    compile('com.afollestad.material-dialogs:core:0.8.2.0@aar') {
         transitive = true
     }
     compile "org.jsoup:jsoup:1.8.+"

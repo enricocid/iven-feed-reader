@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-<style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/translucent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item> 
-        <item name="android:windowIsTranslucent">true</item>
-</style>  
-
     <style name="Theme_lffl" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowActionBar">false</item> 

@@ -16,7 +16,6 @@
     <string name="error">That\'s an error buddy</string>
     <string name="share">Share with</string>
     <string name="maticons" translatable="false">Material design icons</string>
-    <string name="materialish" translatable="false">Materialish progress</string>
     <string name="tushar">Friend and themer</string>
     <string name="internet_alert">Data network unavailable</string>
     <string name="design">Support libraries (v4, v7, design)</string>

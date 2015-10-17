@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-<style name="TranslucentSplash" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/translucent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-</style>  
+<style name="TranslucentSplash" parent="Theme.Lffl.custom">
+
+    <item name="colorPrimaryDark">@color/quantum_grey</item>
+        <item name="android:windowBackground">@drawable/background_splash</item>
+</style>
+
+    <style name="Theme.Lffl.custom" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
 
     <style name="Theme_lffl" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
@@ -122,4 +127,5 @@
 
     <style name="Theme.Popup" parent="Theme.AppCompat.Light">
     </style>
+
 </resources>

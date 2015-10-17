@@ -3,8 +3,8 @@
     android:versionCode="27"
     android:versionName="5.1"
     xmlns:tools="http://schemas.android.com/tools">
-	
-	<uses-sdk
+
+    <uses-sdk
             android:minSdkVersion="9"
             android:targetSdkVersion="23" />
 

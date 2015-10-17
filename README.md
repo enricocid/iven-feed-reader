@@ -83,13 +83,6 @@ Git page:
 https://github.com/bumptech/glide
 
 
-**- Materialish progress by pnikosis**
-
-Git page:
-https://github.com/pnikosis/materialish-progress
-
-
-
 
 
 

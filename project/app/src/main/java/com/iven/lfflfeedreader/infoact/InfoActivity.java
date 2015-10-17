@@ -31,7 +31,7 @@ public class InfoActivity extends PreferenceActivity {
 
 	private AppCompatDelegate mDelegate;
 
-	Preference iconos, jso, glide, materialicons, prog, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, trung, textjust, responsive;
+	Preference iconos, jso, glide, materialicons, tushpal, compat, stacking, path, materialpreferences, matpal, materialdialogs, trung, textjust, responsive;
 	
 	Context context;
 
@@ -134,24 +134,6 @@ public class InfoActivity extends PreferenceActivity {
 				try
 				{
 					startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse("http://materialdesignicons.com/")));
-				} catch (ActivityNotFoundException anfe)
-				{
-					Context context = getApplicationContext();
-					Toast toast = Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT);
-					toast.show();
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
-				}
-				return false;
-				}
-			});
-		
-		prog = this.findPreference("progressish");
-		prog.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick (Preference preference) {
-
-				try
-				{
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/pnikosis/materialish-progress")));
 				} catch (ActivityNotFoundException anfe)
 				{
 					Context context = getApplicationContext();
