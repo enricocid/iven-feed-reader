@@ -46,9 +46,9 @@ public class InfoActivity extends PreferenceActivity {
 				if (android.os.Build.VERSION.SDK_INT <= 11) {
 					Intent newIntent = new Intent(InfoActivity.this,SplashActivity.class);
 					newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-					finish();
 					startActivity(newIntent);
 					overridePendingTransition(0, 0);
+					finish();
 				}
 				else {
 				final Intent intent = IntentCompat.makeMainActivity(new ComponentName(

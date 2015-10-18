@@ -3,14 +3,11 @@ package com.iven.lfflfeedreader.mainact;
 import android.content.Context;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -25,15 +22,10 @@ public class SplashActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.splash);
 
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (cM.getActiveNetworkInfo() == null) {
-			
-			Snackbar snack = Snackbar.make(findViewById(R.id.snackbarPosition), R.string.internet_alert, Snackbar.LENGTH_LONG);
-            View view = snack.getView();
-            view.setBackgroundColor(Color.rgb(216,69,60)); 
-            snack.show();	
+			setContentView(R.layout.splash_no_internet);
 				   new Handler().postDelayed(new Runnable() {
 					   public void run() {
 				   SplashActivity.this.finish();
@@ -42,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 			        }, 2000);
 
 		} else {
-
+			setContentView(R.layout.splash);
 			new AsyncLoadXMLFeed().execute();
 
 		}

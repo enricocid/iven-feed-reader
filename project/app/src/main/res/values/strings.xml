@@ -8,7 +8,6 @@
     <string name="lib1sum">Source code</string>
     <string name="error">That\'s an error buddy</string>
     <string name="share">Share with</string>
-    <string name="internet_alert">Data network unavailable</string>
     <string name="site_name" translatable="false">lffl</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="changelog" translatable="false">Changelog</string>
