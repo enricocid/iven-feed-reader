@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list android:opacity="opaque"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/material_red_400" />
+    <item android:bottom="@dimen/launchscreens_lffl_icon_bottom">
+        <bitmap android:gravity="center" android:src="@drawable/internet_alert" />
+    </item>
+</layer-list>
