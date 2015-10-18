@@ -16,41 +16,4 @@
     <string name="settings">Opzioni</string>
     <string name="info">Informazioni</string>
     <string name="version">Versione</string>
-
-    <string name="about_body"><![CDATA[
-        Lffl news reader, una app sviluppata da <b>Enrico & Ivan D</b>.<br/>
-        <a href=\'http://forum.xda-developers.com/member.php?u=4884893\'>Ivan (XDA)</a>&nbsp;&nbsp;
-        <a href=\'https://disqus.com/by/enricodchem\'>Enrico (disqus)</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/itcuties/ITCutiesApp-1.0\'>Questa app include minime parti di ITCutiesApp</a>&nbsp;&nbsp;<br/>
-        Un ringraziamento speciale va al creatore ed admin del blog<br/><b>Roberto Ferramosca</b>
-        <a href=\'https://plus.google.com/u/0/100021192050184001006/posts\'>Profilo G+</a>&nbsp;&nbsp;
-    ]]></string>
-        <string name="social_networks"><![CDATA[
-        Segui <b>lffl</b> anche sui social!<br/>
-        <a href=\'https://twitter.com/linuxfreedom\'>Twitter</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://plus.google.com/+lffl/posts\'>Google+</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.youtube.com/user/linuxfreedomforlive\'>YouTube</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.facebook.com/pages/LinuX-Freedom-for-Live/290943601160\'>Facebook</a>&nbsp;&nbsp;
-    ]]></string>
-    <string name="infos"><![CDATA[
-        <b>Librerie usate</b><br/>
-        <a href=\'http://developer.android.com/tools/support-library/index.html\'>Librerie di supporto</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/suwhs/wATL\'>wATL</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/jhy/jsoup\'>Jsoup</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/bumptech/glide\'>Glide</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/jenzz/Android-MaterialPreference\'>Material preference</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/afollestad/material-dialogs\'>Material dialogs</a>&nbsp;&nbsp;</<br/>
-
-        <br/><b>Risorse</b><br/>
-        <a href=\'http://developer.android.com/design\'>Risorse per il design</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://materialdesignicons.com/\'>Icone material</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.materialpalette.com/\'>Material palette</a>&nbsp;&nbsp;</<br/>
-
-        <br/><b>Ringraziamenti</b><br/>
-        <a href=\'https://plus.google.com/u/0/118084639598782231216/posts\'>Tushar Paliwal</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app\'>Ha Duy Trung</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129\'>Lucas Urbas</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://stackoverflow.com\'>Stack overflow</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://guides.codepath.com/android\'>Codepath</a>&nbsp;&nbsp;<br/>
-    ]]></string>
 </resources>

@@ -21,20 +21,11 @@
     <group
         android:id="@+id/menu_bottom"
         android:checkableBehavior="single">
-          <item
-              android:id="@+id/social"
-              android:title="@string/social"
-              android:icon="@drawable/ic_tag_faces"/>
 
         <item
             android:id="@+id/changelog"
             android:icon="@drawable/ic_changelog"
             android:title="@string/changelog"/>
-
-        <item
-            android:id="@+id/developers"
-            android:title="@string/about"
-            android:icon="@drawable/ic_worker"/>
 
         <item
             android:id="@+id/about_option_more"

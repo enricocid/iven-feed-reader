@@ -3,11 +3,9 @@ package com.iven.lfflfeedreader.mainact;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,19 +21,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.GravityEnum;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
 import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
-import com.iven.lfflfeedreader.infoact.AboutDialog;
 import com.iven.lfflfeedreader.infoact.ChangelogDialog;
+import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 
@@ -295,16 +288,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				}
 
 				switch (menuItem.getItemId()) {
-					case R.id.developers:
-						AboutDialog.show(ListActivity.this);
-				}
-
-				switch (menuItem.getItemId()) {
-					case R.id.social:
-						showSocial();
-				}
-
-				switch (menuItem.getItemId()) {
 					case R.id.about_option_more:
 						showInfo();
 				}
@@ -332,34 +315,12 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			}
 
 			private void showInfo() {
-				new MaterialDialog.Builder(ListActivity.this)
-						.title(R.string.info)
-						.content(Html.fromHtml(getString(R.string.infos)))
-						.contentLineSpacing(1.6f)
-						.positiveColor(Color.WHITE)
-						.titleGravity(GravityEnum.CENTER)
-						.titleColorRes(R.color.material_red_400)
-						.backgroundColorRes(R.color.material_blue_grey_800)
-						.dividerColorRes(R.color.lffl8)
-						.btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
-						.positiveText(android.R.string.ok)
-						.show();
-			}
+				int accentColor = ThemeSingleton.get().widgetColor;
+				if (accentColor == 0)
+					accentColor = getResources().getColor(R.color.lffl4);
 
-			private void showSocial() {
-				new MaterialDialog.Builder(ListActivity.this)
-						.title(R.string.social)
-						.content(Html.fromHtml(getString(R.string.social_networks)))
-						.contentLineSpacing(1.6f)
-						.theme(Theme.DARK)
-						.positiveColor(Color.WHITE)
-						.titleGravity(GravityEnum.CENTER)
-						.titleColorRes(R.color.material_red_400)
-						.backgroundColorRes(R.color.material_blue_grey_800)
-						.dividerColorRes(R.color.lffl8)
-						.btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
-						.positiveText(android.R.string.ok)
-						.show();
+				CreditsDialog.create(accentColor)
+						.show(getSupportFragmentManager(), "credits");
 			}
 		}, DRAWER_CLOSE_DELAY_MS);
 	    return true;

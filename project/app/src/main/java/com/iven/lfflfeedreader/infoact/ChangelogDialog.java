@@ -12,9 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.iven.lfflfeedreader.R;
 import android.annotation.SuppressLint;
 
@@ -34,15 +32,13 @@ public class ChangelogDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View customView;
         try {
-            customView = LayoutInflater.from(getActivity()).inflate(R.layout.changelog_layout, null);
+            customView = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_layout, null);
         } catch (InflateException e) {
             throw new IllegalStateException("This device does not support Web Views.");
         }
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
 
-                        .theme(Theme.DARK)
                         .positiveColorRes(R.color.material_red_400)
-                        .titleGravity(GravityEnum.CENTER)
                         .titleColorRes(R.color.material_red_400)
                         .dividerColorRes(R.color.lffl8)
                         .btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
@@ -53,7 +49,7 @@ public class ChangelogDialog extends DialogFragment {
                 .backgroundColorRes(R.color.material_blue_grey_800)
                 .build();
 
-        final WebView webView = (WebView) customView.findViewById(R.id.changelog);
+        final WebView webView = (WebView) customView.findViewById(R.id.dialog);
         WebSettings websettings = webView.getSettings();
         websettings.setDefaultTextEncodingName("utf-8");
         webView.setBackgroundColor(Color.TRANSPARENT);

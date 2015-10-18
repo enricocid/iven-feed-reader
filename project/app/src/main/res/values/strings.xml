@@ -18,47 +18,7 @@
     <string name="more_read">Continue reading ...</string>
     <string name="btn_share">Share</string>
     <string name="themesum">The app needs to be restarted</string>
-    <string name="social" translatable="false">Social networks</string>
-    <string name="about" translatable="false">About devs</string>
     <string name="settings">Options</string>
     <string name="version">Version</string>
     <string name="info">Informations</string>
-    <string name="about_body"><![CDATA[
-        Lffl news reader, an app designed by <b>Enrico & Ivan D</b>.<br/>
-        <a href=\'http://forum.xda-developers.com/member.php?u=4884893\'>Ivan\'s XDA</a>&nbsp;&nbsp;
-        <a href=\'https://disqus.com/by/enricodchem\'>Enrico\'s disqus</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/itcuties/ITCutiesApp-1.0\'>This app includes few portions of ITCutiesApp</a>&nbsp;&nbsp;<br/>
-        Special thanks goes to the blog\'s creator and admin<br/><b>Roberto Ferramosca</b>
-        <a href=\'https://plus.google.com/u/0/100021192050184001006/posts\'>G+ page</a>&nbsp;&nbsp;
-    ]]></string>
-
-    <string name="social_networks"><![CDATA[
-        Follow <b>lffl</b> also on social!<br/>
-        <a href=\'https://twitter.com/linuxfreedom\'>Twitter</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://plus.google.com/+lffl/posts\'>Google+</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.youtube.com/user/linuxfreedomforlive\'>YouTube</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.facebook.com/pages/LinuX-Freedom-for-Live/290943601160\'>Facebook</a>&nbsp;&nbsp;
-    ]]></string>
-
-    <string name="infos"><![CDATA[
-        <b>Used libraries</b><br/>
-        <a href=\'http://developer.android.com/tools/support-library/index.html\'>Support libraries</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/suwhs/wATL\'>wATL</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/jhy/jsoup\'>Jsoup</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/bumptech/glide\'>Glide</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/jenzz/Android-MaterialPreference\'>Material preference</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://github.com/afollestad/material-dialogs\'>Material dialogs</a>&nbsp;&nbsp;</<br/>
-
-        <br/><b>Resources</b><br/>
-        <a href=\'http://developer.android.com/design\'>Design resources</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://materialdesignicons.com/\'>Material icons</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://www.materialpalette.com/\'>Material palette</a>&nbsp;&nbsp;</<br/>
-
-        <br/><b>Credits</b><br/>
-        <a href=\'https://plus.google.com/u/0/118084639598782231216/posts\'>Tushar Paliwal</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app\'>Ha Duy Trung</a>&nbsp;&nbsp;<br/>
-        <a href=\'https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129\'>Lucas Urbas</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://stackoverflow.com\'>Stack overflow</a>&nbsp;&nbsp;<br/>
-        <a href=\'http://guides.codepath.com/android\'>Codepath</a>&nbsp;&nbsp;<br/>
-    ]]></string>
 </resources>
