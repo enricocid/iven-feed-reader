@@ -8,11 +8,9 @@
     <string name="chooser_title">Scegli il browser &#8230;</string>
     <string name="moreopts">Opzioni aggiuntive</string>
     <string name="pref_theme_title">Tema app</string>
-    <string name="easter">Cosa ti aspettavi?!?? un easter egg?</string>
-    <string name="more_read">Continue a leggere ...</string>
+    <string name="more_read">Continua a leggere ...</string>
     <string name="btn_share">Condividi</string>
     <string name="themesum">Necessita riavvio della app</string>
     <string name="settings">Opzioni</string>
     <string name="info">Informazioni</string>
-    <string name="version">Versione</string>
 </resources>

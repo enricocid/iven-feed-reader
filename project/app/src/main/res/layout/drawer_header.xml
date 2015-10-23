@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/drawer_height"
     android:background="@color/lffl1"
-    android:id="@+id/head"
     android:orientation="vertical">
 
   <TextView
@@ -15,17 +14,4 @@
     android:gravity="center"
     android:textColor="@android:color/white"
     android:textAppearance="?android:attr/textAppearanceLargeInverse"/>
-
-    <TextView
-        android:id="@+id/version"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="14sp"
-        android:layout_marginBottom="@dimen/margin_text"
-        android:layout_marginLeft="@dimen/margin_text"
-        android:layout_gravity="bottom|left"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-
 </FrameLayout>

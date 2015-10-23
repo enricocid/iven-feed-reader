@@ -13,11 +13,9 @@
     <string name="changelog" translatable="false">Changelog</string>
     <string name="pref_theme_title">App theme</string>
     <string name="moreopts">Additional options</string>
-    <string name="easter">What did You expect?!?? a easter egg?</string>
     <string name="more_read">Continue reading ...</string>
     <string name="btn_share">Share</string>
     <string name="themesum">The app needs to be restarted</string>
     <string name="settings">Options</string>
-    <string name="version">Version</string>
     <string name="info">Informations</string>
 </resources>

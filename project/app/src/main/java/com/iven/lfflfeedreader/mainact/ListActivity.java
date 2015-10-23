@@ -6,24 +6,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
-import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
@@ -46,7 +41,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	  private static final String NAV_ITEM_ID = "navItemId";
 	  private final Handler mDrawerActionHandler = new Handler();
 	  private DrawerLayout mDrawerLayout;
-	  private FrameLayout lfflhead;
 	  private ActionBarDrawerToggle mDrawerToggle;
 	  private int mNavItemId;
 
@@ -81,15 +75,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	         navigationView.setNavigationItemSelectedListener(this);
 	      
 	         navigationView.getMenu().findItem(mNavItemId).setChecked(true);
-	         
-	         lfflhead = (FrameLayout) findViewById(R.id.head);
-	         lfflhead.setOnLongClickListener(new OnLongClickListener() {
-				 @Override
-				 public boolean onLongClick(View v) {
-					 showTorvalds();
-					 return true;
-				 }
-			 });
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
@@ -100,18 +85,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             R.string.app_name);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
-
-		String versionName;
-
-			try {
-				versionName = BuildConfig.VERSION_NAME;
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
-
-		TextView versiontext = (TextView) findViewById(R.id.version);
-
-		versiontext.setText(getString(R.string.version) + " " + versionName);
 
         toolbar.setOnMenuItemClickListener(
 				new Toolbar.OnMenuItemClickListener() {
@@ -165,15 +138,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 			}
 		});
-
-	}
-
-	private void showTorvalds() {
-
-		Context context = getApplicationContext();
-		Toast toast = Toast.makeText(context, R.string.easter, Toast.LENGTH_SHORT);
-	    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-	    toast.show();
 
 	}
 
@@ -295,7 +259,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				switch (menuItem.getItemId()) {
 					case R.id.mail:
 						intent = new Intent(android.content.Intent.ACTION_SEND);
-						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivandorte@gmail.com"});
+						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"lfflfeedreader@hotmail.com"});
 						intent.setType("message/rfc822");
 						if (intent != null) {
 							startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
