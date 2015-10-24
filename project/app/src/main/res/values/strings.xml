@@ -20,4 +20,7 @@
     <string name="info">Informations</string>
     <string name="Reading">Use webview</string>
     <string name="Readingsum">Webview will be used to load articles</string>
+    <string name="JS_script">Enable javascript</string>
+    <string name="JS_scriptsum">Enable javascript to show multimedia contents when on webview</string>
+
 </resources>

@@ -15,4 +15,6 @@
     <string name="info">Informazioni</string>
     <string name="Reading">Usa webview</string>
     <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
+    <string name="JS_script">Abilita javascript</string>
+    <string name="JS_scriptsum">Abilita javascript per mostrare contenuti multimediali quando usi la webview</string>
 </resources>

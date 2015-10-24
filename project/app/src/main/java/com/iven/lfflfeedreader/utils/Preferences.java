@@ -3,6 +3,7 @@ package com.iven.lfflfeedreader.utils;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.view.ContextThemeWrapper;
+
 import com.iven.lfflfeedreader.R;
 
 public class Preferences {
@@ -10,6 +11,11 @@ public class Preferences {
     public static boolean WebViewEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("WebViewLoad", false);
+    }
+
+    public static boolean JSEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("JavaScriptLoad", false);
     }
 
     public static boolean darkThemeEnabled(Context context) {

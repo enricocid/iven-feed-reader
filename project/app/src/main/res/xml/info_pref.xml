@@ -17,4 +17,12 @@
         android:summary="@string/Readingsum"
         android:icon="?attr/webview_icon"
         android:defaultValue="false" />
+
+    <com.jenzz.materialpreference.CheckBoxPreference
+        android:key="JavaScriptLoad"
+        android:title="@string/JS_script"
+        android:summary="@string/JS_scriptsum"
+        android:icon="?attr/js_icon"
+        android:defaultValue="false" />
+
 </PreferenceScreen>

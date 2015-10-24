@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16sp">
+    android:layout_margin="16sp"
+    android:background="?attr/theme_background">
 
     <ScrollView
         android:id="@+id/sv_wb"

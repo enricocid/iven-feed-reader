@@ -46,14 +46,13 @@ public class ArticleActivity extends AppCompatActivity {
 	    setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
 				overridePendingTransition(0, 0);
-            }
+			}
 		});
-
-	}
+		}
 
 	private class MyPagerAdapter extends FragmentStatePagerAdapter {
 

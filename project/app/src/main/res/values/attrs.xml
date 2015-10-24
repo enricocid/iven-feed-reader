@@ -6,6 +6,7 @@
     <attr name="theme_background" format="color"/>
     <attr name="theme_icon" format="reference"/>
     <attr name="webview_icon" format="reference"/>
+    <attr name="js_icon" format="reference"/>
     <attr name="text_title_theme" format="reference"/>
     <attr name="text_date_theme" format="reference"/>
     <attr name="navview_text" format="reference"/>

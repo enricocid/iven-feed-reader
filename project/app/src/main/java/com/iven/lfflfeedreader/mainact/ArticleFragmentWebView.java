@@ -31,7 +31,6 @@ public class ArticleFragmentWebView extends Fragment {
 
 		fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
-
     }
 
 	@Override
@@ -46,7 +45,7 @@ public class ArticleFragmentWebView extends Fragment {
 		ScrollView scroll = (ScrollView) view.findViewById(R.id.sv_wb);
 		scroll.setSmoothScrollingEnabled(true);
 
-		WebSettings ws = wb.getSettings();
+		final WebSettings ws = wb.getSettings();
 		ws.setDefaultTextEncodingName("utf-8");
 		wb.setBackgroundColor(Color.TRANSPARENT);
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
@@ -113,6 +112,9 @@ public class ArticleFragmentWebView extends Fragment {
                 return true;
             }
         });
+        if (Preferences.JSEnabled(getContext())) {
+            ws.setJavaScriptEnabled(true);
+        }
 		return view;
-	}
-}
+    }
+    }

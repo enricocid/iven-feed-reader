@@ -49,6 +49,7 @@
         <item name="theme_background">@android:color/white</item>
         <item name="theme_icon">@drawable/ic_invert_colors</item>
         <item name="webview_icon">@drawable/ic_webview</item>
+        <item name="js_icon">@drawable/ic_js</item>
     </style>
 
     <style name="Theme_lffl_info_dark" parent="Theme.AppCompat.NoActionBar">
@@ -65,6 +66,7 @@
         <item name="theme_background">@color/lffl14</item>
         <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
+        <item name="js_icon">@drawable/ic_js_dark</item>
     </style>
 
         <style name="Theme_lffl_article" parent="Theme.AppCompat.Light.NoActionBar">
@@ -78,6 +80,7 @@
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@android:color/white</item>
          </style>
 
     <style name="Theme_lffl_article_dark" parent="Theme.AppCompat.NoActionBar">
@@ -92,6 +95,7 @@
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@color/lffl14</item>
     </style>
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">

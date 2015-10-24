@@ -3,6 +3,7 @@ package com.iven.lfflfeedreader.infoact;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.mainact.SplashActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
+import com.jenzz.materialpreference.CheckBoxPreference;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceScreen;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.IntentCompat;
@@ -21,7 +23,7 @@ import android.view.MenuItem;
 
 public class InfoActivity extends PreferenceActivity {
 
-	private SharedPreferences.OnSharedPreferenceChangeListener mListenerTheme;
+	private SharedPreferences.OnSharedPreferenceChangeListener mListenerOptions;
 
 	private AppCompatDelegate mDelegate;
 
@@ -40,29 +42,40 @@ public class InfoActivity extends PreferenceActivity {
 
 		context = getBaseContext();
 
-		mListenerTheme = new SharedPreferences.OnSharedPreferenceChangeListener() {
-			@Override
-			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String id) {
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
+        CheckBoxPreference js = (CheckBoxPreference) findPreference("JavaScriptLoad");
 
-                if (android.os.Build.VERSION.SDK_INT <= 11) {
-					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
-					newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-					startActivity(newIntent);
-					overridePendingTransition(0, 0);
-					finish();
-				}
-				else {
+        if (Preferences.WebViewEnabled(context)) {
+            preferenceScreen.addPreference(js);
+        }
+        else {
+            preferenceScreen.removePreference(js);
+        }
+
+		mListenerOptions = new SharedPreferences.OnSharedPreferenceChangeListener() {
+			@Override
+			public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
+
+                if (key.equals("Theme")) {
+                    Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
+                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(newIntent);
+                    overridePendingTransition(0, 0);
+                    finish();
+                }
+                else if (key.equals("WebViewLoad")) {
 				final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
 						InfoActivity.this, SplashActivity.class));
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-					finish();
 					startActivity(intent);
 				overridePendingTransition(0, 0);
-                }
+                    finish();
 
-            }
+                }
+                }
 		};
     }
+
 
 
 	@Override
@@ -101,7 +114,7 @@ public class InfoActivity extends PreferenceActivity {
 	@Override
 	        public void onResume() {
 		                super.onResume();
-		getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerTheme);
+		getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerOptions);
 	}
 
 	@Override
@@ -119,7 +132,7 @@ public class InfoActivity extends PreferenceActivity {
 	@Override
     public void onPause() {
 		super.onPause();
-		getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerTheme);
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerOptions);
 	}
 
     private void setToolbar() {

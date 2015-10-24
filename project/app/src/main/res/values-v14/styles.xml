@@ -13,6 +13,7 @@
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@android:color/white</item>
          </style>
 
     <style name="Theme_lffl_article_dark" parent="Theme.AppCompat.NoActionBar">
@@ -21,13 +22,13 @@
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/lffl3</item>
         <item name="colorPrimary">@color/lffl2</item>
-        <item name="android:background">@color/lffl14</item>
         <item name="colorAccent">@color/lffl2</item>
         <item name="title_color">@color/lffl10</item>
         <item name="article_text_color">@color/article_text_light_grey</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+        <item name="theme_background">@color/lffl14</item>
     </style>
 
 </resources>
