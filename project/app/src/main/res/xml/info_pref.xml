@@ -11,4 +11,10 @@
         android:icon="?attr/theme_icon"
         android:defaultValue="false" />
 
+    <com.jenzz.materialpreference.SwitchPreference
+        android:key="WebViewLoad"
+        android:title="@string/Reading"
+        android:summary="@string/Readingsum"
+        android:icon="?attr/webview_icon"
+        android:defaultValue="false" />
 </PreferenceScreen>

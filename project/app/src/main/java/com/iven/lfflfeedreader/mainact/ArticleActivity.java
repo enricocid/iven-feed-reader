@@ -2,6 +2,7 @@ package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
+import com.iven.lfflfeedreader.utils.Preferences;
 
 @SuppressLint("InlinedApi")
 public class ArticleActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class ArticleActivity extends AppCompatActivity {
 	int pos;
 	private ViewPager pager;
 	private PagerAdapter mPagerAdapter;
-
+	Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class ArticleActivity extends AppCompatActivity {
 
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		pos = getIntent().getExtras().getInt("pos");
-
+		context = getBaseContext();
 		mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
 		pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(mPagerAdapter);
@@ -63,16 +65,29 @@ public class ArticleActivity extends AppCompatActivity {
 						@Override
 						public Fragment getItem(int position) {
 
-							ArticleFragment frag = new ArticleFragment();
 
-							Bundle bundle = new Bundle();
-							bundle.putSerializable("feed", feed);
-							bundle.putInt("pos", position);
-							frag.setArguments(bundle);
 
-							return frag;
+							if (Preferences.WebViewEnabled(context)) {
+								ArticleFragmentWebView fragwb = new ArticleFragmentWebView();
+								Bundle bundle = new Bundle();
+								bundle.putSerializable("feed", feed);
+								bundle.putInt("pos", position);
+								fragwb.setArguments(bundle);
+
+								return fragwb;
+							} else {
+								ArticleFragment frag = new ArticleFragment();
+								Bundle bundle = new Bundle();
+								bundle.putSerializable("feed", feed);
+								bundle.putInt("pos", position);
+								frag.setArguments(bundle);
+
+								return frag;
 
 						}
+
+						}
+
 		@Override
 		public int getCount() {
 			return feed.getItemCount();

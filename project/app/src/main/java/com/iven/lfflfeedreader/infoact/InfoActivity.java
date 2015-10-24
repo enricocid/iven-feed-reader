@@ -43,8 +43,9 @@ public class InfoActivity extends PreferenceActivity {
 		mListenerTheme = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String id) {
-				if (android.os.Build.VERSION.SDK_INT <= 11) {
-					Intent newIntent = new Intent(InfoActivity.this,SplashActivity.class);
+
+                if (android.os.Build.VERSION.SDK_INT <= 11) {
+					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
 					newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
 					startActivity(newIntent);
 					overridePendingTransition(0, 0);
@@ -57,11 +58,12 @@ public class InfoActivity extends PreferenceActivity {
 					finish();
 					startActivity(intent);
 				overridePendingTransition(0, 0);
+                }
 
-				}
-			}
+            }
 		};
     }
+
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
@@ -80,9 +82,9 @@ public class InfoActivity extends PreferenceActivity {
 		if (item.getItemId() == android.R.id.home) {
 			onBackPressed();
 			return true;
-		}
+        }
 
-		return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -104,7 +106,7 @@ public class InfoActivity extends PreferenceActivity {
 
 	@Override
 	protected void onStop() {
-		super.onStop();
+        super.onStop();
 		getDelegate().onStop();
 	}
 
@@ -115,15 +117,16 @@ public class InfoActivity extends PreferenceActivity {
 	}
 
 	@Override
-	        public void onPause() {
+    public void onPause() {
 		super.onPause();
 		getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerTheme);
 	}
-	private void setToolbar() {
+
+    private void setToolbar() {
 		setContentView(R.layout.activity_pref);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
-				ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
+                ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 	}
 
 	private ActionBar getSupportActionBar() {

@@ -7,6 +7,11 @@ import com.iven.lfflfeedreader.R;
 
 public class Preferences {
 
+    public static boolean WebViewEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("WebViewLoad", false);
+    }
+
     public static boolean darkThemeEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Theme", false);
@@ -31,5 +36,6 @@ public class Preferences {
             contextThemeWrapper.setTheme(R.style.Theme_lffl_info_dark);
         }
 
+        }
+
     }
-}

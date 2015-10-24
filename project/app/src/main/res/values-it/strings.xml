@@ -13,4 +13,6 @@
     <string name="themesum">Necessita riavvio della app</string>
     <string name="settings">Opzioni</string>
     <string name="info">Informazioni</string>
+    <string name="Reading">Usa webview</string>
+    <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
 </resources>

@@ -18,4 +18,6 @@
     <string name="themesum">The app needs to be restarted</string>
     <string name="settings">Options</string>
     <string name="info">Informations</string>
+    <string name="Reading">Use webview</string>
+    <string name="Readingsum">Webview will be used to load articles</string>
 </resources>

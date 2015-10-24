@@ -68,9 +68,11 @@ public class ArticleFragment extends Fragment {
 
 		String base2 = Jsoup.parse(fFeed.getItem(fPos).getDescription()).text().replace("Continua a leggere...", "");
 
+		String base2format = base2.replace("Continue reading...", "");
+
 		TextViewEx articletext = (TextViewEx) rootView.findViewById(R.id.webv);
 
-		articletext.setText(base2);
+		articletext.setText(base2format);
 
 			Button continue_reading = (Button) rootView.findViewById(R.id.button);
 
