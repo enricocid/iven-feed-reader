@@ -114,7 +114,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				});
 
 			if (Preferences.navTintEnabled(getBaseContext())) {
-				getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl5));
+				getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl4));
 				}
 
 		feedURL = new SplashActivity().LFFLFEEDURL;

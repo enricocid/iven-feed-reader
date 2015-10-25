@@ -54,7 +54,7 @@ public class InfoActivity extends PreferenceActivity {
         }
 
         if (Preferences.navTintEnabled(getBaseContext())) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl7));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl6));
         }
 
         String version = BuildConfig.VERSION_NAME;
