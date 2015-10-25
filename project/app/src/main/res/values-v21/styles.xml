@@ -35,7 +35,6 @@
         <item name="text_date_theme">@color/text_date_dark</item>
         <item name="navview_text">@drawable/state_list_dark</item>
         <item name="popup_theme">@style/Theme.Popup.Dark</item>
-
     </style>
 
 </resources>

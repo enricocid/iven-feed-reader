@@ -17,4 +17,9 @@
     <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
     <string name="JS_script">Abilita javascript</string>
     <string name="JS_scriptsum">Abilita javascript per mostrare contenuti multimediali quando usi la webview</string>
+    <string name="build_number">Versione app</string>
+    <string name="nav_color">Abilita tinta navbar</string>
+    <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
+    <string name="immersive_mode">Abilita modalità immersive</string>
+    <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
 </resources>

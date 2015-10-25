@@ -22,5 +22,9 @@
     <string name="Readingsum">Webview will be used to load articles</string>
     <string name="JS_script">Enable javascript</string>
     <string name="JS_scriptsum">Enable javascript to show multimedia contents when on webview</string>
-
+    <string name="build_number">App\'s version</string>
+    <string name="nav_color">Enable navbar tint</string>
+    <string name="nav_color_sum">This will enable navigation bar tinting</string>
+    <string name="immersive_mode">Enable immersive mode</string>
+    <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
 </resources>
