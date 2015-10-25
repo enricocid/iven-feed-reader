@@ -230,7 +230,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 			return listItem;
 		}
-
 	}
 
 	@Override

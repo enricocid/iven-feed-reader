@@ -156,7 +156,7 @@ public class InfoActivity extends PreferenceActivity {
 		setContentView(R.layout.activity_pref);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME |
-                ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
+				ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 	}
 
 	private ActionBar getSupportActionBar() {

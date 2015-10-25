@@ -41,7 +41,17 @@ public class Preferences {
 
             contextThemeWrapper.setTheme(R.style.Theme_lffl_info_dark);
         }
+    }
+        public static boolean navTintEnabled(Context context) {
+            return PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("Navibar", false);
 
         }
+
+    public static boolean immersiveEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("Immerseme", false);
+
+    }
 
     }

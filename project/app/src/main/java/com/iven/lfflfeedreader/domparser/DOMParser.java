@@ -47,7 +47,7 @@ public class DOMParser {
 				NodeList nchild = currentNode.getChildNodes();
 				int clength = nchild.getLength();
 
-				for (int j = 1; j < clength; j = j + 1) {
+				for (int j = 1; j < clength; j = j+1) {
 
 					Node thisNode = nchild.item(j);
 					String theString = null;

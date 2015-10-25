@@ -44,6 +44,6 @@
         android:key="build_number"
         style="?android:preferenceInformationStyle"
         android:title="@string/build_number"
-        android:summary=""/>
+        android:icon="?attr/version_icon"/>
 
 </PreferenceScreen>

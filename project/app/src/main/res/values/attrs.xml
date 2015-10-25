@@ -11,5 +11,7 @@
     <attr name="text_date_theme" format="reference"/>
     <attr name="navview_text" format="reference"/>
     <attr name="popup_theme" format="reference"/>
-
+    <attr name="navtint_icon" format="reference"/>
+    <attr name="immersive_icon" format="reference"/>
+    <attr name="version_icon" format="reference"/>
 </resources>

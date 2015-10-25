@@ -31,5 +31,6 @@
             android:id="@+id/about_option_more"
             android:icon="@drawable/action_about"
             android:title="@string/more"/>
+
   </group>
 </menu>

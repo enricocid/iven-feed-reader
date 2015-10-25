@@ -11,7 +11,7 @@ public class RSSFeed implements Serializable {
 	private List<RSSItem> _itemlist;
 
 	RSSFeed() {
-		_itemlist = new Vector<RSSItem>(0);
+		_itemlist = new Vector<>(0);
 	}
 
 	void addItem(RSSItem item) {

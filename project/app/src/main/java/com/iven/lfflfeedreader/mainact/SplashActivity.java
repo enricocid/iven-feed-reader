@@ -17,7 +17,7 @@ import com.iven.lfflfeedreader.utils.Preferences;
 public class SplashActivity extends AppCompatActivity {
 
     String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
-	RSSFeed lfflfeed;
+    RSSFeed lfflfeed;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +31,26 @@ public class SplashActivity extends AppCompatActivity {
 		if (cM.getActiveNetworkInfo() == null) {
 			setContentView(R.layout.splash_no_internet);
 				   new Handler().postDelayed(new Runnable() {
-					   public void run() {
-				   SplashActivity.this.finish();
+                       public void run() {
+                           SplashActivity.this.finish();
 
-					   }
-			        }, 2000);
+                       }
+                   }, 2000);
 
 		} else {
 			setContentView(R.layout.splash);
 			new AsyncLoadXMLFeed().execute();
 
 		}
-
-	}
+    }
 
 	private void startLisActivity(RSSFeed lfflfeed) {
 
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("feed", lfflfeed);
-
 		Intent i = new Intent(SplashActivity.this, ListActivity.class);
-		i.putExtras(bundle);
-		startActivity(i);
+        i.putExtras(bundle);
+        startActivity(i);
         finish();
 
 	}
@@ -64,19 +62,15 @@ public class SplashActivity extends AppCompatActivity {
 
 			DOMParser Do = new DOMParser();
 			lfflfeed = Do.parseXml(LFFLFEEDURL);
-			
-			return null;
+
+            return null;
 
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-
 			startLisActivity(lfflfeed);
-		}
-
+        }
 	}
-
-
 }
