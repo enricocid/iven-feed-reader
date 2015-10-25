@@ -1,11 +1,9 @@
 package com.iven.lfflfeedreader.mainact;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -127,7 +125,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		
 		list = (ListView) findViewById(android.R.id.list);
 		adapter = new CustomListAdapter(this);
+
 		list.setAdapter(adapter);
+
 		list.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -167,7 +167,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 					public void run() {
 						if (feed != null && feed.getItemCount() > 0) {
 							adapter.notifyDataSetChanged();
-							
 							swiperefresh.setRefreshing(false);
 						}
 					}
@@ -216,7 +215,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			View listItem = convertView;
 			int pos = position;
 			if (listItem == null) {
-				listItem = layoutInflater.inflate(R.layout.items, null);
+				listItem = layoutInflater.inflate(R.layout.items, parent, false);
 			}
 
 			ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
@@ -227,7 +226,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 							.into(lfflImage);
 
 			lfflTitle.setText(feed.getItem(pos).getTitle());
-			pubDate.setText(feed.getItem(pos).getDate());
+            pubDate.setText(feed.getItem(pos).getDate());
 
 			return listItem;
 		}
