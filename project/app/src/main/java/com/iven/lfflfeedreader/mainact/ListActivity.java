@@ -1,9 +1,11 @@
 package com.iven.lfflfeedreader.mainact;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -50,6 +52,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	String feedURL;
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,6 +113,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 					}
 				});
 
+			if (Preferences.navTintEnabled(getBaseContext())) {
+				getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl5));
+				}
+
 		feedURL = new SplashActivity().LFFLFEEDURL;
 
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
@@ -125,7 +132,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
+									long arg3) {
 				int pos = arg2;
 
 				Bundle bundle = new Bundle();
@@ -256,7 +263,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 						showInfo();
 				}
 
-				switch (menuItem.getItemId()) {
+                switch (menuItem.getItemId()) {
 					case R.id.mail:
 						intent = new Intent(android.content.Intent.ACTION_SEND);
 						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"lfflfeedreader@hotmail.com"});

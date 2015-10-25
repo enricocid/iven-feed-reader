@@ -41,6 +41,10 @@ public class ArticleActivity extends AppCompatActivity {
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
 
+		if (Preferences.navTintEnabled(this)) {
+			getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl3));
+		}
+
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 	    setSupportActionBar(toolbar);

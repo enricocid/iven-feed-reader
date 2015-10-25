@@ -53,6 +53,10 @@ public class InfoActivity extends PreferenceActivity {
             preferenceScreen.removePreference(js);
         }
 
+        if (Preferences.navTintEnabled(getBaseContext())) {
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl7));
+        }
+
         String version = BuildConfig.VERSION_NAME;
 
         com.jenzz.materialpreference.Preference preferenceversion = (com.jenzz.materialpreference.Preference) findPreference("build_number");
@@ -80,6 +84,13 @@ public class InfoActivity extends PreferenceActivity {
                     finish();
 
                 }
+				else if (key.equals("Navibar")) {
+					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
+					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+					startActivity(newIntent);
+					overridePendingTransition(0, 0);
+					finish();
+				}
                 }
 		};
     }
