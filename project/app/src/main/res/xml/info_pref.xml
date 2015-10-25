@@ -25,4 +25,10 @@
         android:icon="?attr/js_icon"
         android:defaultValue="false" />
 
+    <com.jenzz.materialpreference.Preference
+        android:key="build_number"
+        style="?android:preferenceInformationStyle"
+        android:title="@string/build_number"
+        android:summary=""/>
+
 </PreferenceScreen>

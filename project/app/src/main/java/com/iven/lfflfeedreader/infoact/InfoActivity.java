@@ -1,5 +1,6 @@
 package com.iven.lfflfeedreader.infoact;
 
+import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.mainact.SplashActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
@@ -52,6 +53,13 @@ public class InfoActivity extends PreferenceActivity {
             preferenceScreen.removePreference(js);
         }
 
+        String version = BuildConfig.VERSION_NAME;
+
+        com.jenzz.materialpreference.Preference preferenceversion = (com.jenzz.materialpreference.Preference) findPreference("build_number");
+
+        preferenceversion.setSummary(version);
+		preferenceversion.setSelectable(false);
+
 		mListenerOptions = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
@@ -75,8 +83,6 @@ public class InfoActivity extends PreferenceActivity {
                 }
 		};
     }
-
-
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
