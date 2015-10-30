@@ -40,6 +40,13 @@
         android:icon="?attr/js_icon"
         android:defaultValue="false" />
 
+    <com.jenzz.materialpreference.SwitchPreference
+        android:key="ForceEnglish"
+        android:title="@string/en_enable"
+        android:summary="@string/en_enabled"
+        android:icon="?attr/english_icon"
+        android:defaultValue="false" />
+
     <com.jenzz.materialpreference.Preference
         android:key="build_number"
         style="?android:preferenceInformationStyle"

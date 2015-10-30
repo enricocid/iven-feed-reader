@@ -1,6 +1,10 @@
 package com.iven.lfflfeedreader.domparser;
 
+import android.content.Context;
 import android.content.res.Resources;
+
+import com.iven.lfflfeedreader.mainact.SplashActivity;
+import com.iven.lfflfeedreader.utils.Preferences;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +25,7 @@ import org.xml.sax.InputSource;
 public class DOMParser {
 
 	private RSSFeed _feed = new RSSFeed();
-
+    Context applicationContext = SplashActivity.getContextOfApplication();
 	public RSSFeed parseXml(String xml) {
 
 		URL url = null;
@@ -90,6 +94,14 @@ public class DOMParser {
 							String formatedDate = theString.replace(" +0000", "");
 							Locale loc = Resources.getSystem().getConfiguration().locale;
 
+							if (Preferences.englishEnabled(applicationContext)) {
+                                SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
+                                Date dateObj = curFormater.parse(formatedDate);
+                                SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  Locale.ENGLISH);
+                                String newDateStr = postFormater.format(dateObj);
+                                _item.setDate(newDateStr);
+                            } else {
+
                             SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
                             Date dateObj = curFormater.parse(formatedDate);
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
@@ -97,7 +109,7 @@ public class DOMParser {
                             String newDateStr = postFormater.format(dateObj);
 
                             _item.setDate(newDateStr);
-							
+                            }
 						}
 					}
 				}

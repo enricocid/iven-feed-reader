@@ -22,4 +22,6 @@
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
     <string name="immersive_mode">Abilita modalità immersive</string>
     <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
+    <string name="en_enable">Forza lingua Inglese</string>
+    <string name="en_enabled">Forza la lingua inglese ignorando quella di sistema</string>
 </resources>

@@ -27,4 +27,6 @@
     <string name="nav_color_sum">This will enable navigation bar tinting</string>
     <string name="immersive_mode">Enable immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
+    <string name="en_enable">Force English language</string>
+    <string name="en_enabled">It forces English language overriding the system one</string>
 </resources>

@@ -53,6 +53,7 @@
         <item name="navtint_icon">@drawable/ic_tint</item>
         <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="version_icon">@drawable/ic_version</item>
+        <item name="english_icon">@drawable/ic_english</item>
     </style>
 
     <style name="Theme_lffl_info_dark" parent="Theme.AppCompat.NoActionBar">
@@ -73,6 +74,7 @@
         <item name="navtint_icon">@drawable/ic_tint_dark</item>
         <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
         <item name="version_icon">@drawable/ic_version_dark</item>
+        <item name="english_icon">@drawable/ic_english_dark</item>
     </style>
 
         <style name="Theme_lffl_article" parent="Theme.AppCompat.Light.NoActionBar">
