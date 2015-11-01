@@ -5,7 +5,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.IntentCompat;
@@ -139,23 +138,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("feed", feed);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    Intent intent = new Intent(ListActivity.this,
+                Intent intent = new Intent(ListActivity.this,
                             ArticleActivity.class);
                     intent.putExtras(bundle);
                     intent.putExtra("pos", pos);
                     startActivity(intent);
-                } else {
-
-                    Intent intent = new Intent(ListActivity.this,
-						ArticleActivity_preKK.class);
-				intent.putExtras(bundle);
-				intent.putExtra("pos", pos);
-				startActivity(intent);
                 }
-			}
 		});
-
 	}
 
 	public void rate(View view) {
@@ -289,7 +278,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         }
                         switch (menuItem.getItemId()) {
                             case R.id.source_code:
-                                Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
+                                Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/iven-feed-reader"));
                                 startActivity(ii4);
                         }
 
