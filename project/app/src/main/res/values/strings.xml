@@ -27,6 +27,8 @@
     <string name="nav_color_sum">This will enable navigation bar tinting</string>
     <string name="immersive_mode">Enable immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
+    <string name="no_images">Disable images</string>
+    <string name="no_images_sum">Disable images visualisation on home activity</string>
     <!-- moar feeds -->
     <string name="moar" translatable="false">Moar Android feeds</string>
     <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>

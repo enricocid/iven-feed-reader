@@ -116,8 +116,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				});
 
 			if (Preferences.navTintEnabled(getBaseContext())) {
-				getWindow().setNavigationBarColor(getResources().getColor(R.color.iven4));
-				}
+                getWindow().setNavigationBarColor(getResources().getColor(R.color.iven4));
+            }
 
             feed = (RSSFeed) getIntent().getExtras().get("feed");
 
@@ -246,9 +246,16 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
             } else {
 
-                Glide.with(activity).load(feed.getItem(pos).getImage())
-                        .asBitmap()
-                        .into(lfflImage);
+                if (Preferences.imagesRemoved(getBaseContext())) {
+                    LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
+                    linearLayout.removeAllViewsInLayout();
+
+                } else {
+                    Glide.with(activity).load(feed.getItem(pos).getImage())
+                            .asBitmap()
+                            .into(lfflImage);
+                }
+
             }
 
             lfflTitle.setText(feed.getItem(pos).getTitle());

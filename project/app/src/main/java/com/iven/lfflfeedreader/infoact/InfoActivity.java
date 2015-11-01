@@ -91,6 +91,13 @@ public class InfoActivity extends PreferenceActivity {
 					overridePendingTransition(0, 0);
 					finish();
 				}
+				else if (key.equals("images")) {
+					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
+					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+					startActivity(newIntent);
+					overridePendingTransition(0, 0);
+					finish();
+				}
             }
 		};
     }
