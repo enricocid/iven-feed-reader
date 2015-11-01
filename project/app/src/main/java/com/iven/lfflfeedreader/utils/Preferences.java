@@ -18,11 +18,6 @@ public class Preferences {
                 .getBoolean("JavaScriptLoad", false);
     }
 
-    public static boolean englishEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("ForceEnglish", false);
-    }
-
     public static boolean darkThemeEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Theme", false);

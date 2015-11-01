@@ -3,7 +3,6 @@ package com.iven.lfflfeedreader.mainact;
 import android.content.Context;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,11 +14,7 @@ import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
 
-import java.util.Locale;
-
 public class SplashActivity extends AppCompatActivity {
-
-	public static Context contextOfApplication;
 
     String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
     RSSFeed lfflfeed;
@@ -28,20 +23,8 @@ public class SplashActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		contextOfApplication = getApplicationContext();
-
 		if (Preferences.navTintEnabled(getBaseContext())) {
 			getWindow().setNavigationBarColor(getResources().getColor(R.color.quantum_grey));
-		}
-
-		if (Preferences.englishEnabled(getBaseContext())) {
-			String languageToLoad  = "en";
-			Locale locale = new Locale(languageToLoad);
-			Locale.setDefault(locale);
-			Configuration config = new Configuration();
-			config.locale = locale;
-			getBaseContext().getResources().updateConfiguration(config,
-			getBaseContext().getResources().getDisplayMetrics());
 		}
 
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -70,10 +53,6 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(i);
         finish();
 
-	}
-
-	public static Context getContextOfApplication(){
-		return contextOfApplication;
 	}
 
 	private class AsyncLoadXMLFeed extends AsyncTask<Void, Void, Void> {
