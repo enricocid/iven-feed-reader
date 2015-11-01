@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.IntentCompat;
@@ -138,12 +139,20 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("feed", feed);
-				Intent intent = new Intent(ListActivity.this,
-						ArticleActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    Intent intent = new Intent(ListActivity.this,
+                            ArticleActivity.class);
+                    intent.putExtras(bundle);
+                    intent.putExtra("pos", pos);
+                    startActivity(intent);
+                } else {
+
+                    Intent intent = new Intent(ListActivity.this,
+						ArticleActivity_preKK.class);
 				intent.putExtras(bundle);
 				intent.putExtra("pos", pos);
 				startActivity(intent);
-
+                }
 			}
 		});
 
