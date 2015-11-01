@@ -25,21 +25,21 @@ public class Preferences {
 
     public static void applyTheme(ContextThemeWrapper contextThemeWrapper) {
         if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
-            contextThemeWrapper.setTheme(R.style.Theme_lffl_article_dark);
+            contextThemeWrapper.setTheme(R.style.Theme_iven_article_dark);
         }
     }
 
     public static void applyTheme2(ContextThemeWrapper contextThemeWrapper) {
         if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
 
-            contextThemeWrapper.setTheme(R.style.Theme_lffl_dark);
+            contextThemeWrapper.setTheme(R.style.Theme_iven_dark);
         }
     }
 
     public static void applyTheme3(ContextThemeWrapper contextThemeWrapper) {
         if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
 
-            contextThemeWrapper.setTheme(R.style.Theme_lffl_info_dark);
+            contextThemeWrapper.setTheme(R.style.Theme_iven_info_dark);
         }
     }
         public static boolean navTintEnabled(Context context) {
@@ -54,4 +54,4 @@ public class Preferences {
 
     }
 
-    }
+        }

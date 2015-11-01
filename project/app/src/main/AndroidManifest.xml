@@ -18,7 +18,7 @@
         tools:replace="android:allowBackup, android:icon"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme_lffl">
+        android:theme="@style/Theme_iven">
         
     <uses-library android:required="false" android:name="com.sec.android.app.multiwindow"/>
     <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
@@ -38,18 +38,17 @@
         </activity>
         <activity
             android:name="com.iven.lfflfeedreader.mainact.ListActivity"
-            android:theme="@style/Theme_lffl"
+            android:theme="@style/Theme_iven"
             android:screenOrientation="portrait" />
         <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_lffl_article"
+            android:theme="@style/Theme_iven_article"
             />
-
-        <activity 
+        <activity
     	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
     	android:label="@string/app_name"
     	android:screenOrientation="portrait"
-    	android:theme="@style/Theme_lffl_info">
+    	android:theme="@style/Theme_iven_info">
     	      		
 	</activity>
 	

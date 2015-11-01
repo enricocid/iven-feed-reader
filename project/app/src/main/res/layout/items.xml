@@ -5,23 +5,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="16sp">
+
     <ImageView
         android:contentDescription="@string/desc"
         android:id="@+id/thumb"
         android:layout_width="130sp"
         android:layout_height="106sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="16sp"
-        android:layout_marginLeft="24sp"/>
-
+        />
+    </LinearLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/thumb"
-        android:layout_toStartOf="@+id/thumb"
+        android:layout_toLeftOf="@+id/layout"
+        android:layout_toStartOf="@+id/layout"
         android:orientation="vertical" >
 
         <TextView

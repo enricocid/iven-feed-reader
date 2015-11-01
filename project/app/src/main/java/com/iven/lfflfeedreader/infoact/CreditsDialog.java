@@ -43,7 +43,7 @@ public class CreditsDialog extends DialogFragment {
 
                 .positiveColorRes(R.color.material_red_400)
                 .titleColorRes(R.color.material_red_400)
-                .dividerColorRes(R.color.lffl8)
+                .dividerColorRes(R.color.iven8)
                 .btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
                 .positiveColor(Color.WHITE)
                 .title(R.string.info)

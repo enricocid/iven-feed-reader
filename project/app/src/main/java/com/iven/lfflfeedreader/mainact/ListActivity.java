@@ -1,11 +1,13 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.IntentCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
@@ -47,10 +50,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	RSSFeed feed;
 	ListView list;
 	CustomListAdapter adapter;
-	String feedURL;
+    String feedURL = SplashActivity.value;
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
-
+    String shithappens = "¯\\_(ツ)_/¯ shit happens man";
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,8 +66,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 		super.onCreate(savedInstanceState);
 			Preferences.applyTheme2(this);
-		setContentView(R.layout.lffl_feed_list);
-	      mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		    setContentView(R.layout.iven_feed_list);
+	        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 	         if (null == savedInstanceState) {
 	           mNavItemId = R.id.option;
@@ -112,16 +115,14 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				});
 
 			if (Preferences.navTintEnabled(getBaseContext())) {
-				getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl4));
+				getWindow().setNavigationBarColor(getResources().getColor(R.color.iven4));
 				}
 
-		feedURL = new SplashActivity().LFFLFEEDURL;
-
-		feed = (RSSFeed) getIntent().getExtras().get("feed");
+            feed = (RSSFeed) getIntent().getExtras().get("feed");
 
 		swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 		swiperefresh.setOnRefreshListener(this);
-		swiperefresh.setColorSchemeResources(R.color.lffl2);
+		swiperefresh.setColorSchemeResources(R.color.iven2);
 		
 		list = (ListView) findViewById(android.R.id.list);
 		adapter = new CustomListAdapter(this);
@@ -155,12 +156,12 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		}
 	
 	public void onRefresh() {
+
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				DOMParser tmpDOMParser = new DOMParser();
 				feed = tmpDOMParser.parseXml(feedURL);
-
 				ListActivity.this.runOnUiThread(new Runnable() {
 
 					@Override
@@ -178,9 +179,15 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();
-		adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
+        super.onDestroy();
 	}
+
+    @Override
+    public void onResume(){
+        adapter.notifyDataSetChanged();
+        super.onResume();
+    }
 
 	class CustomListAdapter extends BaseAdapter {
 
@@ -194,7 +201,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 		@Override
 		public int getCount() {
-
 			return feed.getItemCount();
 		}
 
@@ -216,82 +222,336 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 			int pos = position;
 			if (listItem == null) {
 				listItem = layoutInflater.inflate(R.layout.items, parent, false);
-			}
+            }
 
-			ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
-			TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
+            TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
 
-			TextView pubDate = (TextView) listItem.findViewById(R.id.date);
-			Glide.with(activity).load(feed.getItem(pos).getImage())
-							.into(lfflImage);
+            TextView pubDate = (TextView) listItem.findViewById(R.id.date);
 
-			lfflTitle.setText(feed.getItem(pos).getTitle());
-            pubDate.setText(feed.getItem(pos).getDate());
+            ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
-			return listItem;
-		}
-	}
+            if (feed.getItem(pos).getImage().isEmpty()) {
 
-	@Override
+                LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
+                linearLayout.removeAllViewsInLayout();
+
+            } else {
+
+                Glide.with(activity).load(feed.getItem(pos).getImage())
+                        .asBitmap()
+                        .into(lfflImage);
+            }
+
+            lfflTitle.setText(feed.getItem(pos).getTitle());
+
+            if (feed.getItem(pos).getAuthor() == null && feed.getItem(pos).getDate() == null) {
+
+                pubDate.setText(shithappens);
+
+            } else {
+
+                pubDate.setText(feed.getItem(pos).getDate());
+            }
+
+            return listItem;
+        }
+    }
+
+    @Override
 	 public boolean onNavigationItemSelected(final MenuItem menuItem) {
 
 	    menuItem.setChecked(true);
 	    mNavItemId = menuItem.getItemId();
-		mDrawerLayout.closeDrawer(GravityCompat.START);
-		mDrawerActionHandler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				switch (menuItem.getItemId()) {
-					case R.id.option:
-						Intent ii = new Intent(ListActivity.this, InfoActivity.class);
-						startActivity(ii);
-				}
-				switch (menuItem.getItemId()) {
-					case R.id.source_code:
-						Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
-						startActivity(ii4);
-				}
-				switch (menuItem.getItemId()) {
-					case R.id.changelog:
-						showChangelog();
-				}
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                mDrawerActionHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (menuItem.getItemId()) {
+                            case R.id.option:
+                                Intent ii = new Intent(ListActivity.this, InfoActivity.class);
+                                startActivity(ii);
+                        }
+                        switch (menuItem.getItemId()) {
+                            case R.id.source_code:
+                                Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/lffl-feed-reader"));
+                                startActivity(ii4);
+                        }
 
-				switch (menuItem.getItemId()) {
-					case R.id.about_option_more:
-						showInfo();
-				}
+                        switch (menuItem.getItemId()) {
+                            case R.id.noobs:
 
-                switch (menuItem.getItemId()) {
-					case R.id.mail:
-						intent = new Intent(android.content.Intent.ACTION_SEND);
-						intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"lfflfeedreader@hotmail.com"});
-						intent.setType("message/rfc822");
-						if (intent != null) {
-							startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
-						}
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
 
-				}
-			}
+                        switch (menuItem.getItemId()) {
+                            case R.id.phoronix:
 
-			private void showChangelog() {
-				int accentColor = ThemeSingleton.get().widgetColor;
-				if (accentColor == 0)
-					accentColor = getResources().getColor(R.color.lffl4);
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/phoronix/RbeQ");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
 
-				ChangelogDialog.create(accentColor)
-						.show(getSupportFragmentManager(), "changelog");
+                        switch (menuItem.getItemId()) {
+                            case R.id.softpedia:
 
-			}
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/SoftpediaNews/Linux");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
 
-			private void showInfo() {
-				int accentColor = ThemeSingleton.get().widgetColor;
-				if (accentColor == 0)
-					accentColor = getResources().getColor(R.color.lffl4);
+                        switch (menuItem.getItemId()) {
+                            case R.id.distrowatch:
 
-				CreditsDialog.create(accentColor)
-						.show(getSupportFragmentManager(), "credits");
-			}
-		}, DRAWER_CLOSE_DELAY_MS);
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/distrowatch/RUwq");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.geek:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/UbuntuGeekNews");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.forge:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/howtoforge/LDMd");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.web8:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/webupd8/YqnT");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.omg:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/d0od");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.police:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/androidpolice/wszl");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.xda:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/xdadevs");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.techaeris:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/TechaerisAndroid");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.phonearena:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/phonearena/jApB");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.central:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/androidcentral/tDcB");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.authority:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/androidauthority/jsTn");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.lffl:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/lffl");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.chimeral:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/chimerarevo/tlEz");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.alexio:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/feedburner/jWXa");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.marcobox:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/marcosbox/Svdz");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.pit:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/androidpit/eYCt");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.androidiani:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/feedburner/doAd");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.chimeraa:
+
+                                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                        ListActivity.this, SplashActivity.class));
+                                intent.putExtra("feedselected", "http://feeds.feedburner.com/ChimeraRevo-NewsGuideERecensioniSulMondoDellaTecnologiaAndroid");
+                                startActivity(intent);
+                                overridePendingTransition(0, 0);
+                                finish();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.changelog:
+                                showChangelog();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.about_option_more:
+                                showInfo();
+                        }
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.mail:
+                                intent = new Intent(android.content.Intent.ACTION_SEND);
+                                intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"lfflfeedreader@hotmail.com"});
+                                intent.setType("message/rfc822");
+                                if (intent != null) {
+                                    startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
+                                }
+
+                        }
+
+                    }
+
+                    private void showChangelog() {
+                        int accentColor = ThemeSingleton.get().widgetColor;
+                        if (accentColor == 0)
+                            accentColor = getResources().getColor(R.color.iven4);
+
+                        ChangelogDialog.create(accentColor)
+                                .show(getSupportFragmentManager(), "changelog");
+
+                    }
+
+                    private void showInfo() {
+                        int accentColor = ThemeSingleton.get().widgetColor;
+                        if (accentColor == 0)
+                            accentColor = getResources().getColor(R.color.iven4);
+
+                        CreditsDialog.create(accentColor)
+                                .show(getSupportFragmentManager(), "credits");
+                    }
+                }, DRAWER_CLOSE_DELAY_MS);
 	    return true;
 	    
     	}

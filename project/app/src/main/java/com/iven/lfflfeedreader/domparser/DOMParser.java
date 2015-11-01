@@ -46,7 +46,7 @@ public class DOMParser {
 				NodeList nchild = currentNode.getChildNodes();
 				int clength = nchild.getLength();
 
-				for (int j = 1; j < clength; j = j+1) {
+				for (int j = 0; j < clength; j++) {
 
 					Node thisNode = nchild.item(j);
 					String theString = null;
@@ -72,7 +72,7 @@ public class DOMParser {
 							String formatedAuthor2 = formatedAuthor.replace(")","");
 							_item.setAuthor(formatedAuthor2);
 
-							} else if ("description".equals(nodeName)) {
+                        } else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
 
 							String html = theString;
@@ -89,10 +89,14 @@ public class DOMParser {
 							String formatedDate = theString.replace(" +0000", "");
 							Locale loc = Resources.getSystem().getConfiguration().locale;
 
-	                            SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
+                            SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
                             Date dateObj = curFormater.parse(formatedDate);
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
-							postFormater.setTimeZone(TimeZone.getTimeZone("GMT+04:00"));
+
+							String timezoneID = TimeZone.getDefault().getID();
+							System.out.println(timezoneID);
+
+							postFormater.setTimeZone(TimeZone.getTimeZone(timezoneID));
                             String newDateStr = postFormater.format(dateObj);
 
                             _item.setDate(newDateStr);

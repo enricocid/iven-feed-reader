@@ -16,12 +16,20 @@ import com.iven.lfflfeedreader.utils.Preferences;
 
 public class SplashActivity extends AppCompatActivity {
 
-    String LFFLFEEDURL = "http://feeds.feedburner.com/lffl";
+    public static String value = "http://feeds.feedburner.com/d0od";
     RSSFeed lfflfeed;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras != null) {
+				value = extras.getString("feedselected");
+            }
+			if (value == null) value = "http://feeds.feedburner.com/d0od";
+        }
 
 		if (Preferences.navTintEnabled(getBaseContext())) {
 			getWindow().setNavigationBarColor(getResources().getColor(R.color.quantum_grey));
@@ -30,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (cM.getActiveNetworkInfo() == null) {
 			setContentView(R.layout.splash_no_internet);
-				   new Handler().postDelayed(new Runnable() {
+            new Handler().postDelayed(new Runnable() {
                        public void run() {
                            SplashActivity.this.finish();
 
@@ -44,6 +52,17 @@ public class SplashActivity extends AppCompatActivity {
 		}
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+            Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            value = extras.getString("feedselected");
+        }
+        if (value == null) value = "http://feeds.feedburner.com/d0od";
+        }
+
 	private void startLisActivity(RSSFeed lfflfeed) {
 
 		Bundle bundle = new Bundle();
@@ -52,8 +71,7 @@ public class SplashActivity extends AppCompatActivity {
         i.putExtras(bundle);
         startActivity(i);
         finish();
-
-	}
+                }
 
 	private class AsyncLoadXMLFeed extends AsyncTask<Void, Void, Void> {
 
@@ -61,7 +79,7 @@ public class SplashActivity extends AppCompatActivity {
 		protected Void doInBackground(Void... params) {
 
 			DOMParser Do = new DOMParser();
-			lfflfeed = Do.parseXml(LFFLFEEDURL);
+			lfflfeed = Do.parseXml(value);
 
             return null;
 
@@ -70,7 +88,7 @@ public class SplashActivity extends AppCompatActivity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			startLisActivity(lfflfeed);
+            startLisActivity(lfflfeed);
         }
 
 	}

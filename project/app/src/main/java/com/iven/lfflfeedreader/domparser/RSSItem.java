@@ -7,10 +7,10 @@ public class RSSItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String item_title = null;
 	private String item_desc = null;
-	private String item_date = null;
+	private String item_date = "¯\\_(ツ)_/¯";
 	private String item_image = null;
 	private String rss_link = null;
-	private String item_author = null;
+	private String item_author = "¯\\_(ツ)_/¯";
 
 	void setTitle(String title) {
 		item_title = title;

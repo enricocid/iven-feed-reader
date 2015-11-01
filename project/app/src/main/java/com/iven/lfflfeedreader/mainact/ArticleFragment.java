@@ -47,12 +47,13 @@ public class ArticleFragment extends Fragment {
 		TextView title = (TextView) rootView.findViewById(R.id.title);
 		TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
 		title.setText(fFeed.getItem(fPos).getTitle());
-		subtitle.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+        subtitle.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
 
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
-		Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
-                .asBitmap()
-				.into(imageView);
+
+			Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
+					.asBitmap()
+					.into(imageView);
 
 		imageView.setOnLongClickListener(new View.OnLongClickListener() {
                                              public boolean onLongClick(View v) {
@@ -70,9 +71,11 @@ public class ArticleFragment extends Fragment {
 
 		String base2format = base2.replace("Continue reading...", "");
 
+        String base3format = base2format.replace("Visit on site http://www.noobslab.com", "");
+
 		TextViewEx articletext = (TextViewEx) rootView.findViewById(R.id.webv);
 
-		articletext.setText(base2format);
+		articletext.setText(base3format);
 
 			Button continue_reading = (Button) rootView.findViewById(R.id.button);
 

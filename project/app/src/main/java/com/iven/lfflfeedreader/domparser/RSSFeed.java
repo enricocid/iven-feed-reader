@@ -7,9 +7,9 @@ import java.util.Vector;
 public class RSSFeed implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int _itemcount = 0;
-	private List<RSSItem> _itemlist;
 
+	private List<RSSItem> _itemlist;
+    private int _itemcount = 0;
 	RSSFeed() {
 		_itemlist = new Vector<>(0);
 	}
@@ -24,7 +24,9 @@ public class RSSFeed implements Serializable {
 	}
 
 	public int getItemCount() {
+
 		return _itemcount;
+
 	}
 
 }

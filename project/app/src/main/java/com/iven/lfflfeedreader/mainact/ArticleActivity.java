@@ -43,7 +43,7 @@ public class ArticleActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 		if (Preferences.navTintEnabled(this)) {
-			getWindow().setNavigationBarColor(getResources().getColor(R.color.lffl2));
+			getWindow().setNavigationBarColor(getResources().getColor(R.color.iven2));
 		}
 
         if (Preferences.immersiveEnabled(this)) {

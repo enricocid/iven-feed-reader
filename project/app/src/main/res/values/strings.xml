@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name" translatable="false">Lffl Feed Reader</string>
+    <string name="app_name" translatable="false">Iven Feed Reader</string>
     <string name="desc" translatable="false"></string>
     <string name="email">Contact us</string>
     <string name="more" translatable="false">Info</string>
@@ -8,7 +8,7 @@
     <string name="lib1sum">Source code</string>
     <string name="error">That\'s an error buddy</string>
     <string name="share">Share with</string>
-    <string name="site_name" translatable="false">lffl</string>
+    <string name="company_name" translatable="false">iven</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="pref_theme_title">App theme</string>
@@ -27,4 +27,29 @@
     <string name="nav_color_sum">This will enable navigation bar tinting</string>
     <string name="immersive_mode">Enable immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
-    </resources>
+    <!-- moar feeds -->
+    <string name="moar" translatable="false">Moar Android feeds</string>
+    <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>
+    <string name="moaritalian" translatable="false">Moar Italian feeds</string>
+    <string name="defaultfeed" translatable="false">Noobslab</string>
+    <string name="phoronix" translatable="false">Phoronix</string>
+    <string name="softpedia" translatable="false">Softpedia</string>
+    <string name="watchme" translatable="false">Distrowatch</string>
+    <string name="geekubuntu" translatable="false">Ubuntu geek</string>
+    <string name="howtoforge" translatable="false">HowtoForge</string>
+    <string name="web8" translatable="false">Web Upd8</string>
+    <string name="omg" translatable="false">OMG! Ubuntu!</string>
+    <string name="police" translatable="false">Android Police</string>
+    <string name="xda" translatable="false">XDA developers</string>
+    <string name="techaeris" translatable="false">Techaeris</string>
+    <string name="phonearena" translatable="false">Phonearena</string>
+    <string name="central" translatable="false">Android central</string>
+    <string name="auth" translatable="false">Android authority</string>
+    <string name="lffl" translatable="false">Lffl linux freedom</string>
+    <string name="chimeralinux" translatable="false">Chimera revo (Linux)</string>
+    <string name="bash" translatable="false">Alexiobash</string>
+    <string name="box" translatable="false">Marco\'s box</string>
+    <string name="pit" translatable="false">Android pit</string>
+    <string name="androidiani" translatable="false">Androidiani</string>
+    <string name="chimeraandroid" translatable="false">Chimera revo (Android)</string>
+</resources>

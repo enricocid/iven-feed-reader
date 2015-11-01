@@ -37,6 +37,7 @@ public class ArticleFragmentWebView extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
         Preferences.applyTheme(getActivity());
+
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
 		final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
@@ -56,7 +57,7 @@ public class ArticleFragmentWebView extends Fragment {
 		}
 
 		title_wb.setText(fFeed.getItem(fPos).getTitle());
-        subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+        subtitle_wb.setText(fFeed.getItem(fPos).getDate() + " - " + fFeed.getItem(fPos).getDate());
 
         final Button share_button_wb = (Button) view.findViewById(R.id.button_share_wb);
 

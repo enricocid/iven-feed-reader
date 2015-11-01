@@ -27,7 +27,7 @@
             android:textAllCaps="true"
             android:layout_gravity="center"
             android:gravity="center"
-            android:maxLines="3"
+            android:maxLines="10"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textColor="?attr/title_color"
