@@ -5,13 +5,16 @@
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header.png)
 
 Iven news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me that will allow You to navigate through various news feeds from Gnu-Linux to Android!
+
+The default blog is OMG!Ubuntu!
+
 It supports Material Design and pre-ICS (minSdK="9") Devices!
 
 This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.1.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 

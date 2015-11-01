@@ -528,7 +528,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         switch (menuItem.getItemId()) {
                             case R.id.mail:
                                 intent = new Intent(android.content.Intent.ACTION_SEND);
-                                intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"lfflfeedreader@hotmail.com"});
+                                intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivenfeedreader@outlook.com"});
                                 intent.setType("message/rfc822");
                                 if (intent != null) {
                                     startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
