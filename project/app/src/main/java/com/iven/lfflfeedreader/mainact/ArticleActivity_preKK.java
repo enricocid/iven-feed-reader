@@ -1,11 +1,8 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
-
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -20,13 +17,12 @@ import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
 
 @SuppressLint("InlinedApi")
-public class ArticleActivity extends AppCompatActivity {
+public class ArticleActivity_preKK extends AppCompatActivity {
 
 	RSSFeed feed;
 	int pos;
 	private ViewPager pager;
 	private PagerAdapter mPagerAdapter;
-
 	Context context;
 
 	@Override
@@ -44,21 +40,6 @@ public class ArticleActivity extends AppCompatActivity {
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-		if (Preferences.navTintEnabled(this)) {
-			getWindow().setNavigationBarColor(getResources().getColor(R.color.iven2));
-		}
-
-        if (Preferences.immersiveEnabled(this)) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE);
-        }
 
 	    setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -100,28 +81,15 @@ public class ArticleActivity extends AppCompatActivity {
 
 						}
 
-                            }
+						}
 
 		@Override
 		public int getCount() {
 			return feed.getItemCount();
 		}
 			}
+		 }
 
-	    @Override
-        public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		if (hasFocus) {
-			getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
-	    }
-
-		    }
 
 
 

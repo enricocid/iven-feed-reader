@@ -44,6 +44,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme_iven_article"
             />
+        <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity_preKK"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_iven_article"
+            />
         <activity
     	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
     	android:label="@string/app_name"
