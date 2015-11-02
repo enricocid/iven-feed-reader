@@ -15,6 +15,7 @@
     <color name="iven12">#222222</color>
     <color name="iven13">#dedede</color>
     <color name="iven14">#303030</color>
+    <color name="iven15">#455A64</color>
     <color name="article_text_dark_grey">#222222</color>
     <color name="article_text_light_grey">#AEA79F</color>
     <color name="textcolorPrimary">@android:color/black</color>

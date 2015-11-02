@@ -2,17 +2,39 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/drawer_height"
-    android:background="@color/iven1"
+    android:background="@color/iven15"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/linux"
+        android:scaleType="fitCenter"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/android"
+        android:scaleType="fitCenter"
+        android:gravity="end"
+        android:layout_gravity="bottom|right"
+        android:layout_centerInParent="true" />
 
   <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
-    android:text="@string/company_name"
-    android:textSize="80sp"
-    android:gravity="center"
+    android:layout_gravity="bottom|start"
+    android:text="@string/app_name"
+    android:layout_marginBottom="@dimen/first_keyline"
+    android:layout_marginStart="@dimen/first_keyline"
+    android:layout_marginLeft="@dimen/first_keyline"
+    android:textSize="14sp"
+    android:gravity="bottom"
     android:textColor="@android:color/white"
-    android:textAppearance="?android:attr/textAppearanceLargeInverse"/>
+    android:textStyle="bold"
+    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 </FrameLayout>
