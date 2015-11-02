@@ -31,6 +31,7 @@ public class ArticleActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		Preferences.applyTheme(this);
 		setContentView(R.layout.article_activity);
 
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
