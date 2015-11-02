@@ -121,23 +121,21 @@
         <item name="android:paddingLeft">@dimen/toolbar_h_padding</item>
         <item name="android:paddingRight">@dimen/toolbar_h_padding</item>
         <item name="contentInsetStart">@dimen/first_keyline</item>
-        <item name="android:textColorPrimary">@color/textcolorPrimary</item>
-        <item name="android:textColorSecondary">@color/textcolorSecondary</item>
-    </style>
+     </style>
 
-    <style name="Custom.Widget.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="android:minWidth">48dp</item>
-    </style>
+     <style name="Custom.Widget.Toolbar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+         <item name="android:minWidth">48dp</item>
+     </style>
 
-    <style name="Custom.Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-    </style>
+     <style name="Custom.Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+         <item name="android:paddingLeft">0dp</item>
+         <item name="android:paddingRight">0dp</item>
+     </style>
 
-    <style name="Theme.Popup.Dark" parent="Theme.AppCompat">
-    </style>
+     <style name="Theme.Popup.Dark" parent="Theme.AppCompat">
+     </style>
 
-    <style name="Theme.Popup" parent="Theme.AppCompat.Light">
-    </style>
+     <style name="Theme.Popup" parent="Theme.AppCompat.Light">
+     </style>
 
-</resources>
+ </resources>
