@@ -13,8 +13,8 @@ android {
         applicationId "com.iven.lfflfeedreader"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 34
-        versionName "6.1.1"
+        versionCode 35
+        versionName "6.2"
     }
 
     buildTypes {
