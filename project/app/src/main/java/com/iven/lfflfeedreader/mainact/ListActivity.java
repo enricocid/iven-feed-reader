@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
@@ -112,6 +113,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 								rate(list);
 								return true;
 						}
+
+                        switch (item.getItemId()) {
+                            case R.id.cache:
+                                clearApplicationData();
+                                return true;
+                        }
+
 						return false;
 					}
 				});
@@ -207,7 +215,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	@Override
 	protected void onDestroy() {
         adapter.notifyDataSetChanged();
-        clearApplicationData();
         super.onDestroy();
 	}
 
@@ -271,7 +278,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
                 } else {
                     Glide.with(activity).load(feed.getItem(pos).getImage())
-                            .asBitmap()
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(lfflImage);
                 }
 

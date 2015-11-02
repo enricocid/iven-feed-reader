@@ -7,12 +7,18 @@
         android:id="@+id/share_option"     
         app:showAsAction="never"
         android:orderInCategory="100"
-        android:title="Share"/>
+        android:title="@string/share"/>
     
     <item
         android:id="@+id/rate"
         app:showAsAction="never"
         android:orderInCategory="200"
-        android:title="Rate" />
+        android:title="@string/rate_me" />
+
+    <item
+        android:id="@+id/cache"
+        app:showAsAction="never"
+        android:orderInCategory="200"
+        android:title="@string/clear_cache" />
     
  </menu>

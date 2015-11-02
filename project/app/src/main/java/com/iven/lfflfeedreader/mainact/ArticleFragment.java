@@ -3,6 +3,7 @@ package com.iven.lfflfeedreader.mainact;
 import com.bumptech.glide.Glide;
 
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
@@ -52,7 +53,7 @@ public class ArticleFragment extends Fragment {
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
 			Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
-					.asBitmap()
+					.diskCacheStrategy(DiskCacheStrategy.NONE)
 					.into(imageView);
 
 		imageView.setOnLongClickListener(new View.OnLongClickListener() {

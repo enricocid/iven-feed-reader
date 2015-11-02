@@ -29,6 +29,9 @@
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
     <string name="no_images">Disable images</string>
     <string name="no_images_sum">Disable images visualisation on home activity</string>
+    <string name="clear_cache">Clear cache</string>
+    <string name="rate_me">Rate</string>
+
     <!-- moar feeds -->
     <string name="moar" translatable="false">Moar Android feeds</string>
     <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>

@@ -24,4 +24,6 @@
     <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
     <string name="no_images">Disabilita immagini</string>
     <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
+    <string name="clear_cache">Pulisci cache</string>
+    <string name="rate_me">Vota</string>
 </resources>
