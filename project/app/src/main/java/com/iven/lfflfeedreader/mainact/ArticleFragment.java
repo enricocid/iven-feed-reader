@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,9 @@ public class ArticleFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-			fFeed = (RSSFeed) getArguments().getSerializable("feed");
-			fPos = getArguments().getInt("pos");
+
+        fFeed = (RSSFeed) getArguments().getSerializable("feed");
+		fPos = getArguments().getInt("pos");
 
 	}
 
@@ -41,8 +43,9 @@ public class ArticleFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		Preferences.applyTheme(getActivity());
+        float size = Preferences.resolveTextSizeResId(getContext());
 
-		ViewGroup rootView = (ViewGroup) inflater
+        ViewGroup rootView = (ViewGroup) inflater
 				.inflate(R.layout.article_fragment, container, false);
 
 		TextView title = (TextView) rootView.findViewById(R.id.title);
@@ -80,21 +83,29 @@ public class ArticleFragment extends Fragment {
 
 			Button continue_reading = (Button) rootView.findViewById(R.id.button);
 
+            continue_reading.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
+
 			continue_reading.setOnClickListener(new View.OnClickListener()
 
-			{
-				public void onClick (View v){
-				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getLink()));
-				CharSequence title2 = getResources().getText(R.string.chooser_title);
-				Intent chooser = Intent.createChooser(intent, title2);
-				startActivity(chooser);
-			}
+                                                {
+                                                    public void onClick(View v) {
+                                                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getLink()));
+                                                        CharSequence title2 = getResources().getText(R.string.chooser_title);
+                                                        Intent chooser = Intent.createChooser(intent, title2);
+                                                        startActivity(chooser);
+                                                    }
 
-			}
+                                                }
 
-			);
+            );
+
+        articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
+        subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
 
 		Button share_button = (Button) rootView.findViewById(R.id.button_share);
+
+        share_button.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
 
 		share_button.setOnClickListener(new View.OnClickListener()
 

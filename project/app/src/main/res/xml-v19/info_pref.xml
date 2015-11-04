@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/moreopts"/>
+    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/opts"/>
 
     <com.jenzz.materialpreference.SwitchPreference
         android:key="Theme"
@@ -39,6 +38,26 @@
         android:summary="@string/no_images_sum"
         android:icon="?attr/images_icon"
         android:defaultValue="false" />
+
+    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/moreopts"/>
+
+    <com.afollestad.materialdialogs.prefs.MaterialListPreference
+        android:key="@string/pref_text_size"
+        android:summary="@string/pref_text_size_summary"
+        android:entries="@array/text_size_options"
+        android:entryValues="@array/pref_text_size_values"
+        android:defaultValue="2"
+        android:title="@string/pref_text_size_title"
+        android:dialogIcon="?attr/textsize_icon" />
+
+    <com.afollestad.materialdialogs.prefs.MaterialListPreference
+        android:key="@string/pref_text_size_list"
+        android:summary="@string/pref_text_size_list_summary"
+        android:entries="@array/text_size_list_options"
+        android:entryValues="@array/pref_text_size_list_values"
+        android:defaultValue="6"
+        android:title="@string/pref_text_size_list_title"
+        android:dialogIcon="?attr/textsize_icon" />
 
     <com.jenzz.materialpreference.Preference
         android:key="build_number"

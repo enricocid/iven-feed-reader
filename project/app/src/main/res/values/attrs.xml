@@ -15,5 +15,6 @@
     <attr name="immersive_icon" format="reference"/>
     <attr name="version_icon" format="reference"/>
     <attr name="images_icon" format="reference"/>
+    <attr name="textsize_icon" format="reference"/>
 
 </resources>

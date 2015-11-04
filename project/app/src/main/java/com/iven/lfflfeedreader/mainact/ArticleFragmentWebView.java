@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,9 @@ public class ArticleFragmentWebView extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
         Preferences.applyTheme(getActivity());
+        float size = Preferences.resolveTextSizeResId(getContext());
+
+        int size_wb = Math.round(size);
 
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
@@ -59,7 +63,12 @@ public class ArticleFragmentWebView extends Fragment {
 		title_wb.setText(fFeed.getItem(fPos).getTitle());
         subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
 
+        title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
+        subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
+
         final Button share_button_wb = (Button) view.findViewById(R.id.button_share_wb);
+
+        share_button_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
 
         share_button_wb.setOnClickListener(new View.OnClickListener()
 
@@ -76,6 +85,7 @@ public class ArticleFragmentWebView extends Fragment {
         );
 
         final Button continue_reading_wb = (Button) view.findViewById(R.id.button_wb);
+        continue_reading_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
 
         continue_reading_wb.setOnClickListener(new View.OnClickListener()
 
@@ -101,6 +111,7 @@ public class ArticleFragmentWebView extends Fragment {
 		html += "</html>";
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
         wb.setBackgroundColor(Color.TRANSPARENT);
+        ws.setDefaultFontSize(size_wb);
         wb.setWebViewClient(new WebViewClient() {
 
             @Override

@@ -12,6 +12,7 @@
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="pref_theme_title">App theme</string>
+    <string name="opts">General UI options</string>
     <string name="moreopts">Additional options</string>
     <string name="more_read">Continue reading ...</string>
     <string name="btn_share">Share</string>
@@ -31,7 +32,17 @@
     <string name="no_images_sum">Disable images visualisation on home activity</string>
     <string name="clear_cache">Clear cache</string>
     <string name="rate_me">Rate</string>
-
+    <string name="pref_text_size" translatable="false">pref_text_size</string>
+    <string name="pref_text_size_list" translatable="false">pref_text_size_list</string>
+    <string name="pref_text_size_title">Adjust articles font</string>
+    <string name="pref_text_size_list_title">Adjust items font</string>
+    <string name="pref_text_size_summary">Choose default text size on articles</string>
+    <string name="pref_text_size_list_summary">Choose default text size of the home items</string>
+    <string name="pref_text_verysmall">Very small</string>
+    <string name="pref_text_small">Small</string>
+    <string name="pref_text_medium">Medium (default)</string>
+    <string name="pref_text_large">Large</string>
+    <string name="pref_text_verylarge">Very large</string>
     <!-- moar feeds -->
     <string name="moar" translatable="false">Moar Android feeds</string>
     <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>

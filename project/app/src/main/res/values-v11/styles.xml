@@ -54,6 +54,7 @@
         <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="version_icon">@drawable/ic_version</item>
         <item name="images_icon">@drawable/ic_image_area</item>
+        <item name="textsize_icon">@drawable/ic_format_text</item>
     </style>
 
     <style name="Theme_iven_info_dark" parent="Theme.AppCompat.NoActionBar">
@@ -75,6 +76,7 @@
         <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
         <item name="version_icon">@drawable/ic_version_dark</item>
         <item name="images_icon">@drawable/ic_image_area_dark</item>
+        <item name="textsize_icon">@drawable/ic_format_text_dark</item>
     </style>
 
         <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">

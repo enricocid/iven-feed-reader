@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.IntentCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,7 +70,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
 		super.onCreate(savedInstanceState);
 			Preferences.applyTheme2(this);
-		    setContentView(R.layout.iven_feed_list);
+
+            setContentView(R.layout.iven_feed_list);
 	        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 	         if (null == savedInstanceState) {
@@ -259,9 +261,15 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 				listItem = layoutInflater.inflate(R.layout.items, parent, false);
             }
 
+            float size = Preferences.resolveTextSizeListResId(getBaseContext());
+
             TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
 
+            lfflTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+
             TextView pubDate = (TextView) listItem.findViewById(R.id.date);
+
+            pubDate.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -2);
 
             ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
@@ -285,7 +293,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
 
             lfflTitle.setText(feed.getItem(pos).getTitle());
-
             if (feed.getItem(pos).getAuthor() == null && feed.getItem(pos).getDate() == null) {
 
                 pubDate.setText(shithappens);

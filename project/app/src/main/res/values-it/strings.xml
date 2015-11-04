@@ -6,6 +6,7 @@
     <string name="share">Condividi con&#8230;</string>
     <string name="email">Contattaci</string>
     <string name="chooser_title">Scegli il browser &#8230;</string>
+    <string name="opts">Opzioni UI generali</string>
     <string name="moreopts">Opzioni aggiuntive</string>
     <string name="pref_theme_title">Tema app</string>
     <string name="more_read">Continua a leggere ...</string>
@@ -26,4 +27,13 @@
     <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
     <string name="clear_cache">Pulisci cache</string>
     <string name="rate_me">Vota</string>
+    <string name="pref_text_size_title">Aggiusta font articoli</string>
+    <string name="pref_text_size_list_title">Aggiusta font lista</string>
+    <string name="pref_text_size_summary">Scegli la dimensione di default del testo degli articoli</string>
+    <string name="pref_text_size_list_summary">Scegli la dimensione di default del testo degli oggetti della home</string>
+    <string name="pref_text_verysmall">Più piccolo</string>
+    <string name="pref_text_small">Piccolo</string>
+    <string name="pref_text_medium">Intermedio (default)</string>
+    <string name="pref_text_large">Grande</string>
+    <string name="pref_text_verylarge">Molto grande</string>
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string-array name="text_size_options">
+            <item>@string/pref_text_verysmall</item>
+            <item>@string/pref_text_small</item>
+            <item>@string/pref_text_medium</item>
+            <item>@string/pref_text_large</item>
+            <item>@string/pref_text_verylarge</item>
+        </string-array>
+    <string-array name="pref_text_size_values">
+            <item>0</item>
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+    </string-array>
+
+    <string-array name="text_size_list_options">
+        <item>@string/pref_text_small</item>
+        <item>@string/pref_text_medium</item>
+        <item>@string/pref_text_large</item>
+    </string-array>
+    <string-array name="pref_text_size_list_values">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    </resources>
