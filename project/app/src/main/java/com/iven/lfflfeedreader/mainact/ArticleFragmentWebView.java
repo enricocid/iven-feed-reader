@@ -57,7 +57,7 @@ public class ArticleFragmentWebView extends Fragment {
 		}
 
 		title_wb.setText(fFeed.getItem(fPos).getTitle());
-        subtitle_wb.setText(fFeed.getItem(fPos).getDate() + " - " + fFeed.getItem(fPos).getDate());
+        subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
 
         final Button share_button_wb = (Button) view.findViewById(R.id.button_share_wb);
 
