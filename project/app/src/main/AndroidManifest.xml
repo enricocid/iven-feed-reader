@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iven.lfflfeedreader"
-    android:versionCode="35"
-    android:versionName="6.2"
+    android:versionCode="36"
+    android:versionName="6.3"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk
@@ -51,7 +51,7 @@
     	android:theme="@style/Theme_iven_info">
     	      		
 	</activity>
-	
+
     </application>
 
 </manifest>
