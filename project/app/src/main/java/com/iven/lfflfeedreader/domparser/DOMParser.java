@@ -94,8 +94,7 @@ public class DOMParser {
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
 
 							String timezoneID = TimeZone.getDefault().getID();
-							System.out.println(timezoneID);
-
+							
 							postFormater.setTimeZone(TimeZone.getTimeZone(timezoneID));
                             String newDateStr = postFormater.format(dateObj);
 
