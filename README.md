@@ -73,12 +73,12 @@ https://github.com/afollestad/material-dialogs
 Git page:
 https://github.com/jenzz/Android-MaterialPreference
 
-**- FloatingActionButton by Jens Driller**
+**- FloatingActionButton by Melnykov Oleksandr**
 
 Git page:
 https://github.com/makovkastar/FloatingActionButton
 
-**- Jsoup by Melnykov Oleksandr**
+**- Jsoup by Jonathan Hedley**
 
 Homepage:
 http://jsoup.org/
@@ -87,7 +87,6 @@ http://jsoup.org/
 
 Git page:
 https://github.com/bumptech/glide
-
 
 
 
