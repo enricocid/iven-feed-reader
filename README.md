@@ -89,7 +89,7 @@ Git page:
 https://github.com/bumptech/glide
 
 
-<a href="http://forum.xda-developers.com/android/apps-games/2-3-iven-news-reader-t3238672">
+<a href="http://www.xda-developers.com/iven-news-reader-a-lightweight-feed-reader/">
   <img alt="XDA featured"
        src="http://i.imgur.com/3ClP3lZ.png" />
 </a>
