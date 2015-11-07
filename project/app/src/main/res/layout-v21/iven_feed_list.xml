@@ -41,4 +41,6 @@
     app:menu="@menu/drawer"
     android:background="?attr/theme_background"/>
 
+    <include layout="@layout/dynamic_list" />
+
 </android.support.v4.widget.DrawerLayout>

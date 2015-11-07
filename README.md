@@ -8,13 +8,15 @@ Iven news Reader is a light and modern Android feed reader developed by @ivn888 
 
 The default blog is OMG!Ubuntu!
 
+**NOW WITH CUSTOM FEEDS!**
+
 It supports Material Design and pre-ICS (minSdK="9") Devices!
 
 This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.3) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.4) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
@@ -46,6 +48,8 @@ https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 Support multiple themes in your Android app:
 http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 
+**- Stack Overflow**
+
 **USED LIBRARIES**
 
 
@@ -69,7 +73,12 @@ https://github.com/afollestad/material-dialogs
 Git page:
 https://github.com/jenzz/Android-MaterialPreference
 
-**- Jsoup by Jonathan Hedley**
+**- FloatingActionButton by Jens Driller**
+
+Git page:
+https://github.com/makovkastar/FloatingActionButton
+
+**- Jsoup by Melnykov Oleksandr**
 
 Homepage:
 http://jsoup.org/

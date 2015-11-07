@@ -15,7 +15,7 @@
         <item name="text_title_theme">@color/text_title</item>
         <item name="text_date_theme">@color/text_date</item>
         <item name="navview_text">@drawable/state_list</item>
-        <item name="popup_theme">@style/Theme.Popup</item>
+        <item name="plus_icon">@drawable/ic_plus_dark</item>
     </style>
 
     <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
@@ -32,7 +32,7 @@
         <item name="text_title_theme">@color/text_title_dark</item>
         <item name="text_date_theme">@color/text_date_dark</item>
         <item name="navview_text">@drawable/state_list_dark</item>
-        <item name="popup_theme">@style/Theme.Popup.Dark</item>
+        <item name="plus_icon">@drawable/ic_plus</item>
     </style>
 
     <style name="Theme_iven_info" parent="Theme.AppCompat.Light.NoActionBar">
@@ -42,7 +42,6 @@
         <item name="colorPrimary">@color/iven6</item>
         <item name="colorAccent">@color/iven6</item>
         <item name="android:displayOptions">showTitle</item>
-        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
@@ -64,7 +63,6 @@
         <item name="colorPrimary">@color/iven6</item>
         <item name="colorAccent">@color/iven6</item>
         <item name="android:displayOptions">showTitle</item>
-        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
@@ -106,17 +104,6 @@
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="theme_background">@color/iven14</item>
-    </style>
-
-    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColorPrimary">@color/iven8</item>
-        <item name="colorAccent">@color/iven6</item>
-    </style>
-
-    <style name="AppCompatAlertDialogStyleDark" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="android:textColorPrimary">@color/iven13</item>
-        <item name="android:background">@color/iven14</item>
-        <item name="colorAccent">@color/iven6</item>
     </style>
 
 </resources>

@@ -40,4 +40,6 @@
     app:itemTextColor="?attr/navview_text"
     app:menu="@menu/drawer"/>
 
+    <include layout="@layout/dynamic_list" />
+
 </android.support.v4.widget.DrawerLayout>

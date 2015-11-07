@@ -13,8 +13,8 @@ android {
         applicationId "com.iven.lfflfeedreader"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 36
-        versionName "6.3"
+        versionCode 37
+        versionName "6.4"
     }
 
     buildTypes {
@@ -31,6 +31,7 @@ repositories {
 }
 
 dependencies {
+    compile 'com.melnykov:floatingactionbutton:1.+'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.jenzz:materialpreference:1.+'
     compile('com.github.afollestad.material-dialogs:commons:0.8.5.0@aar') {

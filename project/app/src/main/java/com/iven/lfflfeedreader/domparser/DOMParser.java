@@ -80,6 +80,7 @@ public class DOMParser {
 									.parse(html);
 
 							Elements imgEle = docHtml.select("img");
+
 							_item.setImage(imgEle.attr("src"));
                             
 						}
@@ -94,7 +95,7 @@ public class DOMParser {
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
 
 							String timezoneID = TimeZone.getDefault().getID();
-							
+
 							postFormater.setTimeZone(TimeZone.getTimeZone(timezoneID));
                             String newDateStr = postFormater.format(dateObj);
 

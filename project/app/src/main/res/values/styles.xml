@@ -22,7 +22,7 @@
         <item name="text_title_theme">@color/text_title</item>
         <item name="text_date_theme">@color/text_date</item>
         <item name="navview_text">@drawable/state_list</item>
-        <item name="popup_theme">@style/Theme.Popup</item>
+        <item name="plus_icon">@drawable/ic_plus_dark</item>
     </style>
 
     <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
@@ -37,7 +37,7 @@
         <item name="text_title_theme">@color/text_title_dark</item>
         <item name="text_date_theme">@color/text_date_dark</item>
         <item name="navview_text">@drawable/state_list_dark</item>
-        <item name="popup_theme">@style/Theme.Popup.Dark</item>
+        <item name="plus_icon">@drawable/ic_plus</item>
     </style>
     
         <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
@@ -71,7 +71,6 @@
         <item name="colorPrimaryDark">@color/iven7</item>
         <item name="colorPrimary">@color/iven6</item>
         <item name="colorAccent">@color/iven6</item>
-        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
@@ -91,7 +90,6 @@
         <item name="colorPrimaryDark">@color/iven7</item>
         <item name="colorPrimary">@color/iven6</item>
         <item name="colorAccent">@color/iven6</item>
-        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyleDark</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
@@ -104,17 +102,6 @@
         <item name="version_icon">@drawable/ic_version_dark</item>
         <item name="images_icon">@drawable/ic_image_area_dark</item>
         <item name="textsize_icon">@drawable/ic_format_text_dark</item>
-    </style>
-
-    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColorPrimary">@color/iven8</item>
-        <item name="colorAccent">@color/iven6</item>
-    </style>
-
-    <style name="AppCompatAlertDialogStyleDark" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="android:textColorPrimary">@color/iven13</item>
-        <item name="android:background">@color/iven14</item>
-        <item name="colorAccent">@color/iven6</item>
     </style>
 
     <style name="Custom.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
@@ -132,12 +119,6 @@
      <style name="Custom.Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
          <item name="android:paddingLeft">0dp</item>
          <item name="android:paddingRight">0dp</item>
-     </style>
-
-     <style name="Theme.Popup.Dark" parent="Theme.AppCompat">
-     </style>
-
-     <style name="Theme.Popup" parent="Theme.AppCompat.Light">
      </style>
 
  </resources>

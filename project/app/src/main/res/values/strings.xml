@@ -14,7 +14,7 @@
     <string name="pref_theme_title">App theme</string>
     <string name="opts">General UI options</string>
     <string name="moreopts">Additional options</string>
-    <string name="more_read">Continue reading ...</string>
+    <string name="more_read">Continue reading &#8230;</string>
     <string name="btn_share">Share</string>
     <string name="themesum">The app needs to be restarted</string>
     <string name="settings">Options</string>
@@ -23,7 +23,7 @@
     <string name="Readingsum">Webview will be used to load articles</string>
     <string name="JS_script">Enable javascript</string>
     <string name="JS_scriptsum">Enable javascript to show multimedia contents when on webview</string>
-    <string name="build_number">App\'s version</string>
+    <string name="build_number">Build\'s version</string>
     <string name="nav_color">Enable navbar tint</string>
     <string name="nav_color_sum">This will enable navigation bar tinting</string>
     <string name="immersive_mode">Enable immersive mode</string>
@@ -43,6 +43,7 @@
     <string name="pref_text_medium">Medium (default)</string>
     <string name="pref_text_large">Large</string>
     <string name="pref_text_verylarge">Very large</string>
+
     <!-- moar feeds -->
     <string name="moar" translatable="false">Moar Android feeds</string>
     <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>
@@ -68,4 +69,14 @@
     <string name="pit" translatable="false">Android pit</string>
     <string name="androidiani" translatable="false">Androidiani</string>
     <string name="chimeraandroid" translatable="false">Chimera revo (Android)</string>
+    <!-- custom feeds -->
+    <string name="deletedialogtitle">Delete feed</string>
+    <string name="deletedialogquestion">Do you want to delete this feed?</string>
+    <string name="deleteok">Yes</string>
+    <string name="deleteno" translatable="false">No</string>
+    <string name="adddialogtitle">Feed addition</string>
+    <string name="adddialogfeed">Insert your custom feed in RSS 2.0 (feedburner) format</string>
+    <string name="feedmenu">Add a feed</string>
+    <string name="feed_template" translatable="false">http://feeds.feedburner.com/</string>
+
 </resources>

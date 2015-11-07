@@ -20,5 +20,11 @@
         app:showAsAction="never"
         android:orderInCategory="200"
         android:title="@string/clear_cache" />
+
+    <item
+        android:id="@+id/addfeed"
+        app:showAsAction="always"
+        android:icon="?attr/plus_icon"
+        android:title="@string/feedmenu" />
     
  </menu>

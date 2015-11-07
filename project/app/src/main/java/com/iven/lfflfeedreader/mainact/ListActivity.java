@@ -3,11 +3,16 @@ package com.iven.lfflfeedreader.mainact;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.IntentCompat;
+import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,21 +21,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.afollestad.materialdialogs.AlertDialogWrapper;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.infoact.ChangelogDialog;
 import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
+import com.iven.lfflfeedreader.R;
+import com.melnykov.fab.FloatingActionButton;
 
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +51,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
@@ -48,9 +59,11 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	  private static final String NAV_ITEM_ID = "navItemId";
 	  private final Handler mDrawerActionHandler = new Handler();
 	  private DrawerLayout mDrawerLayout;
-	  private ActionBarDrawerToggle mDrawerToggle;
+      private DrawerLayout mDrawerRight;
+      private ActionBarDrawerToggle mDrawerToggle;
 	  private int mNavItemId;
 
+    SQLiteDatabase mydb;
 	RSSFeed feed;
 	ListView list;
 	CustomListAdapter adapter;
@@ -58,6 +71,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
     String shithappens = "¯\\_(ツ)_/¯ shit happens man";
+    ArrayAdapter<String> dynamic_adapter;
+    ArrayList<String> dynamic_list;
+    ListView listfeed;
+    String feedcustom;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,34 +82,146 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		return super.onCreateOptionsMenu(menu);
 	}
 
-		@Override
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 			Preferences.applyTheme2(this);
 
             setContentView(R.layout.iven_feed_list);
-	        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-	         if (null == savedInstanceState) {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+
+            listfeed =(ListView) findViewById(R.id.listfeed);
+
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+            swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+            mDrawerRight = (DrawerLayout) findViewById(R.id.drawer_right);
+
+            list = (ListView) findViewById(android.R.id.list);
+
+            if (null == savedInstanceState) {
 	           mNavItemId = R.id.option;
 	         } else {
 	           mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
 	         }
 
-	         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
 	         navigationView.setNavigationItemSelectedListener(this);
-	      
+
 	         navigationView.getMenu().findItem(mNavItemId).setChecked(true);
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            mydb = ListActivity.this.openOrCreateDatabase("feeds", MODE_PRIVATE, null);
+
+            mydb.execSQL("CREATE TABLE IF NOT EXISTS feedslist (id INTEGER PRIMARY KEY AUTOINCREMENT,name varchar);");
+
+            final Cursor cursor2 = mydb.rawQuery("SELECT * FROM feedslist;", null);
+
+            dynamic_list = new ArrayList<>();
+
+            if (cursor2 != null && cursor2.moveToFirst()) {
+
+                while (!cursor2.isAfterLast()) {
+                    dynamic_list.add(cursor2.getString(cursor2.getColumnIndex("name")));
+                    cursor2.moveToNext();
+                }
+                cursor2.close();
+            }
+
+            fab.attachToListView(listfeed);
+
+            dynamic_adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, dynamic_list);
+
+            dynamic_adapter.notifyDataSetChanged();
+            listfeed.setAdapter(dynamic_adapter);
+
+            View.OnClickListener listener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    new MaterialDialog.Builder(ListActivity.this)
+                            .title(R.string.adddialogtitle)
+                            .content(R.string.adddialogfeed)
+                            .inputType(InputType.TYPE_CLASS_TEXT)
+                            .positiveText(android.R.string.ok)
+                            .input(0, R.string.feed_template, false, new MaterialDialog.InputCallback() {
+                                @Override
+                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                    feedcustom = input.toString();
+                                    dynamic_list.add(feedcustom);
+                                    dynamic_adapter.notifyDataSetChanged();
+                                    listfeed.setAdapter(dynamic_adapter);
+                                    mydb.execSQL("insert into feedslist (name) values(?);",new String[]{feedcustom});
+                                }
+                            }).show();
+                }
+            };
+
+            fab.setOnClickListener(listener);
+
+            listfeed.setOnItemClickListener(new OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                        long arg3) {
+
+                    String feedvalue = listfeed.getItemAtPosition(arg2).toString();
+                    final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                            ListActivity.this, SplashActivity.class));
+                    intent.putExtra("feedselected", feedvalue);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                    finish();
+                }
+            });
+
+            listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                               int position, long arg3) {
+                    final int deletePosition = position;
+
+                    AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
+                            ListActivity.this);
+
+                    alert.setTitle(R.string.deletedialogtitle);
+                    alert.setMessage(R.string.deletedialogquestion);
+                    alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dynamic_list.remove(deletePosition);
+                            dynamic_adapter.notifyDataSetChanged();
+                            dynamic_adapter.notifyDataSetInvalidated();
+                            listfeed.setAdapter(dynamic_adapter);
+                            removeRow();
+                        }
+                    });
+                    alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alert.show();
+                    return false;
+                }
+            });
+
 		setSupportActionBar(toolbar);
 		
         toolbar.setTitle(R.string.app_name);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
             R.string.app_name);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         mDrawerToggle.syncState();
 
         toolbar.setOnMenuItemClickListener(
@@ -122,6 +251,16 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                                 return true;
                         }
 
+                        switch (item.getItemId()) {
+                            case R.id.addfeed:
+                                if (mDrawerLayout.isDrawerOpen(mDrawerRight)) {
+                                    mDrawerLayout.closeDrawer(mDrawerRight);
+                                } else {
+                                    mDrawerLayout.openDrawer(mDrawerRight);
+                                }
+                                return true;
+                        }
+
 						return false;
 					}
 				});
@@ -132,19 +271,17 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
             feed = (RSSFeed) getIntent().getExtras().get("feed");
 
-		swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 		swiperefresh.setOnRefreshListener(this);
 		swiperefresh.setColorSchemeResources(R.color.iven2);
 		
-		list = (ListView) findViewById(android.R.id.list);
 		adapter = new CustomListAdapter(this);
 
 		list.setAdapter(adapter);
 
-		list.setOnItemClickListener(new OnItemClickListener() {
+    list.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+        @Override
+        public void onItemClick (AdapterView<?> arg0, View arg1, int arg2,
 									long arg3) {
 				int pos = arg2;
 
@@ -155,9 +292,27 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                     intent.putExtras(bundle);
                     intent.putExtra("pos", pos);
                     startActivity(intent);
-                }
+                               }
 		});
 	}
+
+    public void removeRow(){
+
+        Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
+
+        String id = "";
+        if (cursor != null && cursor.moveToFirst()) {
+
+            while (!cursor.isAfterLast()) {
+                id = cursor.getString(cursor.getColumnIndex("id"));
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+
+        mydb.execSQL("DELETE FROM " + "feedslist" + " WHERE " + "id"
+                + "=" + id + "");
+    }
 
     public void clearApplicationData() {
         File cache = getCacheDir();
@@ -222,11 +377,11 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onResume(){
-        adapter.notifyDataSetChanged();
+       adapter.notifyDataSetChanged();
         super.onResume();
     }
 
-	class CustomListAdapter extends BaseAdapter {
+class CustomListAdapter extends BaseAdapter {
 
 		private LayoutInflater layoutInflater;
 

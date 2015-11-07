@@ -9,7 +9,7 @@
     <string name="opts">Opzioni UI generali</string>
     <string name="moreopts">Opzioni aggiuntive</string>
     <string name="pref_theme_title">Tema app</string>
-    <string name="more_read">Continua a leggere ...</string>
+    <string name="more_read">Continua a leggere &#8230;</string>
     <string name="btn_share">Condividi</string>
     <string name="themesum">Necessita riavvio della app</string>
     <string name="settings">Opzioni</string>
@@ -18,7 +18,7 @@
     <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
     <string name="JS_script">Abilita javascript</string>
     <string name="JS_scriptsum">Abilita javascript per mostrare contenuti multimediali quando usi la webview</string>
-    <string name="build_number">Versione app</string>
+    <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
     <string name="immersive_mode">Abilita modalità immersive</string>
@@ -36,4 +36,11 @@
     <string name="pref_text_medium">Intermedio (default)</string>
     <string name="pref_text_large">Grande</string>
     <string name="pref_text_verylarge">Molto grande</string>
+    <string name="version">Versione app</string>
+    <string name="deletedialogtitle">Cancella feed</string>
+    <string name="deletedialogquestion">Vuoi cancellare questo feed?</string>
+    <string name="deleteok">Si</string>
+    <string name="adddialogtitle">Aggiunta feed</string>
+    <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS 2.0 (feedburner)</string>
+    <string name="feedmenu">Aggiungi un feed</string>
 </resources>

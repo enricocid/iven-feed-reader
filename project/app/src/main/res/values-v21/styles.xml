@@ -16,7 +16,7 @@
         <item name="text_title_theme">@color/text_title</item>
         <item name="text_date_theme">@color/text_date</item>
         <item name="navview_text">@drawable/state_list</item>
-        <item name="popup_theme">@style/Theme.Popup</item>
+        <item name="plus_icon">@drawable/ic_plus_dark</item>
     </style>
 
     <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
@@ -34,7 +34,7 @@
         <item name="text_title_theme">@color/text_title_dark</item>
         <item name="text_date_theme">@color/text_date_dark</item>
         <item name="navview_text">@drawable/state_list_dark</item>
-        <item name="popup_theme">@style/Theme.Popup.Dark</item>
+        <item name="plus_icon">@drawable/ic_plus</item>
     </style>
 
 </resources>
