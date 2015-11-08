@@ -112,7 +112,7 @@ http://feeds.feedburner.com/howtoforge/LDMd
 http://feeds.feedburner.com/phonearena/jApB
 
 
-**- Some Italian feeds: **
+**- Some Italian feeds:**
 
 - Androidworld:
 http://www.androidworld.it/feed/
