@@ -57,12 +57,6 @@ public class Preferences {
 
         }
 
-    public static boolean imagesRemoved(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("images", false);
-
-    }
-
     public static boolean immersiveEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Immerseme", false);

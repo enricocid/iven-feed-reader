@@ -24,7 +24,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -428,24 +427,10 @@ class CustomListAdapter extends BaseAdapter {
 
             ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
-            if (feed.getItem(pos).getImage().isEmpty()) {
-
-                LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
-                linearLayout.removeAllViewsInLayout();
-
-            } else {
-
-                if (Preferences.imagesRemoved(getBaseContext())) {
-                    LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
-                    linearLayout.removeAllViewsInLayout();
-
-                } else {
                     Glide.with(activity).load(feed.getItem(pos).getImage())
+                            .placeholder(R.drawable.image_area)
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(lfflImage);
-                }
-
-            }
 
             lfflTitle.setText(feed.getItem(pos).getTitle());
             if (feed.getItem(pos).getAuthor() == null && feed.getItem(pos).getDate() == null) {

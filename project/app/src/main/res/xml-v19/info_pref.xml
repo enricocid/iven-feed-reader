@@ -32,13 +32,6 @@
         android:icon="?attr/js_icon"
         android:defaultValue="false" />
 
-    <com.jenzz.materialpreference.SwitchPreference
-        android:key="images"
-        android:title="@string/no_images"
-        android:summary="@string/no_images_sum"
-        android:icon="?attr/images_icon"
-        android:defaultValue="false" />
-
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/moreopts"/>
 
     <com.afollestad.materialdialogs.prefs.MaterialListPreference
