@@ -69,7 +69,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     String feedURL = SplashActivity.value;
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
-    String shithappens = "¯\\_(ツ)_/¯ shit happens man";
     ArrayAdapter<String> dynamic_adapter;
     ArrayList<String> dynamic_list;
     ListView listfeed;
@@ -433,14 +432,8 @@ class CustomListAdapter extends BaseAdapter {
                             .into(lfflImage);
 
             lfflTitle.setText(feed.getItem(pos).getTitle());
-            if (feed.getItem(pos).getAuthor() == null && feed.getItem(pos).getDate() == null) {
 
-                pubDate.setText(shithappens);
-
-            } else {
-
-                pubDate.setText(feed.getItem(pos).getDate());
-            }
+            pubDate.setText(feed.getItem(pos).getDate());
 
             return listItem;
         }
