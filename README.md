@@ -16,7 +16,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.4) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.4.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
@@ -89,12 +89,63 @@ Git page:
 https://github.com/bumptech/glide
 
 
+**NOTE:** It is highly recommended to use the feedburner service to burn feeds, and to enable "Convert format burner" service inside Optimize tab and select "Convert feed format to: RSS 2.0" to ensure the best compatibility.
+
+
+**- Some feeds You may want to add:**
+
+- Official Android blog:
+http://feeds.feedburner.com/blogspot/jcIHV
+
+- Android developers blog:
+http://feeds.feedburner.com/blogspot/hwVKk
+
+- Official Google blog:
+http://feeds.feedburner.com/blogspot/jhWSr
+
+- Android authority: http://feeds.feedburner.com/androidauthority/jsTn
+
+- Techaeris:
+http://feeds.feedburner.com/TechaerisAndroid
+
+- Android central:
+http://feeds.feedburner.com/androidcentral/tDcB
+
+- Ubuntu geek:
+http://feeds.feedburner.com/UbuntuGeekNews
+
+- HowtoForge:
+http://feeds.feedburner.com/howtoforge/LDMd
+
+- Phonearena:
+http://feeds.feedburner.com/phonearena/jApB
+
+
+**- Some Italian feeds: **
+
+- Androidworld:
+http://www.androidworld.it/feed/
+
+- Tuttoandroid:
+http://feeds.feedburner.com/tuttoandroid
+
+- Android Pit:
+http://feeds.feedburner.com/androidpit/eYCt
+
+- Alexiobash:
+http://feeds.feedburner.com/feedburner/jWXa
+
+- Marco's box:
+http://feeds.feedburner.com/marcosbox/Svdz
+
+- Chimera Revo (linux)
+http://feeds.feedburner.com/chimerarevo/tlEz
+
+- Chimera Revo (Android):
+http://feeds.feedburner.com/ChimeraRevo-NewsGuideERecensioniSulMondoDellaTecnologiaAndroid
+
+
 <a href="http://www.xda-developers.com/iven-news-reader-a-lightweight-feed-reader/">
   <img alt="XDA featured"
        src="http://i.imgur.com/3ClP3lZ.png" />
 </a>
-
-
-
-[![ScreenShot](https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/YouTube_alt_2.png)](https://www.youtube.com/watch?v=wgS8oE9M0js)
-
