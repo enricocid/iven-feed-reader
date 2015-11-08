@@ -35,12 +35,23 @@
   </group>
     <item
         android:id="@+id/navigation_bottom_1"
-        android:title="@string/moargnulin">
+        android:title="@string/moarfeeds">
         <menu>
+
+            <item
+                android:id="@+id/police"
+                android:title="@string/police"/>
+            <item
+                android:id="@+id/xda"
+                android:title="@string/xda"/>
 
             <item
                 android:id="@+id/noobs"
                 android:title="@string/defaultfeed"/>
+
+            <item
+                android:id="@+id/distrowatch"
+                android:title="@string/watchme"/>
 
             <item
                 android:id="@+id/phoronix"
@@ -51,18 +62,6 @@
                 android:title="@string/softpedia"/>
 
             <item
-                android:id="@+id/distrowatch"
-                android:title="@string/watchme"/>
-
-            <item
-                android:id="@+id/geek"
-                android:title="@string/geekubuntu"/>
-
-            <item
-                android:id="@+id/forge"
-                android:title="@string/howtoforge"/>
-
-            <item
                 android:id="@+id/web8"
                 android:title="@string/web8"/>
 
@@ -70,62 +69,6 @@
                 android:id="@+id/omg"
                 android:title="@string/omg"/>
 
-        </menu>
-    </item>
-    <item
-        android:id="@+id/navigation_bottom_2"
-        android:title="@string/moar">
-        <menu>
-
-            <item
-            android:id="@+id/police"
-            android:title="@string/police"/>
-            <item
-                android:id="@+id/xda"
-                android:title="@string/xda"/>
-            <item
-                android:id="@+id/techaeris"
-                android:title="@string/techaeris"/>
-            <item
-                android:id="@+id/phonearena"
-                android:title="@string/phonearena"/>
-            <item
-                android:id="@+id/central"
-                android:title="@string/central"/>
-            <item
-                android:id="@+id/authority"
-                android:title="@string/auth"/>
-        </menu>
-    </item>
-    <item
-        android:id="@+id/navigation_bottom_3"
-        android:title="@string/moaritalian">
-        <menu>
-            <item
-                android:id="@+id/lffl"
-                android:title="@string/lffl"/>
-
-            <item
-                android:id="@+id/chimeral"
-                android:title="@string/chimeralinux"/>
-
-            <item
-                android:id="@+id/alexio"
-                android:title="@string/bash"/>
-
-            <item
-                android:id="@+id/marcobox"
-                android:title="@string/box"/>
-
-            <item
-                android:id="@+id/pit"
-                android:title="@string/pit"/>
-            <item
-            android:id="@+id/androidiani"
-            android:title="@string/androidiani"/>
-            <item
-                android:id="@+id/chimeraa"
-                android:title="@string/chimeraandroid"/>
         </menu>
     </item>
 </menu>

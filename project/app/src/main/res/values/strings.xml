@@ -45,30 +45,16 @@
     <string name="pref_text_verylarge">Very large</string>
 
     <!-- moar feeds -->
-    <string name="moar" translatable="false">Moar Android feeds</string>
-    <string name="moargnulin" translatable="false">Moar Gnu-Linux feeds</string>
-    <string name="moaritalian" translatable="false">Moar Italian feeds</string>
+    <string name="moarfeeds" translatable="false">Moar feeds</string>
+    <string name="watchme" translatable="false">Distrowatch</string>
     <string name="defaultfeed" translatable="false">Noobslab</string>
     <string name="phoronix" translatable="false">Phoronix</string>
     <string name="softpedia" translatable="false">Softpedia</string>
-    <string name="watchme" translatable="false">Distrowatch</string>
-    <string name="geekubuntu" translatable="false">Ubuntu geek</string>
-    <string name="howtoforge" translatable="false">HowtoForge</string>
     <string name="web8" translatable="false">Web Upd8</string>
     <string name="omg" translatable="false">OMG! Ubuntu!</string>
     <string name="police" translatable="false">Android Police</string>
     <string name="xda" translatable="false">XDA developers</string>
-    <string name="techaeris" translatable="false">Techaeris</string>
-    <string name="phonearena" translatable="false">Phonearena</string>
-    <string name="central" translatable="false">Android central</string>
-    <string name="auth" translatable="false">Android authority</string>
-    <string name="lffl" translatable="false">Lffl linux freedom</string>
-    <string name="chimeralinux" translatable="false">Chimera revo (Linux)</string>
-    <string name="bash" translatable="false">Alexiobash</string>
-    <string name="box" translatable="false">Marco\'s box</string>
-    <string name="pit" translatable="false">Android pit</string>
-    <string name="androidiani" translatable="false">Androidiani</string>
-    <string name="chimeraandroid" translatable="false">Chimera revo (Android)</string>
+
     <!-- custom feeds -->
     <string name="deletedialogtitle">Delete feed</string>
     <string name="deletedialogquestion">Do you want to delete this feed?</string>
