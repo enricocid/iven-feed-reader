@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="emailC">Invia con</string>
     <string name="lib1sum">Codice sorgente</string>
@@ -41,6 +41,6 @@
     <string name="deletedialogquestion">Vuoi cancellare questo feed?</string>
     <string name="deleteok">Si</string>
     <string name="adddialogtitle">Aggiunta feed</string>
-    <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS 2.0 (feedburner)</string>
+    <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="feedmenu">Aggiungi un feed</string>
 </resources>

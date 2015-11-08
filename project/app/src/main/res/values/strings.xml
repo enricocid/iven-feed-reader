@@ -75,8 +75,7 @@
     <string name="deleteok">Yes</string>
     <string name="deleteno" translatable="false">No</string>
     <string name="adddialogtitle">Feed addition</string>
-    <string name="adddialogfeed">Insert your custom feed in RSS 2.0 (feedburner) format</string>
+    <string name="adddialogfeed">Insert your custom feed in RSS format</string>
     <string name="feedmenu">Add a feed</string>
-    <string name="feed_template" translatable="false">http://feeds.feedburner.com/</string>
 
 </resources>

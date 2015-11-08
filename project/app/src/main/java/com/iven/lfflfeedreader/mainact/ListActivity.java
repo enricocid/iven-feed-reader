@@ -149,7 +149,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                             .content(R.string.adddialogfeed)
                             .inputType(InputType.TYPE_CLASS_TEXT)
                             .positiveText(android.R.string.ok)
-                            .input(0, R.string.feed_template, false, new MaterialDialog.InputCallback() {
+                            .input(0, 0, false, new MaterialDialog.InputCallback() {
                                 @Override
                                 public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                                     feedcustom = input.toString();
