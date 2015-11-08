@@ -94,15 +94,6 @@ https://github.com/bumptech/glide
 
 **- Some feeds You may want to add:**
 
-- Official Android blog:
-http://feeds.feedburner.com/blogspot/jcIHV
-
-- Android developers blog:
-http://feeds.feedburner.com/blogspot/hwVKk
-
-- Official Google blog:
-http://feeds.feedburner.com/blogspot/jhWSr
-
 - Android authority: http://feeds.feedburner.com/androidauthority/jsTn
 
 - Techaeris:
