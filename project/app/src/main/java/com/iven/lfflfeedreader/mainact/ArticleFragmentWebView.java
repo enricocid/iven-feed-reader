@@ -17,7 +17,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -26,7 +26,7 @@ public class ArticleFragmentWebView extends Fragment {
 	private int fPos;
 	RSSFeed fFeed;
 
-	@Override
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -42,8 +42,10 @@ public class ArticleFragmentWebView extends Fragment {
 
         int size_wb = Math.round(size);
 
+
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
+
 		final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
 		final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
 		final WebView wb = (WebView) view.findViewById(R.id.wb);
@@ -66,9 +68,7 @@ public class ArticleFragmentWebView extends Fragment {
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
 
-        final Button share_button_wb = (Button) view.findViewById(R.id.button_share_wb);
-
-        share_button_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
+        final ImageButton share_button_wb = (ImageButton) view.findViewById(R.id.button_share_wb);
 
         share_button_wb.setOnClickListener(new View.OnClickListener()
 
@@ -84,8 +84,7 @@ public class ArticleFragmentWebView extends Fragment {
 
         );
 
-        final Button continue_reading_wb = (Button) view.findViewById(R.id.button_wb);
-        continue_reading_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
+        final ImageButton continue_reading_wb = (ImageButton) view.findViewById(R.id.button_wb);
 
         continue_reading_wb.setOnClickListener(new View.OnClickListener()
 
@@ -129,4 +128,4 @@ public class ArticleFragmentWebView extends Fragment {
         }
 		return view;
     }
-    }
+}

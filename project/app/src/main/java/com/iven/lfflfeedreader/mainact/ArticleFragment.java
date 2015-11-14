@@ -16,7 +16,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -81,9 +81,7 @@ public class ArticleFragment extends Fragment {
 
 		articletext.setText(base3format);
 
-			Button continue_reading = (Button) rootView.findViewById(R.id.button);
-
-            continue_reading.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
+			ImageButton continue_reading = (ImageButton) rootView.findViewById(R.id.button);
 
 			continue_reading.setOnClickListener(new View.OnClickListener()
 
@@ -103,25 +101,23 @@ public class ArticleFragment extends Fragment {
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
 
-		Button share_button = (Button) rootView.findViewById(R.id.button_share);
-
-        share_button.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -5);
+		ImageButton share_button = (ImageButton) rootView.findViewById(R.id.button_share);
 
 		share_button.setOnClickListener(new View.OnClickListener()
 
-							   {
-								   public void onClick(View v) {
-									   Intent shareIntent = new Intent(Intent.ACTION_SEND);
-									   shareIntent.setType("text/plain");
-									   shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
-									   startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
-			}
+                                        {
+                                            public void onClick(View v) {
+                                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                                                shareIntent.setType("text/plain");
+                                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
+                                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
+                                            }
 
-			}
+                                        }
 
-			);
+        );
 
 		return rootView;
-		}
 
+		}
 }

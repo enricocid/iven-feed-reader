@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16sp"
-    android:background="?attr/theme_background">
+    android:background="?attr/theme_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:id="@+id/sv"
@@ -43,10 +45,10 @@
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:textColor="?attr/title_color"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_below="@+id/title" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <ImageView
+                android:contentDescription="@string/desc"
                 android:id="@+id/img"
                 android:layout_marginTop="4sp"
                 android:layout_marginBottom="4sp"
@@ -60,28 +62,40 @@
                 android:textColor="?attr/article_text_color"
                 android:textSize="@dimen/txtSize"/>
 
-            <Button
-                android:id="@+id/button"
-                android:background="@drawable/md_btn_selector_custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/webv"
-                android:layout_gravity="center"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:text="@string/more_read"/>
+            <android.support.percent.PercentRelativeLayout
 
-            <Button
-                android:background="@drawable/md_btn_selector_custom"
-                android:id="@+id/button_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:text="@string/btn_share"
-                android:layout_marginBottom="16sp"/>
+                android:gravity="center"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity">
+
+                <ImageButton
+                    android:id="@+id/button_share"
+                    android:background="@drawable/md_btn_selector_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:layout_widthPercent="50%"
+                    android:src="?attr/share_icon"/>
+
+                <ImageButton
+                    android:id="@+id/button"
+                    android:background="@drawable/md_btn_selector_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/more_read"
+                    app:layout_widthPercent="50%"
+                    android:src="?attr/forward_icon"
+                    android:layout_toEndOf="@id/button_share"
+                    android:layout_toRightOf="@id/button_share"/>
+
+            </android.support.percent.PercentRelativeLayout>
 
         </LinearLayout>
 
