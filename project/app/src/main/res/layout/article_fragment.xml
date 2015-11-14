@@ -89,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/more_read"
                     app:layout_widthPercent="50%"
                     android:src="?attr/forward_icon"
                     android:layout_toEndOf="@id/button_share"
