@@ -154,7 +154,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 });
 
 
-        //initialize our navigation drawer's
+        //initialize our navigation drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerRight = (DrawerLayout) findViewById(R.id.drawer_right);
@@ -195,7 +195,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         listfeed =(ListView) findViewById(R.id.listfeed);
 
         //initialize a sqlite database
-        //here we create or open the db we are going to create later
+        //here we open the db we are going to create later
         mydb = ListActivity.this.openOrCreateDatabase("feedslist", MODE_PRIVATE, null);
 
         //create a sqlite database called feedslist with a column "name" where items will be stored
@@ -211,14 +211,14 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
             while (!cursor2.isAfterLast()) {
 
-                //add items from column "name" to dynamic list
+                //add items from column "name" into dynamic list
                 dynamic_list.add(cursor2.getString(cursor2.getColumnIndex("name")));
                 cursor2.moveToNext();
             }
             cursor2.close();
         }
 
-        //initialize the dynamic list array adapter, we set a template layout and dynamic list formerly populated
+        //initialize the dynamic list array adapter, we set a template layout and the dynamic list formerly populated
         dynamic_adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, dynamic_list);
 
         //refresh the dynamic list
@@ -295,7 +295,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         //initialize the fab button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        //attach the fab on listview to react on scroll events and
+        //attach the fab on listview to react to scroll events and
         //allow the fab to autohide when needed
         fab.attachToListView(listfeed);
 
@@ -508,7 +508,7 @@ class CustomListAdapter extends BaseAdapter {
 				listItem = layoutInflater.inflate(R.layout.items, parent, false);
             }
 
-            //get the chosen article's text size from preferences
+            //get the chosen items text size from preferences
             float size = Preferences.resolveTextSizeListResId(getBaseContext());
 
             //initialize the dynamic items (the title, subtitle)
