@@ -1,10 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for Credits dialog -->
+
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16sp"
     android:paddingRight="16sp"
     xmlns:android="http://schemas.android.com/apk/res/android">
-                
+
+    <!-- webview-->
     <WebView
         android:id="@+id/dialog"
         android:layout_width="match_parent"

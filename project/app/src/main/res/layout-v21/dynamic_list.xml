@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for the right-to-left navigation drawer containing the dynamic listview-->
+<!-- with elevation (for >= lollipop devices)-->
+
+<!-- the drawer-->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_right"
@@ -18,11 +24,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+              <!-- the dynamic listview-->
               <ListView
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/listfeed" />
 
+              <!-- the fab button-->
               <com.melnykov.fab.FloatingActionButton
                   android:id="@+id/fab"
                   android:layout_width="wrap_content"

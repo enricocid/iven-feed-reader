@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for Articles using webview -->
+
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,6 +12,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- scrollview-->
     <ScrollView
         android:id="@+id/sv_wb"
         android:scrollbars="vertical"
@@ -22,7 +27,8 @@
             android:layout_margin="8sp"
             android:descendantFocusability="blocksDescendants">
 
-        <TextView
+            <!-- title-->
+            <TextView
             android:id="@+id/titlewb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,22 +42,26 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/subtitlewb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:textColor="?attr/title_color"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <!-- subtitle-->
+            <TextView
+            android:id="@+id/subtitlewb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="?attr/title_color"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
+            <!-- webview where contents are loaded-->
             <WebView
-                android:id="@+id/wb"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+            android:id="@+id/wb"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
+            <!-- we use a percent layout to add the share and continue reading button
+            this will allow us to get a more clean situation-->
             <android.support.percent.PercentRelativeLayout
 
                 android:layout_width="match_parent"
@@ -62,6 +72,7 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
+                <!-- share button-->
                 <ImageButton
                     android:id="@+id/button_share_wb"
                     android:background="@drawable/md_btn_selector_custom"
@@ -72,6 +83,7 @@
                     app:layout_widthPercent="50%"
                     android:src="?attr/share_icon"/>
 
+                <!-- continue reading button-->
                 <ImageButton
                     android:id="@+id/button_wb"
                     android:background="@drawable/md_btn_selector_custom"

@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- dimensions for devices sizes > 600dp (tablets) -->
+
 <resources>
 
     <dimen name="first_keyline">24dp</dimen>

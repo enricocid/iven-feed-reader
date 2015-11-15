@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- Preferences for api19-->
+<!-- Immersive mode works only for >= 19, i.e. KitKat -->
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/opts"/>

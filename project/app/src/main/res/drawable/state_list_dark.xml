@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- navigation drawer items selector for dark theme -->
+
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- checked item -->
 <item android:color="@color/iven4" android:state_checked="true" />
+    <!-- pressed item -->
 <item android:color="@color/iven1" android:state_pressed="true" />
+    <!-- default color of the items -->
 <item android:color="@color/iven13" />
 </selector>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <resources>
+
+<!-- text size options-->
+
+<resources>
         <string-array name="text_size_options">
             <item>@string/pref_text_verysmall</item>
             <item>@string/pref_text_small</item>

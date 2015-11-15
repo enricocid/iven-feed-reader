@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- Preferences for api21-->
+<!-- Navigation bar tint works only for >= 21, i.e. Lollipop -->
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.jenzz.materialpreference.PreferenceCategory android:title="@string/opts"/>

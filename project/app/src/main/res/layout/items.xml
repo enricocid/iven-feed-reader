@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- this is the layout for the main listview items-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +17,8 @@
         android:layout_marginLeft="24sp"
         android:layout_marginRight="16sp">
 
-    <ImageView
+        <!-- the article's image-->
+        <ImageView
         android:contentDescription="@string/desc"
         android:id="@+id/thumb"
         android:layout_width="130sp"
@@ -30,6 +33,7 @@
         android:layout_toStartOf="@+id/layout"
         android:orientation="vertical" >
 
+        <!-- title-->
         <TextView
             android:layout_marginTop="16sp"
             android:layout_marginLeft="16sp"
@@ -43,6 +47,7 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
 
+        <!-- date-->
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"

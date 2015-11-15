@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    
-        <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
 
+<!-- Styles & themes for api14 -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Article activity light theme -->
+    <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBar">false</item> 
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven3</item>
@@ -18,6 +21,7 @@
         <item name="forward_icon">@drawable/ic_forward</item>
          </style>
 
+    <!-- Article activity dark theme -->
     <style name="Theme_iven_article_dark" parent="Theme.AppCompat.NoActionBar">
 
         <item name="android:windowActionBar">false</item>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- colors-->
+
 <resources>
     <color name="translucent">#95000000</color>
     <color name="iven1">#448AFF</color>

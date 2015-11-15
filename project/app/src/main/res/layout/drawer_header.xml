@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for navigation view -->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/drawer_height"
     android:background="@color/iven15"
     android:orientation="vertical">
 
+    <!-- linux image-->
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -14,6 +18,7 @@
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_centerInParent="true" />
 
+    <!-- android image-->
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -23,7 +28,8 @@
         android:layout_gravity="bottom|right"
         android:layout_centerInParent="true" />
 
-  <TextView
+    <!-- the app's name-->
+    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|start"

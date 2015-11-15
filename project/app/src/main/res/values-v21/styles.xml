@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Styles & themes for api21 -->
+
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- List activity light theme -->
     <style name="Theme_iven" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowActionBar">false</item>
@@ -19,6 +23,7 @@
         <item name="plus_icon">@drawable/ic_plus_dark</item>
     </style>
 
+    <!-- List activity dark theme -->
     <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowActionBar">false</item>

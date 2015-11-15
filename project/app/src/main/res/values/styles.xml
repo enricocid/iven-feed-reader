@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Styles & themes -->
+
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-<style name="TranslucentSplash" parent="Theme.iven.custom">
+    <!-- Splash theme -->
+    <style name="TranslucentSplash" parent="Theme.iven.custom">
         <item name="android:windowBackground">@drawable/background_splash</item>
-</style>
+    </style>
 
     <style name="Theme.iven.custom" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionModeOverlay">true</item>
     </style>
 
+    <!-- List activity light theme -->
     <style name="Theme_iven" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven5</item>
@@ -25,6 +30,7 @@
         <item name="plus_icon">@drawable/ic_plus_dark</item>
     </style>
 
+    <!-- List activity dark theme -->
     <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven5</item>
@@ -39,8 +45,9 @@
         <item name="navview_text">@drawable/state_list_dark</item>
         <item name="plus_icon">@drawable/ic_plus</item>
     </style>
-    
-        <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <!-- Article activity light theme -->
+    <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven3</item>
         <item name="colorPrimary">@color/iven2</item>
@@ -55,6 +62,7 @@
         <item name="forward_icon">@drawable/ic_forward</item>
         </style>
 
+    <!-- Article activity dark theme -->
     <style name="Theme_iven_article_dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven3</item>
@@ -70,7 +78,8 @@
         <item name="forward_icon">@drawable/ic_forward_dark</item>
     </style>
 
-        <style name="Theme_iven_info" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Info activity light theme -->
+    <style name="Theme_iven_info" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven7</item>
         <item name="colorPrimary">@color/iven6</item>
@@ -88,6 +97,7 @@
         <item name="textsize_icon">@drawable/ic_format_text</item>
         </style>
 
+    <!-- Info activity dark theme -->
     <style name="Theme_iven_info_dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/iven7</item>
@@ -106,6 +116,7 @@
         <item name="textsize_icon">@drawable/ic_format_text_dark</item>
     </style>
 
+    <!-- Responsive toolbar -->
     <style name="Custom.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
 
         <item name="maxButtonHeight">48dp</item>

@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for Articles using justified text view -->
+
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,6 +12,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- scrollview-->
     <ScrollView
         android:id="@+id/sv"
         android:scrollbars="vertical"
@@ -22,6 +27,7 @@
             android:layout_margin="8sp"
             android:descendantFocusability="blocksDescendants">
 
+            <!-- title-->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
@@ -36,6 +42,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
+            <!-- subtitle-->
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="match_parent"
@@ -47,6 +54,7 @@
                 android:textColor="?attr/title_color"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
+            <!-- article's image-->
             <ImageView
                 android:contentDescription="@string/desc"
                 android:id="@+id/img"
@@ -55,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <!-- justified textview-->
             <su.whs.watl.ui.TextViewEx
                 android:id="@+id/webv"
                 android:layout_width="match_parent"
@@ -62,6 +71,8 @@
                 android:textColor="?attr/article_text_color"
                 android:textSize="@dimen/txtSize"/>
 
+            <!-- we use a percent layout to add the share and continue reading button
+            this will allow us to get a more clean situation-->
             <android.support.percent.PercentRelativeLayout
 
                 android:layout_width="match_parent"
@@ -72,6 +83,7 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
+                <!-- share button-->
                 <ImageButton
                     android:id="@+id/button_share"
                     android:background="@drawable/md_btn_selector_custom"
@@ -82,6 +94,7 @@
                     app:layout_widthPercent="50%"
                     android:src="?attr/share_icon"/>
 
+                <!-- continue reading button-->
                 <ImageButton
                     android:id="@+id/button"
                     android:background="@drawable/md_btn_selector_custom"

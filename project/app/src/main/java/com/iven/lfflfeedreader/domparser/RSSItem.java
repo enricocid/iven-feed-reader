@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 public class RSSItem implements Serializable {
 
+    //Simple struct class to hold the data for rss item
+	//title, link, description, author, date, images.
+
+    //Original author Isaac Whitfield
+    //extendend by EnricoD
+
+    // Create the strings we need to store
 	private static final long serialVersionUID = 1L;
 	private String item_title = null;
 	private String item_desc = "¯\\_(ツ)_/¯";
@@ -12,6 +19,7 @@ public class RSSItem implements Serializable {
 	private String rss_link = null;
 	private String item_author = "¯\\_(ツ)_/¯";
 
+    //set 'em all
 	void setTitle(String title) {
 		item_title = title;
 	}

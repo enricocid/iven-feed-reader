@@ -32,12 +32,17 @@ public class ChangelogDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View customView;
         try {
+            //set the view
             customView = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_layout, null);
         } catch (InflateException e) {
             throw new IllegalStateException("This device does not support Web Views.");
         }
+
+        //create new material dialog
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
 
+                //see material dialog docs for more info
+                //https://github.com/afollestad/material-dialogs
                         .positiveColorRes(R.color.material_red_400)
                         .titleColorRes(R.color.material_red_400)
                         .dividerColorRes(R.color.iven8)
@@ -49,10 +54,19 @@ public class ChangelogDialog extends DialogFragment {
                 .backgroundColorRes(R.color.material_blue_grey_800)
                 .build();
 
+        //initialize the webview
         final WebView webView = (WebView) customView.findViewById(R.id.dialog);
+
+        //initialize the webview settings
         WebSettings websettings = webView.getSettings();
+
+        //set default encoding to utf-8 to avoid malformed text
         websettings.setDefaultTextEncodingName("utf-8");
+
+        //set bg transparent because we will apply the bg using the activity's theme
         webView.setBackgroundColor(Color.TRANSPARENT);
+
+        // Load from changelog.html in the raw folder
         webView.loadUrl("file:///android_res/raw/changelog.html");
         return dialog;
 	}

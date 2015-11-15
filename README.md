@@ -26,6 +26,11 @@ It's also on Google Play:
 </a>
 
 
+**GETTING STARTED WITH ANDROID STUDIO**
+<a href="http://xda-university.com/as-a-developer/getting-started-android-studio">
+  <img alt="Get started"
+       src="http://xda-university.com/wp-content/uploads/2012/11/cropped-cropped-xdau_small2.png/>
+</a>
 
 
 
@@ -37,6 +42,11 @@ It's also on Google Play:
 
 
 **THANKS TO**
+
+**- Isaac Whitfield**
+
+RSSfeed sample:
+https://github.com/zackehh/RSSDemo
 
 **- Lucas Urbas**
 

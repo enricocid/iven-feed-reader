@@ -30,31 +30,61 @@ public class ArticleFragmentWebView extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		fFeed = (RSSFeed) getArguments().getSerializable("feed");
+        //Initialize the feed (i.e. get all the data
+        fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
     }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+
+        //apply activity's theme if dark theme is enabled
         Preferences.applyTheme(getActivity());
+
+        //get the chosen article's text size from preferences
         float size = Preferences.resolveTextSizeResId(getContext());
 
-        int size_wb = Math.round(size);
-
-
+       //set the view
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
 
+        //initialize the dynamic items (the title, subtitle)
+        //final because we need to access theme within the class from webview client method
 		final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
 		final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
-		final WebView wb = (WebView) view.findViewById(R.id.wb);
+
+        //set the text size on articles
+        title_wb.setText(fFeed.getItem(fPos).getTitle());
+        subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+
+        //set the articles text size from preferences
+        //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        // TypedValue.COMPLEX_UNIT_SP = the text unit, in this case SP
+        // size = the text size from preferences
+        title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
+        subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
+
+        //initialize the scrollview
 		ScrollView scroll = (ScrollView) view.findViewById(R.id.sv_wb);
+
+        //set smooth scroll enabled
 		scroll.setSmoothScrollingEnabled(true);
 
+        //initialize the webview
+        final WebView wb = (WebView) view.findViewById(R.id.wb);
+
+        //initialize the webview settings
 		final WebSettings ws = wb.getSettings();
+
+        //set default encoding to utf-8 to avoid malformed text
 		ws.setDefaultTextEncodingName("utf-8");
+
+        //set bg transparent because we will apply the bg using the activity's theme
 		wb.setBackgroundColor(Color.TRANSPARENT);
+
+        //control the layout of html
+        //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 		}
@@ -62,14 +92,27 @@ public class ArticleFragmentWebView extends Fragment {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
 		}
 
-		title_wb.setText(fFeed.getItem(fPos).getTitle());
-        subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+        //continue reading button
+        //final because we need to access theme within the class from webview client method
+        final ImageButton continue_reading_wb = (ImageButton) view.findViewById(R.id.button_wb);
 
-        title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
-        subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
+        //on click load url using the in-app webview
+        continue_reading_wb.setOnClickListener(new View.OnClickListener()
 
+                                               {
+                                                   public void onClick (View v){
+                                                       wb.loadUrl(fFeed.getItem(fPos).getLink());
+                                                   }
+
+                                               }
+
+        );
+
+        //share button
+        //final because we need to access theme within the class from webview client method
         final ImageButton share_button_wb = (ImageButton) view.findViewById(R.id.button_share_wb);
 
+        //on click, using share intent, we open the share dialog
         share_button_wb.setOnClickListener(new View.OnClickListener()
 
                                         {
@@ -84,33 +127,40 @@ public class ArticleFragmentWebView extends Fragment {
 
         );
 
-        final ImageButton continue_reading_wb = (ImageButton) view.findViewById(R.id.button_wb);
-
-        continue_reading_wb.setOnClickListener(new View.OnClickListener()
-
-                                            {
-                                                public void onClick (View v){
-                                                    wb.loadUrl(fFeed.getItem(fPos).getLink());
-                                                }
-
-                                            }
-
-        );
-
+        //parse the articles text using jsoup and replace some items since this is a simple textview
+        //and continue reading is not clickable
+        //so we are going to replace with an empty text
 		String base = fFeed.getItem(fPos).getDescription().replace("Continua a leggere...", "");
+
+        //this is the text that will be loaded inside the html
         String baseformat = base.replace("Continue reading...", "");
 
+
+        //here we handle the html where the articles will be loaded
 		String html = "<!DOCTYPE html>";
+
+        //the articles html
 		html += baseformat;
+
+        //Set different text color on light and dark themes
+        //and justify the text
+        //dark theme
         if (Preferences.darkThemeEnabled(getContext())) {
 		html += "<body  text=\"#AEA79F\" align=\"justify\";></body>";
         } else {
+
+            //light theme
             html += "<body  text=\"#222222\" align=\"justify\";></body>";
         }
 		html += "</html>";
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
         wb.setBackgroundColor(Color.TRANSPARENT);
+
+        //this is a needed transformation (from float to int) to set the text size on webview
+        int size_wb = Math.round(size);
         ws.setDefaultFontSize(size_wb);
+
+        //override this method to load the url inside the in-app webview
         wb.setWebViewClient(new WebViewClient() {
 
             @Override
@@ -123,6 +173,8 @@ public class ArticleFragmentWebView extends Fragment {
                 return true;
             }
         });
+
+        //enable JavaScript if the preference is enabled
         if (Preferences.JSEnabled(getContext())) {
             ws.setJavaScriptEnabled(true);
         }

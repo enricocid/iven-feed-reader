@@ -22,6 +22,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+//we use appcompat delegate to add material toolbar also on pre-lollipop devices
+
 public class InfoActivity extends PreferenceActivity {
 
 	private SharedPreferences.OnSharedPreferenceChangeListener mListenerOptions;
@@ -35,39 +37,58 @@ public class InfoActivity extends PreferenceActivity {
 
 		getDelegate().installViewFactory();
 		getDelegate().onCreate(savedInstanceState);
+
+		//apply activity's theme if dark theme is enabled
 		Preferences.applyTheme3(this);
+
 		super.onCreate(savedInstanceState);
 
+        //set toolbar method
 		setToolbar();
 		addPreferencesFromResource(R.xml.info_pref);
 
+        //get the context
 		context = getBaseContext();
 
+        //get the JavaScript preference
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         CheckBoxPreference js = (CheckBoxPreference) findPreference("JavaScriptLoad");
 
+        //make the JavaScript preference visible if webview is enabled
         if (Preferences.WebViewEnabled(context)) {
             preferenceScreen.addPreference(js);
         }
         else {
+
+            //hide the JavaScript preference if webview is disabled
             preferenceScreen.removePreference(js);
         }
 
+        //set the navbar tint if the preference is enabled
         if (Preferences.navTintEnabled(getBaseContext())) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.iven6));
         }
 
+        //initialize version from BuildConfig
         String version = BuildConfig.VERSION_NAME;
 
+        //get the Version preference
         com.jenzz.materialpreference.Preference preferenceversion = (com.jenzz.materialpreference.Preference) findPreference("build_number");
 
+        //dynamically set app's version
         preferenceversion.setSummary(version);
+
+        //make version's preference not clickable
 		preferenceversion.setSelectable(false);
 
+
+        //initialize shared preference change listener
+        //some preferences when enabled requires an app reboot
 		mListenerOptions = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
 
+                //on theme on/off restart the app
                 if (key.equals("Theme")) {
                     Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
                     newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
@@ -75,6 +96,8 @@ public class InfoActivity extends PreferenceActivity {
                     overridePendingTransition(0, 0);
                     finish();
                 }
+
+                //on webview on/off restart the app
                 else if (key.equals("WebViewLoad")) {
 				final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
 						InfoActivity.this, SplashActivity.class));
@@ -84,14 +107,9 @@ public class InfoActivity extends PreferenceActivity {
                     finish();
 
                 }
+
+                //on navbar tint on/off restart the app
 				else if (key.equals("Navibar")) {
-					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
-					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-					startActivity(newIntent);
-					overridePendingTransition(0, 0);
-					finish();
-				}
-				else if (key.equals("images")) {
 					Intent newIntent = new Intent(InfoActivity.this, SplashActivity.class);
 					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
 					startActivity(newIntent);

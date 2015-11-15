@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- googlish alert screen -->
+
 <layer-list android:opacity="opaque"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/material_red_400" />

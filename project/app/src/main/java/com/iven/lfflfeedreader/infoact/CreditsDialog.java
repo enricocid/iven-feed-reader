@@ -35,11 +35,18 @@ public class CreditsDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View customView;
         try {
+
+            //set the view
             customView = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_layout, null);
         } catch (InflateException e) {
             throw new IllegalStateException("This device does not support Web Views.");
         }
+
+        //create new material dialog
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
+
+                //see material dialog docs for more info
+                //https://github.com/afollestad/material-dialogs
 
                 .positiveColorRes(R.color.material_red_400)
                 .titleColorRes(R.color.material_red_400)
@@ -53,17 +60,30 @@ public class CreditsDialog extends DialogFragment {
                 .contentLineSpacing(1.6f)
                 .build();
 
+        //initialize the webview
         final WebView webView = (WebView) customView.findViewById(R.id.dialog);
 
+        //initialize the webview settings
         WebSettings websettings = webView.getSettings();
+
+        //set default encoding to utf-8 to avoid malformed text
         websettings.setDefaultTextEncodingName("utf-8");
+
+        //set bg transparent because we will apply the bg using the activity's theme
         webView.setBackgroundColor(Color.TRANSPARENT);
+
+        // Load from credits.html in the raw folder
         webView.loadUrl("file:///android_res/raw/credits.html");
+
+        //override this method to load the urls inside external browser
         webView.setWebViewClient(new WebViewClient() {
                                      @Override
                                      public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                                         //replace some text to avoid malformed urls
                                          String link = url.replace("file:///'", "");
                                          String linkform = link.replace("/'", "");
+
                                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkform)
                                          );
                                          CharSequence title2 = getResources().getText(R.string.chooser_title);
@@ -83,6 +103,8 @@ public class CreditsDialog extends DialogFragment {
                                              webView.clearView();
                                          } catch (Exception e) {
                                          }
+
+                                         //load from credits.html when we go back from browser
                                          if (webView.canGoBack()) {
                                              webView.goBack();
                                          }
