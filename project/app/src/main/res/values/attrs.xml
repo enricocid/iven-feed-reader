@@ -30,4 +30,5 @@
     <attr name="plus_icon" format="reference"/>
     <attr name="share_icon" format="reference"/>
     <attr name="forward_icon" format="reference"/>
+    <attr name="remove_feed_icon" format="reference"/>
 </resources>

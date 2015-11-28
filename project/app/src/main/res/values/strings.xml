@@ -56,10 +56,7 @@
     <string name="xda" translatable="false">XDA developers</string>
 
     <!-- custom feeds -->
-    <string name="deletedialogtitle">Delete feed</string>
-    <string name="deletedialogquestion">Do you want to delete this feed?</string>
-    <string name="deleteok">Yes</string>
-    <string name="deleteno" translatable="false">No</string>
+    <string name="deletemenutitle">Delete feeds starting from last</string>
     <string name="adddialogtitle">Feed addition</string>
     <string name="adddialogfeed">Insert your custom feed in RSS format</string>
     <string name="feedmenu">Add a feed</string>

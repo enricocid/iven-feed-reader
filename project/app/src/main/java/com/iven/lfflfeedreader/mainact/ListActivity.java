@@ -3,7 +3,6 @@ package com.iven.lfflfeedreader.mainact;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,7 +26,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
@@ -39,7 +37,6 @@ import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
-import com.melnykov.fab.FloatingActionButton;
 
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +45,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -73,7 +71,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<String> dynamic_list;
     ListView listfeed;
     String feedcustom;
-
+    int position;
 
     //create the toolbar's menu
 	@Override
@@ -100,6 +98,12 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
         //initialize the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //initialize the toolbar for dynamic list
+        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+
+        //add a menu to this toolbar
+        toolbar1.inflateMenu(R.menu.dynamic_menu);
 
         //set the toolbar
         setSupportActionBar(toolbar);
@@ -153,6 +157,32 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
 
+
+        //set the dynamic menu's toolbar click listener
+        toolbar1.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        //call add feed method
+                        switch (item.getItemId()) {
+                            case R.id.feedadd:
+
+                               addFeed();
+                                return true;
+                        }
+
+                        //call delete feed method
+                        switch (item.getItemId()) {
+                            case R.id.deleteme:
+
+                                removeFeed();
+                                return true;
+                        }
+
+                        return false;
+                    }
+                });
 
         //initialize our navigation drawer
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -248,94 +278,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        //handle the dynamic list items long click
-        listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long arg3) {
-                final int deletePosition = position;
-
-                //on long click we create a new alert dialog
-                AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
-                        ListActivity.this);
-
-                alert.setTitle(R.string.deletedialogtitle);
-                alert.setMessage(R.string.deletedialogquestion);
-                alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        //on positive click we delete the feed from selected position
-                        dynamic_list.remove(deletePosition);
-
-                        //and we update the dynamic list
-                        dynamic_adapter.notifyDataSetChanged();
-                        dynamic_adapter.notifyDataSetInvalidated();
-                        listfeed.setAdapter(dynamic_adapter);
-
-                        //we also call this method to delete items from the database
-                        removeRow();
-                    }
-                });
-
-                //on negative button we dismiss the dialog
-                alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                alert.show();
-                return false;
-            }
-        });
-
-        //initialize the fab button
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        //attach the fab on listview to react to scroll events and
-        //allow the fab to autohide when needed
-        fab.attachToListView(listfeed);
-
-        //this the method to handle fab click to open an input dialog
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                new MaterialDialog.Builder(ListActivity.this)
-                        .title(R.string.adddialogtitle)
-                        .content(R.string.adddialogfeed)
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .positiveText(android.R.string.ok)
-                        .input(0, 0, false, new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-
-                                //on click ok we get the input
-                                feedcustom = input.toString();
-
-                                //we add this string inside the listview
-                                dynamic_list.add(feedcustom);
-
-                                //and we update the listview to add the new item
-                                dynamic_adapter.notifyDataSetChanged();
-                                listfeed.setAdapter(dynamic_adapter);
-
-                                //add the new item inside the sqlite database where these
-                                //dynamic items will be stored and used on app's resume to
-                                //populate the listview
-
-                                mydb.execSQL("insert into feedslist (name) values(?);", new String[]{feedcustom});
-                            }
-                        }).show();
-            }
-        };
-
-        //set fab's on click listener
-        fab.setOnClickListener(listener);
-        
         //initialize the main listview where items will be added
         list = (ListView) findViewById(android.R.id.list);
 
@@ -370,7 +312,51 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		});
 	}
 
-    public void removeRow(){
+    //show a message if user has already deleted all items
+    public void showToast(){
+        Context context = getApplicationContext();
+        CharSequence text = "No feeds, no party";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    //method to add feeds inside the db and the dynamic listview
+    public void addFeed(){
+
+        new MaterialDialog.Builder(ListActivity.this)
+                .title(R.string.adddialogtitle)
+                .content(R.string.adddialogfeed)
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .positiveText(android.R.string.ok)
+                .input(0, 0, false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+
+                        //on click ok we get the input
+                        feedcustom = input.toString();
+
+                        //we add this string inside the listview
+                        dynamic_list.add(feedcustom);
+
+                        //and we update the listview to add the new item
+                        dynamic_adapter.notifyDataSetChanged();
+                        listfeed.setAdapter(dynamic_adapter);
+
+                        //add the new item inside the sqlite database where these
+                        //dynamic items will be stored and used on app's resume to
+                        //populate the listview
+
+                        mydb.execSQL("insert into feedslist (name) values(?);", new String[]{feedcustom});
+
+                    }
+                }).show();
+    }
+
+    //method to remove a feed starting from the last
+    public void removeFeed(){
+
 
         //using a cursor we select items from the sqlite database
         Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
@@ -384,14 +370,30 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 id = cursor.getString(cursor.getColumnIndex("id"));
                 cursor.moveToNext();
             }
-            cursor.close();
+
         }
 
-        //and delete the item from the database
-        //this method needs to be improved since only the last item will
-        //be deleted but not the inner elements
-        mydb.execSQL("DELETE FROM " + "feedslist" + " WHERE " + "id"
-                + "=" + id + "");
+        //and delete the item from the database starting from the last
+        //but only if the database contains items
+        if (cursor.getCount() > 0){
+
+                    dynamic_list.remove(position);
+
+                    //and we update the dynamic list
+                    dynamic_adapter.notifyDataSetChanged();
+                    dynamic_adapter.notifyDataSetInvalidated();
+                    listfeed.setAdapter(dynamic_adapter);
+
+            mydb.execSQL("DELETE FROM " + "feedslist" + " WHERE " + "id"
+                    + "=" + id + "");
+
+        } else if (cursor.getCount() == 0){
+
+            //show a message if user has already deleted all items
+            showToast();
+        }
+
+        cursor.close();
     }
 
     //this is the method to delete the app's cache

@@ -36,9 +36,7 @@
     <string name="pref_text_large">Grande</string>
     <string name="pref_text_verylarge">Molto grande</string>
     <string name="version">Versione app</string>
-    <string name="deletedialogtitle">Cancella feed</string>
-    <string name="deletedialogquestion">Vuoi cancellare questo feed?</string>
-    <string name="deleteok">Si</string>
+    <string name="deletemenutitle">Cancella feed partendo dall\'ultimo</string>
     <string name="adddialogtitle">Aggiunta feed</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="feedmenu">Aggiungi un feed</string>
