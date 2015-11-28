@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.iven.lfflfeedreader.R;
@@ -52,21 +51,6 @@ public class ArticleActivity extends AppCompatActivity {
 		pager.setAdapter(mPagerAdapter);
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
-
-		//Initialize the Toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        //Add the back button on toolbar
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                overridePendingTransition(0, 0);
-            }
-        });
 
 		//set the navbar tint if the preference is enabled
 		if (Preferences.navTintEnabled(this)) {

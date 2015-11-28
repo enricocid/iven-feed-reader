@@ -12,11 +12,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,11 +38,22 @@ public class ArticleFragment extends Fragment {
 
 		super.onCreate(savedInstanceState);
 
-        //Initialize the feed (i.e. get all the data
+        //Report that this fragment would like to participate in populating the options menu
+        // by receiving a call to onCreateOptionsMenu(Menu, MenuInflater) and related methods.
+        setHasOptionsMenu(true);
+
+        //Initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
 
 	}
+
+    //create the toolbar's menu
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.articles_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +68,53 @@ public class ArticleFragment extends Fragment {
         //set the view
         ViewGroup rootView = (ViewGroup) inflater
 				.inflate(R.layout.article_fragment, container, false);
+
+        //Initialize the Toolbar
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+
+        final AppCompatActivity activity = (AppCompatActivity) getActivity();
+
+        //Add the back button on toolbar
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
+                activity.overridePendingTransition(0, 0);
+            }
+        });
+
+        //set the menu's toolbar click listener
+        toolbar.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        //on click, using intents, we open the feed url using an external browser
+                        switch (item.getItemId()) {
+                            case R.id.forward:
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getLink()));
+                                CharSequence title2 = getResources().getText(R.string.chooser_title);
+                                Intent chooser = Intent.createChooser(intent, title2);
+                                startActivity(chooser);
+                                return true;
+                        }
+
+                        //on click, using share intent, we open the share dialog
+                        switch (item.getItemId()) {
+                            case R.id.share_article:
+                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                                shareIntent.setType("text/plain");
+                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
+                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
+                                return true;
+                        }
+
+                        return false;
+                    }
+                });
 
         //initialize the dynamic items (the title, subtitle)
 		TextView title = (TextView) rootView.findViewById(R.id.title);
@@ -113,45 +175,7 @@ public class ArticleFragment extends Fragment {
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
 
-        //continue reading button
-			ImageButton continue_reading = (ImageButton) rootView.findViewById(R.id.button);
-
-        //on click, using intents, we open the feed url using an external browser
-			continue_reading.setOnClickListener(new View.OnClickListener()
-
-                                                {
-                                                    public void onClick(View v) {
-                                                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getLink()));
-                                                        CharSequence title2 = getResources().getText(R.string.chooser_title);
-                                                        Intent chooser = Intent.createChooser(intent, title2);
-                                                        startActivity(chooser);
-                                                    }
-
-                                                }
-
-            );
-
-        //share button
-
-        ImageButton share_button = (ImageButton) rootView.findViewById(R.id.button_share);
-
-        //on click, using share intent, we open the share dialog
-
-        share_button.setOnClickListener(new View.OnClickListener()
-
-                                        {
-                                            public void onClick(View v) {
-                                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                                                shareIntent.setType("text/plain");
-                                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
-                                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
-                                            }
-
-                                        }
-
-        );
-
-		return rootView;
+        return rootView;
 
 		}
 }

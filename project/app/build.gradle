@@ -31,7 +31,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:percent:23.+'
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.jenzz:materialpreference:1.+'
     compile('com.github.afollestad.material-dialogs:commons:0.8.5.1@aar') {

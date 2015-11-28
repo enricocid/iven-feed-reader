@@ -18,8 +18,8 @@
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="theme_background">@android:color/white</item>
         <item name="share_icon">@drawable/ic_share</item>
-        <item name="forward_icon">@drawable/ic_forward</item>
-         </style>
+        <item name="webview_icon">@drawable/ic_webview</item>
+    </style>
 
     <!-- Article activity dark theme -->
     <style name="Theme_iven_article_dark" parent="Theme.AppCompat.NoActionBar">
@@ -36,7 +36,7 @@
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="theme_background">@color/iven14</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
-        <item name="forward_icon">@drawable/ic_forward_dark</item>
+        <item name="webview_icon">@drawable/ic_webview_dark</item>
     </style>
 
 </resources>

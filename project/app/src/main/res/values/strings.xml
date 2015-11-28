@@ -43,6 +43,8 @@
     <string name="pref_text_medium">Medium (default)</string>
     <string name="pref_text_large">Large</string>
     <string name="pref_text_verylarge">Very large</string>
+    <string name="continue_read">Continue reading</string>
+    <string name="share_article">Share the article</string>
 
     <!-- moar feeds -->
     <string name="moarfeeds" translatable="false">Moar feeds</string>

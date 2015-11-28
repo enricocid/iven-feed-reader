@@ -40,4 +40,6 @@
     <string name="adddialogtitle">Aggiunta feed</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="feedmenu">Aggiungi un feed</string>
+    <string name="continue_read">Continua a leggere</string>
+    <string name="share_article">Condividi l\'articolo</string>
 </resources>

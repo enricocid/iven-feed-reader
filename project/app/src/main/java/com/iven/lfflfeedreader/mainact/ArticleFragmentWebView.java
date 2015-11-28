@@ -9,15 +9,19 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
-import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -30,9 +34,20 @@ public class ArticleFragmentWebView extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        //Initialize the feed (i.e. get all the data
+        //Report that this fragment would like to participate in populating the options menu
+        // by receiving a call to onCreateOptionsMenu(Menu, MenuInflater) and related methods.
+        setHasOptionsMenu(true);
+
+        //Initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
+    }
+
+    //create the toolbar's menu
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.articles_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 	@Override
@@ -48,6 +63,23 @@ public class ArticleFragmentWebView extends Fragment {
        //set the view
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
+
+        //Initialize the Toolbar
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+
+        final AppCompatActivity activity = (AppCompatActivity) getActivity();
+
+        //Add the back button on toolbar
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
+                activity.overridePendingTransition(0, 0);
+            }
+        });
 
         //initialize the dynamic items (the title, subtitle)
         //final because we need to access theme within the class from webview client method
@@ -92,40 +124,32 @@ public class ArticleFragmentWebView extends Fragment {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
 		}
 
-        //continue reading button
-        //final because we need to access theme within the class from webview client method
-        final ImageButton continue_reading_wb = (ImageButton) view.findViewById(R.id.button_wb);
+        //set the menu's toolbar click listener
+        toolbar.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
 
-        //on click load url using the in-app webview
-        continue_reading_wb.setOnClickListener(new View.OnClickListener()
+                        //on click load url using the in-app webview
+                        switch (item.getItemId()) {
+                            case R.id.forward:
+                                wb.loadUrl(fFeed.getItem(fPos).getLink());
+                                return true;
+                        }
 
-                                               {
-                                                   public void onClick (View v){
-                                                       wb.loadUrl(fFeed.getItem(fPos).getLink());
-                                                   }
+                        //on click, using share intent, we open the share dialog
+                        switch (item.getItemId()) {
+                            case R.id.share_article:
+                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                                shareIntent.setType("text/plain");
+                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
+                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
+                                return true;
+                        }
 
-                                               }
-
-        );
-
-        //share button
-        //final because we need to access theme within the class from webview client method
-        final ImageButton share_button_wb = (ImageButton) view.findViewById(R.id.button_share_wb);
-
-        //on click, using share intent, we open the share dialog
-        share_button_wb.setOnClickListener(new View.OnClickListener()
-
-                                        {
-                                            public void onClick(View v) {
-                                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                                                shareIntent.setType("text/plain");
-                                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
-                                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
-                                            }
-
-                                        }
-
-        );
+                        return false;
+                    }
+                });
 
         //parse the articles text using jsoup and replace some items since this is a simple textview
         //and continue reading is not clickable
@@ -168,8 +192,6 @@ public class ArticleFragmentWebView extends Fragment {
                 webview.loadUrl(url);
                 title_wb.setVisibility(View.GONE);
                 subtitle_wb.setVisibility(View.GONE);
-                share_button_wb.setVisibility(View.GONE);
-                continue_reading_wb.setVisibility(View.GONE);
                 return true;
             }
         });
