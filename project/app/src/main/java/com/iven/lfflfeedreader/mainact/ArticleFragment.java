@@ -126,30 +126,42 @@ public class ArticleFragment extends Fragment {
         title.setText(fFeed.getItem(fPos).getTitle());
 
         //add author + date to subtitle
-        subtitle.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+        subtitle.setText(fFeed.getItem(fPos).getDate());
 
         //initialize imageview
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
-        //use glide to load the image into the imageview (imageView)
-			Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
+        if(fFeed.getItem(fPos).getImage().isEmpty()){
+
+            //load the placeholder if the image element is empty
+            Glide.with(getActivity()).load(R.drawable.emoticon_sad)
+
+                    .asBitmap()
+                    .override(256,256)
+                    //disable cache to avoid garbage collection that may produce crashes
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(imageView);
+
+            //load the image if the image element is not empty
+            } else {
+            Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
 
                     //disable cache to avoid garbage collection that may produce crashes
-					.diskCacheStrategy(DiskCacheStrategy.NONE)
-					.into(imageView);
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(imageView);
 
-        //we can open the image on web browser on long click on the image
-		imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                                             public boolean onLongClick(View v) {
-                                                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
-                                                 CharSequence title2 = getResources().getText(R.string.chooser_title);
-                                                 Intent chooser = Intent.createChooser(intent, title2);
-                                                 startActivity(chooser);
-                                                 return true;
-                                             }
-                                         }
-
-        );
+            //we can open the image on web browser on long click on the image
+            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
+                    CharSequence title2 = getResources().getText(R.string.chooser_title);
+                    Intent chooser = Intent.createChooser(intent, title2);
+                    startActivity(chooser);
+                    return true;
+                }
+            }
+            );
+        }
 
         //parse the articles text using jsoup and replace some items since this is a simple textview
         //and continue reading is not clickable

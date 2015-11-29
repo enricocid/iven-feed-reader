@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="8sp"
+            android:layout_margin="8dp"
             android:descendantFocusability="blocksDescendants">
 
             <!-- title-->
@@ -32,27 +32,23 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:maxLines="10"
-                android:textAlignment="center"
                 android:textSize="24sp"
+                android:layout_marginBottom="4dp"
                 android:textColor="?attr/title_color"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:textStyle="bold|italic" />
 
             <!-- subtitle-->
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textAlignment="center"
                 android:textSize="14sp"
+                android:layout_marginBottom="8dp"
                 android:textColor="?attr/title_color"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+                android:textStyle="italic" />
 
             <!-- article's image-->
             <ImageView
