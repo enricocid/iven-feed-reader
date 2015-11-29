@@ -100,16 +100,7 @@ public class DOMParser {
 
 						else if ("link".equals(nodeName)) {
 								_item.setLink(theString);
-
-						} else if ("author".equals(nodeName)) {
-								_item.setAuthor(theString);
-
-                            // replace some text inside author name
-							String formatedAuthor = theString.replace("noreply@blogger.com (","");
-							_item.setAuthor(formatedAuthor);
-							String formatedAuthor2 = formatedAuthor.replace(")","");
-                            // set the author name
-							_item.setAuthor(formatedAuthor2);
+ 
 
                         } else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
