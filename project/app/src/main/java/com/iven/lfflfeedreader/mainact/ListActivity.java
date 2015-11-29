@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.IntentCompat;
-import android.text.InputType;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,12 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
@@ -49,6 +49,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
@@ -59,18 +60,20 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
       private DrawerLayout mDrawerRight;
       private ActionBarDrawerToggle mDrawerToggle;
 	  private int mNavItemId;
+    private List<String> mItems;
+    private List<String> mItems2;
 
     SQLiteDatabase mydb;
 	RSSFeed feed;
 	ListView list;
 	CustomListAdapter adapter;
+    CustomDynamicAdapter adapter_dynamic;
     String feedURL = SplashActivity.value;
 	Intent intent;
 	SwipeRefreshLayout swiperefresh;
-    ArrayAdapter<String> dynamic_adapter;
-    ArrayList<String> dynamic_list;
     ListView listfeed;
     String feedcustom;
+    String feedcustom2;
     int position;
 
     //create the toolbar's menu
@@ -225,36 +228,59 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         listfeed =(ListView) findViewById(R.id.listfeed);
 
         //initialize a sqlite database
-        //here we open the db we are going to create later
-        mydb = ListActivity.this.openOrCreateDatabase("feedslist", MODE_PRIVATE, null);
+        //here we open or create a sqlite database where we are going to add 2 tables with the feeds values
+        mydb = ListActivity.this.openOrCreateDatabase("feedsDB", MODE_PRIVATE, null);
 
-        //create a sqlite database called feedslist with a column "name" where items will be stored
-        mydb.execSQL("CREATE TABLE IF NOT EXISTS feedslist (id INTEGER PRIMARY KEY AUTOINCREMENT,name varchar);");
+        //create a table called feedslist with a column called "url" where items (the feeds urls) will be stored
+        mydb.execSQL("CREATE TABLE IF NOT EXISTS feedslist (id INTEGER PRIMARY KEY AUTOINCREMENT,url varchar);");
 
-        //using a cursor we're going to read the database
+        //create a table called subtitles list with a column called "name" where items (the feeds names) will be stored
+        mydb.execSQL("CREATE TABLE IF NOT EXISTS subtitleslist (id INTEGER PRIMARY KEY AUTOINCREMENT,name varchar);");
+
+        //using a cursor we're going to read the tables
         final Cursor cursor2 = mydb.rawQuery("SELECT * FROM feedslist;", null);
+        final Cursor cursor3 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
-        //we create a new array list to be populated with sqlite items
-        dynamic_list = new ArrayList<>();
+        //we create two new array list to be populated with the tables items (names & urls)
+
+        //for feeds urls
+        mItems = new ArrayList<>();
+
+        //for feeds names
+        mItems2 = new ArrayList<>();
 
         if (cursor2 != null && cursor2.moveToFirst()) {
 
             while (!cursor2.isAfterLast()) {
 
-                //add items from column "name" into dynamic list
-                dynamic_list.add(cursor2.getString(cursor2.getColumnIndex("name")));
+                //add items from column "url" into dynamic list
+                 mItems.add(cursor2.getString(cursor2.getColumnIndex("url")));
                 cursor2.moveToNext();
             }
             cursor2.close();
         }
 
+        if (cursor3 != null && cursor3.moveToFirst()) {
+
+            while (!cursor3.isAfterLast()) {
+
+                //add items from column "name" into dynamic list
+                mItems2.add(cursor3.getString(cursor3.getColumnIndex("name")));
+                cursor3.moveToNext();
+            }
+            cursor3.close();
+        }
+
         //initialize the dynamic list array adapter, we set a template layout and the dynamic list formerly populated
-        dynamic_adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, dynamic_list);
+        adapter_dynamic = new CustomDynamicAdapter(this, mItems, mItems2);
 
         //refresh the dynamic list
-        //this is needed when we delete items to update the dynamic list
-        dynamic_adapter.notifyDataSetChanged();
-        listfeed.setAdapter(dynamic_adapter);
+        //this is needed to update the dynamic list
+        // when we delete items from the tables
+        adapter_dynamic.notifyDataSetChanged();
+
+        //set the custom adapter
+        listfeed.setAdapter(adapter_dynamic);
 
         //handle the dynamic list items click
         listfeed.setOnItemClickListener(new OnItemClickListener() {
@@ -263,10 +289,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
 
-                //we get the name of the item at the selected position
-                String feedvalue = listfeed.getItemAtPosition(arg2).toString();
+                //we get the url of the item at the selected position
+                String feedvalue = mItems.get(arg2);
 
-                //we send feedvalue using intents to splash activity
+                //we send the url using intents to splash activity
                 final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
                         ListActivity.this, SplashActivity.class));
                 intent.putExtra("feedselected", feedvalue);
@@ -325,76 +351,114 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     //method to add feeds inside the db and the dynamic listview
     public void addFeed(){
 
-        new MaterialDialog.Builder(ListActivity.this)
+        new MaterialDialog.Builder(this)
+
                 .title(R.string.adddialogtitle)
-                .content(R.string.adddialogfeed)
-                .inputType(InputType.TYPE_CLASS_TEXT)
+                .negativeText(android.R.string.no)
                 .positiveText(android.R.string.ok)
-                .input(0, 0, false, new MaterialDialog.InputCallback() {
+                .customView(R.layout.add_feed_layout, false)
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                })
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-                        //on click ok we get the input
-                        feedcustom = input.toString();
+                        //on click ok we get the text inputs:
 
-                        //we add this string inside the listview
-                        dynamic_list.add(feedcustom);
+                        //get the feeds urls from the input and add to array list
+                        final EditText edt1 = (EditText) dialog.findViewById(R.id.txt1);
+                        feedcustom = edt1.getText().toString();
+                        mItems.add(feedcustom);
+
+                        //get the feeds names from the input and add to array list
+                        final EditText edt2 = (EditText) dialog.findViewById(R.id.txt2);
+                        feedcustom2 = edt2.getText().toString();
+                        mItems2.add(feedcustom2);
 
                         //and we update the listview to add the new item
-                        dynamic_adapter.notifyDataSetChanged();
-                        listfeed.setAdapter(dynamic_adapter);
+                        adapter_dynamic.notifyDataSetChanged();
+                        listfeed.setAdapter(adapter_dynamic);
 
-                        //add the new item inside the sqlite database where these
-                        //dynamic items will be stored and used on app's resume to
-                        //populate the listview
+                        //populate the tables of the sqlite database with these values
+                        // here we store names and urls that will be used on app's
+                        //resume to populate the listview
 
-                        mydb.execSQL("insert into feedslist (name) values(?);", new String[]{feedcustom});
+                        //fill the urls column
+                        mydb.execSQL("insert into feedslist (url) values(?);", new String[]{feedcustom});
+
+                        //fill the names column
+                        mydb.execSQL("insert into subtitleslist (name) values(?);", new String[]{feedcustom2});
 
                     }
-                }).show();
-    }
 
-    //method to remove a feed starting from the first
-    public void removeFeed(){
+                        }).show();
+                    }
 
+        //method to remove a feed starting from the first
+        public void removeFeed(){
 
-        //using a cursor we select items from the sqlite database
+        //using a cursor we select items from the tables
         Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
+        Cursor cursor2 =mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
         String id = "";
+        String id2 = "";
         if (cursor != null && cursor.moveToFirst()) {
 
             while (!cursor.isAfterLast()) {
 
-                //we select items by id
+                //we get items by id
                 id = cursor.getString(cursor.getColumnIndex("id"));
                 cursor.moveToNext();
             }
 
         }
 
+            if (cursor2 != null && cursor2.moveToFirst()) {
+
+                while (!cursor2.isAfterLast()) {
+
+                    //we get items by id
+                    id2 = cursor2.getString(cursor2.getColumnIndex("id"));
+                    cursor2.moveToNext();
+                }
+
+            }
         //and delete the item from the database starting from the first
         //but only if the database contains items
-        if (cursor.getCount() > 0){
+        if (cursor.getCount() > 0 && cursor2.getCount()>0){
 
-                    dynamic_list.remove(position);
+            //remove items from the dynamic listview
+            mItems.remove(position);
+            mItems2.remove(position);
 
-                    //and we update the dynamic list
-                    dynamic_adapter.notifyDataSetChanged();
-                    dynamic_adapter.notifyDataSetInvalidated();
-                    listfeed.setAdapter(dynamic_adapter);
+            //and we update the dynamic list
+            adapter_dynamic.notifyDataSetChanged();
+            adapter_dynamic.notifyDataSetInvalidated();
+            listfeed.setAdapter(adapter_dynamic);
 
             mydb.execSQL("DELETE FROM " + "feedslist" + " WHERE " + "id"
                     + "=" + id + "");
 
-        } else if (cursor.getCount() == 0){
+            mydb.execSQL("DELETE FROM " + "subtitleslist" + " WHERE " + "id"
+                    + "=" + id2 + "");
+
+        } else if (cursor.getCount() == 0 && cursor2.getCount() == 0){
 
             //show a message if user has already deleted all items
             showToast();
         }
 
-        cursor.close();
-    }
+    //and delete the items from the database starting from the first
+    //but only if the database contains items
+
+            cursor.close();
+            cursor2.close();
+}
 
     //this is the method to delete the app's cache
     public void clearApplicationData() {
@@ -476,7 +540,8 @@ class CustomListAdapter extends BaseAdapter {
 
 		public CustomListAdapter(ListActivity activity) {
 
-			layoutInflater = (LayoutInflater) activity
+            //initialize layout inflater
+            layoutInflater = (LayoutInflater) activity
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 
@@ -545,6 +610,77 @@ class CustomListAdapter extends BaseAdapter {
                             //disable cache to avoid garbage collection that may produce crashes
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(lfflImage);
+
+            return listItem;
+        }
+    }
+
+    //this the custom dynamic adapter for the custom feeds listview
+    //we use a custom adapter to set a custom layout for items (names + urls)
+
+    class CustomDynamicAdapter extends BaseAdapter {
+
+        private LayoutInflater layoutInflater;
+
+        //for feeds urls
+        private List<String> mList;
+
+        //for feeds names
+        private List<String> mList2;
+
+        public CustomDynamicAdapter(ListActivity activity, List<String> list, List<String> list2) {
+
+            //for urls
+            mList = list;
+
+            //for names
+            mList2 = list2;
+
+            //initialize layout inflater
+            layoutInflater = (LayoutInflater) activity
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        //get items (urls) count
+        @Override
+        public int getCount() {
+            return mList.size();
+        }
+
+        //get items (urls) position
+        @Override
+        public Object getItem(int position) {
+            return mList.get(position);
+        }
+
+        //get items (urls) id at selected position
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            View listItem = convertView;
+
+            if (listItem == null) {
+
+                //set the main listview's layout
+                listItem = layoutInflater.inflate(R.layout.dynamic_items, parent, false);
+            }
+
+            //initialize the dynamic items (titles+ urls)
+            TextView Title = (TextView) listItem.findViewById(R.id.title_dyn);
+            TextView url = (TextView) listItem.findViewById(R.id.subtitle_dyn);
+
+            //dynamically set title and subtitle according to the feed data
+
+            //set feeds urls
+            url.setText(mList.get(position));
+
+            //set feeds titles
+            Title.setText(mList2.get(position));
 
             return listItem;
         }

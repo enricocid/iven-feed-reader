@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this is the layout for the add feeds dialog-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="start"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@android:id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:singleLine="true"
+        android:lines="1"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        tools:text="Message"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="UnusedAttribute" />
+
+    <!-- url-->
+    <EditText
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:singleLine="true"
+        android:lines="1"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:hint="@string/url_name"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="UnusedAttribute" />
+
+    <!-- title-->
+    <EditText
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:hint="@string/title_name"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="UnusedAttribute" />
+
+</LinearLayout>
