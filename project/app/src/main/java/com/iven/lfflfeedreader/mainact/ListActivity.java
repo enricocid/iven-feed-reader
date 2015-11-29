@@ -354,7 +354,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 }).show();
     }
 
-    //method to remove a feed starting from the last
+    //method to remove a feed starting from the first
     public void removeFeed(){
 
 
@@ -373,7 +373,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-        //and delete the item from the database starting from the last
+        //and delete the item from the database starting from the first
         //but only if the database contains items
         if (cursor.getCount() > 0){
 

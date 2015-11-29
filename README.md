@@ -8,7 +8,7 @@ Iven news Reader is a light and modern Android feed reader developed by @ivn888 
 
 The default blog is OMG!Ubuntu!
 
-**NOW WITH CUSTOM FEEDS!YOU CAN DELETE THEM STARTING FROM THE LAST IN THE LIST**
+**NOW WITH CUSTOM FEEDS!YOU CAN DELETE THEM STARTING FROM THE FIRST IN THE LIST**
 
 It supports Material Design and pre-ICS (minSdK="9") Devices!
 
