@@ -49,7 +49,7 @@
         android:summary="@string/pref_text_size_summary"
         android:entries="@array/text_size_options"
         android:entryValues="@array/pref_text_size_values"
-        android:defaultValue="2"
+        android:defaultValue="1"
         android:title="@string/pref_text_size_title"
         android:dialogIcon="?attr/textsize_icon" />
 

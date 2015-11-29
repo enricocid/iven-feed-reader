@@ -28,14 +28,14 @@ public class Preferences {
 
     public static float resolveTextSizeResId(Context context) {
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(context.getString(R.string.pref_text_size), String.valueOf(2));
+                .getString(context.getString(R.string.pref_text_size), String.valueOf(1));
         switch (Integer.parseInt(choice)) {
             case 0:
                 return verysmall;
             case 1:
+            default:
                 return small;
             case 2:
-            default:
                 return medium;
             case 3:
                 return large;
