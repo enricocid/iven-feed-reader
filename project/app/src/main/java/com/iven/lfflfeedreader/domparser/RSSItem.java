@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class RSSItem implements Serializable {
 
     //Simple struct class to hold the data for rss item
-	//title, link, description, author, date, images.
+	//title, link, description, date, images.
 
     //Original author Isaac Whitfield
     //extendend by EnricoD
@@ -17,7 +17,6 @@ public class RSSItem implements Serializable {
 	private String item_date = "¯\\_(ツ)_/¯";
 	private String item_image = null;
 	private String rss_link = null;
-	private String item_author = "¯\\_(ツ)_/¯";
 
     //set 'em all
 	void setTitle(String title) {
@@ -30,10 +29,6 @@ public class RSSItem implements Serializable {
 
 	void setDate(String pubdate) {
 		item_date = pubdate;
-	}
-
-	void setAuthor(String author) {
-		item_author = author;
 	}
 
 	void setImage(String image) {
@@ -54,10 +49,6 @@ public class RSSItem implements Serializable {
 
 	public String getDate() {
 		return item_date;
-	}
-
-	public String getAuthor() {
-		return item_author;
 	}
 
 	public String getLink() {
