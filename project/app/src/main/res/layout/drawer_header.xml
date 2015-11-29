@@ -15,8 +15,7 @@
         android:src="@drawable/linux"
         android:scaleType="fitCenter"
         android:gravity="center"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_centerInParent="true" />
+        android:layout_gravity="center_horizontal|center_vertical"/>
 
     <!-- android image-->
     <ImageView
@@ -25,8 +24,7 @@
         android:src="@drawable/android"
         android:scaleType="fitCenter"
         android:gravity="end"
-        android:layout_gravity="bottom|right"
-        android:layout_centerInParent="true" />
+        android:layout_gravity="bottom|end"/>
 
     <!-- the app's name-->
     <TextView
