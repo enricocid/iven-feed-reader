@@ -125,26 +125,14 @@ public class ArticleFragment extends Fragment {
         //title
         title.setText(fFeed.getItem(fPos).getTitle());
 
-        //add author + date to subtitle
+        //add date to subtitle
         subtitle.setText(fFeed.getItem(fPos).getDate());
 
         //initialize imageview
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
-        if(fFeed.getItem(fPos).getImage().isEmpty()){
-
-            //load the placeholder if the image element is empty
-            Glide.with(getActivity()).load(R.drawable.emoticon_sad)
-
-                    .asBitmap()
-                    .override(256,256)
-                    //disable cache to avoid garbage collection that may produce crashes
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .into(imageView);
-
-            //load the image if the image element is not empty
-            } else {
-            Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
+        //load the parsed article's image
+        Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
 
                     //disable cache to avoid garbage collection that may produce crashes
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -161,7 +149,6 @@ public class ArticleFragment extends Fragment {
                 }
             }
             );
-        }
 
         //parse the articles text using jsoup and replace some items since this is a simple textview
         //and continue reading is not clickable

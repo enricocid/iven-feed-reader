@@ -50,6 +50,12 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
                 android:textStyle="italic" />
 
+            <!-- divider-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"/>
+
             <!-- article's image-->
             <ImageView
                 android:contentDescription="@string/desc"

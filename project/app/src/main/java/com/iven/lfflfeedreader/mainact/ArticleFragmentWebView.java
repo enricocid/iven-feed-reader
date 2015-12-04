@@ -86,9 +86,11 @@ public class ArticleFragmentWebView extends Fragment {
 		final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
 		final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
 
-        //set the text size on articles
+        //title
         title_wb.setText(fFeed.getItem(fPos).getTitle());
-        subtitle_wb.setText(fFeed.getItem(fPos).getAuthor() + " - " + fFeed.getItem(fPos).getDate());
+
+        //add date to subtitle
+        subtitle_wb.setText(fFeed.getItem(fPos).getDate());
 
         //set the articles text size from preferences
         //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
