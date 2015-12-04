@@ -63,4 +63,5 @@
     <string name="feedmenu">Add a feed</string>
     <string name="url_name">Url here</string>
     <string name="title_name">Name here</string>
+    <string name="adddialogfeed">Insert your custom feed in RSS format</string>
 </resources>

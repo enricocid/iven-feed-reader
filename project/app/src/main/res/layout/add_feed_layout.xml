@@ -25,6 +25,7 @@
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         tools:text="Message"
+        android:text="@string/adddialogfeed"
         android:layout_gravity="center_horizontal"
         tools:ignore="UnusedAttribute" />
 
@@ -55,6 +56,8 @@
         android:layout_marginBottom="8dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
+        android:singleLine="true"
+        android:lines="1"
         android:hint="@string/title_name"
         android:layout_gravity="center_horizontal"
         tools:ignore="UnusedAttribute" />
