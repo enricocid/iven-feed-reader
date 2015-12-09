@@ -16,7 +16,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.5.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.6) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
@@ -109,6 +109,7 @@ https://github.com/bumptech/glide
 
 **NOTE:** It is highly recommended to use the feedburner service to burn feeds, and to enable "Convert format burner" service inside Optimize tab and select "Convert feed format to: RSS 2.0" to ensure the best compatibility.
 
+**NOTE:** If You have problems parsing images You can also use http://fulltextrssfeed.com/ to generate the feed.
 
 **- Some feeds You may want to add:**
 
