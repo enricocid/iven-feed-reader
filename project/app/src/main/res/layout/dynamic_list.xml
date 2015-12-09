@@ -13,11 +13,6 @@
     android:layout_gravity="end"
     android:background="?attr/theme_background">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -41,7 +36,5 @@
                 fab:fab_colorPressed="@color/fab_pressed"
                 fab:fab_colorRipple="@color/fab_ripple" />
         </FrameLayout>
-
-    </RelativeLayout>
 
   </android.support.v4.widget.DrawerLayout>
