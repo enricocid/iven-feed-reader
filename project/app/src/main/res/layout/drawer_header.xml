@@ -8,25 +8,15 @@
     android:background="@color/iven15"
     android:orientation="vertical">
 
-    <!-- linux image-->
+    <!-- rss image-->
     <ImageView
         android:contentDescription="@string/desc"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/linux"
+        android:src="@drawable/rss"
         android:scaleType="fitCenter"
         android:gravity="center"
         android:layout_gravity="center_horizontal|center_vertical"/>
-
-    <!-- android image-->
-    <ImageView
-        android:contentDescription="@string/desc"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/android"
-        android:scaleType="fitCenter"
-        android:gravity="end"
-        android:layout_gravity="bottom|end"/>
 
     <!-- the app's name-->
     <TextView
