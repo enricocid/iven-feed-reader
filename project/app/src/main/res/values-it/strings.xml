@@ -36,7 +36,10 @@
     <string name="pref_text_large">Grande</string>
     <string name="pref_text_verylarge">Molto grande</string>
     <string name="version">Versione app</string>
-    <string name="deletemenutitle">Cancella feed partendo dall\'ultimo</string>
+    <string name="deletedialogtitle">Eliminazione feed</string>
+    <string name="deletedialogquestion">Vuoi eliminare il feed selezionato?</string>
+    <string name="deleteok">Elimina</string>
+    <string name="deleteno">Annulla</string>
     <string name="adddialogtitle">Aggiunta feed</string>
     <string name="url_name">Url qui</string>
     <string name="title_name">Nome qui</string>

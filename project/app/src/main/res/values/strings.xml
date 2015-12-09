@@ -58,7 +58,10 @@
     <string name="xda" translatable="false">XDA developers</string>
 
     <!-- custom feeds -->
-    <string name="deletemenutitle">Delete feeds starting from last</string>
+    <string name="deletedialogtitle">Discard feed</string>
+    <string name="deletedialogquestion">Do you want to discard the selected feed?</string>
+    <string name="deleteok">Discard</string>
+    <string name="deleteno">Cancel</string>
     <string name="adddialogtitle">Feed addition</string>
     <string name="feedmenu">Add a feed</string>
     <string name="url_name">Url here</string>

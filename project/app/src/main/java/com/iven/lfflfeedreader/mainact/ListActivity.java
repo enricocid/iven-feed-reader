@@ -3,6 +3,7 @@ package com.iven.lfflfeedreader.mainact;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
@@ -37,6 +39,7 @@ import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
+import com.melnykov.fab.FloatingActionButton;
 
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +48,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -74,7 +76,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     ListView listfeed;
     String feedcustom;
     String feedcustom2;
-    int position;
 
     //create the toolbar's menu
 	@Override
@@ -101,12 +102,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
         //initialize the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        //initialize the toolbar for dynamic list
-        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
-
-        //add a menu to this toolbar
-        toolbar1.inflateMenu(R.menu.dynamic_menu);
 
         //set the toolbar
         setSupportActionBar(toolbar);
@@ -153,33 +148,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                                 } else {
                                     mDrawerLayout.openDrawer(mDrawerRight);
                                 }
-                                return true;
-                        }
-
-                        return false;
-                    }
-                });
-
-
-        //set the dynamic menu's toolbar click listener
-        toolbar1.setOnMenuItemClickListener(
-                new Toolbar.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        //call add feed method
-                        switch (item.getItemId()) {
-                            case R.id.feedadd:
-
-                               addFeed();
-                                return true;
-                        }
-
-                        //call delete feed method
-                        switch (item.getItemId()) {
-                            case R.id.deleteme:
-
-                                removeFeed();
                                 return true;
                         }
 
@@ -304,6 +272,125 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+    listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view,
+        final int datposition, long arg3) {
+
+                //on long click we create a new alert dialog
+                AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
+                        ListActivity.this);
+
+                alert.setTitle(R.string.deletedialogtitle);
+                alert.setMessage(R.string.deletedialogquestion);
+                alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //on positive click we delete the feed from selected position
+
+                        //we're gonna delete them from the db
+                        //how?
+
+                        //using a cursor we select items from the two tables
+                        Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
+                        Cursor cursor2 =mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+
+                        //we set null values for url and feed name at selected position, we're going
+                        //to set these values dynamically to avoid "column index out of range" errors
+
+                        String url = "";
+                        String name = "";
+
+                        //set url
+                        if (cursor != null && cursor.moveToFirst()) {
+
+                            while (!cursor.isAfterLast()) {
+
+                                //we get items at selected position
+                                url = mItems.get(datposition);
+                                cursor.moveToNext();
+                            }
+                            cursor.close();
+                        }
+
+                        //set feed name
+                        if (cursor2 != null && cursor2.moveToFirst()) {
+
+                            while (!cursor2.isAfterLast()) {
+
+                                //we get items at selected position
+                                name = mItems2.get(datposition);
+                                cursor2.moveToNext();
+                            }
+                            cursor2.close();
+                        }
+
+                        //set the names of the two tables
+                        String table1 = "feedslist";
+                        String table2 = "subtitleslist";
+
+                        //set where clause
+                        String whereClause_url = "url" + "=?";
+                        String whereClause_feed = "name" + "=?";
+
+                        //set the where arguments
+                        String[] whereArgs_url = new String[] { String.valueOf(url) };
+                        String[] whereArgs_name = new String[] { String.valueOf(name) };
+
+                        //delete 'em all
+                        mydb.delete(table1, whereClause_url, whereArgs_url);
+                        mydb.delete(table2, whereClause_feed, whereArgs_name);
+
+                        //remove items from the dynamic listview
+
+                        //for url
+                        mItems.remove(datposition);
+
+                        //for feed name
+                        mItems2.remove(datposition);
+
+                        //and update the dynamic list
+                        //don't move this method above the db deletion method or
+                        //you'll get javalangindexoutofboundsexception-invalid-index error
+                        adapter_dynamic.notifyDataSetChanged();
+                        adapter_dynamic.notifyDataSetInvalidated();
+                        listfeed.setAdapter(adapter_dynamic);
+                    }
+                });
+
+            //on negative button we dismiss the dialog
+            alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            alert.show();
+            return false;
+        }
+    });
+
+        //initialize the fab button
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        //attach the fab on listview to react to scroll events and
+        //allow the fab to autohide when needed
+        fab.attachToListView(listfeed);
+
+        //this the method to handle fab click to open an input dialog
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFeed();
+            }
+        };
+
+        //set fab's on click listener
+        fab.setOnClickListener(listener);
+
         //initialize the main listview where items will be added
         list = (ListView) findViewById(android.R.id.list);
 
@@ -337,16 +424,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                                     }
 		});
 	}
-
-    //show a message if user has already deleted all items
-    public void showToast(){
-        Context context = getApplicationContext();
-        CharSequence text = "No feeds, no party";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
 
     //method to add feeds inside the db and the dynamic listview
     public void addFeed(){
@@ -397,68 +474,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
                         }).show();
                     }
-
-        //method to remove a feed starting from the first
-        public void removeFeed(){
-
-        //using a cursor we select items from the tables
-        Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
-        Cursor cursor2 =mydb.rawQuery("SELECT * FROM subtitleslist;", null);
-
-        String id = "";
-        String id2 = "";
-        if (cursor != null && cursor.moveToFirst()) {
-
-            while (!cursor.isAfterLast()) {
-
-                //we get items by id
-                id = cursor.getString(cursor.getColumnIndex("id"));
-                cursor.moveToNext();
-            }
-
-        }
-
-            if (cursor2 != null && cursor2.moveToFirst()) {
-
-                while (!cursor2.isAfterLast()) {
-
-                    //we get items by id
-                    id2 = cursor2.getString(cursor2.getColumnIndex("id"));
-                    cursor2.moveToNext();
-                }
-
-            }
-        //and delete the item from the database starting from the first
-        //but only if the database contains items
-        if (cursor.getCount() > 0 && cursor2.getCount()>0){
-
-            //remove items from the dynamic listview
-            mItems.remove(position);
-            mItems2.remove(position);
-
-            //and we update the dynamic list
-            adapter_dynamic.notifyDataSetChanged();
-            adapter_dynamic.notifyDataSetInvalidated();
-            listfeed.setAdapter(adapter_dynamic);
-
-            mydb.execSQL("DELETE FROM " + "feedslist" + " WHERE " + "id"
-                    + "=" + id + "");
-
-            mydb.execSQL("DELETE FROM " + "subtitleslist" + " WHERE " + "id"
-                    + "=" + id2 + "");
-
-        } else if (cursor.getCount() == 0 && cursor2.getCount() == 0){
-
-            //show a message if user has already deleted all items
-            showToast();
-        }
-
-    //and delete the items from the database starting from the first
-    //but only if the database contains items
-
-            cursor.close();
-            cursor2.close();
-}
 
     //this is the method to delete the app's cache
     public void clearApplicationData() {
