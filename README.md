@@ -43,16 +43,25 @@ It's also on Google Play:
 **THANKS TO**
 
 **- Isaac Whitfield**
+@zackehh
 
 RSSfeed sample:
 https://github.com/zackehh/RSSDemo
 
 **- Lucas Urbas**
+@lurbas
 
 Making android toolbar responsive: 
 https://medium.com/@lucasurbas/making-android-toolbar-responsive-2627d4e07129
 
+**- Chris Stewart**
+@cstew
+
+An example of a splash screen done the right way: 
+https://github.com/cstew/Splash
+
 **- Ha Duy Trung**
+@hidroh
 
 Support multiple themes in your Android app:
 http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
@@ -68,26 +77,31 @@ http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 - Android Design Support Library;
 
 **- wATL by suwhs**
+@suwhs
 
 Git page:
 https://github.com/suwhs/wATL
 
 **- material-dialogs by Aidan Follestad**
+@afollestad
 
 Git page:
 https://github.com/afollestad/material-dialogs
 
 **- Android-MaterialPreference by Jens Driller**
+@jenzz
 
 Git page:
 https://github.com/jenzz/Android-MaterialPreference
 
 **- Jsoup by Jonathan Hedley**
+@jhy
 
 Homepage:
 http://jsoup.org/
 
 **- Glide by Bump Technologies**
+@bumptech
 
 Git page:
 https://github.com/bumptech/glide
