@@ -20,7 +20,6 @@
         <item name="text_date_theme">@color/text_date</item>
         <item name="navview_text">@drawable/state_list</item>
         <item name="plus_icon">@drawable/ic_plus</item>
-        <item name="remove_feed_icon">@drawable/ic_feed_remove</item>
     </style>
 
     <!-- List activity dark theme -->
@@ -39,7 +38,6 @@
         <item name="text_date_theme">@color/text_date_dark</item>
         <item name="navview_text">@drawable/state_list_dark</item>
         <item name="plus_icon">@drawable/ic_plus_dark</item>
-        <item name="remove_feed_icon">@drawable/ic_feed_remove_dark</item>
     </style>
 
     <!-- Info activity light theme -->
