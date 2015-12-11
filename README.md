@@ -17,7 +17,7 @@ The default blog is OMG! Ubuntu! and there are also some built-in feeds You can 
 Furthermore, You can add also **CUSTOM FEEDS** by sliding from right to left (or pressing the plus button) to open a navigation layout. There You can click the fab button, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
 You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
 
-Some noticeable features are the dark/light theme, navbar tint (>=KitKat), Immersive mode (>=KitKat) , text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen.
+Some noticeable features are the dark/light theme, navbar tint (>=KitKat), text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen.
 
 If You want, You can also choose between the native articles UI and the webview.
 
@@ -36,7 +36,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.6) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.7) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
