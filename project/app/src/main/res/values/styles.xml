@@ -49,7 +49,7 @@
             <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
             <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
             <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-            <item name="theme_background">@color/theme_bg_light</item>
+            <item name="theme_background">@color/theme_bg_dark</item>
             <item name="text_title_theme">@color/titles_color_dark</item>
             <item name="text_date_theme">@color/subtitles_color_dark</item>
             <item name="navview_text">@drawable/state_list_dark</item>

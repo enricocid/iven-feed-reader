@@ -13,7 +13,7 @@
     <color name="titles_color_dark">#b1b1b1</color>
     <color name="subtitles_color">#a1a1a1</color>
     <color name="subtitles_color_dark">#5e5e5e</color>
-    <color name="theme_bg_light">#303030</color>
+    <color name="theme_bg_dark">@color/dialog_bg</color>
 
     <!--navigation view (nv) colors-->
     <color name="nv_text_color">@color/titles_color</color>

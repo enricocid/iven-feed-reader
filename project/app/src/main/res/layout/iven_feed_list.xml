@@ -48,7 +48,8 @@
     app:headerLayout="@layout/drawer_header"
     app:itemIconTint="?attr/navview_text"
     app:itemTextColor="?attr/navview_text"
-    app:menu="@menu/drawer"/>
+    app:menu="@menu/drawer"
+    android:background="?attr/theme_background"/>
 
     <!-- the right-to-left drawer layout containing the dynamic listview-->
     <include layout="@layout/dynamic_list" />
