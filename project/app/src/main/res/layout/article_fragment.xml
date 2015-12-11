@@ -65,13 +65,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <!-- justified textview-->
-            <su.whs.watl.ui.TextViewEx
+            <!-- article textview-->
+            <TextView
                 android:id="@+id/webv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/article_text_color"
                 android:textSize="@dimen/txtSize"
+                android:typeface="sans"
+                android:lineSpacingMultiplier="1.2"
                 android:layout_marginBottom="16sp"/>
 
         </LinearLayout>

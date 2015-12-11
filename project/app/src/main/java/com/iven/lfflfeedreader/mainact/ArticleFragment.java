@@ -25,8 +25,6 @@ import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 
-import su.whs.watl.ui.TextViewEx;
-
 public class ArticleFragment extends Fragment {
 
 	private int fPos;
@@ -158,8 +156,8 @@ public class ArticleFragment extends Fragment {
 
         String base3format = base2format.replace("Visit on site http://www.noobslab.com", "");
 
-        //use watl lib to load justified textview
-        TextViewEx articletext = (TextViewEx) rootView.findViewById(R.id.webv);
+        //load the article inside a text view
+        TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
         //set the articles text
 		articletext.setText(base3format);
