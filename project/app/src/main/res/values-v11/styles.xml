@@ -57,8 +57,9 @@
         <item name="js_icon">@drawable/ic_js</item>
         <item name="navtint_icon">@drawable/ic_tint</item>
         <item name="immersive_icon">@drawable/ic_fullscreen</item>
-        <item name="version_icon">@drawable/ic_version</item>
         <item name="textsize_icon">@drawable/ic_format_text</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
     </style>
 
     <!-- Info activity dark theme -->
@@ -78,8 +79,9 @@
         <item name="js_icon">@drawable/ic_js_dark</item>
         <item name="navtint_icon">@drawable/ic_tint_dark</item>
         <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
-        <item name="version_icon">@drawable/ic_version_dark</item>
         <item name="textsize_icon">@drawable/ic_format_text_dark</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
     </style>
 
     <!-- Article activity light theme -->

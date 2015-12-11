@@ -4,13 +4,33 @@
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header.png)
 
-Iven news Reader is a light and modern Android feed reader developed by @ivn888 (https://github.com/ivn888) and Me that will allow You to navigate through various news feeds from Gnu-Linux to Android!
+Iven news Reader is a light and modern Android feed reader that will allow You to navigate through various built-in news feeds from Gnu-Linux to Android! 
 
-The default blog is OMG!Ubuntu!
+It supports Material Design and pre-ICS (i.e Gingerbread!) devices!
 
-**NOW WITH CUSTOM FEEDS!YOU CAN DELETE THEM STARTING FROM THE FIRST IN THE LIST**
+It supports also pre-Lollipop devices from v3.2!
 
-It supports Material Design and pre-ICS (minSdK="9") Devices!
+The UI is the same on all Android versions thanks to some great support and third part libs!
+
+The default blog is OMG! Ubuntu! and there are also some built-in feeds You can choose.
+
+Furthermore, You can add also **CUSTOM FEEDS** by sliding from right to left (or pressing the plus button) to open a navigation layout. There You can click the fab button, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
+You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
+
+Some noticeable features are the dark/light theme, navbar tint (>=KitKat), Immersive mode (>=KitKat) , text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen.
+
+If You want, You can also choose between the native articles UI and the webview.
+
+
+NOTES (Please Read):
+
+1. NOTE: It is highly recommended to use the feedburner service to burn feeds, and to enable "Convert format burner" service inside Optimize tab and select "Convert feed format to: RSS 2.0" to ensure the best compatibility.
+You can find a list of feeds there: https://github.com/enricocid/iven-feed-reader
+
+1.1 If the images are not loaded try this to generate the feeds: http://fulltextrssfeed.com/
+
+2. We are not pro developers, but we hope You'll appreciate our work!
+
 
 This work is 100% Free and is released under gpl license.
 
@@ -75,6 +95,7 @@ http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 - Android support v4;
 - Android support appcompatv7;
 - Android Design Support Library;
+- Android v7 Preference library
 
 **- wATL by suwhs**
 @suwhs
@@ -87,12 +108,6 @@ https://github.com/suwhs/wATL
 
 Git page:
 https://github.com/afollestad/material-dialogs
-
-**- Android-MaterialPreference by Jens Driller**
-@jenzz
-
-Git page:
-https://github.com/jenzz/Android-MaterialPreference
 
 **- Jsoup by Jonathan Hedley**
 @jhy
@@ -107,9 +122,9 @@ Git page:
 https://github.com/bumptech/glide
 
 
-**NOTE:** It is highly recommended to use the feedburner service to burn feeds, and to enable "Convert format burner" service inside Optimize tab and select "Convert feed format to: RSS 2.0" to ensure the best compatibility.
 
-**NOTE:** If You have problems parsing images You can also use http://fulltextrssfeed.com/ to generate the feed.
+
+
 
 **- Some feeds You may want to add:**
 

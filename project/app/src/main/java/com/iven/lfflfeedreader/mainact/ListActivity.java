@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -93,8 +95,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         Preferences.applyTheme2(this);
 
         //set the navbar tint if the preference is enabled
+        if (Build.VERSION.SDK_INT >= 21){
         if (Preferences.navTintEnabled(getBaseContext())) {
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.iven4));
+            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.iven4));
+        }
         }
 
         //set the view

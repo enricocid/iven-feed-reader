@@ -32,7 +32,7 @@
     <string name="pref_text_size_list_summary">Scegli la dimensione di default del testo degli oggetti della home</string>
     <string name="pref_text_verysmall">Più piccolo</string>
     <string name="pref_text_small">Piccolo</string>
-    <string name="pref_text_medium">Intermedio (default)</string>
+    <string name="pref_text_medium">Intermedio</string>
     <string name="pref_text_large">Grande</string>
     <string name="pref_text_verylarge">Molto grande</string>
     <string name="version">Versione app</string>
@@ -47,4 +47,6 @@
     <string name="continue_read">Continua a leggere</string>
     <string name="share_article">Condividi l\'articolo</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
+    <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
+    <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
 </resources>

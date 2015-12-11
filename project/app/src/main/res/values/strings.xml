@@ -40,11 +40,13 @@
     <string name="pref_text_size_list_summary">Choose default text size of the home items</string>
     <string name="pref_text_verysmall">Very small</string>
     <string name="pref_text_small">Small</string>
-    <string name="pref_text_medium">Medium (default)</string>
+    <string name="pref_text_medium">Medium</string>
     <string name="pref_text_large">Large</string>
     <string name="pref_text_verylarge">Very large</string>
     <string name="continue_read">Continue reading</string>
     <string name="share_article">Share the article</string>
+    <string name="prelollipop">Option not available on pre-Lollipop devices</string>
+    <string name="preics">Option not available on pre-ICS devices</string>
 
     <!-- moar feeds -->
     <string name="moarfeeds" translatable="false">Moar feeds</string>

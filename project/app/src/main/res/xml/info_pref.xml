@@ -1,35 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Preferences -->
+<!-- Preferences-->
+<!-- Note: Navigation bar tint works only for >= 21, i.e. from Lollipop -->
+<!-- Note2: Immersive mode works only for >= 19, i.e. from ICS -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/preference_screen">
 
-    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/opts"/>
+    <android.support.v7.preference.PreferenceCategory android:title="@string/opts"/>
 
-    <com.jenzz.materialpreference.SwitchPreference
+    <android.support.v7.preference.SwitchPreferenceCompat
         android:key="Theme"
         android:title="@string/pref_theme_title"
         android:summary="@string/themesum"
         android:icon="?attr/theme_icon"
         android:defaultValue="false" />
 
-    <com.jenzz.materialpreference.SwitchPreference
+    <android.support.v7.preference.SwitchPreferenceCompat
+        android:key="Navibar"
+        android:title="@string/nav_color"
+        android:summary="@string/nav_color_sum"
+        android:icon="?attr/navtint_icon"
+        android:defaultValue="false" />
+
+    <android.support.v7.preference.SwitchPreferenceCompat
+        android:key="Immerseme"
+        android:title="@string/immersive_mode"
+        android:summary="@string/immersive_mode_sum"
+        android:icon="?attr/immersive_icon"
+        android:defaultValue="false" />
+
+    <android.support.v7.preference.SwitchPreferenceCompat
         android:key="WebViewLoad"
         android:title="@string/Reading"
         android:summary="@string/Readingsum"
         android:icon="?attr/webview_icon"
         android:defaultValue="false" />
 
-    <com.jenzz.materialpreference.CheckBoxPreference
+    <android.support.v7.preference.CheckBoxPreference
         android:key="JavaScriptLoad"
         android:title="@string/JS_script"
         android:summary="@string/JS_scriptsum"
         android:icon="?attr/js_icon"
         android:defaultValue="false" />
 
-    <com.jenzz.materialpreference.PreferenceCategory android:title="@string/moreopts"/>
+    <android.support.v7.preference.PreferenceCategory android:title="@string/moreopts"/>
 
-    <com.afollestad.materialdialogs.prefs.MaterialListPreference
+    <android.support.v7.preference.ListPreference
         android:key="@string/pref_text_size"
         android:summary="@string/pref_text_size_summary"
         android:entries="@array/text_size_options"
@@ -38,7 +57,7 @@
         android:title="@string/pref_text_size_title"
         android:dialogIcon="?attr/textsize_icon" />
 
-    <com.afollestad.materialdialogs.prefs.MaterialListPreference
+    <android.support.v7.preference.ListPreference
         android:key="@string/pref_text_size_list"
         android:summary="@string/pref_text_size_list_summary"
         android:entries="@array/text_size_list_options"
@@ -47,10 +66,8 @@
         android:title="@string/pref_text_size_list_title"
         android:dialogIcon="?attr/textsize_icon" />
 
-    <com.jenzz.materialpreference.Preference
+    <android.support.v7.preference.Preference
         android:key="build_number"
-        style="?android:preferenceInformationStyle"
-        android:title="@string/build_number"
-        android:icon="?attr/version_icon"/>
+        android:title="@string/build_number" />
 
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>

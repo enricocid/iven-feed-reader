@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -53,8 +54,10 @@ public class ArticleActivity extends AppCompatActivity {
         pager.setClipToPadding(false);
 
 		//set the navbar tint if the preference is enabled
+		if (Build.VERSION.SDK_INT >= 21){
 		if (Preferences.navTintEnabled(this)) {
-			getWindow().setNavigationBarColor(getResources().getColor(R.color.iven2));
+			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.iven2));
+		}
 		}
 
 		//set the immersive mode (only for >= KitKat) if the preference is enabled
