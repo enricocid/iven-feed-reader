@@ -97,12 +97,6 @@ http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 - Android Design Support Library;
 - Android v7 Preference library
 
-**- wATL by suwhs**
-@suwhs
-
-Git page:
-https://github.com/suwhs/wATL
-
 **- material-dialogs by Aidan Follestad**
 @afollestad
 
