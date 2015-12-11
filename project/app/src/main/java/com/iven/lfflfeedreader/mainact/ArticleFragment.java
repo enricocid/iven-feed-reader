@@ -2,7 +2,6 @@ package com.iven.lfflfeedreader.mainact;
 
 import com.bumptech.glide.Glide;
 
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
@@ -160,7 +159,7 @@ public class ArticleFragment extends Fragment {
         String base3format = base2format.replace("Visit on site http://www.noobslab.com", "");
 
         //use watl lib to load justified textview
-		TextViewEx articletext = (TextViewEx) rootView.findViewById(R.id.webv);
+        TextViewEx articletext = (TextViewEx) rootView.findViewById(R.id.webv);
 
         //set the articles text
 		articletext.setText(base3format);
