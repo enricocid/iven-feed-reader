@@ -172,11 +172,11 @@ public class ArticleFragmentWebView extends Fragment {
         //and justify the text
         //dark theme
         if (Preferences.darkThemeEnabled(getContext())) {
-		html += "<body  text=\"#AEA79F\" align=\"justify\";></body>";
+		html += "<body  text=\"#b1b1b1\" align=\"justify\";></body>";
         } else {
 
             //light theme
-            html += "<body  text=\"#222222\" align=\"justify\";></body>";
+            html += "<body  text=\"#4e4e4e\" align=\"justify\";></body>";
         }
 		html += "</html>";
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");

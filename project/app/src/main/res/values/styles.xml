@@ -14,109 +14,57 @@
         <item name="windowActionModeOverlay">true</item>
     </style>
 
-    <!-- List activity light theme -->
+    <!-- Theme for all activities-->
     <style name="Theme_iven" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven5</item>
-        <item name="colorPrimary">@color/iven4</item>
-        <item name="colorAccent">@color/iven4</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">@color/accent_color</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
         <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="theme_background">@android:color/white</item>
-        <item name="text_title_theme">@color/text_title</item>
-        <item name="text_date_theme">@color/text_date</item>
+        <item name="text_title_theme">@color/titles_color</item>
+        <item name="text_date_theme">@color/subtitles_color</item>
         <item name="navview_text">@drawable/state_list</item>
         <item name="plus_icon">@drawable/ic_plus</item>
-    </style>
-
-    <!-- List activity dark theme -->
-    <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven5</item>
-        <item name="colorPrimary">@color/iven4</item>
-        <item name="colorAccent">@color/iven4</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@color/iven14</item>
-        <item name="text_title_theme">@color/text_title_dark</item>
-        <item name="text_date_theme">@color/text_date_dark</item>
-        <item name="navview_text">@drawable/state_list_dark</item>
-        <item name="plus_icon">@drawable/ic_plus_dark</item>
-    </style>
-
-    <!-- Article activity light theme -->
-    <style name="Theme_iven_article" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven3</item>
-        <item name="colorPrimary">@color/iven2</item>
-        <item name="colorAccent">@color/iven2</item>
-        <item name="title_color">@color/iven9</item>
-        <item name="article_text_color">@color/article_text_dark_grey</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@android:color/white</item>
-        <item name="share_icon">@drawable/ic_share</item>
-        <item name="webview_icon">@drawable/ic_webview</item>
-    </style>
-
-    <!-- Article activity dark theme -->
-    <style name="Theme_iven_article_dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven3</item>
-        <item name="colorPrimary">@color/iven2</item>
-        <item name="colorAccent">@color/iven2</item>
-        <item name="title_color">@color/iven10</item>
-        <item name="article_text_color">@color/iven11</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@color/iven14</item>
-        <item name="share_icon">@drawable/ic_share_dark</item>
-        <item name="webview_icon">@drawable/ic_webview_dark</item>
-    </style>
-
-    <!-- Info activity light theme -->
-    <style name="Theme_iven_info" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven7</item>
-        <item name="colorPrimary">@color/iven6</item>
-        <item name="colorAccent">@color/iven6</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@android:color/white</item>
         <item name="theme_icon">@drawable/ic_invert_colors</item>
         <item name="webview_icon">@drawable/ic_webview</item>
         <item name="js_icon">@drawable/ic_js</item>
         <item name="navtint_icon">@drawable/ic_tint</item>
-        <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="textsize_icon">@drawable/ic_format_text</item>
+        <item name="share_icon">@drawable/ic_share</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
+        <item name="title_color">@color/titles_color</item>
+        <item name="article_text_color">@color/titles_color</item>
     </style>
 
-    <!-- Info activity dark theme -->
-    <style name="Theme_iven_info_dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/iven7</item>
-        <item name="colorPrimary">@color/iven6</item>
-        <item name="colorAccent">@color/iven6</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@color/iven14</item>
-        <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
-        <item name="webview_icon">@drawable/ic_webview_dark</item>
-        <item name="js_icon">@drawable/ic_js_dark</item>
-        <item name="navtint_icon">@drawable/ic_tint_dark</item>
-        <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
-        <item name="textsize_icon">@drawable/ic_format_text_dark</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
-        <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
-    </style>
+    <!-- Dark theme for all activities-->
+        <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
+            <item name="android:windowNoTitle">true</item>
+            <item name="colorPrimaryDark">@color/primary_dark</item>
+            <item name="colorPrimary">@color/primary</item>
+            <item name="colorAccent">@color/accent_color</item>
+            <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+            <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation</item>
+            <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
+            <item name="theme_background">@color/theme_bg_light</item>
+            <item name="text_title_theme">@color/titles_color_dark</item>
+            <item name="text_date_theme">@color/subtitles_color_dark</item>
+            <item name="navview_text">@drawable/state_list_dark</item>
+            <item name="plus_icon">@drawable/ic_plus_dark</item>
+            <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
+            <item name="webview_icon">@drawable/ic_webview_dark</item>
+            <item name="js_icon">@drawable/ic_js_dark</item>
+            <item name="navtint_icon">@drawable/ic_tint_dark</item>
+            <item name="textsize_icon">@drawable/ic_format_text_dark</item>
+            <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+            <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
+            <item name="share_icon">@drawable/ic_share_dark</item>
+            <item name="title_color">@color/titles_color_dark</item>
+            <item name="article_text_color">@color/titles_color_dark</item>
+        </style>
 
     <!-- Responsive toolbar -->
     <style name="Custom.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
@@ -140,7 +88,7 @@
     <style name="ListSeparatorTextView">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/iven6</item>
+        <item name="android:textColor">@color/accent_color</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:layout_marginBottom">16dp</item>
     </style>

@@ -43,15 +43,13 @@ public class ChangelogDialog extends DialogFragment {
 
                 //see material dialog docs for more info
                 //https://github.com/afollestad/material-dialogs
-                        .positiveColorRes(R.color.material_red_400)
-                        .titleColorRes(R.color.material_red_400)
-                        .dividerColorRes(R.color.iven8)
+                        .titleColorRes(R.color.dialog_title)
                         .btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
                         .positiveColor(Color.WHITE)
                         .title(R.string.changelog)
                         .customView(customView, false)
                         .positiveText(android.R.string.ok)
-                .backgroundColorRes(R.color.material_blue_grey_800)
+                .backgroundColorRes(R.color.dialog_bg)
                 .build();
 
         //initialize the webview

@@ -89,15 +89,15 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
         //apply activity's theme if dark theme is enabled
-        Preferences.applyTheme2(this);
+        Preferences.applyTheme(this);
 
         //set the navbar tint if the preference is enabled
         if (Build.VERSION.SDK_INT >= 21){
         if (Preferences.navTintEnabled(getBaseContext())) {
-            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.iven4));
+            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.primary));
         }
         }
 
@@ -194,7 +194,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         swiperefresh.setOnRefreshListener(this);
 
         //set the default color of the arrow
-        swiperefresh.setColorSchemeResources(R.color.iven2);
+        swiperefresh.setColorSchemeResources(R.color.refresh_color);
 
         //initialize the dynamic listview
         listfeed =(ListView) findViewById(R.id.listfeed);
@@ -875,7 +875,7 @@ class CustomListAdapter extends BaseAdapter {
     private void showInfo() {
         int accentColor = ThemeSingleton.get().widgetColor;
         if (accentColor == 0)
-            accentColor = getResources().getColor(R.color.iven4);
+            accentColor = ContextCompat.getColor(getBaseContext(), R.color.accent_color);
 
         CreditsDialog.create(accentColor)
                 .show(getSupportFragmentManager(), "credits");
@@ -885,7 +885,7 @@ class CustomListAdapter extends BaseAdapter {
     private void showChangelog() {
         int accentColor = ThemeSingleton.get().widgetColor;
         if (accentColor == 0)
-            accentColor = getResources().getColor(R.color.iven4);
+            accentColor = ContextCompat.getColor(getBaseContext(), R.color.accent_color);
 
         ChangelogDialog.create(accentColor)
                 .show(getSupportFragmentManager(), "changelog");

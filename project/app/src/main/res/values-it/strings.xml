@@ -22,8 +22,6 @@
     <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
-    <string name="immersive_mode">Abilita modalità immersive</string>
-    <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
     <string name="clear_cache">Pulisci cache</string>
     <string name="rate_me">Vota</string>
     <string name="pref_text_size_title">Aggiusta font articoli</string>

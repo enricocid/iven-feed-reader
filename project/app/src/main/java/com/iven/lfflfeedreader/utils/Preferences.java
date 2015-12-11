@@ -86,23 +86,7 @@ public class Preferences {
     //this is the preference for applying the theme on articles activity
     public static void applyTheme(ContextThemeWrapper contextThemeWrapper) {
         if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
-            contextThemeWrapper.setTheme(R.style.Theme_iven_article_dark);
-        }
-    }
-
-    //this is the preference for applying the theme on list activity
-    public static void applyTheme2(ContextThemeWrapper contextThemeWrapper) {
-        if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
-
             contextThemeWrapper.setTheme(R.style.Theme_iven_dark);
-        }
-    }
-
-    //this is the preference for applying the theme on info activity
-    public static void applyTheme3(ContextThemeWrapper contextThemeWrapper) {
-        if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
-
-            contextThemeWrapper.setTheme(R.style.Theme_iven_info_dark);
         }
     }
 
@@ -112,12 +96,4 @@ public class Preferences {
                     .getBoolean("Navibar", false);
 
         }
-
-    //preference for immersive mode
-    public static boolean immersiveEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("Immerseme", false);
-
     }
-
-        }

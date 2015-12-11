@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.SwitchPreferenceCompat;
@@ -49,25 +48,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             navtint.setEnabled(true);
         }
 
-        //get immersive mode preference
-        SwitchPreferenceCompat immersivemode = (SwitchPreferenceCompat) findPreference("Immerseme");
-
-        //hide this option on pre-ics devices
-        if (Build.VERSION.SDK_INT < 19){
-            immersivemode.setEnabled(false);
-            immersivemode.setSummary(getString(R.string.preics));
-
-        //show this option on > ics devices
-        } else {
-            immersivemode.setEnabled(true);
-        }
-
-        //set the navbar tint if the preference is enabled
-        if (Build.VERSION.SDK_INT >= 21){
-        if (Preferences.navTintEnabled(getContext())) {
-            getActivity().getWindow().setNavigationBarColor(ContextCompat.getColor(getContext(), R.color.iven6));
-        }
-        }
         //initialize version from BuildConfig
         String version = BuildConfig.VERSION_NAME;
 

@@ -3,33 +3,38 @@
 <!-- colors-->
 
 <resources>
+
+    <!-- main colors-->
     <color name="translucent">#95000000</color>
-    <color name="iven1">#448AFF</color>
-    <color name="iven2">#c0392b</color>
-    <color name="iven3">#902B20</color>
-    <color name="iven4">#009688</color>
-    <color name="iven5">#00796B</color>
-    <color name="iven6">#4caf50</color>
-    <color name="iven7">#388e3c</color>
-    <color name="iven8">#212121</color>
-    <color name="iven9">#757575</color>
-    <color name="iven10">#999999</color>
-    <color name="iven11">#dddddd</color>
-    <color name="iven12">#222222</color>
-    <color name="iven13">#dedede</color>
-    <color name="iven14">#303030</color>
-    <color name="iven15">#2c3e50</color>
-    <color name="iven16">#ffc107</color>
-    <color name="article_text_dark_grey">#555555</color>
-    <color name="article_text_light_grey">#AEA79F</color>
-    <color name="text_title">#4E4E4E</color>
-    <color name="text_date">#A1A1A1</color>
-    <color name="text_title_dark">#b1b1b1</color>
-    <color name="text_date_dark">#5e5e5e</color>
-    <color name="material_indigo_500">#3F51B5</color>
-    <color name="material_indigo_600">#3949AB</color>
-    <color name="material_red_400">#EF5350</color>
+    <color name="primary">#009688</color>
+    <color name="primary_dark">#00796B</color>
+    <color name="accent_color">@color/primary</color>
+    <color name="titles_color">#4e4e4e</color>
+    <color name="titles_color_dark">#b1b1b1</color>
+    <color name="subtitles_color">#a1a1a1</color>
+    <color name="subtitles_color_dark">#5e5e5e</color>
+    <color name="theme_bg_light">#303030</color>
+
+    <!--navigation view (nv) colors-->
+    <color name="nv_text_color">@color/titles_color</color>
+    <color name="nv_text_color_dark">@color/titles_color_dark</color>
+    <color name="nv_bg_color">#2c3e50</color>
+    <color name="nv_bg_pressed">@color/accent_color</color>
+    <color name="nv_bg_checked">@color/accent_color</color>
+
+    <!--changelog and credits theme colors-->
+    <color name="dialog_bg">@color/nv_bg_color</color>
+    <color name="positive_btn_pressed">#3949AB</color>
+    <color name="dialog_title">#EF5350</color>
+
+    <!--used for splash layout-->
+    <color name="splash_red">@color/dialog_title</color>
     <color name="quantum_grey">#ff898989</color>
+
+    <!--used for refresh layout-->
+    <color name="refresh_color">@color/dialog_title</color>
+
+    <!-- fab colors-->
     <color name="fab_ripple">#F06292</color>
     <color name="fab_primary">#E91E63</color>
     <color name="fab_pressed">#C2185B</color>

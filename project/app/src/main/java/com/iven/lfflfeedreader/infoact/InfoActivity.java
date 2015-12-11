@@ -2,7 +2,10 @@ package com.iven.lfflfeedreader.infoact;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.utils.Preferences;
+
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,12 +16,19 @@ public class InfoActivity extends AppCompatActivity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		//apply activity's theme if dark theme is enabled
-		Preferences.applyTheme3(this);
+		Preferences.applyTheme(this);
 
 		super.onCreate(savedInstanceState);
 
         //set the layout
 		setContentView(R.layout.activity_settings);
+
+        //set the navbar tint if the preference is enabled
+        if (Build.VERSION.SDK_INT >= 21){
+            if (Preferences.navTintEnabled(getBaseContext())) {
+                getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.primary));
+            }
+        }
 
         //set the toolbar
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -34,6 +44,8 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        //set toolbar title
+        getSupportActionBar().setTitle(R.string.settings);
     }
 
 }
