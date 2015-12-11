@@ -59,7 +59,7 @@
 
     <!-- custom feeds -->
     <string name="deletedialogtitle">Discard feed</string>
-    <string name="deletedialogquestion">Do you want to discard the selected feed?</string>
+    <string name="deletedialogquestion">Do you want to discard</string>
     <string name="deleteok">Discard</string>
     <string name="deleteno">Cancel</string>
     <string name="adddialogtitle">Feed addition</string>

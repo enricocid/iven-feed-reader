@@ -97,7 +97,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         //set the navbar tint if the preference is enabled
         if (Build.VERSION.SDK_INT >= 21){
         if (Preferences.navTintEnabled(getBaseContext())) {
-            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.primary));
+            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.primary));
         }
         }
 
@@ -287,7 +287,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         ListActivity.this);
 
                 alert.setTitle(R.string.deletedialogtitle);
-                alert.setMessage(R.string.deletedialogquestion);
+                alert.setMessage(getResources().getString(R.string.deletedialogquestion) + " '" + mItems2.get(datposition) + "' ?");
                 alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
