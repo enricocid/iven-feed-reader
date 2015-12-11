@@ -23,8 +23,7 @@
     <color name="nv_bg_checked">@color/accent_color</color>
 
     <!--changelog and credits theme colors-->
-    <color name="dialog_bg">@color/nv_bg_color</color>
-    <color name="positive_btn_pressed">#3949AB</color>
+    <color name="dialog_bg">#212121</color>
     <color name="dialog_title">#EF5350</color>
 
     <!--used for splash layout-->

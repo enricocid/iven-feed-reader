@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,8 +49,7 @@ public class CreditsDialog extends DialogFragment {
                 //see material dialog docs for more info
                 //https://github.com/afollestad/material-dialogs
                 .titleColorRes(R.color.dialog_title)
-                .btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
-                .positiveColor(Color.WHITE)
+                .positiveColor(ContextCompat.getColor(getContext(), R.color.primary))
                 .title(R.string.info)
                 .customView(customView, false)
                 .positiveText(android.R.string.ok)
