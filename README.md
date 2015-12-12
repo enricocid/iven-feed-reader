@@ -30,7 +30,6 @@ NOTES (Please Read):
 1. NOTE: It is highly recommended to use the feedburner service to burn feeds, and to enable "Convert format burner" service inside Optimize tab and select "Convert feed format to: RSS 2.0" to ensure the best compatibility.
 You can find a list of feeds there: https://github.com/enricocid/iven-feed-reader
 
-1.1 If the images are not loaded try this to generate the feeds: http://fulltextrssfeed.com/
 
 2. We are not pro developers, but we hope You'll appreciate our work!
 
@@ -39,7 +38,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.8) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (6.8.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
