@@ -620,8 +620,11 @@ class CustomListAdapter extends BaseAdapter {
             //initialize the imageview
             ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
-            //use glide to load the image into the imageview (lfflimage)
-                    Glide.with(activity).load(feed.getItem(pos).getImage())
+            //if getImage() method fails (i.e when img is in content:encoded) load image2
+            if (feed.getItem(pos).getImage().isEmpty()) {
+
+                //use glide to load the image into the imageview (lfflimage)
+                Glide.with(activity).load(feed.getItem(pos).getImage2())
 
                             //set a placeholder image
                             .placeholder(R.drawable.image_area)
@@ -630,9 +633,21 @@ class CustomListAdapter extends BaseAdapter {
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .into(lfflImage);
 
+                //else use image
+            } else {
+                Glide.with(activity).load(feed.getItem(pos).getImage())
+
+                        //set a placeholder image
+                        .placeholder(R.drawable.image_area)
+
+                                //disable cache to avoid garbage collection that may produce crashes
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .into(lfflImage);
+            }
             return listItem;
         }
     }
+
 
     //this the custom dynamic adapter for the custom feeds listview
     //we use a custom adapter to set a custom layout for items (names + urls)
