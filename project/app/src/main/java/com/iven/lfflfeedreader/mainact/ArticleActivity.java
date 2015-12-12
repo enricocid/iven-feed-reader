@@ -12,6 +12,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
@@ -56,9 +58,22 @@ public class ArticleActivity extends AppCompatActivity {
 		if (Preferences.navTintEnabled(this)) {
 			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.primary));
 		}
-		}
+            //set the immersive mode (only for >= KitKat) if the preference is enabled
+            if (Build.VERSION.SDK_INT >= 19){
+                if (Preferences.immersiveEnabled(this)) {
 
+                    getWindow().getDecorView().setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_IMMERSIVE);
+                }
+            }
 }
+    }
 
     //Viewpager custom adapter, we extend FragmentStatePagerAdapter to handle a large number of dynamic items
     //FragmentStatePagerAdapter should be used when we have to use dynamic fragments
@@ -101,8 +116,26 @@ public class ArticleActivity extends AppCompatActivity {
 			return feed.getItemCount();
 		}
 			}
-    }
 
+	//(only for >= KitKat)
+	//fix Immersive mode navigation becomes sticky after minimise-restore
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (Build.VERSION.SDK_INT >= 19){
+			if (Preferences.immersiveEnabled(this)) {
+				if (hasFocus) {
+					getWindow().getDecorView().setSystemUiVisibility(
+							View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+									| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+									| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+									| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+									| View.SYSTEM_UI_FLAG_FULLSCREEN
+									| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+			}
 
+		}
+	}
+}
 
 

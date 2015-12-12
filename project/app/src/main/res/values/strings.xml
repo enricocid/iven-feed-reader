@@ -41,6 +41,8 @@
     <string name="pref_text_medium">Medium</string>
     <string name="pref_text_large">Large</string>
     <string name="pref_text_verylarge">Very large</string>
+    <string name="immersive_mode">Immersive mode</string>
+    <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
     <string name="continue_read">Continue reading</string>
     <string name="share_article">Share the article</string>
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>

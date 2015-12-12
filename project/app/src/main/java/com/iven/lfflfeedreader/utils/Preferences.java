@@ -83,7 +83,7 @@ public class Preferences {
     //These preferences will be called when the method darkThemeEnabled will return true
     // on each activity to apply the correct theme
 
-    //this is the preference for applying the theme on articles activity
+    //this is the method for applying the theme on articles activity
     public static void applyTheme(ContextThemeWrapper contextThemeWrapper) {
         if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
             contextThemeWrapper.setTheme(R.style.Theme_iven_dark);
@@ -96,4 +96,12 @@ public class Preferences {
                     .getBoolean("Navibar", false);
 
         }
+
+    //preference for immersive mode
+    public static boolean immersiveEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("Immerseme", false);
+
+    }
+
     }

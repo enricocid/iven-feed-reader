@@ -48,6 +48,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             navtint.setEnabled(true);
         }
 
+        //get immersive mode preference
+        SwitchPreferenceCompat immersivemode = (SwitchPreferenceCompat) findPreference("Immerseme");
+
+        //hide this option on pre-ics devices
+        if (Build.VERSION.SDK_INT < 19){
+            immersivemode.setEnabled(false);
+            immersivemode.setSummary(getString(R.string.preics));
+
+            //show this option on > ics devices
+        } else {
+            immersivemode.setEnabled(true);
+        }
+
         //initialize version from BuildConfig
         String version = BuildConfig.VERSION_NAME;
 

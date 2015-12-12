@@ -6,9 +6,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
+import com.melnykov.fab.FloatingActionButton;
+import com.melnykov.fab.ObservableScrollView;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -62,12 +65,15 @@ public class ArticleFragment extends Fragment {
         //get the chosen article's text size from preferences
         float size = Preferences.resolveTextSizeResId(getContext());
 
-        //set the view
-        ViewGroup rootView = (ViewGroup) inflater
-				.inflate(R.layout.article_fragment, container, false);
+                //set the view
+                ViewGroup rootView = (ViewGroup) inflater
+                .inflate(R.layout.article_fragment, container, false);
+
+        //initialize the fab button
+        final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
 
         //Initialize the Toolbar
-        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
@@ -82,6 +88,46 @@ public class ArticleFragment extends Fragment {
                 activity.overridePendingTransition(0, 0);
             }
         });
+
+        //remove fab button from the view if api < 19, i.e KitKat
+        if (Build.VERSION.SDK_INT < 19){
+            fab.setVisibility(View.INVISIBLE);
+        }
+
+        //only for api >=19, i.e KitKat
+        //if immersive mode is enabled here is what happens:
+        //hide the toolbar and show a fab button dynamically to provide back navigation
+        //since toolbar is now hidden
+
+        if (Build.VERSION.SDK_INT >= 19){
+        if (Preferences.immersiveEnabled(getActivity())) {
+
+            //hide the toolbar
+            activity.getSupportActionBar().hide();
+
+            //initialize ScrollView
+            ObservableScrollView sv = (ObservableScrollView) rootView.findViewById(R.id.sv);
+
+            //attach the fab on scrollview to react to scroll events and
+            //allow the fab to autohide when needed
+            fab.attachToScrollView(sv);
+
+            //this the method to handle fab click to provide back navigation
+            View.OnClickListener listener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.onBackPressed();
+                }
+            };
+
+            //set fab's on click listener
+            fab.setOnClickListener(listener);
+             } else {
+
+            //set fab button not visible if immersive mode is disabled
+            fab.setVisibility(View.INVISIBLE);
+            }
+        }
 
         //set the menu's toolbar click listener
         toolbar.setOnMenuItemClickListener(

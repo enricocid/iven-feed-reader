@@ -38,6 +38,8 @@
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
         <item name="title_color">@color/titles_color</item>
         <item name="article_text_color">@color/titles_color</item>
+        <item name="immersive_icon">@drawable/ic_fullscreen</item>
+        <item name="back_icon">@drawable/ic_back</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -64,6 +66,8 @@
             <item name="share_icon">@drawable/ic_share_dark</item>
             <item name="title_color">@color/titles_color_dark</item>
             <item name="article_text_color">@color/titles_color_dark</item>
+            <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
+            <item name="back_icon">@drawable/ic_back_dark</item>
         </style>
 
     <!-- Responsive toolbar -->

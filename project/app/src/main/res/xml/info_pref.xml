@@ -26,6 +26,13 @@
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:key="Immerseme"
+        android:title="@string/immersive_mode"
+        android:summary="@string/immersive_mode_sum"
+        android:icon="?attr/immersive_icon"
+        android:defaultValue="false" />
+
+    <android.support.v7.preference.SwitchPreferenceCompat
         android:key="WebViewLoad"
         android:title="@string/Reading"
         android:summary="@string/Readingsum"
