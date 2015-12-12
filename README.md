@@ -8,7 +8,10 @@ Iven news Reader is a light and modern Android feed reader that will allow You t
 
 It supports Material Design and pre-ICS (i.e Gingerbread!) devices!
 
-It supports also pre-Lollipop devices from v3.2!
+It supports also pre-Lollipop devices from v3.2:
+
+Supported devices:10750           Excluded devices:0
+:)
 
 The UI is the same on all Android versions thanks to some great support and third part libs!
 
