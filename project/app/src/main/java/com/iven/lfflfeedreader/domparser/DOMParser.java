@@ -26,6 +26,7 @@ import org.xml.sax.InputSource;
 public class DOMParser {
 
     // Create a new RSS feed
+
 	private RSSFeed _feed = new RSSFeed();
 	public RSSFeed parseXml(String xml) {
 
@@ -100,22 +101,39 @@ public class DOMParser {
 
 						else if ("link".equals(nodeName)) {
 								_item.setLink(theString);
- 
+                        }
+
+                        //this is used when getImage() fails (this happens when img is placed in content:encoded)
+                        //extract the images src from content:encoded
+                        else if ("content:encoded".equals(nodeName)) {
+
+                                org.jsoup.nodes.Document docHtml = Jsoup
+                                        .parse(theString);
+
+                             //select images by tag
+                             Elements imgEle = docHtml.select("img");
+
+                            //get src attribute
+                             String src = imgEle.attr("src");
+
+                            //setImage2() src
+                            _item.setImage2(src);
 
                         } else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
 
-                            //parse the html
-							String html = theString;
 							org.jsoup.nodes.Document docHtml = Jsoup
-									.parse(html);
+                                    .parse(theString);
 
-                            //select images by tag
+							//select images by tag
 							Elements imgEle = docHtml.select("img");
 
-							//select images by attr inside the tag
-							_item.setImage(imgEle.attr("src"));
-                            
+                            //get src attribute
+                            String src = imgEle.attr("src");
+
+                            //setImage() src
+                            _item.setImage(src);
+
 						}
 
 						else if ("pubDate".equals(nodeName)) {

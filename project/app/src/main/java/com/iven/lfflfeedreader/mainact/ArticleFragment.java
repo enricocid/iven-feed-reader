@@ -174,12 +174,27 @@ public class ArticleFragment extends Fragment {
         //initialize imageview
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
-        //load the parsed article's image
-        Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
+        //if getImage() method fails (i.e when img is in content:encoded) load image2
+        if (fFeed.getItem(fPos).getImage().isEmpty()) {
+
+            //use glide to load the image into the imageview (imageView)
+            Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage2())
 
                     //disable cache to avoid garbage collection that may produce crashes
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(imageView);
+
+            //else use image
+        } else {
+
+            //load the parsed article's image using glide
+            Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage())
+
+                    //disable cache to avoid garbage collection that may produce crashes
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(imageView);
+        }
+
 
             //we can open the image on web browser on long click on the image
             imageView.setOnLongClickListener(new View.OnLongClickListener() {
