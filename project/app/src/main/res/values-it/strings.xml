@@ -44,7 +44,7 @@
     <string name="url_name">Url qui</string>
     <string name="title_name">Nome qui</string>
     <string name="feedmenu">Aggiungi un feed</string>
-    <string name="continue_read">Continua a leggere</string>
+    <string name="continue_read">Continua a leggere &#8230;</string>
     <string name="share_article">Condividi l\'articolo</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
