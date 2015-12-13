@@ -9,8 +9,6 @@
     android:layout_height="match_parent"
     android:layout_margin="16sp">
 
-    <include layout="@layout/toolbar" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,6 +78,26 @@
                 android:typeface="sans"
                 android:lineSpacingMultiplier="1.2"
                 android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/txt_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/article_text_color"
+                android:textSize="@dimen/txtSize"
+                android:typeface="sans"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+            <TextView
+                android:id="@+id/txt_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/article_text_color"
+                android:textSize="@dimen/txtSize"
+                android:typeface="sans"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
         </LinearLayout>
 

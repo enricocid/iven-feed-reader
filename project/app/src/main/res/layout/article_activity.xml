@@ -8,6 +8,8 @@
     android:orientation="vertical"
     android:background="?attr/theme_background">
 
+    <include layout="@layout/toolbar" />
+
     <!-- Viewpager -->
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

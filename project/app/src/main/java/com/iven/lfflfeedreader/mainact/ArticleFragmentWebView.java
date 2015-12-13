@@ -11,20 +11,19 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.UnderlineSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class ArticleFragmentWebView extends Fragment {
@@ -36,20 +35,9 @@ public class ArticleFragmentWebView extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        //Report that this fragment would like to participate in populating the options menu
-        // by receiving a call to onCreateOptionsMenu(Menu, MenuInflater) and related methods.
-        setHasOptionsMenu(true);
-
         //Initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
-    }
-
-    //create the toolbar's menu
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.articles_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
 	@Override
@@ -69,25 +57,18 @@ public class ArticleFragmentWebView extends Fragment {
         //initialize the fab button
         final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        //Initialize the Toolbar
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        //initialize continue reading and share TextViews used for immersive mode
+        final TextView txt_continue_reading_wb = (TextView) view.findViewById(R.id.txt_continue_wb);
+
+        final TextView txt_share_wb = (TextView) view.findViewById(R.id.txt_share_wb);
 
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         //initialize the scrollview
         final ObservableScrollView scroll = (ObservableScrollView) view.findViewById(R.id.sv_wb);
 
-        //Add the back button on toolbar
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.onBackPressed();
-                activity.overridePendingTransition(0, 0);
-            }
-        });
+        //initialize the webview
+        final WebView wb = (WebView) view.findViewById(R.id.wb);
 
         //remove fab button from the view if api < 19, i.e KitKat
         if (Build.VERSION.SDK_INT < 19){
@@ -95,15 +76,11 @@ public class ArticleFragmentWebView extends Fragment {
         }
 
         //only for api >=19, i.e KitKat
-        //if immersive mode is enabled here is what happens:
-        //hide the toolbar and show a fab button dynamically to provide back navigation
-        //since toolbar is now hidden
+        //if immersive mode is enabled show a fab button dynamically to provide back navigation
+        //since toolbar is now hidden in article activity
 
         if (Build.VERSION.SDK_INT >= 19){
             if (Preferences.immersiveEnabled(getActivity())) {
-
-                //hide the toolbar
-                activity.getSupportActionBar().hide();
 
                 //attach the fab on scrollview to react to scroll events and
                 //allow the fab to autohide when needed
@@ -119,12 +96,57 @@ public class ArticleFragmentWebView extends Fragment {
 
                 //set fab's on click listener
                 fab.setOnClickListener(listener);
+
             } else {
 
                 //set fab button not visible if immersive mode is disabled
                 fab.setVisibility(View.INVISIBLE);
+
             }
         }
+
+        //set continue reading and share TextViews text dynamically
+
+        //continue reading
+        SpannableString str_read = new SpannableString(getResources().getString(R.string.continue_read));
+
+        str_read.setSpan(new UnderlineSpan(), 0, str_read.length(),
+                Spanned.SPAN_PARAGRAPH);
+
+        txt_continue_reading_wb.setText(str_read);
+
+        //share
+        SpannableString str_share = new SpannableString(getResources().getString(R.string.share));
+
+        str_share.setSpan(new UnderlineSpan(), 0, str_share.length(),
+                Spanned.SPAN_PARAGRAPH);
+
+        txt_share_wb.setText(str_share);
+
+        //this the method to handle the continue reading TextView click on immersive mode
+        View.OnClickListener listener_forward = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wb.loadUrl(fFeed.getItem(fPos).getLink());
+                txt_continue_reading_wb.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
+
+            }
+        };
+
+        //this the method to handle the share TextView click on immersive mode
+        View.OnClickListener listener_share = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                share();
+                txt_share_wb.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
+
+            }
+        };
+
+        //set continue reading/share TextViews listeners
+        txt_continue_reading_wb.setOnClickListener(listener_forward);
+
+        txt_share_wb.setOnClickListener(listener_share);
 
         //initialize the dynamic items (the title, subtitle)
         //final because we need to access theme within the class from webview client method
@@ -147,9 +169,6 @@ public class ArticleFragmentWebView extends Fragment {
         //set smooth scroll enabled
 		scroll.setSmoothScrollingEnabled(true);
 
-        //initialize the webview
-        final WebView wb = (WebView) view.findViewById(R.id.wb);
-
         //initialize the webview settings
 		final WebSettings ws = wb.getSettings();
 
@@ -167,33 +186,6 @@ public class ArticleFragmentWebView extends Fragment {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
 		}
-
-        //set the menu's toolbar click listener
-        toolbar.setOnMenuItemClickListener(
-                new Toolbar.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        //on click load url using the in-app webview
-                        switch (item.getItemId()) {
-                            case R.id.forward:
-                                wb.loadUrl(fFeed.getItem(fPos).getLink());
-                                return true;
-                        }
-
-                        //on click, using share intent, we open the share dialog
-                        switch (item.getItemId()) {
-                            case R.id.share_article:
-                                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                                shareIntent.setType("text/plain");
-                                shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
-                                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
-                                return true;
-                        }
-
-                        return false;
-                    }
-                });
 
         //parse the articles text using jsoup and replace some items since this is a simple textview
         //and continue reading is not clickable
@@ -234,8 +226,10 @@ public class ArticleFragmentWebView extends Fragment {
             @Override
             public boolean shouldOverrideUrlLoading(WebView webview, String url) {
                 webview.loadUrl(url);
-                title_wb.setVisibility(View.GONE);
-                subtitle_wb.setVisibility(View.GONE);
+                title_wb.setVisibility(View.INVISIBLE);
+                subtitle_wb.setVisibility(View.INVISIBLE);
+                txt_continue_reading_wb.setVisibility(View.INVISIBLE);
+                txt_share_wb.setVisibility(View.INVISIBLE);
                 return true;
             }
         });
@@ -245,5 +239,12 @@ public class ArticleFragmentWebView extends Fragment {
             ws.setJavaScriptEnabled(true);
         }
 		return view;
+    }
+
+    public void share() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share) + " '" + fFeed.getItem(fPos).getTitle() + "'"));
     }
 }

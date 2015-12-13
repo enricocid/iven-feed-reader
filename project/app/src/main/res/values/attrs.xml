@@ -26,7 +26,6 @@
     <attr name="navtint_icon" format="reference"/>
     <attr name="textsize_icon" format="reference"/>
     <attr name="plus_icon" format="reference"/>
-    <attr name="share_icon" format="reference"/>
     <attr name="immersive_icon" format="reference"/>
     <attr name="back_icon" format="reference"/>
 </resources>

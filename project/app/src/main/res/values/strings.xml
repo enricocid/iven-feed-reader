@@ -11,7 +11,7 @@
     <string name="emailC">Send with</string>
     <string name="lib1sum">Source code</string>
     <string name="error">That\'s an error buddy</string>
-    <string name="share">Share with</string>
+    <string name="share">Share</string>
     <string name="company_name" translatable="false">iven</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="changelog" translatable="false">Changelog</string>
@@ -43,7 +43,7 @@
     <string name="pref_text_verylarge">Very large</string>
     <string name="immersive_mode">Immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
-    <string name="continue_read">Continue reading</string>
+    <string name="continue_read">Continue reading&#8230;</string>
     <string name="share_article">Share the article</string>
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>
     <string name="preics">Option not available on pre-ICS devices</string>

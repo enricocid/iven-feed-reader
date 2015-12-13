@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.iven.lfflfeedreader.R;
@@ -53,15 +54,34 @@ public class ArticleActivity extends AppCompatActivity {
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
 
+		//Initialize the Toolbar
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+		//Add the back button on toolbar
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowTitleEnabled(false);
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+				overridePendingTransition(0, 0);
+			}
+		});
+
 		//set the navbar tint if the preference is enabled
 		if (Build.VERSION.SDK_INT >= 21){
 		if (Preferences.navTintEnabled(this)) {
 			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.primary));
 		}
-            //set the immersive mode (only for >= KitKat) if the preference is enabled
+            //set the immersive mode (only for >= KitKat) if the preference is enabled and hide the toolbar
             if (Build.VERSION.SDK_INT >= 19){
                 if (Preferences.immersiveEnabled(this)) {
 
+					//hide the toolbar
+					getSupportActionBar().hide();
+
+                    //immersive mode
                     getWindow().getDecorView().setSystemUiVisibility(
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -129,8 +149,12 @@ public class ArticleActivity extends AppCompatActivity {
 							View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 									| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 									| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-									| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-									| View.SYSTEM_UI_FLAG_FULLSCREEN
+									| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+									| View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+
+                                    //Sticky flag - This is the UI you see if you use the IMMERSIVE_STICKY flag, and the user
+                                    //swipes to display the system bars. Semi-transparent bars temporarily appear
+                                    //and then hide again
 									| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
 			}
 
