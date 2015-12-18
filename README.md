@@ -4,7 +4,7 @@
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header.png)
 
-Iven news Reader is a light and modern Android feed reader that will allow You to navigate through various built-in news feeds from Gnu-Linux to Android! 
+Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format.
 
 It supports Material Design and pre-ICS (i.e Gingerbread!) devices!
 
@@ -15,7 +15,7 @@ Supported devices:10750           Excluded devices:0
 
 The UI is the same on all Android versions thanks to some great support and third part libs!
 
-The default blog is OMG! Ubuntu! and there are also some built-in feeds You can choose.
+The default blog is XDA.
 
 Furthermore, You can add also **CUSTOM FEEDS** by sliding from right to left (or pressing the plus button) to open a navigation layout. There You can click the fab button, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
 You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
@@ -123,6 +123,24 @@ https://github.com/bumptech/glide
 
 
 **- Some feeds You may want to add:**
+
+- OMG!Ubuntu!
+http://feeds.feedburner.com/d0od
+
+- Android Police
+http://feeds.feedburner.com/androidpolice/wszl
+
+- Noobslab
+http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps
+
+- Softpedia (Linux):
+http://feeds.feedburner.com/SoftpediaNews/Linux
+
+- Distrowatch:
+http://feeds.feedburner.com/distrowatch/RUwq
+
+- Web upd8:
+http://feeds.feedburner.com/webupd8/YqnT
 
 - Android authority: http://feeds.feedburner.com/androidauthority/jsTn
 

@@ -19,7 +19,7 @@ import com.iven.lfflfeedreader.utils.Preferences;
 public class SplashActivity extends AppCompatActivity {
 
     //the default feed
-    public static String value = "http://feeds.feedburner.com/d0od";
+    public static String value = "http://feeds.feedburner.com/xdadevs";
 
     //the items
     RSSFeed lfflfeed;
@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
             }
 
             //set the default feed if the value returns null
-			if (value == null) value = "http://feeds.feedburner.com/d0od";
+			if (value == null) value = "http://feeds.feedburner.com/xdadevs";
         }
 
         //set the navbar tint if the preference is enabled
@@ -86,7 +86,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         //set the default feed if the value returns null
-        if (value == null) value = "http://feeds.feedburner.com/d0od";
+        if (value == null) value = "http://feeds.feedburner.com/xdadevs";
         }
 
 

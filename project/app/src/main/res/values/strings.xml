@@ -48,17 +48,6 @@
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>
     <string name="preics">Option not available on pre-ICS devices</string>
 
-    <!-- moar feeds -->
-    <string name="moarfeeds" translatable="false">Moar feeds</string>
-    <string name="watchme" translatable="false">Distrowatch</string>
-    <string name="defaultfeed" translatable="false">Noobslab</string>
-    <string name="phoronix" translatable="false">Phoronix</string>
-    <string name="softpedia" translatable="false">Softpedia</string>
-    <string name="web8" translatable="false">Web Upd8</string>
-    <string name="omg" translatable="false">OMG! Ubuntu!</string>
-    <string name="police" translatable="false">Android Police</string>
-    <string name="xda" translatable="false">XDA developers</string>
-
     <!-- custom feeds -->
     <string name="deletedialogtitle">Discard feed</string>
     <string name="deletedialogquestion">Do you want to discard</string>

@@ -22,7 +22,7 @@
           android:icon="@drawable/ic_settings"
           android:title="@string/settings"/>
   </group>
-    <group
+  <group
         android:id="@+id/menu_bottom"
         android:checkableBehavior="single">
 
@@ -35,44 +35,6 @@
             android:id="@+id/about_option_more"
             android:icon="@drawable/action_about"
             android:title="@string/more"/>
-
   </group>
-    <item
-        android:id="@+id/navigation_bottom_1"
-        android:title="@string/moarfeeds">
-        <menu>
 
-            <item
-                android:id="@+id/police"
-                android:title="@string/police"/>
-            <item
-                android:id="@+id/xda"
-                android:title="@string/xda"/>
-
-            <item
-                android:id="@+id/noobs"
-                android:title="@string/defaultfeed"/>
-
-            <item
-                android:id="@+id/distrowatch"
-                android:title="@string/watchme"/>
-
-            <item
-                android:id="@+id/phoronix"
-                android:title="@string/phoronix"/>
-
-            <item
-                android:id="@+id/softpedia"
-                android:title="@string/softpedia"/>
-
-            <item
-                android:id="@+id/web8"
-                android:title="@string/web8"/>
-
-            <item
-                android:id="@+id/omg"
-                android:title="@string/omg"/>
-
-        </menu>
-    </item>
 </menu>
