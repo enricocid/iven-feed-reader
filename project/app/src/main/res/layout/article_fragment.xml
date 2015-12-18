@@ -2,21 +2,16 @@
 
 <!-- this is the layout for Articles using text view -->
 
-<LinearLayout
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16sp">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:descendantFocusability="blocksDescendants">
+    android:layout_margin="16sp"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
 
     <!-- scrollview-->
-    <com.melnykov.fab.ObservableScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/sv"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
@@ -101,9 +96,8 @@
 
         </LinearLayout>
 
-    </com.melnykov.fab.ObservableScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
         <include layout="@layout/fab_back" />
 
-    </FrameLayout>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

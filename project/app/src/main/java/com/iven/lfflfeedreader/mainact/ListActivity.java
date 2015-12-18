@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
 import android.util.TypedValue;
@@ -20,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -41,7 +43,6 @@ import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
-import com.melnykov.fab.FloatingActionButton;
 
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +79,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     ListView listfeed;
     String feedcustom;
     String feedcustom2;
+    int mLastFirstVisibleItem;
 
     //create the toolbar's menu
 	@Override
@@ -103,6 +105,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
         //set the view
         setContentView(R.layout.iven_feed_list);
+
+        //initialize the fab button (design support lib)
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_me);
 
         //initialize the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -276,11 +281,37 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-    listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        //handle fab hide on listview scroll
+        listfeed.setOnScrollListener(new AbsListView.OnScrollListener() {
 
-        @Override
-        public boolean onItemLongClick(AdapterView<?> parent, View view,
-        final int datposition, long arg3) {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                  //do absolutely nothing
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                //on scroll up
+                if (mLastFirstVisibleItem > firstVisibleItem) {
+                    fab.show();
+
+                //on scroll down
+                } else if (mLastFirstVisibleItem < firstVisibleItem) {
+                    fab.hide();
+                }
+                mLastFirstVisibleItem = firstVisibleItem;
+            }
+
+        });
+
+            listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+
+            {
+
+                @Override
+                public boolean onItemLongClick (AdapterView < ? > parent, View view,
+                final int datposition, long arg3){
 
                 //on long click we create a new alert dialog
                 AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
@@ -298,8 +329,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         //how?
 
                         //using a cursor we select items from the two tables
-                        Cursor cursor =mydb.rawQuery("SELECT * FROM feedslist;", null);
-                        Cursor cursor2 =mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+                        Cursor cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
+                        Cursor cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
                         //we set null values for url and feed name at selected position, we're going
                         //to set these values dynamically to avoid "column index out of range" errors
@@ -340,8 +371,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         String whereClause_feed = "name" + "=?";
 
                         //set the where arguments
-                        String[] whereArgs_url = new String[] { String.valueOf(url) };
-                        String[] whereArgs_name = new String[] { String.valueOf(name) };
+                        String[] whereArgs_url = new String[]{String.valueOf(url)};
+                        String[] whereArgs_name = new String[]{String.valueOf(name)};
 
                         //delete 'em all
                         mydb.delete(table1, whereClause_url, whereArgs_url);
@@ -364,72 +395,86 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
 
-            //on negative button we dismiss the dialog
-            alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
+                //on negative button we dismiss the dialog
+                alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
 
-            alert.show();
-            return false;
-        }
-    });
-
-        //initialize the fab button
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        //attach the fab on listview to react to scroll events and
-        //allow the fab to autohide when needed
-        fab.attachToListView(listfeed);
-
-        //this the method to handle fab click to open an input dialog
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addFeed();
+                alert.show();
+                return false;
             }
-        };
+            }
 
-        //set fab's on click listener
-        fab.setOnClickListener(listener);
+            );
 
-        //initialize the main listview where items will be added
-        list = (ListView) findViewById(android.R.id.list);
+            //this the method to handle add feed click to open an input dialog
+            View.OnClickListener listener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addFeed();
+                }
+            };
 
-        //initialize the feeds items
-        feed = (RSSFeed) getIntent().getExtras().get("feed");
+            //set add feed button's on click listener
+            fab.setOnClickListener(listener);
 
-        //set the main listview custom adapter
-		adapter = new CustomListAdapter(this);
+            //initialize the main listview where items will be added
+            list=(ListView)
 
-		list.setAdapter(adapter);
+            findViewById(android.R.id.list);
 
-        //handle main listview clicks
-        list.setOnItemClickListener(new OnItemClickListener() {
+            //initialize the feeds items
+            feed=(RSSFeed)
 
-        @Override
-        public void onItemClick (AdapterView<?> arg0, View arg1, int arg2,
-									long arg3) {
-				int pos = arg2;
+            getIntent()
 
-            //on item click we send the feed to article activity
-            //using intents
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("feed", feed);
-                Intent intent = new Intent(ListActivity.this,
+            .
+
+            getExtras()
+
+            .
+
+            get("feed");
+
+            //set the main listview custom adapter
+            adapter=new
+
+            CustomListAdapter(this);
+
+            list.setAdapter(adapter);
+
+            //handle main listview clicks
+            list.setOnItemClickListener(new
+
+            OnItemClickListener() {
+
+                @Override
+                public void onItemClick (AdapterView < ? > arg0, View arg1,int arg2,
+                long arg3){
+                    int pos = arg2;
+
+                    //on item click we send the feed to article activity
+                    //using intents
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("feed", feed);
+                    Intent intent = new Intent(ListActivity.this,
                             ArticleActivity.class);
                     intent.putExtras(bundle);
                     intent.putExtra("pos", pos);
 
-            //and we start the article activity to read the story
+                    //and we start the article activity to read the story
                     startActivity(intent);
-                                    }
-		});
-	}
+                }
+            }
 
-    //method to add feeds inside the db and the dynamic listview
+            );
+        }
+
+                //method to add feeds inside the db and the dynamic listview
+
     public void addFeed(){
 
         new MaterialDialog.Builder(this)
@@ -907,4 +952,3 @@ class CustomListAdapter extends BaseAdapter {
 
     }
 }
-

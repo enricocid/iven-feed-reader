@@ -2,17 +2,14 @@
 
 <!-- this is the fab button for immersive mode -->
 
-    <!-- the fab button-->
-    <com.melnykov.fab.FloatingActionButton
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:fab="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="?attr/back_icon"
-        fab:fab_colorNormal="@color/fab_primary"
-        fab:fab_colorPressed="@color/fab_pressed"
-        fab:fab_colorRipple="@color/fab_ripple" />
+<android.support.design.widget.FloatingActionButton
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/back"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:theme="@style/FloatingAccentButtonOverlay"
+    app:layout_anchorGravity="bottom|right|end"
+    android:src="?attr/back_icon" />

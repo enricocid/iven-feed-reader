@@ -3,15 +3,17 @@ package com.iven.lfflfeedreader.mainact;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
-import com.melnykov.fab.FloatingActionButton;
-import com.melnykov.fab.ObservableScrollView;
+import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -55,7 +57,7 @@ public class ArticleFragmentWebView extends Fragment {
 				.inflate(R.layout.article_fragment_wb, container, false);
 
         //initialize the fab button
-        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.back);
 
         //initialize continue reading and share TextViews used for immersive mode
         final TextView txt_continue_reading_wb = (TextView) view.findViewById(R.id.txt_continue_wb);
@@ -65,7 +67,7 @@ public class ArticleFragmentWebView extends Fragment {
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         //initialize the scrollview
-        final ObservableScrollView scroll = (ObservableScrollView) view.findViewById(R.id.sv_wb);
+        final NestedScrollView scroll = (NestedScrollView) view.findViewById(R.id.sv_wb);
 
         //initialize the webview
         final WebView wb = (WebView) view.findViewById(R.id.wb);
@@ -82,10 +84,6 @@ public class ArticleFragmentWebView extends Fragment {
         if (Build.VERSION.SDK_INT >= 19){
             if (Preferences.immersiveEnabled(getActivity())) {
 
-                //attach the fab on scrollview to react to scroll events and
-                //allow the fab to autohide when needed
-                fab.attachToScrollView(scroll);
-
                 //this the method to handle fab click to provide back navigation
                 View.OnClickListener listener = new View.OnClickListener() {
                     @Override
@@ -96,6 +94,12 @@ public class ArticleFragmentWebView extends Fragment {
 
                 //set fab's on click listener
                 fab.setOnClickListener(listener);
+
+                //set fab's behavior
+                //initialize coordinator layout
+                final CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+                p.setBehavior(new ScrollAwareFABBehavior());
+                fab.setLayoutParams(p);
 
             } else {
 

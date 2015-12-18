@@ -4,8 +4,9 @@
 <!-- with elevation (for >= lollipop devices)-->
 
 <!-- the drawer-->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_right"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,9 +16,9 @@
     android:elevation="6dp"
     android:background="?attr/theme_background">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
             <!-- the dynamic listview-->
             <ListView
@@ -25,18 +26,17 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/listfeed" />
 
-            <!-- the fab button-->
-            <com.melnykov.fab.FloatingActionButton
-                android:id="@+id/fab"
+            <!-- the add feed button-->
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/add_me"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:gravity="bottom|end"
-                android:layout_margin="16dp"
-                android:src="?attr/plus_icon"
-                fab:fab_colorNormal="@color/fab_primary"
-                fab:fab_colorPressed="@color/fab_pressed"
-                fab:fab_colorRipple="@color/fab_ripple" />
-        </FrameLayout>
+                android:theme="@style/FloatingAccentButtonOverlay"
+                app:layout_anchorGravity="bottom|right|end"
+                android:src="?attr/plus_icon" />
+
+    </android.support.design.widget.CoordinatorLayout>
 
   </android.support.v4.widget.DrawerLayout>

@@ -6,13 +6,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
-import com.melnykov.fab.FloatingActionButton;
-import com.melnykov.fab.ObservableScrollView;
+import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class ArticleFragment extends Fragment {
                 .inflate(R.layout.article_fragment, container, false);
 
         //initialize the fab button
-        final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.back);
 
         //initialize continue reading and share TextViews used for immersive mode
         final TextView txt_continue_reading = (TextView) rootView.findViewById(R.id.txt_continue);
@@ -80,25 +81,24 @@ public class ArticleFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= 19){
         if (Preferences.immersiveEnabled(getActivity())) {
 
-            //initialize ScrollView
-            ObservableScrollView sv = (ObservableScrollView) rootView.findViewById(R.id.sv);
+                //this the method to handle fab click to provide back navigation
+                View.OnClickListener listener = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        activity.onBackPressed();
+                    }
+                };
 
-            //attach the fab on scrollview to react to scroll events and
-            //allow the fab to autohide when needed
-            fab.attachToScrollView(sv);
+                //set fab's on click listener
+                fab.setOnClickListener(listener);
 
-            //this the method to handle fab click to provide back navigation
-            View.OnClickListener listener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.onBackPressed();
-                }
-            };
+            //set fab's behavior
+            //initialize coordinator layout
+            final CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
+            p.setBehavior(new ScrollAwareFABBehavior());
+            fab.setLayoutParams(p);
 
-            //set fab's on click listener
-            fab.setOnClickListener(listener);
-
-             } else {
+            }else {
 
             //set fab button not visible if immersive mode is disabled
             fab.setVisibility(View.INVISIBLE);
