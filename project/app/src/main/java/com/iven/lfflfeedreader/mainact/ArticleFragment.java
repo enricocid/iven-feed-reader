@@ -188,7 +188,18 @@ public class ArticleFragment extends Fragment {
             //we can open the image on web browser on long click on the image
             imageView.setOnLongClickListener(new View.OnLongClickListener() {
                 public boolean onLongClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
+
+                    final Intent intent;
+
+                    if (fFeed.getItem(fPos).getImage().isEmpty()) {
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage2()));
+
+                    }
+                    else
+                    {
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
+
+                    }
                     CharSequence title2 = getResources().getText(R.string.chooser_title);
                     Intent chooser = Intent.createChooser(intent, title2);
                     startActivity(chooser);
