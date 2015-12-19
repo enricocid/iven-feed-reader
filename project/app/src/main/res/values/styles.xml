@@ -40,6 +40,8 @@
         <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="back_icon">@drawable/ic_back</item>
         <item name="images_icon">@drawable/ic_image_area</item>
+        <item name="share_icon">@drawable/ic_share</item>
+        <item name="forward_icon">@drawable/ic_forward</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -68,6 +70,8 @@
             <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
             <item name="back_icon">@drawable/ic_back_dark</item>
             <item name="images_icon">@drawable/ic_image_area_dark</item>
+            <item name="share_icon">@drawable/ic_share_dark</item>
+            <item name="forward_icon">@drawable/ic_forward_dark</item>
         </style>
 
     <!-- Responsive toolbar -->
@@ -97,8 +101,29 @@
         <item name="android:layout_marginBottom">16dp</item>
     </style>
 
+    <!-- Fab button color -->
     <style name="FloatingAccentButtonOverlay" >
         <item name="colorAccent">@color/fab_primary</item>
     </style>
 
+    <!-- Share and continue reading buttons theme -->
+    <style name="ActionButtonIcon">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ripple</item>
+
+    </style>
+
+    <!-- Share and continue reading text appearance -->
+    <style name="ActionButtonText" parent="@style/PlainText">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/article_text_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+
+    </style>
+    <style name="PlainText" />
  </resources>

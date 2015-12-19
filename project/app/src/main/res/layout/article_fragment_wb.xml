@@ -2,10 +2,10 @@
 
 <!-- this is the layout for Articles using webview -->
 
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16sp"
     android:orientation="vertical"
     android:descendantFocusability="blocksDescendants">
@@ -18,6 +18,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/article_wb_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -43,13 +44,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:layout_marginBottom="16dp"
                 android:textColor="?attr/title_color"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
                 android:textStyle="italic" />
 
             <!-- divider-->
             <View
+                android:id="@+id/article_wb_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
@@ -60,28 +61,60 @@
             android:id="@+id/wb"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginTop="16dp" />
 
-            <TextView
-                android:id="@+id/txt_continue_wb"
+            <View
+                android:id="@+id/view_action"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/article_text_color"
-                android:textSize="@dimen/txtSize"
-                android:typeface="sans"
-                android:layout_marginBottom="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginTop="16dp" />
 
-            <TextView
-                android:id="@+id/txt_share_wb"
+            <android.support.percent.PercentRelativeLayout
+                android:id="@+id/action_button_percent_wb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/article_text_color"
-                android:textSize="@dimen/txtSize"
-                android:typeface="sans"
-                android:layout_marginBottom="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="16dp">
+
+                <ImageButton
+                    style="@style/ActionButtonIcon"
+                    android:contentDescription="@string/desc"
+                    android:id="@+id/button_continue_wb"
+                    android:src="?attr/forward_icon"
+                    app:layout_widthPercent="50%" />
+
+                <TextView
+                    style="@style/ActionButtonText"
+                    android:id="@+id/txt_continue_wb"
+                    android:layout_alignLeft="@+id/button_continue_wb"
+                    android:layout_alignStart="@+id/button_continue_wb"
+                    android:layout_alignEnd="@+id/button_continue_wb"
+                    android:layout_alignRight="@+id/button_continue_wb"
+                    android:text="@string/continue_read"
+                    android:layout_below="@+id/button_continue_wb" />
+
+                <ImageButton
+                    style="@style/ActionButtonIcon"
+                    android:contentDescription="@string/desc"
+                    android:id="@+id/button_share_wb"
+                    android:src="?attr/share_icon"
+                    android:layout_toEndOf="@id/button_continue_wb"
+                    android:layout_toRightOf="@id/button_continue_wb"
+                    app:layout_widthPercent="50%" />
+
+                <TextView
+                    style="@style/ActionButtonText"
+                    android:id="@+id/txt_share_wb"
+                    android:layout_alignLeft="@+id/button_share_wb"
+                    android:layout_alignStart="@+id/button_share_wb"
+                    android:layout_alignEnd="@+id/button_share_wb"
+                    android:layout_alignRight="@+id/button_share_wb"
+                    android:text="@string/share"
+                    android:layout_below="@+id/button_share_wb" />
+
+            </android.support.percent.PercentRelativeLayout>
 
         </LinearLayout>
 

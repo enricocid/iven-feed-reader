@@ -5,7 +5,7 @@
 <resources>
 
     <string name="app_name" translatable="false">Iven News Reader</string>
-    <string name="desc" translatable="false"></string>
+    <string name="desc" translatable="false">placeholder</string>
     <string name="email">Contact us</string>
     <string name="more" translatable="false">Info</string>
     <string name="emailC">Send with</string>
@@ -45,7 +45,7 @@
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
     <string name="no_images">Disabilita immagini</string>
     <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
-    <string name="continue_read">Continue reading &#8230;</string>
+    <string name="continue_read">Read more&#8230;</string>
     <string name="share_article">Share the article</string>
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>
     <string name="preics">Option not available on pre-ICS devices</string>

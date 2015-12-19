@@ -15,15 +15,12 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.UnderlineSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,11 +60,15 @@ public class ArticleFragment extends Fragment {
         //initialize the fab button
         final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.back);
 
-        //initialize continue reading and share TextViews used for immersive mode
-        final TextView txt_continue_reading = (TextView) rootView.findViewById(R.id.txt_continue);
+        //initialize the dynamic items (the title, subtitle, read more & share)
+        ImageButton button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
 
-        final TextView txt_share = (TextView) rootView.findViewById(R.id.txt_share);
+        ImageButton button_share = (ImageButton) rootView.findViewById(R.id.button_share);
 
+        final TextView continue_default = (TextView) rootView.findViewById(R.id.txt_continue);
+        final TextView share_default = (TextView) rootView.findViewById(R.id.txt_share);
+
+        //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         //remove fab button from the view if api < 19, i.e KitKat
@@ -107,47 +108,26 @@ public class ArticleFragment extends Fragment {
             }
         }
 
-
-        //set continue reading and share TextViews text dynamically
-
-        //continue reading
-        SpannableString str_read = new SpannableString(getResources().getString(R.string.continue_read));
-
-        str_read.setSpan(new UnderlineSpan(), 0, str_read.length(),
-                Spanned.SPAN_PARAGRAPH);
-
-        txt_continue_reading.setText(str_read);
-
-        //share
-        SpannableString str_share = new SpannableString(getResources().getString(R.string.share));
-
-        str_share.setSpan(new UnderlineSpan(), 0, str_share.length(),
-                Spanned.SPAN_PARAGRAPH);
-
-        txt_share.setText(str_share);
-
-        //this the method to handle the continue reading TextView click on immersive mode
+        //this is the method to handle the continue reading button click
         View.OnClickListener listener_forward = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 continueReading();
-                txt_continue_reading.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
             }
         };
 
-        //this the method to handle the share TextView click on immersive mode
+        //this is the method to handle the share button click
         View.OnClickListener listener_share = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 share();
-                txt_share.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
             }
         };
 
         //set continue reading/share TextViews listeners
-        txt_continue_reading.setOnClickListener(listener_forward);
+        button_continue_reading.setOnClickListener(listener_forward);
 
-        txt_share.setOnClickListener(listener_share);
+        button_share.setOnClickListener(listener_share);
 
         //initialize the dynamic items (the title, subtitle)
 		TextView title = (TextView) rootView.findViewById(R.id.title);
@@ -241,8 +221,8 @@ public class ArticleFragment extends Fragment {
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        txt_share.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        txt_continue_reading.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
+        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
 
         return rootView;
 

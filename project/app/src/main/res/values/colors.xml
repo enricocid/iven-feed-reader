@@ -36,4 +36,7 @@
     <!-- fab color-->
     <color name="fab_primary">#E91E63</color>
 
+    <!-- Share and continue reading buttons highlight color -->
+    <color name="highlight">@color/accent_color</color>
+
 </resources>

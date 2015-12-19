@@ -11,13 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.UnderlineSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +23,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ArticleFragmentWebView extends Fragment {
@@ -62,11 +61,24 @@ public class ArticleFragmentWebView extends Fragment {
         //initialize the fab button
         final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.back);
 
-        //initialize continue reading and share TextViews used for immersive mode
-        final TextView txt_continue_reading_wb = (TextView) view.findViewById(R.id.txt_continue_wb);
+        //initialize continue reading and share buttons/textviews
+        final ImageButton button_continue_reading_wb = (ImageButton) view.findViewById(R.id.button_continue_wb);
 
-        final TextView txt_share_wb = (TextView) view.findViewById(R.id.txt_share_wb);
+        final ImageButton button_share_wb = (ImageButton) view.findViewById(R.id.button_share_wb);
 
+        //initialize the dynamic items (the title, subtitle, read more & share)
+        final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
+        final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
+
+        final TextView continue_wb = (TextView) view.findViewById(R.id.txt_continue_wb);
+        final TextView share_wb = (TextView) view.findViewById(R.id.txt_share_wb);
+
+        final PercentRelativeLayout article_percent_layout = (PercentRelativeLayout) view.findViewById(R.id.action_button_percent_wb);
+        final LinearLayout article_linear_layout = (LinearLayout) view.findViewById(R.id.article_wb_linearlayout);
+        final View article_view = view.findViewById(R.id.article_wb_view);
+        final View action_view = view.findViewById(R.id.view_action);
+
+        //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
         //initialize the scrollview
@@ -112,53 +124,32 @@ public class ArticleFragmentWebView extends Fragment {
             }
         }
 
-        //set continue reading and share TextViews text dynamically
-
-        //continue reading
-        SpannableString str_read = new SpannableString(getResources().getString(R.string.continue_read));
-
-        str_read.setSpan(new UnderlineSpan(), 0, str_read.length(),
-                Spanned.SPAN_PARAGRAPH);
-
-        txt_continue_reading_wb.setText(str_read);
-
-        //share
-        SpannableString str_share = new SpannableString(getResources().getString(R.string.share));
-
-        str_share.setSpan(new UnderlineSpan(), 0, str_share.length(),
-                Spanned.SPAN_PARAGRAPH);
-
-        txt_share_wb.setText(str_share);
-
-        //this the method to handle the continue reading TextView click on immersive mode
+        //this is the method to handle the continue reading button click
+        //remove title, subtitle, views, share and continue reading on click
         View.OnClickListener listener_forward = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 wb.loadUrl(fFeed.getItem(fPos).getLink());
-                txt_continue_reading_wb.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
-
+                article_percent_layout.removeAllViewsInLayout();
+                article_linear_layout.removeView(title_wb);
+                article_linear_layout.removeView(subtitle_wb);
+                article_linear_layout.removeView(article_view);
+                article_linear_layout.removeView(action_view);
             }
         };
 
-        //this the method to handle the share TextView click on immersive mode
+        //this is the method to handle the share button click
         View.OnClickListener listener_share = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 share();
-                txt_share_wb.setTextColor(ContextCompat.getColor(getContext(), R.color.primary));
-
             }
         };
 
         //set continue reading/share TextViews listeners
-        txt_continue_reading_wb.setOnClickListener(listener_forward);
+        button_continue_reading_wb.setOnClickListener(listener_forward);
 
-        txt_share_wb.setOnClickListener(listener_share);
-
-        //initialize the dynamic items (the title, subtitle)
-        //final because we need to access theme within the class from webview client method
-		final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
-		final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
+        button_share_wb.setOnClickListener(listener_share);
 
         //title
         title_wb.setText(fFeed.getItem(fPos).getTitle());
@@ -172,8 +163,8 @@ public class ArticleFragmentWebView extends Fragment {
         // size = the text size from preferences
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        txt_share_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        txt_continue_reading_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        continue_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
+        share_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
 
         //set smooth scroll enabled
 		scroll.setSmoothScrollingEnabled(true);
@@ -233,10 +224,6 @@ public class ArticleFragmentWebView extends Fragment {
             @Override
             public boolean shouldOverrideUrlLoading(WebView webview, String url) {
                 webview.loadUrl(url);
-                title_wb.setVisibility(View.INVISIBLE);
-                subtitle_wb.setVisibility(View.INVISIBLE);
-                txt_continue_reading_wb.setVisibility(View.INVISIBLE);
-                txt_share_wb.setVisibility(View.INVISIBLE);
                 return true;
             }
         });
@@ -245,7 +232,8 @@ public class ArticleFragmentWebView extends Fragment {
         if (Preferences.JSEnabled(getContext())) {
             ws.setJavaScriptEnabled(true);
         }
-		return view;
+
+        return view;
     }
 
     public void share() {
@@ -253,5 +241,6 @@ public class ArticleFragmentWebView extends Fragment {
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share) + " '" + fFeed.getItem(fPos).getTitle() + "'"));
+
     }
 }

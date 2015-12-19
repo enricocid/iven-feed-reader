@@ -29,4 +29,6 @@
     <attr name="immersive_icon" format="reference"/>
     <attr name="back_icon" format="reference"/>
     <attr name="images_icon" format="reference"/>
+    <attr name="share_icon" format="reference"/>
+    <attr name="forward_icon" format="reference"/>
 </resources>
