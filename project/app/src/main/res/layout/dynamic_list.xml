@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listfeed"
-            android:cacheColorHint="@android:color/transparent"/>
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@drawable/activated_background"/>
 
         <!-- the add feed button-->
         <android.support.design.widget.FloatingActionButton

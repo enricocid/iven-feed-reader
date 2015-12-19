@@ -34,6 +34,7 @@
                 android:layout_height="match_parent"
                 android:id="@android:id/list"
                 android:background="?attr/theme_background"
+                android:listSelector="@drawable/activated_background"
                 />
 
 </android.support.v4.widget.SwipeRefreshLayout>
