@@ -19,6 +19,13 @@
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:key="lightcolored"
+        android:title="@string/light_mode"
+        android:summary="@string/light_mode_sum"
+        android:icon="?attr/theme_icon"
+        android:defaultValue="false" />
+
+    <android.support.v7.preference.SwitchPreferenceCompat
         android:key="Navibar"
         android:title="@string/nav_color"
         android:summary="@string/nav_color_sum"

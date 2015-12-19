@@ -104,6 +104,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         }
         }
 
+        //set LightStatusBar
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (Preferences.applyLightIcons(getBaseContext())) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+        }
+
         //set the view
         setContentView(R.layout.iven_feed_list);
 

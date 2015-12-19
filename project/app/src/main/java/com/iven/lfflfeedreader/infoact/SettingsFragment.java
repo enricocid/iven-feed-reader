@@ -43,7 +43,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             navtint.setEnabled(false);
             navtint.setSummary(getString(R.string.prelollipop));
 
-        //show this option on > lollipop devices
+        //show this option on >= lollipop devices
         } else {
             navtint.setEnabled(true);
         }
@@ -56,9 +56,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             immersivemode.setEnabled(false);
             immersivemode.setSummary(getString(R.string.preics));
 
-            //show this option on > ics devices
+            //show this option on >= ics devices
         } else {
             immersivemode.setEnabled(true);
+        }
+
+        //get LightStatusBar preference
+        SwitchPreferenceCompat LightStatusBar = (SwitchPreferenceCompat) findPreference("lightcolored");
+
+        //hide this option on pre-marshmallow devices
+        if (Build.VERSION.SDK_INT < 23){
+            LightStatusBar.setEnabled(false);
+            LightStatusBar.setSummary(getString(R.string.premarshmallow));
+
+            //show this option on >= 23 devices
+        } else {
+            LightStatusBar.setEnabled(true);
         }
 
         //initialize version from BuildConfig
@@ -81,6 +94,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                 //on theme on/off restart the app
                 if (key.equals("Theme")) {
+                    Intent newIntent = new Intent(getActivity(), SplashActivity.class);
+                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(newIntent);
+                    getActivity().overridePendingTransition(0, 0);
+                    getActivity().finish();
+                }
+
+                //on LightStatusBar on/off restart the app
+                else if (key.equals("lightcolored")) {
                     Intent newIntent = new Intent(getActivity(), SplashActivity.class);
                     newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(newIntent);

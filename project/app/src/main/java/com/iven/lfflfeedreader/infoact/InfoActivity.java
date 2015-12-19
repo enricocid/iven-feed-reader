@@ -30,6 +30,13 @@ public class InfoActivity extends AppCompatActivity {
             }
         }
 
+        //set LightStatusBar
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (Preferences.applyLightIcons(getBaseContext())) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+        }
+
         //set the toolbar
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);

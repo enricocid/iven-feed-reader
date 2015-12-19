@@ -74,6 +74,14 @@ public class ArticleActivity extends AppCompatActivity {
 		if (Preferences.navTintEnabled(this)) {
 			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(),  R.color.primary));
 		}
+
+            //set LightStatusBar
+            if (Build.VERSION.SDK_INT >= 23) {
+                if (Preferences.applyLightIcons(getBaseContext())) {
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                }
+            }
+
             //set the immersive mode (only for >= KitKat) if the preference is enabled and hide the toolbar
             if (Build.VERSION.SDK_INT >= 19){
                 if (Preferences.immersiveEnabled(this)) {

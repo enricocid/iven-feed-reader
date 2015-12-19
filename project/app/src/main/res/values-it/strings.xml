@@ -35,8 +35,10 @@
     <string name="pref_text_verylarge">Molto grande</string>
     <string name="immersive_mode">Modalità immersive</string>
     <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
-    <string name="no_images">Disable images</string>
-    <string name="no_images_sum">Disable images visualisation on home activity</string>
+    <string name="no_images">Disabilita immagini</string>
+    <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
+    <string name="light_mode">Icone status bar dark</string>
+    <string name="light_mode_sum">Abilita le icone dark nella status bar</string>
     <string name="version">Versione app</string>
     <string name="deletedialogtitle">Eliminazione feed</string>
     <string name="deletedialogquestion">Vuoi eliminare</string>
@@ -51,5 +53,6 @@
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
     <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
+    <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
     <string name="xda">Feed predefinito</string>
 </resources>

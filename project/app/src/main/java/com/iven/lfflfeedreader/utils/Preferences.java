@@ -90,6 +90,12 @@ public class Preferences {
         }
     }
 
+    //preference to apply LightStatusBar loading
+    public static boolean applyLightIcons(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("lightcolored", false);
+
+    }
     //preference for navigation bar tint
         public static boolean navTintEnabled(Context context) {
             return PreferenceManager.getDefaultSharedPreferences(context)

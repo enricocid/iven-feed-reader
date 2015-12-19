@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -46,6 +47,13 @@ public class SplashActivity extends AppCompatActivity {
 		if (Preferences.navTintEnabled(getBaseContext())) {
 			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.quantum_grey));
 		}
+        }
+
+        //set LightStatusBar
+        if (Build.VERSION.SDK_INT >= 23) {
+        if (Preferences.applyLightIcons(getBaseContext())) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
         }
 
         // Detect if there's a connection issue or not
