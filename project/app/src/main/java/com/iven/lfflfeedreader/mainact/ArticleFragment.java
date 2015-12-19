@@ -81,6 +81,15 @@ public class ArticleFragment extends Fragment {
         //text view under share button
         TextView share_default = (TextView) rootView.findViewById(R.id.txt_share);
 
+        //text view under read more button in immersive mode
+        TextView continue_immersed = (TextView) rootView.findViewById(R.id.txt_continue_immersed);
+
+        //text view under share button in immersive mode
+        TextView share_immersed = (TextView) rootView.findViewById(R.id.txt_share_immersed);
+
+        //text view under back button in immersive mode
+        TextView back_text_immersed = (TextView) rootView.findViewById(R.id.txt_back_immersed);
+
         //initialize article's imageview
         ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
@@ -98,27 +107,16 @@ public class ArticleFragment extends Fragment {
         //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
-        //only for api >=19, i.e KitKat
-        //if immersive mode is enabled show a fab button dynamically to provide back navigation
+        //only for api >=21, i.e Lollipop since toolbar hide method is not working on KitKat
+        //if immersive mode is enabled show a back button dynamically to provide back navigation
         //since toolbar is now hidden in article activity
 
-        if (Build.VERSION.SDK_INT >= 19){
+        if (Build.VERSION.SDK_INT >= 21){
         if (Preferences.immersiveEnabled(getActivity())) {
 
             //set default action buttons not visible if immersive mode is disabled
             //live only the immersed action buttons with back button to provide back navigation
             article_default_linearLayout.removeView(article_percentlayout);
-
-            //this the method to handle the back button click to provide back navigation
-                View.OnClickListener listener = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        activity.onBackPressed();
-                    }
-                };
-
-            //set back button on click listener
-               button_back.setOnClickListener(listener);
 
             }else {
 
@@ -128,6 +126,17 @@ public class ArticleFragment extends Fragment {
 
             }
         }
+
+        //this the method to handle the back button click to provide back navigation
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
+            }
+        };
+
+        //set back button on click listener
+        button_back.setOnClickListener(listener);
 
         //this is the method to handle the continue reading button click
         View.OnClickListener listener_forward = new View.OnClickListener() {
@@ -238,8 +247,11 @@ public class ArticleFragment extends Fragment {
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
-        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
+        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        continue_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        share_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        back_text_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
         return rootView;
 

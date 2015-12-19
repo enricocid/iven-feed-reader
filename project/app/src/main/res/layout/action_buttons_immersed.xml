@@ -22,7 +22,7 @@
 
     <TextView
         style="@style/ActionButtonText"
-        android:id="@+id/txt_continue"
+        android:id="@+id/txt_continue_immersed"
         android:layout_alignLeft="@+id/button_continue"
         android:layout_alignStart="@+id/button_continue"
         android:layout_alignEnd="@+id/button_continue"
@@ -42,7 +42,7 @@
 
     <TextView
         style="@style/ActionButtonText"
-        android:id="@+id/txt_share"
+        android:id="@+id/txt_share_immersed"
         android:layout_alignLeft="@+id/button_share"
         android:layout_alignStart="@+id/button_share"
         android:layout_alignEnd="@+id/button_share"
@@ -62,7 +62,7 @@
 
     <TextView
         style="@style/ActionButtonText"
-        android:id="@+id/txt_back"
+        android:id="@+id/txt_back_immersed"
         android:layout_alignLeft="@+id/button_back"
         android:layout_alignStart="@+id/button_back"
         android:layout_alignEnd="@+id/button_back"

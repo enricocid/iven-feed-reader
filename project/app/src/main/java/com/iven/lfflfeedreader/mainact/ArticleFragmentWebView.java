@@ -79,6 +79,15 @@ public class ArticleFragmentWebView extends Fragment {
         //text view under share button
         TextView share_default = (TextView) view.findViewById(R.id.txt_share);
 
+        //text view under read more button in immersive mode
+        TextView continue_immersed = (TextView) view.findViewById(R.id.txt_continue_immersed);
+
+        //text view under share button in immersive mode
+        TextView share_immersed = (TextView) view.findViewById(R.id.txt_share_immersed);
+
+        //text view under back button in immersive mode
+        TextView back_text_immersed = (TextView) view.findViewById(R.id.txt_back_immersed);
+
         final View article_view = view.findViewById(R.id.article_wb_view);
         final View action_view = view.findViewById(R.id.view_action);
 
@@ -103,27 +112,16 @@ public class ArticleFragmentWebView extends Fragment {
         }
 
 
-        //only for api >=19, i.e KitKat
-        //if immersive mode is enabled show a fab button dynamically to provide back navigation
+        //only for api >=21, i.e Lollipop since toolbar hide method is not working on KitKat
+        //if immersive mode is enabled show a back button dynamically to provide back navigation
         //since toolbar is now hidden in article activity
 
-        if (Build.VERSION.SDK_INT >= 19){
+        if (Build.VERSION.SDK_INT >= 21){
             if (Preferences.immersiveEnabled(getActivity())) {
 
                 //set default action buttons not visible if immersive mode is disabled
                 //live only the immersed action buttons with back button to provide back navigation
                 article_linearLayout_wb.removeView(article_percentlayout_wb);
-
-                //this the method to handle the back button click to provide back navigation
-                View.OnClickListener listener = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        activity.onBackPressed();
-                    }
-                };
-
-                //set back button on click listener
-                button_back.setOnClickListener(listener);
 
             } else {
 
@@ -133,6 +131,17 @@ public class ArticleFragmentWebView extends Fragment {
 
             }
         }
+
+        //this the method to handle the back button click to provide back navigation
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
+            }
+        };
+
+        //set back button on click listener
+        button_back.setOnClickListener(listener);
 
         //this is the method to handle the continue reading button click
         //remove title, subtitle, views, share and continue reading on click
@@ -174,8 +183,12 @@ public class ArticleFragmentWebView extends Fragment {
         // size = the text size from preferences
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
-        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 4);
+        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        continue_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        share_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        back_text_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
         //set smooth scroll enabled
 		scroll.setSmoothScrollingEnabled(true);
