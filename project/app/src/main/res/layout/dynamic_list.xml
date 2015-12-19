@@ -10,18 +10,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:layout_gravity="end"
-    android:background="?attr/theme_background">
+    android:layout_gravity="end">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/theme_background">
 
         <!-- the dynamic listview-->
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listfeed" />
+            android:id="@+id/listfeed"
+            android:cacheColorHint="@android:color/transparent"/>
 
         <!-- the add feed button-->
         <android.support.design.widget.FloatingActionButton

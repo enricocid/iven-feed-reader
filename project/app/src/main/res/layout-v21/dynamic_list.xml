@@ -24,7 +24,8 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/listfeed" />
+                android:id="@+id/listfeed"
+                android:cacheColorHint="@android:color/transparent"/>
 
             <!-- the add feed button-->
             <android.support.design.widget.FloatingActionButton
