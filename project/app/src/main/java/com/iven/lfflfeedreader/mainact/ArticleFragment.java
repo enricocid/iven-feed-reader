@@ -231,6 +231,8 @@ public class ArticleFragment extends Fragment {
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
+        txt_share.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        txt_continue_reading.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
         return rootView;
 

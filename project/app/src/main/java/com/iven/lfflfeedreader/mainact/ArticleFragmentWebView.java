@@ -52,6 +52,9 @@ public class ArticleFragmentWebView extends Fragment {
         //get the chosen article's text size from preferences
         float size = Preferences.resolveTextSizeResId(getContext());
 
+        //this is a needed transformation (from float to int) to set the text size on webview
+        final int size_wb = Math.round(size);
+
        //set the view
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
@@ -169,6 +172,8 @@ public class ArticleFragmentWebView extends Fragment {
         // size = the text size from preferences
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
+        txt_share_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        txt_continue_reading_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
         //set smooth scroll enabled
 		scroll.setSmoothScrollingEnabled(true);
@@ -220,8 +225,6 @@ public class ArticleFragmentWebView extends Fragment {
 		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
         wb.setBackgroundColor(Color.TRANSPARENT);
 
-        //this is a needed transformation (from float to int) to set the text size on webview
-        int size_wb = Math.round(size);
         ws.setDefaultFontSize(size_wb);
 
         //override this method to load the url inside the in-app webview
