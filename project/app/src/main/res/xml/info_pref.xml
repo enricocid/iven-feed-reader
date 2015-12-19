@@ -33,6 +33,13 @@
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
+            android:key="images"
+            android:title="@string/no_images"
+            android:summary="@string/no_images_sum"
+            android:icon="?attr/images_icon"
+            android:defaultValue="false" />
+
+    <android.support.v7.preference.SwitchPreferenceCompat
         android:key="WebViewLoad"
         android:title="@string/Reading"
         android:summary="@string/Readingsum"

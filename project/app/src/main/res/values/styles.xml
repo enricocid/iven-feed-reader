@@ -39,6 +39,7 @@
         <item name="article_text_color">@color/titles_color</item>
         <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="back_icon">@drawable/ic_back</item>
+        <item name="images_icon">@drawable/ic_image_area</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -66,6 +67,7 @@
             <item name="article_text_color">@color/titles_color_dark</item>
             <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
             <item name="back_icon">@drawable/ic_back_dark</item>
+            <item name="images_icon">@drawable/ic_image_area_dark</item>
         </style>
 
     <!-- Responsive toolbar -->

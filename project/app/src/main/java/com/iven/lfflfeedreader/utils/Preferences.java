@@ -104,4 +104,11 @@ public class Preferences {
 
     }
 
+    //preference to disable images loading
+    public static boolean imagesRemoved(Context context) {
+                return PreferenceManager.getDefaultSharedPreferences(context)
+                               .getBoolean("images", false);
+
+                    }
+
     }

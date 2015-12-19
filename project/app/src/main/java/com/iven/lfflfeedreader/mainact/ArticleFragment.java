@@ -25,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -163,8 +164,17 @@ public class ArticleFragment extends Fragment {
         //initialize imageview
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
+        //if the preference is enabled remove the imageview from the linear layout
+        if (Preferences.imagesRemoved(getContext())) {
+
+            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.article_linearlayout);
+            linearLayout.removeView(imageView);
+
+        }
+
+        //else, load the image
         //if getImage() method fails (i.e when img is in content:encoded) load image2
-        if (fFeed.getItem(fPos).getImage().isEmpty()) {
+        else if (fFeed.getItem(fPos).getImage().isEmpty()) {
 
             //use glide to load the image into the imageview (imageView)
             Glide.with(getActivity()).load(fFeed.getItem(fPos).getImage2())

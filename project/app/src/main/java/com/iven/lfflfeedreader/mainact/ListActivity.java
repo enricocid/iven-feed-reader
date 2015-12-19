@@ -27,6 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -651,8 +652,17 @@ class CustomListAdapter extends BaseAdapter {
             //initialize the imageview
             ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
+            //if the preference is enabled remove the linear layout containing the imageview
+            if (Preferences.imagesRemoved(getBaseContext())) {
+
+                LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
+                linearLayout.removeAllViewsInLayout();
+
+            }
+
+            //else, load the image
             //if getImage() method fails (i.e when img is in content:encoded) load image2
-            if (feed.getItem(pos).getImage().isEmpty()) {
+            else if (feed.getItem(pos).getImage().isEmpty()) {
 
                 //use glide to load the image into the imageview (lfflimage)
                 Glide.with(activity).load(feed.getItem(pos).getImage2())
@@ -665,7 +675,10 @@ class CustomListAdapter extends BaseAdapter {
                             .into(lfflImage);
 
                 //else use image
-            } else {
+            }
+            else
+            {
+
                 Glide.with(activity).load(feed.getItem(pos).getImage())
 
                         //set a placeholder image
@@ -675,9 +688,11 @@ class CustomListAdapter extends BaseAdapter {
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .into(lfflImage);
             }
+
             return listItem;
         }
     }
+
 
 
     //this the custom dynamic adapter for the custom feeds listview
@@ -780,6 +795,7 @@ class CustomListAdapter extends BaseAdapter {
                         startActivity(ii4);
                 }
 
+                //the default feed
                 switch (menuItem.getItemId()) {
                     case R.id.xda:
 

@@ -28,4 +28,5 @@
     <attr name="plus_icon" format="reference"/>
     <attr name="immersive_icon" format="reference"/>
     <attr name="back_icon" format="reference"/>
+    <attr name="images_icon" format="reference"/>
 </resources>

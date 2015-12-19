@@ -35,6 +35,8 @@
     <string name="pref_text_verylarge">Molto grande</string>
     <string name="immersive_mode">Modalità immersive</string>
     <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
+    <string name="no_images">Disable images</string>
+    <string name="no_images_sum">Disable images visualisation on home activity</string>
     <string name="version">Versione app</string>
     <string name="deletedialogtitle">Eliminazione feed</string>
     <string name="deletedialogquestion">Vuoi eliminare</string>

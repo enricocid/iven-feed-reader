@@ -43,6 +43,8 @@
     <string name="pref_text_verylarge">Very large</string>
     <string name="immersive_mode">Immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
+    <string name="no_images">Disabilita immagini</string>
+    <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
     <string name="continue_read">Continue reading &#8230;</string>
     <string name="share_article">Share the article</string>
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>

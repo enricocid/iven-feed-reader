@@ -99,6 +99,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                 }
 
+                //on disable images on/off restart the app
+                else if (key.equals("images")) {
+                    					Intent newIntent = new Intent(getActivity(), SplashActivity.class);
+                    					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                    					startActivity(newIntent);
+                                        getActivity().overridePendingTransition(0, 0);
+                                        getActivity().finish();
+                }
+
                 //on navbar tint on/off restart the app
                 else if (key.equals("Navibar")) {
                     Intent newIntent = new Intent(getActivity(), SplashActivity.class);
