@@ -55,4 +55,6 @@
     <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
     <string name="xda">Feed predefinito</string>
+    <string name="button_back">Vai indietro</string>
+
 </resources>

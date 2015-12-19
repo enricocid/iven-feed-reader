@@ -41,7 +41,6 @@
         <item name="back_icon">@drawable/ic_back</item>
         <item name="images_icon">@drawable/ic_image_area</item>
         <item name="share_icon">@drawable/ic_share</item>
-        <item name="forward_icon">@drawable/ic_forward</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -71,7 +70,6 @@
             <item name="back_icon">@drawable/ic_back_dark</item>
             <item name="images_icon">@drawable/ic_image_area_dark</item>
             <item name="share_icon">@drawable/ic_share_dark</item>
-            <item name="forward_icon">@drawable/ic_forward_dark</item>
         </style>
 
     <!-- Responsive toolbar -->

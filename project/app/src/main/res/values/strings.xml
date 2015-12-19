@@ -52,6 +52,7 @@
     <string name="prelollipop">Option not available on pre-Lollipop devices</string>
     <string name="preics">Option not available on pre-ICS devices</string>
     <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
+    <string name="button_back">Go back</string>
 
     <!-- custom feeds -->
     <string name="xda">Default feed</string>

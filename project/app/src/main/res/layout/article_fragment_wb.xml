@@ -2,16 +2,16 @@
 
 <!-- this is the layout for Articles using webview -->
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16sp"
     android:orientation="vertical"
     android:descendantFocusability="blocksDescendants">
 
     <!-- scrollview-->
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:id="@+id/sv_wb"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
@@ -70,56 +70,12 @@
                 android:background="?android:attr/listDivider"
                 android:layout_marginTop="16dp" />
 
-            <android.support.percent.PercentRelativeLayout
-                android:id="@+id/action_button_percent_wb"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_margin="16dp">
+            <include layout="@layout/action_buttons" />
 
-                <ImageButton
-                    style="@style/ActionButtonIcon"
-                    android:contentDescription="@string/desc"
-                    android:id="@+id/button_continue_wb"
-                    android:src="?attr/forward_icon"
-                    app:layout_widthPercent="50%" />
-
-                <TextView
-                    style="@style/ActionButtonText"
-                    android:id="@+id/txt_continue_wb"
-                    android:layout_alignLeft="@+id/button_continue_wb"
-                    android:layout_alignStart="@+id/button_continue_wb"
-                    android:layout_alignEnd="@+id/button_continue_wb"
-                    android:layout_alignRight="@+id/button_continue_wb"
-                    android:text="@string/continue_read"
-                    android:layout_below="@+id/button_continue_wb" />
-
-                <ImageButton
-                    style="@style/ActionButtonIcon"
-                    android:contentDescription="@string/desc"
-                    android:id="@+id/button_share_wb"
-                    android:src="?attr/share_icon"
-                    android:layout_toEndOf="@id/button_continue_wb"
-                    android:layout_toRightOf="@id/button_continue_wb"
-                    app:layout_widthPercent="50%" />
-
-                <TextView
-                    style="@style/ActionButtonText"
-                    android:id="@+id/txt_share_wb"
-                    android:layout_alignLeft="@+id/button_share_wb"
-                    android:layout_alignStart="@+id/button_share_wb"
-                    android:layout_alignEnd="@+id/button_share_wb"
-                    android:layout_alignRight="@+id/button_share_wb"
-                    android:text="@string/share"
-                    android:layout_below="@+id/button_share_wb" />
-
-            </android.support.percent.PercentRelativeLayout>
+            <include layout="@layout/action_buttons_immersed" />
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
-        <include layout="@layout/fab_back" />
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

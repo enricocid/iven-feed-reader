@@ -6,14 +6,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
-import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
@@ -57,24 +55,48 @@ public class ArticleFragment extends Fragment {
                 ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.article_fragment, container, false);
 
-        //initialize the fab button
-        final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.back);
+        //initialize the article view linear layout
+        LinearLayout article_default_linearLayout = (LinearLayout) rootView.findViewById(R.id.article_linearlayout);
 
-        //initialize the dynamic items (the title, subtitle, read more & share)
+        //initialize items (title, subtitle, read more, share, buttons, layouts ...)
+
+        //read more button
         ImageButton button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
 
+        //share button
         ImageButton button_share = (ImageButton) rootView.findViewById(R.id.button_share);
 
-        final TextView continue_default = (TextView) rootView.findViewById(R.id.txt_continue);
-        final TextView share_default = (TextView) rootView.findViewById(R.id.txt_share);
+        //back button
+        ImageButton button_back = (ImageButton) rootView.findViewById(R.id.button_back);
+
+        //title
+        TextView title = (TextView) rootView.findViewById(R.id.title);
+
+        //subtitle
+        TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
+
+        //text view under read more button
+        TextView continue_default = (TextView) rootView.findViewById(R.id.txt_continue);
+
+        //text view under share button
+        TextView share_default = (TextView) rootView.findViewById(R.id.txt_share);
+
+        //initialize article's imageview
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
+
+        //percentRelativeLayout containing action buttons
+        PercentRelativeLayout article_percentlayout = (PercentRelativeLayout) rootView.findViewById(R.id.action_buttons);
+        PercentRelativeLayout article_percentlayout_immersed = (PercentRelativeLayout) rootView.findViewById(R.id.action_buttons_immersed);
+
+        //remove the back button from the view if api < 21, i.e Lollipop
+        //since immersive mode is not available on pre-ics
+        //and toolbar hide method is not working on KitKat
+        if (Build.VERSION.SDK_INT < 21){
+            article_default_linearLayout.removeView(article_percentlayout_immersed);
+        }
 
         //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
-
-        //remove fab button from the view if api < 19, i.e KitKat
-        if (Build.VERSION.SDK_INT < 19){
-            fab.setVisibility(View.INVISIBLE);
-        }
 
         //only for api >=19, i.e KitKat
         //if immersive mode is enabled show a fab button dynamically to provide back navigation
@@ -83,7 +105,11 @@ public class ArticleFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= 19){
         if (Preferences.immersiveEnabled(getActivity())) {
 
-                //this the method to handle fab click to provide back navigation
+            //set default action buttons not visible if immersive mode is disabled
+            //live only the immersed action buttons with back button to provide back navigation
+            article_default_linearLayout.removeView(article_percentlayout);
+
+            //this the method to handle the back button click to provide back navigation
                 View.OnClickListener listener = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,19 +117,14 @@ public class ArticleFragment extends Fragment {
                     }
                 };
 
-                //set fab's on click listener
-                fab.setOnClickListener(listener);
-
-            //set fab's behavior
-            //initialize coordinator layout
-            final CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-            p.setBehavior(new ScrollAwareFABBehavior());
-            fab.setLayoutParams(p);
+            //set back button on click listener
+               button_back.setOnClickListener(listener);
 
             }else {
 
-            //set fab button not visible if immersive mode is disabled
-            fab.setVisibility(View.INVISIBLE);
+            //set immersed actions buttons not visible if immersive mode is disabled
+            //live only the default action buttons (Read more... and Share buttons)
+            article_default_linearLayout.removeView(article_percentlayout_immersed);
 
             }
         }
@@ -124,14 +145,10 @@ public class ArticleFragment extends Fragment {
             }
         };
 
-        //set continue reading/share TextViews listeners
+        //set continue reading/share buttons listeners
         button_continue_reading.setOnClickListener(listener_forward);
 
         button_share.setOnClickListener(listener_share);
-
-        //initialize the dynamic items (the title, subtitle)
-		TextView title = (TextView) rootView.findViewById(R.id.title);
-		TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
 
         //dynamically set title and subtitle according to the feed data
 
@@ -141,14 +158,10 @@ public class ArticleFragment extends Fragment {
         //add date to subtitle
         subtitle.setText(fFeed.getItem(fPos).getDate());
 
-        //initialize imageview
-		ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
-
         //if the preference is enabled remove the imageview from the linear layout
         if (Preferences.imagesRemoved(getContext())) {
 
-            LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.article_linearlayout);
-            linearLayout.removeView(imageView);
+            article_default_linearLayout.removeView(imageView);
 
         }
 
@@ -181,10 +194,14 @@ public class ArticleFragment extends Fragment {
 
                     final Intent intent;
 
+                    //use glide to load the image into the imageview (imageView)
+                    //if getImage() method fails (i.e when img is in content:encoded) load image2
                     if (fFeed.getItem(fPos).getImage().isEmpty()) {
                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage2()));
 
                     }
+
+                    //else use image
                     else
                     {
                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
