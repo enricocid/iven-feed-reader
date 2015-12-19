@@ -35,6 +35,12 @@
             android:id="@+id/about_option_more"
             android:icon="@drawable/action_about"
             android:title="@string/more"/>
+
   </group>
+
+    <item
+        android:id="@+id/xda"
+        android:icon="@drawable/ic_xda"
+        android:title="@string/xda"/>
 
 </menu>

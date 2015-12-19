@@ -49,6 +49,7 @@
     <string name="preics">Option not available on pre-ICS devices</string>
 
     <!-- custom feeds -->
+    <string name="xda">Default feed</string>
     <string name="deletedialogtitle">Discard feed</string>
     <string name="deletedialogquestion">Do you want to discard</string>
     <string name="deleteok">Discard</string>

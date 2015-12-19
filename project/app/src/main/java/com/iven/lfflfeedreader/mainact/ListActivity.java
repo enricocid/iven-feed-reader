@@ -795,6 +795,19 @@ class CustomListAdapter extends BaseAdapter {
                 }
 
                 switch (menuItem.getItemId()) {
+                    case R.id.xda:
+
+                        //start a new splash activity for the selected feed
+                        //send the feed url to splash activity using intents
+                        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                ListActivity.this, SplashActivity.class));
+                        intent.putExtra("feedselected", "http://feeds.feedburner.com/xdadevs");
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
+                }
+
+                switch (menuItem.getItemId()) {
                     case R.id.changelog:
 
                         //showChangelog method is called
@@ -817,7 +830,6 @@ class CustomListAdapter extends BaseAdapter {
                         if (intent != null) {
                             startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
                         }
-
                 }
 
             }

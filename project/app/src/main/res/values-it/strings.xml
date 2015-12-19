@@ -49,4 +49,5 @@
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
     <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
+    <string name="xda">Feed predefinito</string>
 </resources>
