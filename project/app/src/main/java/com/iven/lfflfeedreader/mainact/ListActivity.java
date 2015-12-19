@@ -422,27 +422,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             fab.setOnClickListener(listener);
 
             //initialize the main listview where items will be added
-            list=(ListView)
-
-            findViewById(android.R.id.list);
+            list=(ListView) findViewById(android.R.id.list);
 
             //initialize the feeds items
-            feed=(RSSFeed)
-
-            getIntent()
-
-            .
-
-            getExtras()
-
-            .
-
-            get("feed");
+            feed = (RSSFeed) getIntent().getExtras().get("feed");
 
             //set the main listview custom adapter
-            adapter=new
-
-            CustomListAdapter(this);
+            adapter=new CustomListAdapter(this);
 
             list.setAdapter(adapter);
 
