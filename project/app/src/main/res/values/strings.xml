@@ -44,7 +44,7 @@
     <string name="immersive_mode">Immersive mode</string>
     <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
     <string name="no_images">Disable images</string>
-    <string name="no_images_sum">Disable images visualisation on home activity</string>
+    <string name="no_images_sum">Disable article's images visualisation</string>
     <string name="light_mode">Dark status icons</string>
     <string name="light_mode_sum">Enable dark colored status bar icons</string>
     <string name="continue_read">Read more&#8230;</string>

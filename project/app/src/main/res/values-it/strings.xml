@@ -36,7 +36,7 @@
     <string name="immersive_mode">Modalità immersive</string>
     <string name="immersive_mode_sum">Abilita la modalità immersive negli articoli</string>
     <string name="no_images">Disabilita immagini</string>
-    <string name="no_images_sum">Disabilita la visualizzazione delle immagini nella home</string>
+    <string name="no_images_sum">Disabilita la visualizzazione delle immagini degli articoli</string>
     <string name="light_mode">Icone status bar dark</string>
     <string name="light_mode_sum">Abilita le icone dark nella status bar</string>
     <string name="version">Versione app</string>
