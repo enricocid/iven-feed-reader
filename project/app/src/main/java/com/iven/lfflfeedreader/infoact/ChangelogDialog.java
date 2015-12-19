@@ -12,7 +12,6 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.iven.lfflfeedreader.R;
 import android.annotation.SuppressLint;
