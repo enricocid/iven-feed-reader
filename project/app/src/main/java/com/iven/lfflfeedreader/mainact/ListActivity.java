@@ -599,10 +599,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	}
     }
 
-    //this is the method to refresh the feed items and the list view
-    //the xml is parsed again and if the number of the items is >0
-    //new items will be added on top of the list activity's ListView
-
 	@Override
 	protected void onDestroy() {
         adapter.notifyDataSetChanged();
@@ -615,7 +611,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         super.onResume();
     }
 
-    //this the custom list adapter for the home ListView
+    //this is the custom list adapter for the home ListView
     //we use a custom adapter to set a custom layout for items
     class CustomListAdapter extends BaseAdapter {
 
@@ -727,7 +723,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
 
 
-    //this the custom dynamic adapter for the custom feeds ListView
+    //this is the custom dynamic adapter for the custom feeds ListView
     //we use a custom adapter to set a custom layout for items (names + urls)
 
     class CustomDynamicAdapter extends BaseAdapter {
