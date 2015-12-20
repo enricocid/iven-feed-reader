@@ -8,21 +8,22 @@ Iven news Reader is a light and modern Android feed reader that will allow You t
 
 It supports Material Design and pre-ICS (i.e Gingerbread!) devices!
 
-It supports also pre-Lollipop devices from v3.2:
+It supports also pre-Lollipop devices!
 
-Supported devices:10750           Excluded devices:0
-:)
 
 The UI is the same on all Android versions thanks to some great support and third part libs!
 
 The default blog is XDA.
 
-Furthermore, You can add also **CUSTOM FEEDS** by sliding from right to left (or pressing the plus button) to open a navigation layout. There You can click the fab button, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
+You can add **CUSTOM FEEDS** by opening the navigation drawer. There You can click the add button from toolbar, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
 You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
 
-Some noticeable features are the dark/light theme, true immersive mode, navbar tint (>=KitKat), text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen.
+Some noticeable features are the dark/light theme, dark status bar icons (MM), immersive mode, navbar tint (>=KitKat), option to disable images, text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen/action buttons.
 
 If You want, You can also choose between the native articles UI and the webview.
+
+
+![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/Iven.gif)
 
 
 NOTES (Please Read):
@@ -38,7 +39,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (6.8.3) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (7.0) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
@@ -94,10 +95,12 @@ http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 
 
 **- Android Support Libraries**
-- Android support v4;
-- Android support appcompatv7;
-- Android Design Support Library;
-- Android v7 Preference library
+- Android Support v4;
+- Android Support Appcompatv7;
+- Android Design Support library;
+- Android v7 Preference;
+- Android Support Percent;
+
 
 **- material-dialogs by Aidan Follestad**
 @afollestad
