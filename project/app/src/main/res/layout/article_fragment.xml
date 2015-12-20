@@ -78,6 +78,7 @@
                 android:background="?android:attr/listDivider"
                 android:layout_marginTop="16dp" />
 
+            <!-- action buttons (Read more..., Share, Go back)-->
             <include layout="@layout/action_buttons" />
 
     </LinearLayout>

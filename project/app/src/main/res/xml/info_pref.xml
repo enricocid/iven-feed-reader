@@ -15,52 +15,45 @@
         android:key="Theme"
         android:title="@string/pref_theme_title"
         android:summary="@string/themesum"
-        android:icon="?attr/theme_icon"
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
         android:key="lightcolored"
         android:title="@string/light_mode"
         android:summary="@string/light_mode_sum"
-        android:icon="?attr/theme_icon"
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
         android:key="Navibar"
         android:title="@string/nav_color"
         android:summary="@string/nav_color_sum"
-        android:icon="?attr/navtint_icon"
         android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
         android:key="Immerseme"
         android:title="@string/immersive_mode"
         android:summary="@string/immersive_mode_sum"
-        android:icon="?attr/immersive_icon"
         android:defaultValue="false" />
 
+    <android.support.v7.preference.PreferenceCategory android:title="@string/moreopts"/>
+
     <android.support.v7.preference.SwitchPreferenceCompat
-            android:key="images"
-            android:title="@string/no_images"
-            android:summary="@string/no_images_sum"
-            android:icon="?attr/images_icon"
-            android:defaultValue="false" />
+        android:key="images"
+        android:title="@string/no_images"
+        android:summary="@string/no_images_sum"
+        android:defaultValue="false" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
         android:key="WebViewLoad"
         android:title="@string/Reading"
         android:summary="@string/Readingsum"
-        android:icon="?attr/webview_icon"
         android:defaultValue="false" />
 
     <android.support.v7.preference.CheckBoxPreference
         android:key="JavaScriptLoad"
         android:title="@string/JS_script"
         android:summary="@string/JS_scriptsum"
-        android:icon="?attr/js_icon"
         android:defaultValue="false" />
-
-    <android.support.v7.preference.PreferenceCategory android:title="@string/moreopts"/>
 
     <android.support.v7.preference.ListPreference
         android:key="@string/pref_text_size"
@@ -79,6 +72,25 @@
         android:defaultValue="6"
         android:title="@string/pref_text_size_list_title"
         android:dialogIcon="?attr/textsize_icon" />
+
+    <android.support.v7.preference.Preference
+        android:key="clearcache"
+        android:title="@string/clear_cache"
+        android:summary="@string/clear_cache_sum"/>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/aboutopts"/>
+
+    <android.support.v7.preference.Preference
+        android:key="changelog"
+        android:title="@string/changelog" />
+
+    <android.support.v7.preference.Preference
+        android:key="credits"
+        android:title="@string/info" />
+
+    <android.support.v7.preference.Preference
+        android:key="source"
+        android:title="@string/lib1sum" />
 
     <android.support.v7.preference.Preference
         android:key="build_number"

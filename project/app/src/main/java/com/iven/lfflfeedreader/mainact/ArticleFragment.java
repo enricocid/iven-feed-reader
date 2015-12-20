@@ -25,7 +25,10 @@ import org.jsoup.Jsoup;
 
 public class ArticleFragment extends Fragment {
 
+    //position
 	private int fPos;
+
+    //feed
 	RSSFeed fFeed;
 
 	@Override

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Action buttons -->
+<!-- Action buttons (Read more..., Share, Go back) -->
 
 <android.support.percent.PercentRelativeLayout
     android:id="@+id/action_buttons"

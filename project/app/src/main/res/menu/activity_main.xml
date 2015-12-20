@@ -18,15 +18,30 @@
         android:title="@string/rate_me" />
 
     <item
-        android:id="@+id/cache"
+        android:id="@+id/mail"
         app:showAsAction="never"
         android:orderInCategory="200"
-        android:title="@string/clear_cache" />
+        android:title="@string/email" />
+
+    <item
+        android:id="@+id/option"
+        app:showAsAction="never"
+        android:orderInCategory="200"
+        android:title="@string/settings"/>
+
+
+    <item
+        android:id="@+id/xda"
+        app:showAsAction="always"
+        android:title="@string/xda"
+        android:icon="?attr/xda_icon"
+        android:visible="false"/>
 
     <item
         android:id="@+id/addfeed"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:icon="?attr/plus_icon"
-        android:title="@string/feedmenu" />
+        android:title="@string/feedmenu"
+        android:visible="false"/>
     
  </menu>

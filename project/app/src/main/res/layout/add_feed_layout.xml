@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!-- this is the layout for the add feeds dialog-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -35,7 +35,7 @@ public class ArticleActivity extends AppCompatActivity {
 
 		super.onCreate(savedInstanceState);
 
-		//apply activity's theme if dark theme is enabled
+        //apply activity's theme if dark theme is enabled
 		Preferences.applyTheme(this);
 
 		//set the view

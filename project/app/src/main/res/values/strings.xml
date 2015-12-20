@@ -10,17 +10,18 @@
     <string name="more" translatable="false">Info</string>
     <string name="emailC">Send with</string>
     <string name="lib1sum">Source code</string>
-    <string name="error">That\'s an error buddy</string>
+    <string name="error">Install a browser</string>
     <string name="share">Share</string>
     <string name="company_name" translatable="false">iven</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="pref_theme_title">App theme</string>
-    <string name="opts">General UI options</string>
-    <string name="moreopts">Additional options</string>
+    <string name="opts">Theme options</string>
+    <string name="aboutopts" translatable="false">About</string>
+    <string name="moreopts">Other options</string>
     <string name="themesum">The app needs to be restarted</string>
     <string name="settings">Options</string>
-    <string name="info">Informations</string>
+    <string name="info" translatable="false">Credits</string>
     <string name="Reading">Use webview</string>
     <string name="Readingsum">Webview will be used to load articles</string>
     <string name="JS_script">Enable javascript</string>
@@ -28,7 +29,8 @@
     <string name="build_number">Build\'s version</string>
     <string name="nav_color">Enable navbar tint</string>
     <string name="nav_color_sum">This will enable navigation bar tinting</string>
-    <string name="clear_cache">Clear cache</string>
+    <string name="clear_cache">Clear app cache</string>
+    <string name="clear_cache_sum">This option will clean the app cache and reset the options</string>
     <string name="rate_me">Rate</string>
     <string name="pref_text_size" translatable="false">pref_text_size</string>
     <string name="pref_text_size_list" translatable="false">pref_text_size_list</string>
@@ -53,6 +55,7 @@
     <string name="preics">Option not available on pre-ICS devices</string>
     <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
     <string name="button_back">Go back</string>
+    <string name="no_internet">Connect to the internet please</string>
 
     <!-- custom feeds -->
     <string name="xda">Default feed</string>

@@ -1,18 +1,26 @@
 package com.iven.lfflfeedreader.infoact;
 
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.SwitchPreferenceCompat;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.mainact.SplashActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
+
+import java.io.File;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -74,6 +82,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             LightStatusBar.setEnabled(true);
         }
 
+        //get the clear cache preference
+        android.support.v7.preference.Preference preferencecache = findPreference("clearcache");
+
+        preferencecache.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick (Preference preference) {
+
+                clearApplicationData();
+                return false;
+            }
+        });
+
         //initialize version from BuildConfig
         String version = BuildConfig.VERSION_NAME;
 
@@ -85,6 +104,38 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         //grey out version preference
         preferenceversion.setEnabled(false);
+
+        //get the changelog preference
+        android.support.v7.preference.Preference preferencechangelog = findPreference("changelog");
+
+        preferencechangelog.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick (Preference preference) {
+
+                showChangelog();
+                return false;
+            }
+        });
+        //get the credits preference
+        android.support.v7.preference.Preference preferencecredits = findPreference("credits");
+
+        preferencecredits.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick (Preference preference) {
+
+                showInfo();
+                return false;
+            }
+        });
+
+        //get the source code preference
+        android.support.v7.preference.Preference preferencesource = findPreference("source");
+
+        preferencesource.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick (Preference preference) {
+
+                showSource();
+                return false;
+            }
+        });
 
         //initialize shared preference change listener
         //some preferences when enabled requires an app reboot
@@ -160,5 +211,71 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onPause() {
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(mListenerOptions);
         super.onPause();
+    }
+
+    //this is the method to delete the app's cache
+    public void clearApplicationData() {
+        File cache = getActivity().getCacheDir();
+        File appDir = new File(cache.getParent());
+        if (appDir.exists()) {
+            String[] children = appDir.list();
+            for (String s : children) {
+                if (!s.equals("lib")) {
+                    deleteDir(new File(appDir, s));
+                }
+            }
+        }
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+
+        return dir.delete();
+    }
+
+    //method to open the credits dialog
+    private void showInfo() {
+        int accentColor = ThemeSingleton.get().widgetColor;
+        if (accentColor == 0)
+            accentColor = ContextCompat.getColor(getContext(), R.color.accent_color);
+
+        CreditsDialog.create(accentColor)
+                .show(getActivity().getSupportFragmentManager(), "credits");
+    }
+
+    //method to open the changelog dialog
+    private void showChangelog() {
+        int accentColor = ThemeSingleton.get().widgetColor;
+        if (accentColor == 0)
+            accentColor = ContextCompat.getColor(getContext(), R.color.accent_color);
+
+        ChangelogDialog.create(accentColor)
+                .show(getActivity().getSupportFragmentManager(), "changelog");
+
+    }
+
+    //method to open the git page
+    private void showSource() {
+
+        try
+        {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/iven-feed-reader")));
+
+            //if no browser is found open Google Play Store
+        } catch (ActivityNotFoundException anfe)
+        {
+
+            Toast toast = Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT);
+            toast.show();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
+        }
     }
 }

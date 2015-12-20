@@ -5,16 +5,15 @@
 <resources>
     <string name="emailC">Invia con</string>
     <string name="lib1sum">Codice sorgente</string>
-    <string name="error">Questo è un problema amico</string>
+    <string name="error">Installa un browser</string>
     <string name="share">Condividi</string>
     <string name="email">Contattaci</string>
     <string name="chooser_title">Scegli il browser &#8230;</string>
-    <string name="opts">Opzioni UI generali</string>
-    <string name="moreopts">Opzioni aggiuntive</string>
+    <string name="opts">Opzioni tema</string>
+    <string name="moreopts">Altre opzioni</string>
     <string name="pref_theme_title">Tema app</string>
     <string name="themesum">Necessita riavvio della app</string>
     <string name="settings">Opzioni</string>
-    <string name="info">Informazioni</string>
     <string name="Reading">Usa webview</string>
     <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
     <string name="JS_script">Abilita javascript</string>
@@ -22,7 +21,8 @@
     <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
-    <string name="clear_cache">Pulisci cache</string>
+    <string name="clear_cache">Pulisci cache app</string>
+    <string name="clear_cache_sum">Questa opzione pulirà la cache dell\'app e resetterà le opzioni</string>
     <string name="rate_me">Vota</string>
     <string name="pref_text_size_title">Aggiusta font articoli</string>
     <string name="pref_text_size_list_title">Aggiusta font lista</string>
@@ -56,5 +56,6 @@
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
     <string name="xda">Feed predefinito</string>
     <string name="button_back">Vai indietro</string>
+    <string name="no_internet">Connettiti ad internet per favore</string>
 
 </resources>

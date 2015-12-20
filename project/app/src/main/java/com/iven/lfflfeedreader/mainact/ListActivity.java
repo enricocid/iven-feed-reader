@@ -7,21 +7,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.IntentCompat;
+import android.support.v4.view.GravityCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -34,13 +34,10 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
-import com.iven.lfflfeedreader.infoact.ChangelogDialog;
-import com.iven.lfflfeedreader.infoact.CreditsDialog;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
@@ -48,51 +45,51 @@ import com.iven.lfflfeedreader.R;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
+public class ListActivity extends AppCompatActivity implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
-	  private static final long DRAWER_CLOSE_DELAY_MS = 250;
-	  private static final String NAV_ITEM_ID = "navItemId";
-	  private final Handler mDrawerActionHandler = new Handler();
-	  private DrawerLayout mDrawerLayout;
-      private DrawerLayout mDrawerRight;
-      private ActionBarDrawerToggle mDrawerToggle;
-	  private int mNavItemId;
+    //Home ListView
+    RSSFeed feed;
+    ListView list;
+    CustomListAdapter adapter;
+
+    //Dynamic ListView
     private List<String> mItems;
     private List<String> mItems2;
-
     SQLiteDatabase mydb;
-	RSSFeed feed;
-	ListView list;
-	CustomListAdapter adapter;
     CustomDynamicAdapter adapter_dynamic;
-    String feedURL = SplashActivity.value;
-	Intent intent;
-	SwipeRefreshLayout swiperefresh;
     ListView listfeed;
     String feedcustom;
     String feedcustom2;
-    int mLastFirstVisibleItem;
+
+    //Others
+    String feedURL = SplashActivity.value;
+    Intent intent;
+    SwipeRefreshLayout swiperefresh;
+    private Menu menu;
 
     //create the toolbar's menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
+        this.menu = menu;
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return super.onCreateOptionsMenu(menu);
-	}
+
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        //apply preferences
 
         //apply activity's theme if dark theme is enabled
         Preferences.applyTheme(this);
@@ -112,13 +109,10 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //set the view
-        setContentView(R.layout.iven_feed_list);
-
-        //initialize the fab button (design support lib)
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_me);
+        setContentView(R.layout.home);
 
         //initialize the toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //set the toolbar
         setSupportActionBar(toolbar);
@@ -135,70 +129,128 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         //share button using share intent
                         switch (item.getItemId()) {
                             case R.id.share_option:
+
+                                //close DrawerLayout
+                                closeDrawer();
+
+                                //open Google Play Store page
                                 Intent i = new Intent(Intent.ACTION_SEND);
                                 i.setType("text/plain");
                                 i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
                                 i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
                                 startActivity(Intent.createChooser(i, getString(R.string.share)));
-                                return true;
                         }
 
                         //rate button
                         switch (item.getItemId()) {
                             case R.id.rate:
+
+                                //close DrawerLayout
+                                closeDrawer();
+
+                                //call rate method
                                 rate(list);
-                                return true;
                         }
 
-                        //delete cache
                         switch (item.getItemId()) {
-                            case R.id.cache:
-                                clearApplicationData();
-                                return true;
+                            case R.id.mail:
+
+                                //close DrawerLayout
+                                closeDrawer();
+
+                                //send a mail to us
+                                intent = new Intent(android.content.Intent.ACTION_SEND);
+                                intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivenfeedreader@outlook.com"});
+                                intent.setType("message/rfc822");
+                                if (intent != null) {
+                                    startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
+                                }
+
                         }
 
-                        //this the plus button on toolbar to open the right-to-left drawer layout
+                        //default feed
+                        switch (item.getItemId()) {
+                        case R.id.xda:
+
+                        //start a new splash activity for the default feed
+                        //send the feed url to splash activity using intents
+                        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                                ListActivity.this, SplashActivity.class));
+                        intent.putExtra("feedselected", "http://feeds.feedburner.com/xdadevs");
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        finish();
+                    }
+
+                        switch (item.getItemId()) {
+
+                            case R.id.option:
+
+                                //close DrawerLayout
+                                closeDrawer();
+
+                                //open Settings Activity
+                                Intent ii = new Intent(ListActivity.this, InfoActivity.class);
+                                startActivity(ii);
+                        }
+
+                        //this is the button to add feed
                         switch (item.getItemId()) {
                             case R.id.addfeed:
-                                if (mDrawerLayout.isDrawerOpen(mDrawerRight)) {
-                                    mDrawerLayout.closeDrawer(mDrawerRight);
-                                } else {
-                                    mDrawerLayout.openDrawer(mDrawerRight);
-                                }
-                                return true;
-                        }
 
+                                //call addFeed method
+                                addFeed();
+                        }
                         return false;
                     }
                 });
 
         //initialize our navigation drawer
+
+        //initialize ActionBarDrawerToggle
+        final ActionBarDrawerToggle mDrawerToggle;
+
+        //initialize the Drawer Layout
+        final DrawerLayout mDrawerLayout;
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        mDrawerRight = (DrawerLayout) findViewById(R.id.drawer_right);
-
-        //setup drawer's view
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
-
-        if (null == savedInstanceState) {
-            mNavItemId = R.id.option;
-        } else {
-            mNavItemId = savedInstanceState.getInt(NAV_ITEM_ID);
-        }
-
-        navigationView.setNavigationItemSelectedListener(this);
-
-        navigationView.getMenu().findItem(mNavItemId).setChecked(true);
 
         //Tie DrawerLayout events to the ActionBarToggle:
         //it adds the hamburger icon
         //and handle the drawer slide event
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
+                R.string.app_name) {
+
+            //Called when the drawer is opened
+        public void onDrawerOpened(View drawerView) {
+
+            super.onDrawerOpened(drawerView);
+
+            //change toolbar title to 'Add a feed'
+            toolbar.setTitle(getResources().getString(R.string.feedmenu));
+
+            //show the add feed menu option
+            showAddFeed();
+
+        }
+
+            //Called when the drawer is closed
+        public void onDrawerClosed(View view) {
+            super.onDrawerClosed(view);
+            //change toolbar title to the app's name
+            toolbar.setTitle(getResources().getString(R.string.app_name));
+
+            //hide the add feed menu option
+            hideAddFeed();
+
+        }
+
+        };
+
+        //this handle the hamburger animation
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
-       //! The handle of menu items is explained at the end of this java
-
 
         //initialize swipe to refresh layout
         swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
@@ -209,7 +261,50 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         //set the default color of the arrow
         swiperefresh.setColorSchemeResources(R.color.refresh_color);
 
-        //initialize the dynamic listview
+
+        //set the articles ListView and the dynamic ListView for custom feeds
+
+        //let's start with the home's ListView
+
+        //initialize the main ListView where items will be added
+        list=(ListView) findViewById(android.R.id.list);
+
+        //initialize the feeds items
+        feed = (RSSFeed) getIntent().getExtras().get("feed");
+
+        //set the main ListView custom adapter
+        adapter=new CustomListAdapter(this);
+
+        list.setAdapter(adapter);
+
+        //handle main ListView clicks
+        list.setOnItemClickListener(new
+
+                                            OnItemClickListener() {
+
+                                                @Override
+                                                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                                                        long arg3) {
+                                                    int pos = arg2;
+
+                                                    //on item click we send the feed to article activity
+                                                    //using intents
+                                                    Bundle bundle = new Bundle();
+                                                    bundle.putSerializable("feed", feed);
+                                                    Intent intent = new Intent(ListActivity.this,
+                                                            ArticleActivity.class);
+                                                    intent.putExtras(bundle);
+                                                    intent.putExtra("pos", pos);
+
+                                                    //and we start the article activity to read the story
+                                                    startActivity(intent);
+                                                }
+                                            }
+        );
+
+        //Dynamic ListView and database handling
+
+        //initialize the dynamic ListView
         listfeed =(ListView) findViewById(R.id.listfeed);
 
         //initialize a sqlite database
@@ -289,30 +384,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        //handle fab hide on listview scroll
-        listfeed.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                  //do absolutely nothing
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-                //on scroll up
-                if (mLastFirstVisibleItem > firstVisibleItem) {
-                    fab.show();
-
-                //on scroll down
-                } else if (mLastFirstVisibleItem < firstVisibleItem) {
-                    fab.hide();
-                }
-                mLastFirstVisibleItem = firstVisibleItem;
-            }
-
-        });
-
+        //set on item long click to delete custom feeds
             listfeed.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 
             {
@@ -386,7 +458,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         mydb.delete(table1, whereClause_url, whereArgs_url);
                         mydb.delete(table2, whereClause_feed, whereArgs_name);
 
-                        //remove items from the dynamic listview
+                        //remove items from the dynamic ListView
 
                         //for url
                         mItems.remove(datposition);
@@ -417,58 +489,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             }
 
             );
-
-            //this the method to handle add feed click to open an input dialog
-            View.OnClickListener listener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addFeed();
-                }
-            };
-
-            //set add feed button's on click listener
-            fab.setOnClickListener(listener);
-
-            //initialize the main listview where items will be added
-            list=(ListView) findViewById(android.R.id.list);
-
-            //initialize the feeds items
-            feed = (RSSFeed) getIntent().getExtras().get("feed");
-
-            //set the main listview custom adapter
-            adapter=new CustomListAdapter(this);
-
-            list.setAdapter(adapter);
-
-            //handle main listview clicks
-            list.setOnItemClickListener(new
-
-            OnItemClickListener() {
-
-                @Override
-                public void onItemClick (AdapterView < ? > arg0, View arg1,int arg2,
-                long arg3){
-                    int pos = arg2;
-
-                    //on item click we send the feed to article activity
-                    //using intents
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("feed", feed);
-                    Intent intent = new Intent(ListActivity.this,
-                            ArticleActivity.class);
-                    intent.putExtras(bundle);
-                    intent.putExtra("pos", pos);
-
-                    //and we start the article activity to read the story
-                    startActivity(intent);
-                }
-            }
-
-            );
         }
 
-                //method to add feeds inside the db and the dynamic listview
-
+    //method to add feeds inside the db and the dynamic ListView
     public void addFeed(){
 
         new MaterialDialog.Builder(this)
@@ -499,13 +522,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         feedcustom2 = edt2.getText().toString();
                         mItems2.add(feedcustom2);
 
-                        //and we update the listview to add the new item
+                        //and we update the ListView to add the new item
                         adapter_dynamic.notifyDataSetChanged();
                         listfeed.setAdapter(adapter_dynamic);
 
                         //populate the tables of the sqlite database with these values
                         // here we store names and urls that will be used on app's
-                        //resume to populate the listview
+                        //resume to populate the ListView
 
                         //fill the urls column
                         mydb.execSQL("insert into feedslist (url) values(?);", new String[]{feedcustom});
@@ -515,36 +538,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
                     }
 
-                        }).show();
+                }).show();
                     }
-
-    //this is the method to delete the app's cache
-    public void clearApplicationData() {
-        File cache = getCacheDir();
-        File appDir = new File(cache.getParent());
-        if (appDir.exists()) {
-            String[] children = appDir.list();
-            for (String s : children) {
-                if (!s.equals("lib")) {
-                    deleteDir(new File(appDir, s));
-                }
-            }
-        }
-    }
-
-    public static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-
-        return dir.delete();
-    }
 
     //this is the rate button
 	public void rate(View view) {
@@ -553,10 +548,35 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		  startActivity(intent);
 		}
 
+    //create a pending Runnable that runs in background to close the drawer smoothly
+    public void closeDrawer() {
+        final DrawerLayout mDrawerLayout;
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+            }
+        }, 200);
+        }
+
     //this is the method to refresh the feed items and the list view
     //the xml is parsed again and if the number of the items is >0
-    //new items will be added on top of the list activity's listview
+    //new items will be added on top of the list activity's ListView
 	public void onRefresh() {
+
+        // Detect if there's a connection issue or not
+        ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // If there's a connection problem stop refreshing and show message
+        if (cM.getActiveNetworkInfo() == null) {
+            Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
+            toast.show();
+            swiperefresh.setRefreshing(false);
+
+        } else {
 
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -577,6 +597,11 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 		});
 		thread.start();
 	}
+    }
+
+    //this is the method to refresh the feed items and the list view
+    //the xml is parsed again and if the number of the items is >0
+    //new items will be added on top of the list activity's ListView
 
 	@Override
 	protected void onDestroy() {
@@ -590,9 +615,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         super.onResume();
     }
 
-    //this the custom list adapter for the main listview
+    //this the custom list adapter for the home ListView
     //we use a custom adapter to set a custom layout for items
-class CustomListAdapter extends BaseAdapter {
+    class CustomListAdapter extends BaseAdapter {
 
 		private LayoutInflater layoutInflater;
 
@@ -629,7 +654,7 @@ class CustomListAdapter extends BaseAdapter {
 			int pos = position;
 			if (listItem == null) {
 
-                //set the main listview's layout
+                //set the main ListView's layout
 				listItem = layoutInflater.inflate(R.layout.items, parent, false);
             }
 
@@ -702,7 +727,7 @@ class CustomListAdapter extends BaseAdapter {
 
 
 
-    //this the custom dynamic adapter for the custom feeds listview
+    //this the custom dynamic adapter for the custom feeds ListView
     //we use a custom adapter to set a custom layout for items (names + urls)
 
     class CustomDynamicAdapter extends BaseAdapter {
@@ -753,7 +778,7 @@ class CustomListAdapter extends BaseAdapter {
 
             if (listItem == null) {
 
-                //set the main listview's layout
+                //set the main ListView's layout
                 listItem = layoutInflater.inflate(R.layout.dynamic_items, parent, false);
             }
 
@@ -773,99 +798,25 @@ class CustomListAdapter extends BaseAdapter {
         }
     }
 
-    //this is where we handle the navigation drawer clicks
-    //menu items are set directly in iven_feed_list layout!
-    @Override
-    public boolean onNavigationItemSelected(final MenuItem menuItem) {
+    private void hideAddFeed()
+    {
+        //hide addfeed menu item
+        MenuItem addfeed = menu.findItem(R.id.addfeed);
+        addfeed.setVisible(false);
 
-        //set the clicked memu item checked
-        menuItem.setChecked(true);
-
-        //get all menu items Ids
-        mNavItemId = menuItem.getItemId();
-        mDrawerLayout.closeDrawer(GravityCompat.START);
-        mDrawerActionHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                switch (menuItem.getItemId()) {
-
-                    //open Info Activity
-                    case R.id.option:
-                        Intent ii = new Intent(ListActivity.this, InfoActivity.class);
-                        startActivity(ii);
-                }
-                switch (menuItem.getItemId()) {
-
-                    //open github page using intents
-                    case R.id.source_code:
-                        Intent ii4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/iven-feed-reader"));
-                        startActivity(ii4);
-                }
-
-                //the default feed
-                switch (menuItem.getItemId()) {
-                    case R.id.xda:
-
-                        //start a new splash activity for the selected feed
-                        //send the feed url to splash activity using intents
-                        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                                ListActivity.this, SplashActivity.class));
-                        intent.putExtra("feedselected", "http://feeds.feedburner.com/xdadevs");
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                        finish();
-                }
-
-                switch (menuItem.getItemId()) {
-                    case R.id.changelog:
-
-                        //showChangelog method is called
-                        showChangelog();
-                }
-
-                switch (menuItem.getItemId()) {
-                    case R.id.about_option_more:
-                        //showInfo method is called
-                        showInfo();
-                }
-
-                switch (menuItem.getItemId()) {
-                    case R.id.mail:
-
-                        //send a mail to us
-                        intent = new Intent(android.content.Intent.ACTION_SEND);
-                        intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivenfeedreader@outlook.com"});
-                        intent.setType("message/rfc822");
-                        if (intent != null) {
-                            startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
-                        }
-                }
-
-            }
-
-        }, DRAWER_CLOSE_DELAY_MS);
-        return true;
-
+        //hide xda menu item
+        MenuItem xda = menu.findItem(R.id.xda);
+        xda.setVisible(false);
     }
 
-    //method to open the credits dialog
-    private void showInfo() {
-        int accentColor = ThemeSingleton.get().widgetColor;
-        if (accentColor == 0)
-            accentColor = ContextCompat.getColor(getBaseContext(), R.color.accent_color);
+    private void showAddFeed() {
 
-        CreditsDialog.create(accentColor)
-                .show(getSupportFragmentManager(), "credits");
-    }
+        //show addfeed menu item
+        MenuItem addfeed = menu.findItem(R.id.addfeed);
+        addfeed.setVisible(true);
 
-    //method to open the changelog dialog
-    private void showChangelog() {
-        int accentColor = ThemeSingleton.get().widgetColor;
-        if (accentColor == 0)
-            accentColor = ContextCompat.getColor(getBaseContext(), R.color.accent_color);
-
-        ChangelogDialog.create(accentColor)
-                .show(getSupportFragmentManager(), "changelog");
-
+        //show xda menu item
+        MenuItem xda = menu.findItem(R.id.xda);
+        xda.setVisible(true);
     }
 }

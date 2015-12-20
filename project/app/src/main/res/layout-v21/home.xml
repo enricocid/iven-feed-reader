@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for the home activity (ListActivity)-->
+<!-- without elevation on navigation drawer (for pre-lollipop devices)-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- The toolbar -->
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="6dp"
+    tools:ignore="InconsistentLayout"
+    android:background="?attr/theme_background">
+
+    <!-- the layout containing the articles list-->
+    <include layout="@layout/articles_list" />
+
+    <!-- the layout containing the dynamic listview inside the drawer-->
+    <include layout="@layout/dynamic_list" />
+
+</android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

@@ -13,5 +13,5 @@
     android:background="?attr/colorPrimary"
     android:elevation="6dp"
     app:contentInsetStart="@dimen/second_keyline"
-    app:popupTheme="?attr/popup_theme"
+    app:popupTheme="?attr/popupTheme"
     tools:ignore="NewApi" />

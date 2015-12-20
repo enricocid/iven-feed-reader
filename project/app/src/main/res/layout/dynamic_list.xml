@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for the right-to-left navigation drawer containing the dynamic listview-->
-<!-- without elevation (for pre-lollipop devices)-->
-
-<!-- the drawer-->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
-    android:id="@+id/drawer_right"
-    android:layout_width="match_parent"
+    <!-- The layout for the dynamic ListView -->
+<FrameLayout
+    android:clickable="true"
+    android:id="@+id/content_frame"
+    android:layout_width="290dp"
     android:layout_height="match_parent"
+    android:background="?attr/theme_background"
+    android:layout_gravity="start"
+    tools:showIn="@layout/home"
     android:fitsSystemWindows="true"
-    android:layout_gravity="end">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.design.widget.CoordinatorLayout
+    <!-- the dynamic listview-->
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/theme_background">
+        android:layout_height="wrap_content"
+        android:id="@+id/listfeed"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@drawable/activated_background"/>
 
-        <!-- the dynamic listview-->
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listfeed"
-            android:cacheColorHint="@android:color/transparent"
-            android:listSelector="@drawable/activated_background"/>
-
-        <!-- the add feed button-->
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add_me"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/FloatingAccentButtonOverlay"
-            app:layout_anchorGravity="bottom|right|end"
-            android:src="?attr/plus_icon" />
-
-    </android.support.design.widget.CoordinatorLayout>
-
-  </android.support.v4.widget.DrawerLayout>
+</FrameLayout>

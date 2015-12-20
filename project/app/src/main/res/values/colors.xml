@@ -4,7 +4,7 @@
 
 <resources>
 
-    <!-- main colors-->
+    <!-- Main colors-->
     <color name="translucent">#95000000</color>
     <color name="primary">#009688</color>
     <color name="primary_dark">#00796B</color>
@@ -15,26 +15,16 @@
     <color name="subtitles_color_dark">#5e5e5e</color>
     <color name="theme_bg_dark">@color/dialog_bg</color>
 
-    <!--navigation view (nv) colors-->
-    <color name="nv_text_color">@color/titles_color</color>
-    <color name="nv_text_color_dark">@color/titles_color_dark</color>
-    <color name="nv_bg_color">#2c3e50</color>
-    <color name="nv_bg_pressed">@color/accent_color</color>
-    <color name="nv_bg_checked">@color/accent_color</color>
-
-    <!--changelog and credits theme colors-->
+    <!--Changelog and credits theme colors-->
     <color name="dialog_bg">#212121</color>
     <color name="dialog_title">#EF5350</color>
 
-    <!--used for splash layout-->
+    <!--Used for splash layout-->
     <color name="splash_red">@color/dialog_title</color>
     <color name="quantum_grey">#ff898989</color>
 
-    <!--used for refresh layout-->
+    <!--Used for refresh layout-->
     <color name="refresh_color">@color/dialog_title</color>
-
-    <!-- fab color-->
-    <color name="fab_primary">#E91E63</color>
 
     <!-- Share and continue reading buttons highlight color -->
     <color name="highlight">@color/accent_color</color>

@@ -26,21 +26,16 @@
         <item name="theme_background">@android:color/white</item>
         <item name="text_title_theme">@color/titles_color</item>
         <item name="text_date_theme">@color/subtitles_color</item>
-        <item name="navview_text">@drawable/state_list</item>
-        <item name="plus_icon">@drawable/ic_plus</item>
-        <item name="theme_icon">@drawable/ic_invert_colors</item>
-        <item name="webview_icon">@drawable/ic_webview</item>
-        <item name="js_icon">@drawable/ic_js</item>
-        <item name="navtint_icon">@drawable/ic_tint</item>
-        <item name="textsize_icon">@drawable/ic_format_text</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
         <item name="title_color">@color/titles_color</item>
         <item name="article_text_color">@color/titles_color</item>
-        <item name="immersive_icon">@drawable/ic_fullscreen</item>
         <item name="back_icon">@drawable/ic_back</item>
-        <item name="images_icon">@drawable/ic_image_area</item>
         <item name="share_icon">@drawable/ic_share</item>
+        <item name="xda_icon">@drawable/ic_xda</item>
+        <item name="plus_icon">@drawable/ic_plus</item>
+        <item name="webview_icon">@drawable/ic_webview</item>
+        <item name="textsize_icon">@drawable/ic_format_text</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -55,21 +50,16 @@
             <item name="theme_background">@color/theme_bg_dark</item>
             <item name="text_title_theme">@color/titles_color_dark</item>
             <item name="text_date_theme">@color/subtitles_color_dark</item>
-            <item name="navview_text">@drawable/state_list_dark</item>
-            <item name="plus_icon">@drawable/ic_plus_dark</item>
-            <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
-            <item name="webview_icon">@drawable/ic_webview_dark</item>
-            <item name="js_icon">@drawable/ic_js_dark</item>
-            <item name="navtint_icon">@drawable/ic_tint_dark</item>
-            <item name="textsize_icon">@drawable/ic_format_text_dark</item>
             <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
             <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
             <item name="title_color">@color/titles_color_dark</item>
             <item name="article_text_color">@color/titles_color_dark</item>
-            <item name="immersive_icon">@drawable/ic_fullscreen_dark</item>
+            <item name="plus_icon">@drawable/ic_plus_dark</item>
+            <item name="textsize_icon">@drawable/ic_format_text_dark</item>
             <item name="back_icon">@drawable/ic_back_dark</item>
-            <item name="images_icon">@drawable/ic_image_area_dark</item>
             <item name="share_icon">@drawable/ic_share_dark</item>
+            <item name="xda_icon">@drawable/ic_xda_dark</item>
+            <item name="webview_icon">@drawable/ic_webview_dark</item>
         </style>
 
     <!-- Responsive toolbar -->
@@ -97,11 +87,6 @@
         <item name="android:textColor">@color/accent_color</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:layout_marginBottom">16dp</item>
-    </style>
-
-    <!-- Fab button color -->
-    <style name="FloatingAccentButtonOverlay" >
-        <item name="colorAccent">@color/fab_primary</item>
     </style>
 
     <!-- Share and continue reading buttons theme -->

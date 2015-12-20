@@ -11,6 +11,5 @@
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
-    app:contentInsetStart="@dimen/second_keyline"
-    app:popupTheme="@style/Theme.AppCompat.Light"
+    app:popupTheme="?attr/popupTheme"
     tools:ignore="NewApi" />

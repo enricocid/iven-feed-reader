@@ -26,7 +26,10 @@ import android.widget.TextView;
 
 public class ArticleFragmentWebView extends Fragment {
 
+    //position
 	private int fPos;
+
+    //feed
 	RSSFeed fFeed;
 
     @Override
