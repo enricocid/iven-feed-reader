@@ -12,7 +12,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.iven.lfflfeedreader.R;
@@ -22,11 +21,13 @@ import com.iven.lfflfeedreader.utils.Preferences;
 @SuppressLint("InlinedApi")
 public class ArticleActivity extends AppCompatActivity {
 
+    //feed
 	RSSFeed feed;
-	int pos;
-	private ViewPager pager;
-	private PagerAdapter mPagerAdapter;
 
+    //position
+	int pos;
+
+    //context
 	Context context;
 
 	@Override
@@ -40,12 +41,17 @@ public class ArticleActivity extends AppCompatActivity {
 		//set the view
 		setContentView(R.layout.article_activity);
 
-		//get the feed using itents
+		//get the feed using intents
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		pos = getIntent().getExtras().getInt("pos");
 
 		//get the context
 		context = getBaseContext();
+
+        //initialize ViewPager and the adapter onCreate to avoid AS warning
+        //'field can be converted to a local variable'
+		ViewPager pager;
+		PagerAdapter mPagerAdapter;
 
 		//set the viewpager that allows to swipe through articles
 		mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
@@ -53,21 +59,6 @@ public class ArticleActivity extends AppCompatActivity {
 		pager.setAdapter(mPagerAdapter);
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
-
-		//Initialize the Toolbar
-		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-		//Add the back button on toolbar
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setDisplayShowTitleEnabled(false);
-		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				onBackPressed();
-				overridePendingTransition(0, 0);
-			}
-		});
 
 		//set the navbar tint if the preference is enabled
 		if (Build.VERSION.SDK_INT >= 21){
@@ -82,12 +73,9 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             }
 
-            //set the immersive mode (only for >= KitKat) if the preference is enabled and hide the toolbar
+            //set the immersive mode (only for >= KitKat) if the preference is enabled
             if (Build.VERSION.SDK_INT >= 19){
                 if (Preferences.immersiveEnabled(this)) {
-
-					//hide the toolbar
-					getSupportActionBar().hide();
 
                     //immersive mode
                     getWindow().getDecorView().setSystemUiVisibility(

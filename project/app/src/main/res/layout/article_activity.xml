@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/article_act"
     android:background="?attr/theme_background">
-
-    <include layout="@layout/toolbar" />
 
     <!-- Viewpager -->
     <android.support.v4.view.ViewPager

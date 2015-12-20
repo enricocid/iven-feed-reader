@@ -72,8 +72,6 @@
 
             <include layout="@layout/action_buttons" />
 
-            <include layout="@layout/action_buttons_immersed" />
-
         </LinearLayout>
 
     </ScrollView>

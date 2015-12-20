@@ -18,7 +18,7 @@
         android:contentDescription="@string/desc"
         android:id="@+id/button_continue"
         android:src="?attr/webview_icon"
-        app:layout_widthPercent="50%" />
+        app:layout_widthPercent="33.33%" />
 
     <TextView
         style="@style/ActionButtonText"
@@ -38,7 +38,7 @@
         android:src="?attr/share_icon"
         android:layout_toEndOf="@id/button_continue"
         android:layout_toRightOf="@id/button_continue"
-        app:layout_widthPercent="50%" />
+        app:layout_widthPercent="33.33%" />
 
     <TextView
         style="@style/ActionButtonText"
@@ -48,6 +48,26 @@
         android:layout_alignEnd="@+id/button_share"
         android:layout_alignRight="@+id/button_share"
         android:text="@string/share"
+        android:layout_below="@+id/button_share" />
+
+    <!-- Back button -->
+    <ImageButton
+        style="@style/ActionButtonIcon"
+        android:contentDescription="@string/desc"
+        android:id="@+id/button_back"
+        android:src="?attr/back_icon"
+        android:layout_toEndOf="@id/button_share"
+        android:layout_toRightOf="@id/button_share"
+        app:layout_widthPercent="33.33%" />
+
+    <TextView
+        style="@style/ActionButtonText"
+        android:id="@+id/txt_back"
+        android:layout_alignLeft="@+id/button_back"
+        android:layout_alignStart="@+id/button_back"
+        android:layout_alignEnd="@+id/button_back"
+        android:layout_alignRight="@+id/button_back"
+        android:text="@string/button_back"
         android:layout_below="@+id/button_share" />
 
 </android.support.percent.PercentRelativeLayout>

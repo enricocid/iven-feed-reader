@@ -45,118 +45,62 @@ public class ArticleFragmentWebView extends Fragment {
         //apply activity's theme if dark theme is enabled
         Preferences.applyTheme(getActivity());
 
-        //get the chosen article's text size from preferences
-        float size = Preferences.resolveTextSizeResId(getContext());
-
-        //this is a needed transformation (from float to int) to set the text size on webview
-        final int size_wb = Math.round(size);
-
        //set the view
 		View view = inflater
 				.inflate(R.layout.article_fragment_wb, container, false);
 
-        //initialize items (title, subtitle, read more, share, buttons, layouts ...)
-        final LinearLayout article_linearLayout_wb = (LinearLayout) view.findViewById(R.id.article_wb_linearlayout);
+        //initialize the webview
+        final WebView wb = (WebView) view.findViewById(R.id.wb);
 
-        //read more button
-        ImageButton button_continue_reading = (ImageButton) view.findViewById(R.id.button_continue);
-
-        //share button
-        ImageButton button_share = (ImageButton) view.findViewById(R.id.button_share);
-
-        //back button
-        ImageButton button_back = (ImageButton) view.findViewById(R.id.button_back);
-
+        //Article title and subtitle
         //title
         final TextView title_wb = (TextView) view.findViewById(R.id.titlewb);
 
         //subtitle
         final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
 
+        //Action Buttons
         //text view under read more button
-        TextView continue_default = (TextView) view.findViewById(R.id.txt_continue);
+        final TextView continue_text = (TextView) view.findViewById(R.id.txt_continue);
 
         //text view under share button
-        TextView share_default = (TextView) view.findViewById(R.id.txt_share);
+        TextView share_text = (TextView) view.findViewById(R.id.txt_share);
 
-        //text view under read more button in immersive mode
-        TextView continue_immersed = (TextView) view.findViewById(R.id.txt_continue_immersed);
+        //text view under back button
+        TextView back_text = (TextView) view.findViewById(R.id.txt_back);
 
-        //text view under share button in immersive mode
-        TextView share_immersed = (TextView) view.findViewById(R.id.txt_share_immersed);
+        //read more button
+        final ImageButton button_continue_reading = (ImageButton) view.findViewById(R.id.button_continue);
 
-        //text view under back button in immersive mode
-        TextView back_text_immersed = (TextView) view.findViewById(R.id.txt_back_immersed);
+        //this is the method to handle the continue reading button click
+        //on click remove title, subtitle, article view and continue reading from the view
 
+        //initialize the article view linear layout
+        final LinearLayout article_linearLayout_wb = (LinearLayout) view.findViewById(R.id.article_wb_linearlayout);
+
+        //the view below title/subtitle
         final View article_view = view.findViewById(R.id.article_wb_view);
-        final View action_view = view.findViewById(R.id.view_action);
 
         //percentRelativeLayout containing action buttons
         final PercentRelativeLayout article_percentlayout_wb = (PercentRelativeLayout) view.findViewById(R.id.action_buttons);
-        final PercentRelativeLayout article_percentlayout_immersed_wb = (PercentRelativeLayout) view.findViewById(R.id.action_buttons_immersed);
 
-        //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
-        final AppCompatActivity activity = (AppCompatActivity) getActivity();
-
-        //initialize the scrollview
-        final ScrollView scroll = (ScrollView) view.findViewById(R.id.sv_wb);
-
-        //initialize the webview
-        final WebView wb = (WebView) view.findViewById(R.id.wb);
-
-        //remove the back button from the view if api < 21, i.e Lollipop
-        //since immersive mode is not available on pre-ics
-        //and toolbar hide method is not working on KitKat
-        if (Build.VERSION.SDK_INT < 21){
-            article_linearLayout_wb.removeView(article_percentlayout_immersed_wb);
-        }
-
-
-        //only for api >=21, i.e Lollipop since toolbar hide method is not working on KitKat
-        //if immersive mode is enabled show a back button dynamically to provide back navigation
-        //since toolbar is now hidden in article activity
-
-        if (Build.VERSION.SDK_INT >= 21){
-            if (Preferences.immersiveEnabled(getActivity())) {
-
-                //set default action buttons not visible if immersive mode is disabled
-                //live only the immersed action buttons with back button to provide back navigation
-                article_linearLayout_wb.removeView(article_percentlayout_wb);
-
-            } else {
-
-                //set immersed actions buttons not visible if immersive mode is disabled
-                //live only the default action buttons (Read more... and Share buttons)
-                article_linearLayout_wb.removeView(article_percentlayout_immersed_wb);
-
-            }
-        }
-
-        //this the method to handle the back button click to provide back navigation
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.onBackPressed();
-            }
-        };
-
-        //set back button on click listener
-        button_back.setOnClickListener(listener);
-
-        //this is the method to handle the continue reading button click
-        //remove title, subtitle, views, share and continue reading on click
         View.OnClickListener listener_forward = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 wb.loadUrl(fFeed.getItem(fPos).getLink());
-                article_percentlayout_wb.removeAllViewsInLayout();
-                article_percentlayout_immersed_wb.removeAllViewsInLayout();
+                article_percentlayout_wb.removeView(button_continue_reading);
+                article_percentlayout_wb.removeView(continue_text);
                 article_linearLayout_wb.removeView(title_wb);
                 article_linearLayout_wb.removeView(subtitle_wb);
                 article_linearLayout_wb.removeView(article_view);
-                article_linearLayout_wb.removeView(action_view);
             }
         };
+
+        //set continue reading/share TextViews listeners
+        button_continue_reading.setOnClickListener(listener_forward);
+
+        //share button
+        ImageButton button_share = (ImageButton) view.findViewById(R.id.button_share);
 
         //this is the method to handle the share button click
         View.OnClickListener listener_share = new View.OnClickListener() {
@@ -166,34 +110,56 @@ public class ArticleFragmentWebView extends Fragment {
             }
         };
 
-        //set continue reading/share TextViews listeners
-        button_continue_reading.setOnClickListener(listener_forward);
-
+        //set the share on click listener
         button_share.setOnClickListener(listener_share);
 
-        //title
+        //back button
+        ImageButton button_back = (ImageButton) view.findViewById(R.id.button_back);;
+
+        //this is the click listener to provide back navigation
+        View.OnClickListener listener_back = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        };
+
+        //set back button on click listener
+        button_back.setOnClickListener(listener_back);
+
+        //dynamically set title and subtitle according to the feed data
+        //set title of the article
         title_wb.setText(fFeed.getItem(fPos).getTitle());
 
-        //add date to subtitle
+        //set the date of the article to subtitle
         subtitle_wb.setText(fFeed.getItem(fPos).getDate());
 
-        //set the articles text size from preferences
+        //set the article texts size from preferences
         //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
         // TypedValue.COMPLEX_UNIT_SP = the text unit, in this case SP
         // size = the text size from preferences
+
+        //get the chosen article's text size from preferences
+        float size = Preferences.resolveTextSizeResId(getContext());
+
+        //this is a needed transformation (from float to int) to set the text size on webview
+        final int size_wb = Math.round(size);
+
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        continue_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        share_default.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        continue_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        share_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        back_text_immersed.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        continue_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size- 2);
+        share_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
+        back_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
+
+        //WebView related things
+        //initialize the webview settings
 
         //set smooth scroll enabled
-		scroll.setSmoothScrollingEnabled(true);
+        //initialize the scrollview
+        final ScrollView scroll = (ScrollView) view.findViewById(R.id.sv_wb);
 
-        //initialize the webview settings
+        scroll.setSmoothScrollingEnabled(true);
+
 		final WebSettings ws = wb.getSettings();
 
         //set default encoding to utf-8 to avoid malformed text
@@ -260,11 +226,20 @@ public class ArticleFragmentWebView extends Fragment {
         return view;
     }
 
+    //share method
     public void share() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share) + " '" + fFeed.getItem(fPos).getTitle() + "'"));
 
+    }
+
+    //back navigation method
+    public void goBack() {
+
+        //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.onBackPressed();
     }
 }
