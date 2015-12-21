@@ -6,7 +6,6 @@ import com.iven.lfflfeedreader.utils.Preferences;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.Fragment;
@@ -171,14 +170,10 @@ public class ArticleFragmentWebView extends Fragment {
         //set bg transparent because we will apply the bg using the activity's theme
 		wb.setBackgroundColor(Color.TRANSPARENT);
 
-        //control the layout of html
+        //enum for controlling the layout of html. NORMAL means no rendering changes.
+        //this is the recommended choice for maximum compatibility across different platforms and Android versions.
         //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-			ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
-		}
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			ws.setLayoutAlgorithm(LayoutAlgorithm.TEXT_AUTOSIZING);
-		}
+        ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 
         //parse the articles text using jsoup and replace some items since this is a simple textview
         //and continue reading is not clickable
