@@ -1,7 +1,6 @@
 package com.iven.lfflfeedreader.infoact;
 
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -145,49 +144,27 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                 //on theme on/off restart the app
                 if (key.equals("Theme")) {
-                    Intent newIntent = new Intent(getActivity(), SplashActivity.class);
-                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(newIntent);
-                    getActivity().overridePendingTransition(0, 0);
-                    getActivity().finish();
+                    restartApp();
                 }
 
                 //on LightStatusBar on/off restart the app
                 else if (key.equals("lightcolored")) {
-                    Intent newIntent = new Intent(getActivity(), SplashActivity.class);
-                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(newIntent);
-                    getActivity().overridePendingTransition(0, 0);
-                    getActivity().finish();
+                    restartApp();
                 }
 
                 //on webview on/off restart the app
                 else if (key.equals("WebViewLoad")) {
-                    final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                            getActivity(), SplashActivity.class));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    getActivity().overridePendingTransition(0, 0);
-                    getActivity().finish();
-
+                    restartApp();
                 }
 
                 //on disable images on/off restart the app
                 else if (key.equals("images")) {
-                    					Intent newIntent = new Intent(getActivity(), SplashActivity.class);
-                    					newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                    					startActivity(newIntent);
-                                        getActivity().overridePendingTransition(0, 0);
-                                        getActivity().finish();
+                    restartApp();
                 }
 
                 //on navbar tint on/off restart the app
                 else if (key.equals("Navibar")) {
-                    Intent newIntent = new Intent(getActivity(), SplashActivity.class);
-                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(newIntent);
-                    getActivity().overridePendingTransition(0, 0);
-                    getActivity().finish();
+                    restartApp();
                 }
             }
         };
@@ -277,5 +254,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             toast.show();
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=browsers")));
         }
+
+    }
+    
+    //method to restart the app and apply the changes
+    private void restartApp() {
+        Intent newIntent = new Intent(getActivity(), SplashActivity.class);
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(newIntent);
+        getActivity().overridePendingTransition(0, 0);
+        getActivity().finish();
     }
 }
