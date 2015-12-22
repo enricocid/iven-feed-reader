@@ -72,15 +72,26 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     String feedURL = SplashActivity.value;
     Intent intent;
     SwipeRefreshLayout swiperefresh;
-    private Menu menu;
+
+    //menu items
+    Menu menu;
+    MenuItem addfeed;
+    MenuItem xda;
 
     //create the toolbar's menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
         this.menu = menu;
+
 		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return super.onCreateOptionsMenu(menu);
+
+        //initialize add feed menu items
+        addfeed = menu.findItem(R.id.addfeed);
+
+        xda = menu.findItem(R.id.xda);
+
+        return super.onCreateOptionsMenu(menu);
 
     }
 
@@ -393,6 +404,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 public boolean onItemLongClick (AdapterView < ? > parent, View view,
                 final int datposition, long arg3){
 
+                //Disable ListView clicks to avoid unwanted clicks while deleting feeds
+                listfeed.setEnabled(false);
+
                 //on long click we create a new alert dialog
                 AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
                         ListActivity.this);
@@ -405,85 +419,51 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                         //on positive click we delete the feed from selected position
 
-                        //we're gonna delete them from the db
-                        //how?
+                        //we're gonna delete them from the db calling this method:
+                        removedatFeed(datposition);
 
-                        //using a cursor we select items from the two tables
-                        Cursor cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
-                        Cursor cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+                        //enable ListView clicks
+                        listfeed.setEnabled(true);
 
-                        //we set null values for url and feed name at selected position, we're going
-                        //to set these values dynamically to avoid "column index out of range" errors
-
-                        String url = "";
-                        String name = "";
-
-                        //set url
-                        if (cursor != null && cursor.moveToFirst()) {
-
-                            while (!cursor.isAfterLast()) {
-
-                                //we get items at selected position
-                                url = mItems.get(datposition);
-                                cursor.moveToNext();
-                            }
-                            cursor.close();
-                        }
-
-                        //set feed name
-                        if (cursor2 != null && cursor2.moveToFirst()) {
-
-                            while (!cursor2.isAfterLast()) {
-
-                                //we get items at selected position
-                                name = mItems2.get(datposition);
-                                cursor2.moveToNext();
-                            }
-                            cursor2.close();
-                        }
-
-                        //set the names of the two tables
-                        String table1 = "feedslist";
-                        String table2 = "subtitleslist";
-
-                        //set where clause
-                        String whereClause_url = "url" + "=?";
-                        String whereClause_feed = "name" + "=?";
-
-                        //set the where arguments
-                        String[] whereArgs_url = new String[]{String.valueOf(url)};
-                        String[] whereArgs_name = new String[]{String.valueOf(name)};
-
-                        //delete 'em all
-                        mydb.delete(table1, whereClause_url, whereArgs_url);
-                        mydb.delete(table2, whereClause_feed, whereArgs_name);
-
-                        //remove items from the dynamic ListView
-
-                        //for url
-                        mItems.remove(datposition);
-
-                        //for feed name
-                        mItems2.remove(datposition);
-
-                        //and update the dynamic list
-                        //don't move this method above the db deletion method or
-                        //you'll get javalangindexoutofboundsexception-invalid-index error
-                        adapter_dynamic.notifyDataSetChanged();
-                        adapter_dynamic.notifyDataSetInvalidated();
-                        listfeed.setAdapter(adapter_dynamic);
                     }
                 });
+
+                    //when You select by long clicking a feed the ListView becomes disabled
+                    //the dialog is dismissable when there is a touch outside the dialog's bounds
+                    //so, if You click outside th dialog area You won't be able to click on ListView
+                    //items previously disabled
+                    //we can override onCancel method to make ListView clickable again
+                    alert.setOnCancelListener(
+                            new DialogInterface.OnCancelListener() {
+
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+
+                                    //enable ListView clicks
+                                    listfeed.setEnabled(true);
+
+                                }
+                            }
+
+                );
 
                 //on negative button we dismiss the dialog
-                alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
+                    alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener()
+
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            //dismiss the dialog
+                            dialog.dismiss();
+
+                            //enable ListView clicks
+                            listfeed.setEnabled(true);
+
+                        }
                 });
 
-                alert.show();
+                    alert.show();
                 return false;
             }
             }
@@ -540,6 +520,80 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                 }).show();
                     }
+
+    //method to remove feeds inside the db and the dynamic ListView
+    public void removedatFeed(int pos){
+
+        //on positive click we delete the feed from selected position
+
+        //we're gonna delete them from the db
+        //how?
+
+        //using a cursor we select items from the two tables
+        Cursor cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
+        Cursor cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+
+        //we set null values for url and feed name at selected position, we're going
+        //to set these values dynamically to avoid "column index out of range" errors
+
+        String url = "";
+        String name = "";
+
+        //set url
+        if (cursor != null && cursor.moveToFirst()) {
+
+            while (!cursor.isAfterLast()) {
+
+                //we get items at selected position
+                url = mItems.get(pos);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+
+        //set feed name
+        if (cursor2 != null && cursor2.moveToFirst()) {
+
+            while (!cursor2.isAfterLast()) {
+
+                //we get items at selected position
+                name = mItems2.get(pos);
+                cursor2.moveToNext();
+            }
+            cursor2.close();
+        }
+
+        //set the names of the two tables
+        String table1 = "feedslist";
+        String table2 = "subtitleslist";
+
+        //set where clause
+        String whereClause_url = "url" + "=?";
+        String whereClause_feed = "name" + "=?";
+
+        //set the where arguments
+        String[] whereArgs_url = new String[]{String.valueOf(url)};
+        String[] whereArgs_name = new String[]{String.valueOf(name)};
+
+        //delete 'em all
+        mydb.delete(table1, whereClause_url, whereArgs_url);
+        mydb.delete(table2, whereClause_feed, whereArgs_name);
+
+        //remove items from the dynamic ListView
+
+        //for url
+        mItems.remove(pos);
+
+        //for feed name
+        mItems2.remove(pos);
+
+        //and update the dynamic list
+        //don't move this method above the db deletion method or
+        //you'll get javalangindexoutofboundsexception-invalid-index error
+        adapter_dynamic.notifyDataSetChanged();
+        adapter_dynamic.notifyDataSetInvalidated();
+        listfeed.setAdapter(adapter_dynamic);
+    }
 
     //this is the rate button
 	public void rate(View view) {
@@ -643,11 +697,11 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(int pos, View convertView, ViewGroup parent) {
 
 			Activity activity = ListActivity.this;
 			View listItem = convertView;
-			int pos = position;
+
 			if (listItem == null) {
 
                 //set the main ListView's layout
@@ -797,22 +851,19 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     private void hideAddFeed()
     {
         //hide addfeed menu item
-        MenuItem addfeed = menu.findItem(R.id.addfeed);
         addfeed.setVisible(false);
 
         //hide xda menu item
-        MenuItem xda = menu.findItem(R.id.xda);
         xda.setVisible(false);
     }
 
     private void showAddFeed() {
 
         //show addfeed menu item
-        MenuItem addfeed = menu.findItem(R.id.addfeed);
+        //MenuItem addfeed = menu.findItem(R.id.addfeed);
         addfeed.setVisible(true);
 
         //show xda menu item
-        MenuItem xda = menu.findItem(R.id.xda);
         xda.setVisible(true);
     }
 }
