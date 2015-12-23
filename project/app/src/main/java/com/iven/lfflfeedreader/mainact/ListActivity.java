@@ -185,12 +185,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                         //start a new splash activity for the default feed
                         //send the feed url to splash activity using intents
-                        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                                ListActivity.this, SplashActivity.class));
-                        intent.putExtra("feedselected", "http://feeds.feedburner.com/xdadevs");
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                        finish();
+                        openNewFeed("http://feeds.feedburner.com/xdadevs");
                     }
 
                         switch (item.getItemId()) {
@@ -383,15 +378,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 //we get the url of the item at the selected position
                 String feedvalue = mItems.get(arg2);
 
-                //we send the url using intents to splash activity
-                final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                        ListActivity.this, SplashActivity.class));
-                intent.putExtra("feedselected", feedvalue);
-
-                //and start a new list activity with the selected feed
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
+                //we send the url through intents to splash activity using openNewFeed method
+                openNewFeed(feedvalue);
             }
         });
 
@@ -660,7 +648,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	}
 
     @Override
-    public void onResume(){
+    protected void onResume(){
        adapter.notifyDataSetChanged();
         super.onResume();
     }
@@ -776,7 +764,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     }
 
 
-
     //this is the custom dynamic adapter for the custom feeds ListView
     //we use a custom adapter to set a custom layout for items (names + urls)
 
@@ -846,6 +833,20 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
             return listItem;
         }
+    }
+
+    private void openNewFeed(String datfeed)
+    {
+        //we send the url using intents to splash activity
+        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
+                ListActivity.this, SplashActivity.class));
+
+        intent.putExtra("feedselected", datfeed);
+
+        //and start a new list activity with the selected feed
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        finish();
     }
 
     private void hideAddFeed()
