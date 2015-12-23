@@ -9,7 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_margin="16dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Read more... -->
@@ -17,18 +21,10 @@
         style="@style/ActionButtonIcon"
         android:contentDescription="@string/desc"
         android:id="@+id/button_continue"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:src="?attr/webview_icon"
         app:layout_widthPercent="33.33%" />
-
-    <TextView
-        style="@style/ActionButtonText"
-        android:id="@+id/txt_continue"
-        android:layout_alignLeft="@+id/button_continue"
-        android:layout_alignStart="@+id/button_continue"
-        android:layout_alignEnd="@+id/button_continue"
-        android:layout_alignRight="@+id/button_continue"
-        android:text="@string/continue_read"
-        android:layout_below="@+id/button_continue" />
 
     <!-- Share -->
     <ImageButton
@@ -36,19 +32,11 @@
         android:contentDescription="@string/desc"
         android:id="@+id/button_share"
         android:src="?attr/share_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_toEndOf="@id/button_continue"
         android:layout_toRightOf="@id/button_continue"
         app:layout_widthPercent="33.33%" />
-
-    <TextView
-        style="@style/ActionButtonText"
-        android:id="@+id/txt_share"
-        android:layout_alignLeft="@+id/button_share"
-        android:layout_alignStart="@+id/button_share"
-        android:layout_alignEnd="@+id/button_share"
-        android:layout_alignRight="@+id/button_share"
-        android:text="@string/share"
-        android:layout_below="@+id/button_share" />
 
     <!-- Back button -->
     <ImageButton
@@ -56,18 +44,10 @@
         android:contentDescription="@string/desc"
         android:id="@+id/button_back"
         android:src="?attr/back_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_toEndOf="@id/button_share"
         android:layout_toRightOf="@id/button_share"
         app:layout_widthPercent="33.33%" />
-
-    <TextView
-        style="@style/ActionButtonText"
-        android:id="@+id/txt_back"
-        android:layout_alignLeft="@+id/button_back"
-        android:layout_alignStart="@+id/button_back"
-        android:layout_alignEnd="@+id/button_back"
-        android:layout_alignRight="@+id/button_back"
-        android:text="@string/button_back"
-        android:layout_below="@+id/button_share" />
 
 </android.support.percent.PercentRelativeLayout>

@@ -48,14 +48,11 @@
     <string name="url_name">Url qui</string>
     <string name="title_name">Nome qui</string>
     <string name="feedmenu">Aggiungi feed</string>
-    <string name="continue_read">Leggi di più&#8230;</string>
-    <string name="share_article">Condividi l\'articolo</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
     <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
     <string name="xda">Feed predefinito</string>
-    <string name="button_back">Vai indietro</string>
     <string name="no_internet">Connettiti ad internet per favore</string>
 
 </resources>

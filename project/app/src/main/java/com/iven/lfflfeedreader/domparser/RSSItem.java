@@ -20,6 +20,10 @@ public class RSSItem implements Serializable {
 	private String item_image = "no image";
 	private String rss_link = "no link";
 
+	//this is used to get the complete description (that is in content:encoded in most of the feeds)
+	//this method replaces getDescription method that sometimes parse truncated description
+	private String complete_desc = "no desc";
+
 	//this is used when getImage() fails (this happens when img is placed in content:encoded)
 	private String item_image2 = "no image";
 
@@ -30,6 +34,12 @@ public class RSSItem implements Serializable {
 
 	void setDescription(String description) {
 		item_desc = description;
+	}
+
+	//this is used to get the complete description (that is in content:encoded in most of the feeds)
+	//this method replaces getDescription method that sometimes parse truncated description
+	void setCompleteDescription(String complete_description) {
+		complete_desc = complete_description;
 	}
 
 	void setDate(String pubdate) {
@@ -58,6 +68,12 @@ public class RSSItem implements Serializable {
 
 	public String getDescription() {
 		return item_desc;
+	}
+
+	//this is used to get the complete description (that is in content:encoded in most of the feeds)
+	//this method replaces getDescription method that sometimes parse truncated description
+	public String getCompleteDescription() {
+		return complete_desc;
 	}
 
 	public String getDate() {

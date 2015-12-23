@@ -104,7 +104,7 @@ public class DOMParser {
                         }
 
                         //this is used when getImage() fails (this happens when img is placed in content:encoded)
-                        //extract the images src from content:encoded
+                        //and to set complete description
                         else if ("content:encoded".equals(nodeName)) {
 
                                 org.jsoup.nodes.Document docHtml = Jsoup
@@ -113,12 +113,19 @@ public class DOMParser {
                              //select images by tag
                              Elements imgEle = docHtml.select("img");
 
-                            //get src attribute
+                            //extract the images src from content:encoded
                              String src = imgEle.attr("src");
 
                             //setImage2() src
                             _item.setImage2(src);
 
+                            //this is used to get the complete description (that is in content:encoded in most of the feeds)
+                            //this method replaces getDescription method that sometimes parse truncated description
+
+							//set complete description
+							_item.setCompleteDescription(theString);
+
+                        //description is used when complete description returns 'no desc'
                         } else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
 

@@ -30,7 +30,7 @@ public class ArticleFragment extends Fragment {
 
     //feed
 	RSSFeed fFeed;
-
+    String base2;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -60,14 +60,6 @@ public class ArticleFragment extends Fragment {
         TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
 
         //Action Buttons
-        //text view under read more button
-        TextView continue_text = (TextView) rootView.findViewById(R.id.txt_continue);
-
-        //text view under share button
-        TextView share_text = (TextView) rootView.findViewById(R.id.txt_share);
-
-        //text view under back button
-        TextView back_text = (TextView) rootView.findViewById(R.id.txt_back);
 
         //read more button
         ImageButton button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
@@ -129,9 +121,6 @@ public class ArticleFragment extends Fragment {
         //set it
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        continue_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
-        share_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
-        back_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -2);
 
         //if the preference is enabled remove the imageview from the linear layout
 
@@ -171,45 +160,59 @@ public class ArticleFragment extends Fragment {
 
             //we can open the image on web browser on long click on the image
             imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                public boolean onLongClick(View v) {
+                                                 public boolean onLongClick(View v) {
 
-                    final Intent intent;
+                                                     final Intent intent;
 
-                    //use glide to load the image into the imageview (imageView)
-                    //if getImage() method fails (i.e when img is in content:encoded) load image2
-                    if (fFeed.getItem(fPos).getImage().isEmpty()) {
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage2()));
+                                                     //use glide to load the image into the imageview (imageView)
+                                                     //if getImage() method fails (i.e when img is in content:encoded) load image2
+                                                     if (fFeed.getItem(fPos).getImage().isEmpty()) {
+                                                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage2()));
 
-                    }
+                                                     }
 
-                    //else use image
-                    else
-                    {
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
+                                                     //else use image
+                                                     else {
+                                                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getImage()));
 
-                    }
-                    CharSequence title2 = getResources().getText(R.string.chooser_title);
-                    Intent chooser = Intent.createChooser(intent, title2);
-                    startActivity(chooser);
-                    return true;
-                }
-            }
+                                                     }
+                                                     CharSequence title2 = getResources().getText(R.string.chooser_title);
+                                                     Intent chooser = Intent.createChooser(intent, title2);
+                                                     startActivity(chooser);
+                                                     return true;
+                                                 }
+                                             }
             );
 
-        //parse the articles text using jsoup and replace some items since this is a simple textview
-        //and continue reading is not clickable
-        //so we are going to replace with an empty text
-		String base2 = Jsoup.parse(fFeed.getItem(fPos).getDescription()).text().replace("Continua a leggere...", "");
+        //Set the article's content
 
+        //we use complete description by default, but sometimes the method returns null
+        //so, if getCompleteDescription is null use description
+        if(fFeed.getItem(fPos).getCompleteDescription().contains("no desc")) {
+            base2 = Jsoup.parse(fFeed.getItem(fPos).getDescription()).text().replace("Continua a leggere...", "");
+
+        // else, use complete description
+        } else {
+            base2 = Jsoup.parse(fFeed.getItem(fPos).getCompleteDescription()).text().replace("Continua a leggere...", "");
+
+        }
+
+        //replace some items since this is a simple textview
+        //and continue reading hyperlinks are not clickable
+        //so we are going to replace them with an empty text
 		String base2format = base2.replace("Continue reading...", "");
 
         String base3format = base2format.replace("Visit on site http://www.noobslab.com", "");
+
+        String base4format = base3format.replace("Read More", "");
+
+        String base5format = base4format.replace("(read more)", "");
 
         //load the article inside a text view
         TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
         //set the articles text
-		articletext.setText(base3format);
+		articletext.setText(base5format);
 
         //set the article text size according to preferences
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);

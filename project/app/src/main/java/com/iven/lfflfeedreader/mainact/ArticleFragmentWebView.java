@@ -5,10 +5,10 @@ import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -20,7 +20,6 @@ import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class ArticleFragmentWebView extends Fragment {
@@ -30,6 +29,7 @@ public class ArticleFragmentWebView extends Fragment {
 
     //feed
 	RSSFeed fFeed;
+    String base;
 
     @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,14 +62,6 @@ public class ArticleFragmentWebView extends Fragment {
         final TextView subtitle_wb = (TextView) view.findViewById(R.id.subtitlewb);
 
         //Action Buttons
-        //text view under read more button
-        final TextView continue_text = (TextView) view.findViewById(R.id.txt_continue);
-
-        //text view under share button
-        TextView share_text = (TextView) view.findViewById(R.id.txt_share);
-
-        //text view under back button
-        TextView back_text = (TextView) view.findViewById(R.id.txt_back);
 
         //read more button
         final ImageButton button_continue_reading = (ImageButton) view.findViewById(R.id.button_continue);
@@ -91,7 +83,6 @@ public class ArticleFragmentWebView extends Fragment {
             public void onClick(View v) {
                 wb.loadUrl(fFeed.getItem(fPos).getLink());
                 article_percentlayout_wb.removeView(button_continue_reading);
-                article_percentlayout_wb.removeView(continue_text);
                 article_linearLayout_wb.removeView(title_wb);
                 article_linearLayout_wb.removeView(subtitle_wb);
                 article_linearLayout_wb.removeView(article_view);
@@ -149,60 +140,62 @@ public class ArticleFragmentWebView extends Fragment {
 
         title_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle_wb.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
-        continue_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size- 2);
-        share_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
-        back_text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
 
         //WebView related things
         //initialize the webview settings
-
-        //set smooth scroll enabled
-        //initialize the scrollview
-        final ScrollView scroll = (ScrollView) view.findViewById(R.id.sv_wb);
-
-        scroll.setSmoothScrollingEnabled(true);
 
 		final WebSettings ws = wb.getSettings();
 
         //set default encoding to utf-8 to avoid malformed text
 		ws.setDefaultTextEncodingName("utf-8");
 
-        //set bg transparent because we will apply the bg using the activity's theme
-		wb.setBackgroundColor(Color.TRANSPARENT);
-
         //enum for controlling the layout of html. NORMAL means no rendering changes.
         //this is the recommended choice for maximum compatibility across different platforms and Android versions.
         //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
         ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 
-        //parse the articles text using jsoup and replace some items since this is a simple textview
-        //and continue reading is not clickable
-        //so we are going to replace with an empty text
-		String base = fFeed.getItem(fPos).getDescription().replace("Continua a leggere...", "");
+        //remove images if the option is enabled
+        if (Preferences.imagesRemoved(getContext())) {
+          ws.setLoadsImagesAutomatically(false);
+        }
 
-        //this is the text that will be loaded inside the html
-        String baseformat = base.replace("Continue reading...", "");
+        //Set the webview content.
 
+        //we use complete description by default, but sometimes the method returns null
+        //so, if getCompleteDescription is null use description
+        if(fFeed.getItem(fPos).getCompleteDescription().contains("no desc")) {
+            base = fFeed.getItem(fPos).getDescription();
+
+        // else, use complete description
+        } else {
+            base = fFeed.getItem(fPos).getCompleteDescription();
+
+        }
 
         //here we handle the html where the articles will be loaded
 		String html = "<!DOCTYPE html>";
 
         //the articles html
-		html += baseformat;
+		html += base;
 
         //Set different text color on light and dark themes
-        //and justify the text
+
         //dark theme
         if (Preferences.darkThemeEnabled(getContext())) {
-		html += "<body  text=\"#b1b1b1\" align=\"justify\";></body>";
-        } else {
 
+            html += "<body  text=\"#b1b1b1\";></body>";
+            wb.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.theme_bg_dark));
+
+        } else
+        {
             //light theme
-            html += "<body  text=\"#4e4e4e\" align=\"justify\";></body>";
+            html += "<body  text=\"#4e4e4e\";></body>";
+            wb.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.white));
+
         }
 		html += "</html>";
-		wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
-        wb.setBackgroundColor(Color.TRANSPARENT);
+
+        wb.loadData(html, "text/html; charset=utf-8;", "utf-8");
 
         ws.setDefaultFontSize(size_wb);
 
