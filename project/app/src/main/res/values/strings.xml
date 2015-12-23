@@ -69,11 +69,12 @@
     <string name="moar">Built in feed</string>
     <string name="moar_pref">Show built in feeds</string>
     <string name="moar_pref_sum">Show built in feeds menu if enabled</string>
-    <string name="watchme" translatable="false">Distrowatch</string>
     <string name="noobs" translatable="false">Noobslab</string>
     <string name="softpedia" translatable="false">Softpedia</string>
     <string name="web8" translatable="false">Web Upd8</string>
     <string name="omg" translatable="false">OMG! Ubuntu!</string>
     <string name="police" translatable="false">Android Police</string>
     <string name="xda" translatable="false">XDA developers</string>
+    <string name="ac" translatable="false">Android Community</string>
+
 </resources>

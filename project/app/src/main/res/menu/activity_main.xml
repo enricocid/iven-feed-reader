@@ -47,12 +47,12 @@
                     android:title="@string/police"/>
 
                 <item
-                    android:id="@+id/noobs"
-                    android:title="@string/noobs"/>
+                    android:id="@+id/androidcommunity"
+                    android:title="@string/ac"/>
 
                 <item
-                    android:id="@+id/distrowatch"
-                    android:title="@string/watchme"/>
+                    android:id="@+id/noobs"
+                    android:title="@string/noobs"/>
 
                 <item
                     android:id="@+id/softpedia"

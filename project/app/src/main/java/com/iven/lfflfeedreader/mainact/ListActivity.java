@@ -210,14 +210,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         }
 
                         switch (item.getItemId()) {
-                            case R.id.distrowatch:
-
-                                //open Distrowatch feed
-                                openNewFeed("http://feeds.feedburner.com/distrowatch/RUwq");
-                                setFeedString("http://feeds.feedburner.com/distrowatch/RUwq");
-                        }
-
-                        switch (item.getItemId()) {
                             case R.id.web8:
 
                                 //open Web Upd8 feed
@@ -240,6 +232,15 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
                                 setFeedString("http://feeds.feedburner.com/androidpolice/wszl");
                         }
+
+                        switch (item.getItemId()) {
+                            case R.id.androidcommunity:
+
+                                //open Android Police feed
+                                openNewFeed("http://androidcommunity.com/feed/");
+                                setFeedString("http://androidcommunity.com/feed/");
+                        }
+
 
                         //this is the button to add feed
                         switch (item.getItemId()) {
