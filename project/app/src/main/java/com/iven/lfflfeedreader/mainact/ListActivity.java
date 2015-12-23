@@ -76,6 +76,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //menu items
     Menu menu;
     MenuItem addfeed;
+    MenuItem default_feeds;
     MenuItem xda;
 
     //Navigation drawer
@@ -93,7 +94,11 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //initialize add feed menu items
         addfeed = menu.findItem(R.id.addfeed);
 
-        xda = menu.findItem(R.id.xda);
+        //xda menu item
+        xda = menu.findItem(R.id.xda2);
+
+        //built in feeds
+        default_feeds = menu.findItem(R.id.default_feeds);
 
         return super.onCreateOptionsMenu(menu);
 
@@ -183,14 +188,57 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                         }
 
-                        //default feed
+                        //built in feeds
+                        //open them using openNewFeed() method
                         switch (item.getItemId()) {
-                        case R.id.xda:
+                            case R.id.noobs:
 
-                        //start a new splash activity for the default feed
-                        //send the feed url to splash activity using intents
-                        openNewFeed("http://feeds.feedburner.com/xdadevs");
-                    }
+                                //open Noobslab feed
+                                openNewFeed("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
+                        }
+
+                        switch (item.getItemId()) {
+                            case R.id.softpedia:
+
+                                //open Softpedia feed
+                                openNewFeed("http://feeds.feedburner.com/SoftpediaNews/Linux");
+                        }
+
+                        switch (item.getItemId()) {
+                            case R.id.distrowatch:
+
+                                //open Distrowatch feed
+                                openNewFeed("http://feeds.feedburner.com/distrowatch/RUwq");
+                        }
+
+                        switch (item.getItemId()) {
+                            case R.id.web8:
+
+                                //open Web Upd8 feed
+                                openNewFeed("http://feeds.feedburner.com/webupd8/YqnT");
+                        }
+
+                        switch (item.getItemId()) {
+                            case R.id.omg:
+
+                                //open OMG! Ubuntu! feed
+                                openNewFeed("http://feeds.feedburner.com/d0od");
+                        }
+
+                        switch (item.getItemId()) {
+                            case R.id.police:
+
+                                //open Android Police feed
+                                openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
+                        }
+
+                        //this is the button to add feed
+                        switch (item.getItemId()) {
+                            case R.id.xda:
+
+                                //open default feed (xda)
+                                openNewFeed("http://feeds.feedburner.com/xdadevs");
+                        }
 
                         switch (item.getItemId()) {
 
@@ -211,6 +259,15 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 //call addFeed method
                                 addFeed();
                         }
+
+                        //this is the button to add feed
+                        switch (item.getItemId()) {
+                            case R.id.xda2:
+
+                                //open default feed (xda)
+                                openNewFeed("http://feeds.feedburner.com/xdadevs");
+                        }
+
                         return false;
                     }
                 });
@@ -366,18 +423,18 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         listfeed.setAdapter(adapter_dynamic);
 
         //handle the dynamic list items click
-        listfeed.setOnItemClickListener(new OnItemClickListener() {
+        listfeed.setOnItemClickListener(new OnItemClickListener(){
 
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
+        @Override
+        public void onItemClick(AdapterView<?>arg0,View arg1,int arg2,
+        long arg3){
 
-                //we get the url of the item at the selected position
-                String feedvalue = mItems.get(arg2);
+        //we get the url of the item at the selected position
+        String feedvalue=mItems.get(arg2);
 
-                //we send the url through intents to splash activity using openNewFeed method
-                openNewFeed(feedvalue);
-            }
+        //we send the url through intents to splash activity using openNewFeed method
+        openNewFeed(feedvalue);
+        }
         });
 
         //set on item long click to delete custom feeds
@@ -644,6 +701,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
+
     }
 
     //this is the custom list adapter for the home ListView
@@ -844,20 +902,37 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
     private void hideAddFeed()
     {
+
         //hide addfeed menu item
         addfeed.setVisible(false);
 
-        //hide xda menu item
-        xda.setVisible(false);
+        if (Preferences.builtfeedsEnabled(getBaseContext())) {
+
+            //hide built in feeds menu if enabled
+            default_feeds.setVisible(false);
+
+        } else {
+
+            //hide xda menu item
+            xda.setVisible(false);
+        }
+
     }
 
     private void showAddFeed() {
 
         //show addfeed menu item
-        //MenuItem addfeed = menu.findItem(R.id.addfeed);
         addfeed.setVisible(true);
 
-        //show xda menu item
-        xda.setVisible(true);
+        if (Preferences.builtfeedsEnabled(getBaseContext())) {
+
+            //show built in feeds menu if enabled
+            default_feeds.setVisible(true);
+        } else {
+
+            //show xda menu item
+            xda.setVisible(true);
+        }
+
     }
 }

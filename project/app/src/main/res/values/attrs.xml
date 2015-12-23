@@ -24,4 +24,5 @@
     <attr name="back_icon" format="reference"/>
     <attr name="share_icon" format="reference"/>
     <attr name="xda_icon" format="reference"/>
+    <attr name="rss_icon" format="reference"/>
 </resources>

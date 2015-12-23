@@ -55,7 +55,6 @@
     <string name="no_internet">Connect to the internet please</string>
 
     <!-- custom feeds -->
-    <string name="xda">Default feed</string>
     <string name="deletedialogtitle">Discard feed</string>
     <string name="deletedialogquestion">Do you want to discard</string>
     <string name="deleteok">Discard</string>
@@ -66,4 +65,15 @@
     <string name="title_name">Name here</string>
     <string name="adddialogfeed">Insert your custom feed in RSS format</string>
 
+    <!-- moar feeds -->
+    <string name="moar">Built in feed</string>
+    <string name="moar_pref">Show built in feeds</string>
+    <string name="moar_pref_sum">Show built in feeds menu if enabled</string>
+    <string name="watchme" translatable="false">Distrowatch</string>
+    <string name="noobs" translatable="false">Noobslab</string>
+    <string name="softpedia" translatable="false">Softpedia</string>
+    <string name="web8" translatable="false">Web Upd8</string>
+    <string name="omg" translatable="false">OMG! Ubuntu!</string>
+    <string name="police" translatable="false">Android Police</string>
+    <string name="xda" translatable="false">XDA developers</string>
 </resources>

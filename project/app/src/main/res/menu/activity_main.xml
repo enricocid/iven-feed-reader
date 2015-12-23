@@ -29,9 +29,47 @@
         android:orderInCategory="200"
         android:title="@string/settings"/>
 
+        <item
+            android:id="@+id/default_feeds"
+            android:visible="false"
+            app:showAsAction="always"
+            android:icon="?attr/rss_icon"
+            android:title="@string/moar">
+
+            <menu>
+
+                <item
+                    android:id="@+id/xda"
+                    android:title="@string/xda"/>
+
+                <item
+                    android:id="@+id/police"
+                    android:title="@string/police"/>
+
+                <item
+                    android:id="@+id/noobs"
+                    android:title="@string/noobs"/>
+
+                <item
+                    android:id="@+id/distrowatch"
+                    android:title="@string/watchme"/>
+
+                <item
+                    android:id="@+id/softpedia"
+                    android:title="@string/softpedia"/>
+
+                <item
+                    android:id="@+id/web8"
+                    android:title="@string/web8"/>
+
+                <item
+                    android:id="@+id/omg"
+                    android:title="@string/omg"/>
+            </menu>
+        </item>
 
     <item
-        android:id="@+id/xda"
+        android:id="@+id/xda2"
         app:showAsAction="always"
         android:title="@string/xda"
         android:icon="?attr/xda_icon"
@@ -43,5 +81,5 @@
         android:icon="?attr/plus_icon"
         android:title="@string/feedmenu"
         android:visible="false"/>
-    
- </menu>
+
+    </menu>

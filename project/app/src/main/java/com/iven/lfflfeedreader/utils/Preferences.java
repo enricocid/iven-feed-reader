@@ -117,4 +117,11 @@ public class Preferences {
 
                     }
 
+    //preference to enable built in feeds menu
+    public static boolean builtfeedsEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("builtin", false);
+
+    }
+
     }

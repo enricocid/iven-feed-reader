@@ -52,7 +52,8 @@
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
     <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
-    <string name="xda">Feed predefinito</string>
+    <string name="moar">Feed predefiniti</string>
     <string name="no_internet">Connettiti ad internet per favore</string>
-
+    <string name="moar_pref">Mostra feeds predefiniti</string>
+    <string name="moar_pref_sum">Mostra un menu con dei feed predefiniti se abilitata</string>
 </resources>

@@ -49,6 +49,12 @@
         android:summary="@string/Readingsum"
         android:defaultValue="false" />
 
+    <android.support.v7.preference.SwitchPreferenceCompat
+        android:key="builtin"
+        android:title="@string/moar_pref"
+        android:summary="@string/moar_pref_sum"
+        android:defaultValue="false" />
+
     <android.support.v7.preference.CheckBoxPreference
         android:key="JavaScriptLoad"
         android:title="@string/JS_script"

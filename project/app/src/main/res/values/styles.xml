@@ -36,6 +36,7 @@
         <item name="plus_icon">@drawable/ic_plus</item>
         <item name="webview_icon">@drawable/ic_webview</item>
         <item name="textsize_icon">@drawable/ic_format_text</item>
+        <item name="rss_icon">@drawable/ic_rss</item>
     </style>
 
     <!-- Dark theme for all activities-->
@@ -60,6 +61,7 @@
             <item name="share_icon">@drawable/ic_share_dark</item>
             <item name="xda_icon">@drawable/ic_xda_dark</item>
             <item name="webview_icon">@drawable/ic_webview_dark</item>
+            <item name="rss_icon">@drawable/ic_rss_dark</item>
         </style>
 
     <!-- Responsive toolbar -->
