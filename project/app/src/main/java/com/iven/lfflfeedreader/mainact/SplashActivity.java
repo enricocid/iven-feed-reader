@@ -20,7 +20,7 @@ import com.iven.lfflfeedreader.utils.Preferences;
 public class SplashActivity extends AppCompatActivity {
 
     //the default feed
-    public static String value = "http://feeds.feedburner.com/xdadevs";
+    public static String default_feed_value = "http://feeds.feedburner.com/xdadevs";
 
     //the items
     RSSFeed lfflfeed;
@@ -28,19 +28,6 @@ public class SplashActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-        //this is the method to handle navigation view feeds and custom feeds
-        //here we receive data (feedselected) from list activity and start a new async task to load
-        //the news feed
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras != null) {
-				value = extras.getString("feedselected");
-            }
-
-            //set the default feed if the value returns null
-			if (value == null) value = "http://feeds.feedburner.com/xdadevs";
-        }
 
         //set the navbar tint if the preference is enabled
         if (Build.VERSION.SDK_INT >= 21){
@@ -82,25 +69,9 @@ public class SplashActivity extends AppCompatActivity {
 		}
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-            Bundle extras = getIntent().getExtras();
-
-        //set the selected feed on resume the activity
-        if(extras != null) {
-            value = extras.getString("feedselected");
-        }
-
-        //set the default feed if the value returns null
-        if (value == null) value = "http://feeds.feedburner.com/xdadevs";
-        }
-
-
     //Using intents we send the lfflfeed (the parsed xml to populate the listview)
     // from the async task to listactivity
-	private void startLisActivity(RSSFeed lfflfeed) {
+	private void startListActivity(RSSFeed lfflfeed) {
 
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("feed", lfflfeed);
@@ -119,7 +90,7 @@ public class SplashActivity extends AppCompatActivity {
 		protected Void doInBackground(Void... params) {
 
 			DOMParser Do = new DOMParser();
-			lfflfeed = Do.parseXml(value);
+			lfflfeed = Do.parseXml(default_feed_value);
 
             return null;
 
@@ -128,7 +99,7 @@ public class SplashActivity extends AppCompatActivity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-            startLisActivity(lfflfeed);
+            startListActivity(lfflfeed);
         }
 
 	}

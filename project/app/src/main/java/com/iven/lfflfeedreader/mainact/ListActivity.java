@@ -1,7 +1,6 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.IntentCompat;
 import android.support.v4.view.GravityCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -69,7 +67,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     String feedcustom2;
 
     //Others
-    String feedURL = SplashActivity.value;
     Intent intent;
     SwipeRefreshLayout swiperefresh;
 
@@ -82,6 +79,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //Navigation drawer
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
+
+    //the default feed
+    String feedURL = SplashActivity.default_feed_value;
 
     //create the toolbar's menu
 	@Override
@@ -193,8 +193,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         switch (item.getItemId()) {
                             case R.id.noobs:
 
-                                //open Noobslab feed
+                                //open the feed on background thread calling openNewFeed method and refresh the ListView
                                 openNewFeed("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
+
+                                //set feedURL calling setFeedString method, it is important if we want working swipe refresh listener
+                                setFeedString("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
+
                         }
 
                         switch (item.getItemId()) {
@@ -202,6 +206,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Softpedia feed
                                 openNewFeed("http://feeds.feedburner.com/SoftpediaNews/Linux");
+                                setFeedString("http://feeds.feedburner.com/SoftpediaNews/Linux");
                         }
 
                         switch (item.getItemId()) {
@@ -209,6 +214,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Distrowatch feed
                                 openNewFeed("http://feeds.feedburner.com/distrowatch/RUwq");
+                                setFeedString("http://feeds.feedburner.com/distrowatch/RUwq");
                         }
 
                         switch (item.getItemId()) {
@@ -216,6 +222,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Web Upd8 feed
                                 openNewFeed("http://feeds.feedburner.com/webupd8/YqnT");
+                                setFeedString("http://feeds.feedburner.com/webupd8/YqnT");
                         }
 
                         switch (item.getItemId()) {
@@ -223,6 +230,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open OMG! Ubuntu! feed
                                 openNewFeed("http://feeds.feedburner.com/d0od");
+                                setFeedString("http://feeds.feedburner.com/d0od");
                         }
 
                         switch (item.getItemId()) {
@@ -230,6 +238,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Android Police feed
                                 openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
+                                setFeedString("http://feeds.feedburner.com/androidpolice/wszl");
                         }
 
                         //this is the button to add feed
@@ -238,6 +247,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
+                                setFeedString("http://feeds.feedburner.com/xdadevs");
                         }
 
                         switch (item.getItemId()) {
@@ -266,6 +276,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
+                                closeDrawer();
+                                setFeedString("http://feeds.feedburner.com/xdadevs");
                         }
 
                         return false;
@@ -430,10 +442,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         long arg3){
 
         //we get the url of the item at the selected position
-        String feedvalue=mItems.get(arg2);
+        //and set it
+        setFeedString(mItems.get(arg2));
 
         //we send the url through intents to splash activity using openNewFeed method
-        openNewFeed(feedvalue);
+        openNewFeed(feedURL);
+
         }
         });
 
@@ -660,6 +674,51 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             }
         }, 200);
         }
+
+    //this is the method to open a new feed rss
+    //the feed is parsed and the ListView will
+    //be updated
+    public void openNewFeed(final String datfeed) {
+
+        //close the navigation drawer
+        closeDrawer();
+
+        //show swipe refresh
+        swiperefresh.setRefreshing(true);
+
+        // Detect if there's a connection issue or not
+        ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // If there's a connection problem stop refreshing and show message
+        if (cM.getActiveNetworkInfo() == null) {
+            Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
+            toast.show();
+            swiperefresh.setRefreshing(false);
+
+        } else {
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    DOMParser tmpDOMParser = new DOMParser();
+                    feed = tmpDOMParser.parseXml(datfeed);
+                    ListActivity.this.runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            if (feed != null && feed.getItemCount() > 0) {
+                                adapter.notifyDataSetChanged();
+
+                                //close swipe refresh
+                                swiperefresh.setRefreshing(false);
+                            }
+                        }
+                    });
+                }
+            });
+            thread.start();
+        }
+    }
 
     //this is the method to refresh the feed items and the list view
     //the xml is parsed again and if the number of the items is >0
@@ -889,20 +948,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }
     }
 
-    private void openNewFeed(String datfeed)
-    {
-        //we send the url using intents to splash activity
-        final Intent intent = IntentCompat.makeMainActivity(new ComponentName(
-                ListActivity.this, SplashActivity.class));
-
-        intent.putExtra("feedselected", datfeed);
-
-        //and start a new list activity with the selected feed
-        startActivity(intent);
-        overridePendingTransition(0, 0);
-        finish();
-    }
-
     private void hideAddFeed()
     {
 
@@ -936,6 +981,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //show xda menu item
             xda.setVisible(true);
         }
-
     }
-}
+
+    //method to set the feed string on feed click
+    private void setFeedString(String feed_string) {
+
+         feedURL = feed_string;
+        }
+    }
+
