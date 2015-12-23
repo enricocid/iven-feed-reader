@@ -645,6 +645,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 		}
 
     //create a pending Runnable that runs in background to close the drawer smoothly
+    //and to remove menu items from the toolbar
     public void closeDrawer() {
         final DrawerLayout mDrawerLayout;
 
@@ -654,6 +655,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             @Override
             public void run() {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
+                hideAddFeed();
+
             }
         }, 200);
         }
