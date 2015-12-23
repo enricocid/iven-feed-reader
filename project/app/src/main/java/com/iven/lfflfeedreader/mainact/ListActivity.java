@@ -78,6 +78,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     MenuItem addfeed;
     MenuItem xda;
 
+    //Navigation drawer
+    ActionBarDrawerToggle mDrawerToggle;
+    DrawerLayout mDrawerLayout;
+
     //create the toolbar's menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,12 +217,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //initialize our navigation drawer
 
-        //initialize ActionBarDrawerToggle
-        final ActionBarDrawerToggle mDrawerToggle;
-
         //initialize the Drawer Layout
-        final DrawerLayout mDrawerLayout;
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         //Tie DrawerLayout events to the ActionBarToggle:
@@ -255,8 +254,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //this handle the hamburger animation
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        mDrawerToggle.syncState();
 
         //initialize swipe to refresh layout
         swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
@@ -641,16 +638,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	}
     }
 
-	@Override
-	protected void onDestroy() {
-        adapter.notifyDataSetChanged();
-        super.onDestroy();
-	}
-
     @Override
-    protected void onResume(){
-       adapter.notifyDataSetChanged();
-        super.onResume();
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
     }
 
     //this is the custom list adapter for the home ListView
