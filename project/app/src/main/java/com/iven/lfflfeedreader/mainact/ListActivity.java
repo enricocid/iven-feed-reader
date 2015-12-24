@@ -195,10 +195,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open the feed on background thread calling openNewFeed method and refresh the ListView
                                 openNewFeed("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
-
-                                //set feedURL calling setFeedString method, it is important if we want working swipe refresh listener
-                                setFeedString("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
-
                         }
 
                         switch (item.getItemId()) {
@@ -206,7 +202,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Softpedia feed
                                 openNewFeed("http://feeds.feedburner.com/SoftpediaNews/Linux");
-                                setFeedString("http://feeds.feedburner.com/SoftpediaNews/Linux");
                         }
 
                         switch (item.getItemId()) {
@@ -214,7 +209,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Web Upd8 feed
                                 openNewFeed("http://feeds.feedburner.com/webupd8/YqnT");
-                                setFeedString("http://feeds.feedburner.com/webupd8/YqnT");
                         }
 
                         switch (item.getItemId()) {
@@ -222,7 +216,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open OMG! Ubuntu! feed
                                 openNewFeed("http://feeds.feedburner.com/d0od");
-                                setFeedString("http://feeds.feedburner.com/d0od");
                         }
 
                         switch (item.getItemId()) {
@@ -230,7 +223,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Android Police feed
                                 openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
-                                setFeedString("http://feeds.feedburner.com/androidpolice/wszl");
                         }
 
                         switch (item.getItemId()) {
@@ -238,7 +230,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open Android Police feed
                                 openNewFeed("http://androidcommunity.com/feed/");
-                                setFeedString("http://androidcommunity.com/feed/");
                         }
 
 
@@ -248,7 +239,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
-                                setFeedString("http://feeds.feedburner.com/xdadevs");
                         }
 
                         switch (item.getItemId()) {
@@ -277,8 +267,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
-                                closeDrawer();
-                                setFeedString("http://feeds.feedburner.com/xdadevs");
                         }
 
                         return false;
@@ -442,12 +430,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         public void onItemClick(AdapterView<?>arg0,View arg1,int arg2,
         long arg3){
 
-        //we get the url of the item at the selected position
-        //and set it
-        setFeedString(mItems.get(arg2));
-
-        //we send the url through intents to splash activity using openNewFeed method
-        openNewFeed(feedURL);
+        //display the feed using openNewFeed method
+        openNewFeed(mItems.get(arg2));
 
         }
         });
@@ -708,10 +692,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         @Override
                         public void run() {
                             if (feed != null && feed.getItemCount() > 0) {
+
                                 adapter.notifyDataSetChanged();
 
                                 //close swipe refresh
                                 swiperefresh.setRefreshing(false);
+
+                                //set feedURL calling setFeedString method, it is important if we want working swipe refresh listener
+                                setFeedString(datfeed);
                             }
                         }
                     });
