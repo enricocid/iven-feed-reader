@@ -24,8 +24,7 @@
     <string name="info" translatable="false">Credits</string>
     <string name="Reading">Use webview</string>
     <string name="Readingsum">Webview will be used to load articles</string>
-    <string name="JS_script">Enable javascript</string>
-    <string name="JS_scriptsum">Enable javascript to show multimedia contents when on webview</string>
+    <string name="JS_script_on">Enable JavaScript</string>
     <string name="build_number">Build\'s version</string>
     <string name="nav_color">Enable navbar tint</string>
     <string name="nav_color_sum">This will enable navigation bar tinting</string>

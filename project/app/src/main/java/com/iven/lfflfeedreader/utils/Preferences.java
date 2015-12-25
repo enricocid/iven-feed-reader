@@ -66,12 +66,6 @@ public class Preferences {
                 .getBoolean("WebViewLoad", false);
     }
 
-    //preference for JavaScript
-    public static boolean JSEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("JavaScriptLoad", false);
-    }
-
     //preference for Themes
 
     public static boolean darkThemeEnabled(Context context) {

@@ -16,8 +16,7 @@
     <string name="settings">Opzioni</string>
     <string name="Reading">Usa webview</string>
     <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
-    <string name="JS_script">Abilita javascript</string>
-    <string name="JS_scriptsum">Abilita javascript per mostrare contenuti multimediali quando usi la webview</string>
+    <string name="JS_script_on">Abilita javascript</string>
     <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>

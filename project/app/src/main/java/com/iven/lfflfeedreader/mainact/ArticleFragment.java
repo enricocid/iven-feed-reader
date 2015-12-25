@@ -222,7 +222,7 @@ public class ArticleFragment extends Fragment {
 	}
 
     //share method
-    public void share() {
+    private void share() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, fFeed.getItem(fPos).getLink());
@@ -230,7 +230,7 @@ public class ArticleFragment extends Fragment {
     }
 
     //Read more method
-    public void continueReading() {
+    private void continueReading() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fFeed.getItem(fPos).getLink()));
         CharSequence title2 = getResources().getText(R.string.chooser_title);
         Intent chooser = Intent.createChooser(intent, title2);
@@ -238,7 +238,7 @@ public class ArticleFragment extends Fragment {
     }
 
     //back navigation method
-    public void goBack() {
+    private void goBack() {
 
         //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         AppCompatActivity activity = (AppCompatActivity) getActivity();

@@ -55,12 +55,6 @@
         android:summary="@string/moar_pref_sum"
         android:defaultValue="false" />
 
-    <android.support.v7.preference.CheckBoxPreference
-        android:key="JavaScriptLoad"
-        android:title="@string/JS_script"
-        android:summary="@string/JS_scriptsum"
-        android:defaultValue="false" />
-
     <android.support.v7.preference.ListPreference
         android:key="@string/pref_text_size"
         android:summary="@string/pref_text_size_summary"

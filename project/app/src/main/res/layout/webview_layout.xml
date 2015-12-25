@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for the webview used to load the feeds links -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/js"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/JS_script_on"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/AppProgressBarHorizontalStyle"
+            android:layout_below="@+id/js"/>
+
+        <WebView
+            android:id="@+id/web_view"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress"/>
+    </RelativeLayout>

@@ -17,7 +17,6 @@ import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.iven.lfflfeedreader.BuildConfig;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.mainact.SplashActivity;
-import com.iven.lfflfeedreader.utils.Preferences;
 
 import java.io.File;
 
@@ -28,19 +27,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //get the JavaScript preference
-        android.support.v7.preference.CheckBoxPreference js = (android.support.v7.preference.CheckBoxPreference) findPreference("JavaScriptLoad");
-
-        //make the JavaScript preference visible if webview is enabled
-        if (Preferences.WebViewEnabled(getContext())) {
-            js.setEnabled(true);
-
-        }
-        else {
-            //hide the JavaScript preference if webview is disabled
-            js.setEnabled(false);
-        }
 
         //get navigation bar tint preference
         SwitchPreferenceCompat navtint = (SwitchPreferenceCompat) findPreference("Navibar");
@@ -149,11 +135,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                 //on LightStatusBar on/off restart the app
                 else if (key.equals("lightcolored")) {
-                    restartApp();
-                }
-
-                //on webview on/off restart the app
-                else if (key.equals("WebViewLoad")) {
                     restartApp();
                 }
 
