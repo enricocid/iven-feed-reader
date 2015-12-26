@@ -76,6 +76,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     MenuItem default_feeds;
     MenuItem xda;
 
+    //Connectivity manager
+    ConnectivityManager cM;
+
     //Navigation drawer
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
@@ -108,6 +111,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        //initialize connectivity manager
+        cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         //apply preferences
 
@@ -672,8 +678,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         swiperefresh.setRefreshing(true);
 
         // Detect if there's a connection issue or not
-        ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
         // If there's a connection problem stop refreshing and show message
         if (cM.getActiveNetworkInfo() == null) {
             Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
@@ -715,8 +719,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	public void onRefresh() {
 
         // Detect if there's a connection issue or not
-        ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-
         // If there's a connection problem stop refreshing and show message
         if (cM.getActiveNetworkInfo() == null) {
             Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
