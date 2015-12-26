@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16sp"
-    android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants">
+    android:orientation="vertical">
 
     <!-- scrollview-->
     <ScrollView

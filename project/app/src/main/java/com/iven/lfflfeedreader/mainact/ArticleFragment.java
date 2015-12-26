@@ -45,9 +45,6 @@ public class ArticleFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-        //apply activity's theme if dark theme is enabled
-        Preferences.applyTheme(getActivity());
-
                 //set the view
                 ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.article_fragment, container, false);

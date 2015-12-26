@@ -3,7 +3,6 @@
 <!-- Action buttons (Read more..., Share, Go back) -->
 
 <android.support.percent.PercentRelativeLayout
-    android:id="@+id/action_buttons"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,8 +17,8 @@
         style="@style/ActionButtonIcon"
         android:contentDescription="@string/desc"
         android:id="@+id/button_continue"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="96sp"
+        android:layout_height="96sp"
         android:src="?attr/webview_icon"
         app:layout_widthPercent="33.33%" />
 
@@ -29,8 +28,8 @@
         android:contentDescription="@string/desc"
         android:id="@+id/button_share"
         android:src="?attr/share_icon"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="96sp"
+        android:layout_height="96sp"
         android:layout_toEndOf="@id/button_continue"
         android:layout_toRightOf="@id/button_continue"
         app:layout_widthPercent="33.33%" />
@@ -41,8 +40,8 @@
         android:contentDescription="@string/desc"
         android:id="@+id/button_back"
         android:src="?attr/back_icon"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="96sp"
+        android:layout_height="96sp"
         android:layout_toEndOf="@id/button_share"
         android:layout_toRightOf="@id/button_share"
         app:layout_widthPercent="33.33%" />

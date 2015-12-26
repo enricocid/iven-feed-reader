@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- this is the layout for articles link loading using webview -->
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/theme_background">
+
+    <!-- swipe to refresh-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_ap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- scrollview-->
+    <android.support.v4.widget.NestedScrollView
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:descendantFocusability="blocksDescendants">
+
+            <!-- JavaScript switch -->
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/js"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/JS_script_on"
+                android:visibility="invisible"
+                />
+
+            <!-- webview -->
+        <WebView
+            android:id="@+id/web_view"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
+
+    <!-- the fab -->
+    <include layout="@layout/fab_back" />
+
+    <!-- loading text -->
+    <TextView
+        android:contentDescription="@string/desc"
+        android:id="@+id/loading_text"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="@string/loading"
+        android:layout_margin="16dp"
+        android:textColor="?attr/title_color"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:textStyle="bold|italic" />
+
+</android.support.design.widget.CoordinatorLayout>

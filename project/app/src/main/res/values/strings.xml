@@ -52,6 +52,7 @@
     <string name="preics">Option not available on pre-ICS devices</string>
     <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
     <string name="no_internet">Connect to the internet please</string>
+    <string name="loading">Please wait &#8230;</string>
 
     <!-- custom feeds -->
     <string name="deletedialogtitle">Discard feed</string>

@@ -1,19 +1,14 @@
 package com.iven.lfflfeedreader.mainact;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +17,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings.LayoutAlgorithm;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class ArticleFragmentWebView extends Fragment {
@@ -75,7 +68,8 @@ public class ArticleFragmentWebView extends Fragment {
         View.OnClickListener listener_forward = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showArticleDialog();
+
+                openFeedPage(fFeed.getItem(fPos).getLink(), fFeed.getItem(fPos).getTitle());
             }
         };
 
@@ -193,7 +187,9 @@ public class ArticleFragmentWebView extends Fragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView webview, String url) {
-                showArticleDialog();
+
+                //open feed link inside ArticlePage activity
+                openFeedPage(fFeed.getItem(fPos).getLink(), fFeed.getItem(fPos).getTitle());
                 return true;
             }
         });
@@ -218,92 +214,17 @@ public class ArticleFragmentWebView extends Fragment {
         activity.onBackPressed();
     }
 
-    //load article link inside a dialog
-    @SuppressLint("SetJavaScriptEnabled")
-    private void showArticleDialog() {
+    //method to open the feed link using a webview
+    private void openFeedPage(String datfeed, String dattitle)
+    {
+        //we send the url and the title using intents to ArticlePage activity
+        final Intent intent = new Intent(getActivity(), ArticlePage.class);
 
-        //create the dialog
-        final MaterialDialog.Builder page_dialog = new MaterialDialog.Builder(getActivity());
+        intent.putExtra("feedselected", datfeed);
+        intent.putExtra("title", dattitle);
 
-        //set a custom view
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-
-        View webview_view = inflater.inflate(R.layout.webview_layout, null);
-
-        //initialize the webview & its settings
-        final WebView wv = (WebView) webview_view.findViewById(R.id.web_view);
-
-        final WebSettings webview_settings = wv.getSettings();
-
-        //initialize the progress bar
-        final ProgressBar progressBar = (ProgressBar) webview_view.findViewById(R.id.progress);
-
-        //set dialog properties
-        page_dialog.positiveText(android.R.string.ok);
-        page_dialog.positiveColor(ContextCompat.getColor(getContext(), R.color.primary));
-
-        //set the custom view
-        page_dialog.customView(webview_view, false);
-
-        //if dark theme is enabled set theme background color
-        if (Preferences.darkThemeEnabled(getActivity())) {
-            page_dialog.backgroundColor(ContextCompat.getColor(getContext(), R.color.theme_bg_dark));
-        }
-
-        //show the dialog
-        page_dialog.show();
-
-        //switch button to enable JavaScript
-        final SwitchCompat js_button = (SwitchCompat) webview_view.findViewById(R.id.js);
-
-        js_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    wv.getSettings().setJavaScriptEnabled(true);
-                    wv.reload();
-                } else {
-                    wv.getSettings().setJavaScriptEnabled(false);
-                    wv.reload();
-                }
-            }
-        });
-
-        //set default encoding
-        webview_settings.setDefaultTextEncodingName("utf-8");
-
-        //enum for controlling the layout of html. NORMAL means no rendering changes.
-        //this is the recommended choice for maximum compatibility across different platforms and Android versions.
-        //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
-        webview_settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
-
-        //load the article's url
-        wv.loadUrl(fFeed.getItem(fPos).getLink());
-
-        //for more info about the next method:
-        //http://stackoverflow.com/questions/3149216/how-to-listen-for-a-webview-finishing-loading-a-url-in-android
-
-        wv.setWebViewClient(new WebViewClient() {
-
-            private int running = 0; // Could be public if you want a timer to check.
-
-            //on page started loading show an indeterminate progress bar
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-
-                running = Math.max(running, 1); // First request move it to 1.
-                progressBar.setVisibility(View.VISIBLE);
-            }
-
-            //stop progress when the page is finished loading
-            //and show the webview
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                if (--running == 0) { // just "running--;" if you add a timer.
-                    wv.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        }
+        //and start a new ArticlePage activity with the selected feed
+        startActivity(intent);
+        getActivity().overridePendingTransition(0, 0);
+    }
 }
