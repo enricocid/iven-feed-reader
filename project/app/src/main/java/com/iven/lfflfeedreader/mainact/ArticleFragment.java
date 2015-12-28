@@ -65,7 +65,11 @@ public class ArticleFragment extends Fragment {
         View.OnClickListener listener_forward = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                continueReading();
+                if (Preferences.WebViewEnabled(getContext())) {
+                    openFeedPage(fFeed.getItem(fPos).getLink());
+                } else {
+                    continueReading();
+                }
             }
         };
 
@@ -240,5 +244,17 @@ public class ArticleFragment extends Fragment {
         //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.onBackPressed();
+    }
+    //method to open the feed link using a webview
+    private void openFeedPage(String datfeed)
+    {
+        //we send the url and the title using intents to ArticlePage activity
+        final Intent intent = new Intent(getActivity(), ArticlePage.class);
+
+        intent.putExtra("feedselected", datfeed);
+
+        //and start a new ArticlePage activity with the selected feed
+        startActivity(intent);
+        getActivity().overridePendingTransition(0, 0);
     }
 }

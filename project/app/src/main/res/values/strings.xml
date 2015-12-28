@@ -23,7 +23,7 @@
     <string name="settings">Options</string>
     <string name="info" translatable="false">Credits</string>
     <string name="Reading">Use webview</string>
-    <string name="Readingsum">Webview will be used to load articles</string>
+    <string name="Readingsum">'Read more' using in-app webview</string>
     <string name="JS_script_on">Enable JavaScript</string>
     <string name="build_number">Build\'s version</string>
     <string name="nav_color">Enable navbar tint</string>

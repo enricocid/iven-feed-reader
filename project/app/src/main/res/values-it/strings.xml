@@ -15,7 +15,7 @@
     <string name="themesum">Necessita riavvio della app</string>
     <string name="settings">Opzioni</string>
     <string name="Reading">Usa webview</string>
-    <string name="Readingsum">Verrà utilizzata la webview per aprire gli articoli</string>
+    <string name="Readingsum">'Leggi di più' usando la in-app webview</string>
     <string name="JS_script_on">Abilita javascript</string>
     <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>

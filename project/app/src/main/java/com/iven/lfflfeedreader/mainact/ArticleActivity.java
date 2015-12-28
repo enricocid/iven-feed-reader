@@ -106,15 +106,6 @@ public class ArticleActivity extends AppCompatActivity {
 						@Override
 						public Fragment getItem(int position) {
 
-							if (Preferences.WebViewEnabled(context)) {
-								ArticleFragmentWebView fragwb = new ArticleFragmentWebView();
-								Bundle bundle = new Bundle();
-								bundle.putSerializable("feed", feed);
-								bundle.putInt("pos", position);
-								fragwb.setArguments(bundle);
-
-								return fragwb;
-							} else {
 								ArticleFragment frag = new ArticleFragment();
 								Bundle bundle = new Bundle();
 								bundle.putSerializable("feed", feed);
@@ -122,8 +113,6 @@ public class ArticleActivity extends AppCompatActivity {
 								frag.setArguments(bundle);
 
 								return frag;
-
-						}
 
                             }
 

@@ -26,7 +26,6 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
 
     //initialize feed infos
     String feedurl;
-    String title;
 
     //webview
     WebView wv;
@@ -41,12 +40,11 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        //get infos from the intent
+        //get the feed's link from the intent
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras != null) {
                 feedurl = extras.getString("feedselected");
-                title = extras.getString("title");
             }
         }
 
