@@ -5,12 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -30,18 +27,10 @@ public class SplashActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
         //set the navbar tint if the preference is enabled
-        if (Build.VERSION.SDK_INT >= 21){
-		if (Preferences.navTintEnabled(getBaseContext())) {
-			getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.quantum_grey));
-		}
-        }
+		Preferences.applyNavTint(this, getBaseContext());
 
-        //set LightStatusBar
-        if (Build.VERSION.SDK_INT >= 23) {
-        if (Preferences.applyLightIcons(getBaseContext())) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            }
-        }
+		//set LightStatusBar
+		Preferences.applyLightIcons(this);
 
         // Detect if there's a connection issue or not
 		ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

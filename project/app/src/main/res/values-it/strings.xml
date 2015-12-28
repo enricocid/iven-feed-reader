@@ -56,4 +56,7 @@
     <string name="moar_pref">Mostra feeds predefiniti</string>
     <string name="moar_pref_sum">Mostra un menu con dei feed predefiniti se abilitata</string>
     <string name="loading">Per favore attendi &#8230;</string>
+    <string name="light_theme">Chiaro</string>
+    <string name="dark_theme">Scuro</string>
+    <string name="darkest_theme">Più scuro</string>
 </resources>

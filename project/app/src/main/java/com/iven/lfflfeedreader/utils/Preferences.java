@@ -1,8 +1,12 @@
 package com.iven.lfflfeedreader.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.preference.PreferenceManager;
-import android.view.ContextThemeWrapper;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.view.ContextThemeWrapper;
+import android.view.View;
 
 import com.iven.lfflfeedreader.R;
 
@@ -11,8 +15,6 @@ public class Preferences {
     //This is where preferences are stored.
 
     //Text size options
-
-    //we define some default size options
     static float verysmall = 12;
     static float small = 18;
     static float medium = 24;
@@ -21,6 +23,17 @@ public class Preferences {
     static float small_list = 10;
     static float medium_list = 14;
     static float large_list = 18;
+
+    //Themes options
+
+    //light theme
+    static int light = R.style.Theme_iven;
+
+    //dark theme
+    static int dark = R.style.Theme_iven_dark;
+
+    //darker theme
+    static int darker = R.style.Theme_iven_darker;
 
     //we define a method to handle the list multi-preference dialog
 
@@ -60,62 +73,105 @@ public class Preferences {
         }
     }
 
+    //multi-preference dialog for theme options
+
+    public static int resolveTheme(Context context) {
+        String choice = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(context.getString(R.string.pref_theme), String.valueOf(8));
+        switch (Integer.parseInt(choice)) {
+            default:
+            case 8:
+                return light;
+            case 9:
+                return dark;
+            case 10:
+                return darker;
+        }
+    }
+
+    //Apply selected theme
+    public static void applyTheme(ContextThemeWrapper contextThemeWrapper, Context context) {
+        int theme = Preferences.resolveTheme(context);
+        contextThemeWrapper.setTheme(theme);
+
+    }
+
     //preference for the webview
     public static boolean WebViewEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("WebViewLoad", false);
     }
 
-    //preference for Themes
-
-    public static boolean darkThemeEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("Theme", false);
-        }
-
-    //Since we have various themes we need to create a preference for each theme
-    //These preferences will be called when the method darkThemeEnabled will return true
-    // on each activity to apply the correct theme
-
-    //this is the method for applying the theme on articles activity
-    public static void applyTheme(ContextThemeWrapper contextThemeWrapper) {
-        if (Preferences.darkThemeEnabled(contextThemeWrapper)) {
-            contextThemeWrapper.setTheme(R.style.Theme_iven_dark);
-        }
-    }
-
-    //preference to apply LightStatusBar loading
-    public static boolean applyLightIcons(Context context) {
+    //are light icons enabled?
+    public static boolean LightIconsEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("lightcolored", false);
-
     }
-    //preference for navigation bar tint
-        public static boolean navTintEnabled(Context context) {
-            return PreferenceManager.getDefaultSharedPreferences(context)
-                    .getBoolean("Navibar", false);
 
+    //If yes apply LightStatusBar loading
+    public static void applyLightIcons(Activity activity) {
+        if (Build.VERSION.SDK_INT >= 23) {
+        if (Preferences.LightIconsEnabled(activity)) {
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+      }
+    }
+
+    //Is navigation bar tint enabled?
+    public static boolean NavTintEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+            .getBoolean("Navibar", false);
         }
 
-    //preference for immersive mode
+    //If yes apply Navigation tint
+    public static void applyNavTint(Activity activity, Context context) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            if (Preferences.NavTintEnabled(activity)) {
+                activity.getWindow().setNavigationBarColor(ContextCompat.getColor(context, R.color.primary));
+            }
+        }
+    }
+
+    //is immersive mode enabled
     public static boolean immersiveEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Immerseme", false);
 
     }
 
-    //preference to disable images loading
+    //If yes apply Immersive mode
+    public static void applyImmersiveMode(Activity activity) {
+        if (Build.VERSION.SDK_INT >= 19) {
+            if (Preferences.immersiveEnabled(activity)) {
+                //immersive mode
+                activity.getWindow().getDecorView().setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                                | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                                | View.SYSTEM_UI_FLAG_IMMERSIVE
+
+                                //Sticky flag - This is the UI you see if you use the IMMERSIVE_STICKY flag, and the user
+                                //swipes to display the system bars. Semi-transparent bars temporarily appear
+                                //and then hide again
+                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                );
+            }
+        }
+    }
+
+
+    //are images removed?
     public static boolean imagesRemoved(Context context) {
                 return PreferenceManager.getDefaultSharedPreferences(context)
-                               .getBoolean("images", false);
-
-                    }
+                        .getBoolean("images", false);
+    }
 
     //preference to enable built in feeds menu
     public static boolean builtfeedsEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("builtin", false);
 
-    }
-
+        }
     }

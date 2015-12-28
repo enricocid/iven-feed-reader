@@ -6,13 +6,12 @@ import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -29,6 +28,9 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
 
     //webview
     WebView wv;
+
+    //ContextThemeWrapper
+    ContextThemeWrapper themewrapper;
 
     //others
     SwipeRefreshLayout swipeRefreshLayout;
@@ -48,38 +50,20 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
             }
         }
 
+        //apply preferences
+
         //apply activity's theme if dark theme is enabled
-        Preferences.applyTheme(this);
+        themewrapper = new ContextThemeWrapper(getBaseContext(), this.getTheme());
+        Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        if (Build.VERSION.SDK_INT >= 21){
-            if (Preferences.navTintEnabled(this)) {
-                getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.primary));
-            }
+        Preferences.applyNavTint(this, getBaseContext());
 
-            //set LightStatusBar
-            if (Build.VERSION.SDK_INT >= 23) {
-                if (Preferences.applyLightIcons(getBaseContext())) {
-                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                }
-            }
+        //set LightStatusBar
+        Preferences.applyLightIcons(this);
 
-            //set the immersive mode (only for >= KitKat) if the preference is enabled
-            if (Build.VERSION.SDK_INT >= 19){
-                if (Preferences.immersiveEnabled(this)) {
-
-                    //immersive mode
-                    getWindow().getDecorView().setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                    | View.SYSTEM_UI_FLAG_IMMERSIVE);
-                }
-            }
-        }
+        //set the immersive mode (only for >= KitKat) if the preference is enabled
+        Preferences.applyImmersiveMode(this);
 
         //set the view
         setContentView(R.layout.article_page_layout);
@@ -201,23 +185,9 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (Build.VERSION.SDK_INT >= 19){
-            if (Preferences.immersiveEnabled(this)) {
                 if (hasFocus) {
-                    getWindow().getDecorView().setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                                    | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-
-                                    //Sticky flag - This is the UI you see if you use the IMMERSIVE_STICKY flag, and the user
-                                    //swipes to display the system bars. Semi-transparent bars temporarily appear
-                                    //and then hide again
-                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+                    Preferences.applyImmersiveMode(this);
             }
-
         }
     }
-}
 

@@ -11,11 +11,14 @@
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/opts"/>
 
-    <android.support.v7.preference.SwitchPreferenceCompat
-        android:key="Theme"
-        android:title="@string/pref_theme_title"
+    <android.support.v7.preference.ListPreference
+        android:key="@string/pref_theme"
         android:summary="@string/themesum"
-        android:defaultValue="false" />
+        android:entries="@array/theme_options"
+        android:entryValues="@array/pref_theme_list_values"
+        android:defaultValue="8"
+        android:title="@string/pref_theme_title"
+        android:dialogIcon="?attr/theme_icon" />
 
     <android.support.v7.preference.SwitchPreferenceCompat
         android:key="lightcolored"

@@ -3,39 +3,36 @@ package com.iven.lfflfeedreader.infoact;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.utils.Preferences;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class InfoActivity extends AppCompatActivity {
 
+    //ContextThemeWrapper
+    ContextThemeWrapper themewrapper;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
-		//apply activity's theme if dark theme is enabled
-		Preferences.applyTheme(this);
+        super.onCreate(savedInstanceState);
 
-		super.onCreate(savedInstanceState);
+        //apply preferences
 
-        //set the layout
-		setContentView(R.layout.activity_settings);
+        //apply activity's theme if dark theme is enabled
+        themewrapper = new ContextThemeWrapper(getBaseContext(), this.getTheme());
+        Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        if (Build.VERSION.SDK_INT >= 21){
-            if (Preferences.navTintEnabled(getBaseContext())) {
-                getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.primary));
-            }
-        }
+        Preferences.applyNavTint(this, getBaseContext());
 
         //set LightStatusBar
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (Preferences.applyLightIcons(getBaseContext())) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            }
-        }
+        Preferences.applyLightIcons(this);
+
+        //set the view
+        setContentView(R.layout.activity_settings);
 
         //set the toolbar
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

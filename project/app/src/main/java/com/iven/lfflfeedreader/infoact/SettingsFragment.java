@@ -129,7 +129,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
 
                 //on theme on/off restart the app
-                if (key.equals("Theme")) {
+                if (key.equals(getResources().getString(R.string.pref_theme))) {
                     restartApp();
                 }
 

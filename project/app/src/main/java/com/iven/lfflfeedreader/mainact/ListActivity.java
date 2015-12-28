@@ -8,12 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -79,6 +78,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //Connectivity manager
     ConnectivityManager cM;
 
+    //Context theme wrapper
+    ContextThemeWrapper themewrapper;
+
     //Navigation drawer
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
@@ -118,21 +120,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //apply preferences
 
         //apply activity's theme if dark theme is enabled
-        Preferences.applyTheme(this);
+        themewrapper = new ContextThemeWrapper(getBaseContext(), this.getTheme());
+        Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        if (Build.VERSION.SDK_INT >= 21){
-        if (Preferences.navTintEnabled(getBaseContext())) {
-            getWindow().setNavigationBarColor(ContextCompat.getColor(getBaseContext(), R.color.primary));
-        }
-        }
+        Preferences.applyNavTint(this, getBaseContext());
 
         //set LightStatusBar
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (Preferences.applyLightIcons(getBaseContext())) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            }
-        }
+        Preferences.applyLightIcons(this);
 
         //set the view
         setContentView(R.layout.home);
@@ -327,7 +322,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //set the default color of the arrow
         swiperefresh.setColorSchemeResources(R.color.refresh_color);
-
 
         //set the articles ListView and the dynamic ListView for custom feeds
 

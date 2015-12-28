@@ -14,23 +14,55 @@
     <string name="share">Share</string>
     <string name="company_name" translatable="false">iven</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
-    <string name="changelog" translatable="false">Changelog</string>
-    <string name="pref_theme_title">App theme</string>
+    <string name="no_internet">Connect to the internet please</string>
+    <string name="loading">Please wait &#8230;</string>
+    <string name="rate_me">Rate</string>
+
+    <!-- preferences -->
+
+    <!-- Title & summaries -->
     <string name="opts">Theme options</string>
     <string name="aboutopts" translatable="false">About</string>
     <string name="moreopts">Other options</string>
-    <string name="themesum">The app needs to be restarted</string>
     <string name="settings">Options</string>
     <string name="info" translatable="false">Credits</string>
+    <string name="build_number">Build\'s version</string>
+    <string name="changelog" translatable="false">Changelog</string>
+    <string name="prelollipop">Option not available on pre-Lollipop devices</string>
+    <string name="preics">Option not available on pre-ICS devices</string>
+    <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
+
+    <!-- Theme options -->
+    <string name="pref_theme_title">App theme</string>
+    <string name="themesum">The app needs to be restarted</string>
+    <string name="pref_theme" translatable="false">pref_theme</string>
+    <string name="pref_theme_list" translatable="false">pref_theme_list</string>
+    <string name="light_theme">Light</string>
+    <string name="dark_theme">Dark</string>
+    <string name="darkest_theme">Darker</string>
+
+    <!-- Dark status icons mode -->
+    <string name="light_mode">Dark status icons</string>
+    <string name="light_mode_sum">Enable dark colored status bar icons</string>
+
+    <!-- Navigation bar tint -->
+    <string name="nav_color">Enable navbar tint</string>
+    <string name="nav_color_sum">This will enable navigation bar tinting</string>
+
+    <!-- Immersive mode -->
+    <string name="immersive_mode">Immersive mode</string>
+    <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
+
+    <!-- No images -->
+    <string name="no_images">Disable images</string>
+    <string name="no_images_sum">Disable article\'s images visualisation</string>
+
+    <!-- Webview -->
     <string name="Reading">Use webview</string>
     <string name="Readingsum">Read more using in-app webview</string>
     <string name="JS_script_on">Enable JavaScript</string>
-    <string name="build_number">Build\'s version</string>
-    <string name="nav_color">Enable navbar tint</string>
-    <string name="nav_color_sum">This will enable navigation bar tinting</string>
-    <string name="clear_cache">Clear app cache</string>
-    <string name="clear_cache_sum">This option will clean the app cache and reset the options</string>
-    <string name="rate_me">Rate</string>
+
+    <!-- Text size options -->
     <string name="pref_text_size" translatable="false">pref_text_size</string>
     <string name="pref_text_size_list" translatable="false">pref_text_size_list</string>
     <string name="pref_text_size_title">Adjust articles font</string>
@@ -42,17 +74,10 @@
     <string name="pref_text_medium">Medium</string>
     <string name="pref_text_large">Large</string>
     <string name="pref_text_verylarge">Very large</string>
-    <string name="immersive_mode">Immersive mode</string>
-    <string name="immersive_mode_sum">Enable immersive mode on article\'s activity</string>
-    <string name="no_images">Disable images</string>
-    <string name="no_images_sum">Disable article\'s images visualisation</string>
-    <string name="light_mode">Dark status icons</string>
-    <string name="light_mode_sum">Enable dark colored status bar icons</string>
-    <string name="prelollipop">Option not available on pre-Lollipop devices</string>
-    <string name="preics">Option not available on pre-ICS devices</string>
-    <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
-    <string name="no_internet">Connect to the internet please</string>
-    <string name="loading">Please wait &#8230;</string>
+
+    <!-- Clear cache -->
+    <string name="clear_cache">Clear app cache</string>
+    <string name="clear_cache_sum">This option will clean the app cache and reset the options</string>
 
     <!-- custom feeds -->
     <string name="deletedialogtitle">Discard feed</string>
