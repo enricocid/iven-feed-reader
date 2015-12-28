@@ -29,6 +29,20 @@
         android:orderInCategory="200"
         android:title="@string/settings"/>
 
+    <item
+        android:id="@+id/addfeed"
+        app:showAsAction="always"
+        android:icon="?attr/plus_icon"
+        android:title="@string/feedmenu"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/xda2"
+        app:showAsAction="always"
+        android:title="@string/xda"
+        android:icon="?attr/xda_icon"
+        android:visible="false"/>
+    
         <item
             android:id="@+id/default_feeds"
             android:visible="false"
@@ -67,19 +81,4 @@
                     android:title="@string/omg"/>
             </menu>
         </item>
-
-    <item
-        android:id="@+id/xda2"
-        app:showAsAction="always"
-        android:title="@string/xda"
-        android:icon="?attr/xda_icon"
-        android:visible="false"/>
-
-    <item
-        android:id="@+id/addfeed"
-        app:showAsAction="always"
-        android:icon="?attr/plus_icon"
-        android:title="@string/feedmenu"
-        android:visible="false"/>
-
     </menu>

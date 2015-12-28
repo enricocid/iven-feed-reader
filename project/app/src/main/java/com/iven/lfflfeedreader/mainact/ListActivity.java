@@ -108,7 +108,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         addfeed = menu.findItem(R.id.addfeed);
 
         //xda menu item
-        xda = menu.findItem(R.id.xda2);
+        if (Preferences.builtfeedsEnabled(getBaseContext())) {
+            xda = menu.findItem(R.id.xda2);
+        }
 
         //built in feeds
         default_feeds = menu.findItem(R.id.default_feeds);
