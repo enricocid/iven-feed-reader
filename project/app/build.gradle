@@ -13,8 +13,8 @@ android {
         applicationId "com.iven.lfflfeedreader"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 51
-        versionName "7.2"
+        versionCode 52
+        versionName "7.3"
     }
 
     buildTypes {
@@ -28,7 +28,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+            'proguard-rules.pro'
         }
     }
 }

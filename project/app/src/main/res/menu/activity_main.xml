@@ -42,7 +42,7 @@
         android:title="@string/xda"
         android:icon="?attr/xda_icon"
         android:visible="false"/>
-    
+
         <item
             android:id="@+id/default_feeds"
             android:visible="false"

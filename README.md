@@ -18,12 +18,9 @@ The default blog is XDA.
 You can add **CUSTOM FEEDS** by opening the navigation drawer. There You can click the add button from toolbar, compile the dialog text fields et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
 You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
 
-Some noticeable features are the dark/light theme, dark status bar icons (MM), immersive mode, navbar tint (>=KitKat), option to disable images, text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen/action buttons.
+Some noticeable features are the dark/darker/light theme, dark status bar icons (MM), immersive mode, navbar tint (>=KitKat), in-app webview, option to disable images, text size options, swipe to refresh layout, responsive toolbar and a Googlish splash screen/action buttons.
 
 If You want, You can also choose between the native articles UI and the webview.
-
-
-![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/Iven.gif)
 
 
 NOTES (Please Read):
@@ -39,7 +36,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (7.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (7.3) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
