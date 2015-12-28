@@ -124,7 +124,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext());
+        Preferences.applyNavTint(this, getBaseContext(), R.color.accent_color);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);

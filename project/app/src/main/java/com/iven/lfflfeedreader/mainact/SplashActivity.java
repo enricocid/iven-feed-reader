@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
         //set the navbar tint if the preference is enabled
-		Preferences.applyNavTint(this, getBaseContext());
+		Preferences.applyNavTint(this, getBaseContext(), R.color.quantum_grey);
 
 		//set LightStatusBar
 		Preferences.applyLightIcons(this);

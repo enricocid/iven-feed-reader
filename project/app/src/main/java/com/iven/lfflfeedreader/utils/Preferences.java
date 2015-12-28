@@ -124,10 +124,10 @@ public class Preferences {
         }
 
     //If yes apply Navigation tint
-    public static void applyNavTint(Activity activity, Context context) {
+    public static void applyNavTint(Activity activity, Context context, int color) {
         if (Build.VERSION.SDK_INT >= 21) {
             if (Preferences.NavTintEnabled(activity)) {
-                activity.getWindow().setNavigationBarColor(ContextCompat.getColor(context, R.color.primary));
+                activity.getWindow().setNavigationBarColor(ContextCompat.getColor(context, color));
             }
         }
     }

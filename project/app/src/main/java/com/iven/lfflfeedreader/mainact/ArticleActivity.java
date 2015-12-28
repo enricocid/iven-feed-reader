@@ -44,7 +44,7 @@ public class ArticleActivity extends AppCompatActivity {
 
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext());
+        Preferences.applyNavTint(this, getBaseContext(), R.color.accent_color);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);
