@@ -1,39 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for the main ListView items-->
+<!-- this is the layout for dynamic ListView (feeds names)-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/layout"
-        android:layout_toStartOf="@+id/layout"
-        android:orientation="vertical" >
+    android:orientation="vertical" >
 
-    <!-- url-->
-    <TextView
-        android:id="@+id/subtitle_dyn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="12sp" />
-
-        <!-- title-->
+    <!-- feed's title-->
         <TextView
-            android:layout_marginRight="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="16dp"
             android:id="@+id/title_dyn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:maxLines="1"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>

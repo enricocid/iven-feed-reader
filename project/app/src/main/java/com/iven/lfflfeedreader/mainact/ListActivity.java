@@ -869,7 +869,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
 
     //this is the custom dynamic adapter for the custom feeds ListView
-    //we use a custom adapter to set a custom layout for items (names + urls)
+    //we set two items for feeds names/urls and a visible TextView for feeds names
 
     class CustomDynamicAdapter extends BaseAdapter {
 
@@ -886,7 +886,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //for urls
             mList = list;
 
-            //for names
+            //for feeds names
             mList2 = list2;
 
             //initialize layout inflater
@@ -923,14 +923,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 listItem = layoutInflater.inflate(R.layout.dynamic_items, parent, false);
             }
 
-            //initialize the dynamic items (titles+ urls)
+            //initialize the dynamic items (feeds titles)
             TextView Title = (TextView) listItem.findViewById(R.id.title_dyn);
-            TextView url = (TextView) listItem.findViewById(R.id.subtitle_dyn);
 
-            //dynamically set title and subtitle according to the feed data
-
-            //set feeds urls
-            url.setText(mList.get(position));
+            //dynamically set feed's title text according to the feed data
 
             //set feeds titles
             Title.setText(mList2.get(position));
