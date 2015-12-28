@@ -26,9 +26,6 @@ import org.jsoup.Jsoup;
 
 public class ArticleFragment extends Fragment {
 
-    //position
-	private int fPos;
-
     //feed
 	RSSFeed fFeed;
     RSSItem feedItem;
@@ -45,6 +42,9 @@ public class ArticleFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+        //position
+        int fPos;
 
         //Initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
@@ -200,9 +200,10 @@ public class ArticleFragment extends Fragment {
                                                          intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink));
 
                                                      }
-                                                     CharSequence title2 = getResources().getText(R.string.chooser_title);
-                                                     Intent chooser = Intent.createChooser(intent, title2);
-                                                     startActivity(chooser);
+
+                                                     //open the image
+                                                     openImageLink(intent);
+
                                                      return true;
                                                  }
                                              }
@@ -277,9 +278,16 @@ public class ArticleFragment extends Fragment {
 
         intent.putExtra("feedselected", datfeed);
 
-
         //and start a new ArticlePage activity with the selected feed
         startActivity(intent);
         getActivity().overridePendingTransition(0, 0);
+    }
+
+    //method to open the image link
+    private void openImageLink(Intent intent)
+    {
+        CharSequence title2 = getResources().getText(R.string.chooser_title);
+        Intent chooser = Intent.createChooser(intent, title2);
+        startActivity(chooser);
     }
 }
