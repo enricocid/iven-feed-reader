@@ -35,6 +35,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
+import com.iven.lfflfeedreader.domparser.RSSItem;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.R;
@@ -51,14 +52,21 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
+    //feed
+    RSSFeed fFeed;
+    RSSItem feedItem;
+    String imageLink;
+    String imageLink2;
+    String feedTitle;
+    String feedDate;
+
     //Home ListView
-    RSSFeed feed;
     ListView list;
     CustomListAdapter adapter;
 
     //Dynamic ListView
-    private List<String> mItems;
-    private List<String> mItems2;
+    private List<String> mUrls;
+    private List<String> mFeeds;
     SQLiteDatabase mydb;
     CustomDynamicAdapter adapter_dynamic;
     ListView listfeed;
@@ -113,6 +121,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 	public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        //initialize the feeds items
+        fFeed = (RSSFeed) getIntent().getExtras().get("feed");
 
         //initialize connectivity manager
         cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -330,9 +341,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //initialize the main ListView where items will be added
         list=(ListView) findViewById(android.R.id.list);
 
-        //initialize the feeds items
-        feed = (RSSFeed) getIntent().getExtras().get("feed");
-
         //set the main ListView custom adapter
         adapter=new CustomListAdapter(this);
 
@@ -351,7 +359,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                     //on item click we send the feed to article activity
                                                     //using intents
                                                     Bundle bundle = new Bundle();
-                                                    bundle.putSerializable("feed", feed);
+                                                    bundle.putSerializable("feed", fFeed);
                                                     Intent intent = new Intent(ListActivity.this,
                                                             ArticleActivity.class);
                                                     intent.putExtras(bundle);
@@ -385,17 +393,17 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //we create two new array list to be populated with the tables items (names & urls)
 
         //for feeds urls
-        mItems = new ArrayList<>();
+        mUrls = new ArrayList<>();
 
         //for feeds names
-        mItems2 = new ArrayList<>();
+        mFeeds = new ArrayList<>();
 
         if (cursor2 != null && cursor2.moveToFirst()) {
 
             while (!cursor2.isAfterLast()) {
 
                 //add items from column "url" into dynamic list
-                 mItems.add(cursor2.getString(cursor2.getColumnIndex("url")));
+                 mUrls.add(cursor2.getString(cursor2.getColumnIndex("url")));
                 cursor2.moveToNext();
             }
             cursor2.close();
@@ -406,14 +414,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             while (!cursor3.isAfterLast()) {
 
                 //add items from column "name" into dynamic list
-                mItems2.add(cursor3.getString(cursor3.getColumnIndex("name")));
+                mFeeds.add(cursor3.getString(cursor3.getColumnIndex("name")));
                 cursor3.moveToNext();
             }
             cursor3.close();
         }
 
         //initialize the dynamic list array adapter, we set a template layout and the dynamic list formerly populated
-        adapter_dynamic = new CustomDynamicAdapter(this, mItems, mItems2);
+        adapter_dynamic = new CustomDynamicAdapter(this, mUrls, mFeeds);
 
         //refresh the dynamic list
         //this is needed to update the dynamic list
@@ -431,7 +439,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         long arg3){
 
         //display the feed using openNewFeed method
-        openNewFeed(mItems.get(arg2));
+        openNewFeed(mUrls.get(arg2));
 
         }
         });
@@ -453,7 +461,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         ListActivity.this);
 
                 alert.setTitle(R.string.deletedialogtitle);
-                alert.setMessage(getResources().getString(R.string.deletedialogquestion) + " '" + mItems2.get(datposition) + "' ?");
+                alert.setMessage(getResources().getString(R.string.deletedialogquestion) + " '" + mFeeds.get(datposition) + "' ?");
                 alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -536,12 +544,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         //get the feeds urls from the input and add to array list
                         final EditText edt1 = (EditText) dialog.findViewById(R.id.txt1);
                         feedcustom = edt1.getText().toString();
-                        mItems.add(feedcustom);
+                        mUrls.add(feedcustom);
 
                         //get the feeds names from the input and add to array list
                         final EditText edt2 = (EditText) dialog.findViewById(R.id.txt2);
                         feedcustom2 = edt2.getText().toString();
-                        mItems2.add(feedcustom2);
+                        mFeeds.add(feedcustom2);
 
                         //and we update the ListView to add the new item
                         adapter_dynamic.notifyDataSetChanged();
@@ -586,7 +594,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             while (!cursor.isAfterLast()) {
 
                 //we get items at selected position
-                url = mItems.get(pos);
+                url = mUrls.get(pos);
                 cursor.moveToNext();
             }
             cursor.close();
@@ -598,7 +606,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             while (!cursor2.isAfterLast()) {
 
                 //we get items at selected position
-                name = mItems2.get(pos);
+                name = mFeeds.get(pos);
                 cursor2.moveToNext();
             }
             cursor2.close();
@@ -623,10 +631,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //remove items from the dynamic ListView
 
         //for url
-        mItems.remove(pos);
+        mUrls.remove(pos);
 
         //for feed name
-        mItems2.remove(pos);
+        mFeeds.remove(pos);
 
         //and update the dynamic list
         //don't move this method above the db deletion method or
@@ -684,12 +692,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 @Override
                 public void run() {
                     DOMParser tmpDOMParser = new DOMParser();
-                    feed = tmpDOMParser.parseXml(datfeed);
+                    fFeed = tmpDOMParser.parseXml(datfeed);
                     ListActivity.this.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
-                            if (feed != null && feed.getItemCount() > 0) {
+                            if (fFeed != null && fFeed.getItemCount() > 0) {
 
                                 adapter.notifyDataSetChanged();
 
@@ -725,12 +733,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 			@Override
 			public void run() {
 				DOMParser tmpDOMParser = new DOMParser();
-				feed = tmpDOMParser.parseXml(feedURL);
+                fFeed = tmpDOMParser.parseXml(feedURL);
 				ListActivity.this.runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
-						if (feed != null && feed.getItemCount() > 0) {
+						if (fFeed != null && fFeed.getItemCount() > 0) {
 							adapter.notifyDataSetChanged();
 							swiperefresh.setRefreshing(false);
 						}
@@ -767,7 +775,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //get items count
 		@Override
 		public int getCount() {
-			return feed.getItemCount();
+			return fFeed.getItemCount();
 		}
 
         //get items position
@@ -788,6 +796,15 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 			Activity activity = ListActivity.this;
 			View listItem = convertView;
 
+            //initialize feedItem
+            feedItem = fFeed.getItem(pos);
+
+            //get the feed content
+            imageLink = feedItem.getImage();
+            imageLink2 = feedItem.getImage2();
+            feedTitle = feedItem.getTitle();
+            feedDate = feedItem.getDate();
+
 			if (listItem == null) {
 
                 //set the main ListView's layout
@@ -804,10 +821,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //dynamically set title and subtitle according to the feed data
 
             //title
-            lfflTitle.setText(feed.getItem(pos).getTitle());
+            lfflTitle.setText(feedTitle);
 
             //subtitle= publication date
-            pubDate.setText(feed.getItem(pos).getDate());
+            pubDate.setText(feedDate);
 
             //set the list items text size from preferences
             //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
@@ -830,10 +847,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
             //else, load the image
             //if getImage() method fails (i.e when img is in content:encoded) load image2
-            else if (feed.getItem(pos).getImage().isEmpty()) {
+            else if (imageLink.isEmpty()) {
 
                 //use glide to load the image into the imageview (lfflimage)
-                Glide.with(activity).load(feed.getItem(pos).getImage2())
+                Glide.with(activity).load(imageLink2)
 
                             //set a placeholder image
                             .placeholder(R.drawable.image_area)
@@ -847,7 +864,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             else
             {
 
-                Glide.with(activity).load(feed.getItem(pos).getImage())
+                Glide.with(activity).load(imageLink)
 
                         //set a placeholder image
                         .placeholder(R.drawable.image_area)
