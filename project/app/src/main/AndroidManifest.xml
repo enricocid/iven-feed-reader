@@ -35,25 +35,28 @@
                 <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.iven.lfflfeedreader.mainact.ListActivity"
             android:theme="@style/Theme_iven"
             android:screenOrientation="portrait" />
+
         <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_iven"
             />
+
         <activity
     	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
-    	android:label="@string/app_name"
+    	android:label="@string/settings"
     	android:screenOrientation="portrait"
     	android:theme="@style/Theme_iven"/>
 
         <activity
             android:name="com.iven.lfflfeedreader.mainact.ArticlePage"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_iven"/>
+        
     </application>
 
 </manifest>

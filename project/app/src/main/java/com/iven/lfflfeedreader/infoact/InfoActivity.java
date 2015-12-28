@@ -48,8 +48,6 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        //set toolbar title
-        getSupportActionBar().setTitle(R.string.settings);
     }
 
 }
