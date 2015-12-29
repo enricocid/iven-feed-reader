@@ -11,7 +11,7 @@
     android:fitsSystemWindows="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- the dynamic listview-->
+    <!-- The dynamic ListView -->
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

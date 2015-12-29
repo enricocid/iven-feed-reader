@@ -63,7 +63,7 @@ public class ChangelogDialog extends DialogFragment {
         //set bg transparent because we will apply the bg using the activity's theme
         webView.setBackgroundColor(Color.TRANSPARENT);
 
-        // Load from changelog.html in the raw folder
+        //load from changelog.html in the raw folder
         webView.loadUrl("file:///android_res/raw/changelog.html");
         return dialog;
 	}

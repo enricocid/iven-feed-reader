@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the toolbar's menu on main activity-->
+<!-- This is the toolbar menu on main activity -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-          
+
+    <!-- Share -->
     <item
         android:id="@+id/share_option"     
         app:showAsAction="never"
         android:orderInCategory="100"
         android:title="@string/share"/>
-    
+
+    <!-- Rate -->
     <item
         android:id="@+id/rate"
         app:showAsAction="never"
         android:orderInCategory="200"
         android:title="@string/rate_me" />
 
+    <!-- Mail us -->
     <item
         android:id="@+id/mail"
         app:showAsAction="never"
         android:orderInCategory="200"
         android:title="@string/email" />
 
+    <!-- Settings -->
     <item
         android:id="@+id/option"
         app:showAsAction="never"
         android:orderInCategory="200"
         android:title="@string/settings"/>
 
+    <!-- Add feed -->
     <item
         android:id="@+id/addfeed"
         app:showAsAction="always"
@@ -36,6 +41,7 @@
         android:title="@string/feedmenu"
         android:visible="false"/>
 
+    <!-- XDA feed (default) -->
     <item
         android:id="@+id/xda2"
         app:showAsAction="always"
@@ -43,7 +49,8 @@
         android:icon="?attr/xda_icon"
         android:visible="false"/>
 
-        <item
+    <!-- Built in feeds menu -->
+    <item
             android:id="@+id/default_feeds"
             android:visible="false"
             app:showAsAction="always"

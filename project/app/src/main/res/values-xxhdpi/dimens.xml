@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- dimensions for xxhdpi devices -->
+<!-- Dimensions for xxhdpi devices -->
 
 <resources>
-
     <dimen name="launchscreens_iven_logo_bottom">96.0dip</dimen>
-
-    </resources>
+</resources>

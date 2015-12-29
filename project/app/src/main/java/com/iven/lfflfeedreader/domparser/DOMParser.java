@@ -21,90 +21,90 @@ import org.xml.sax.InputSource;
 //Parses an RSS feed and adds the information to a new RSSFeed object.
 
 //Original author Isaac Whitfield
-//extendend by EnricoD
+//Extended by EnricoD
 
 public class DOMParser {
 
-    // Create a new RSS feed
+    //create a new RSS feed
 
 	private RSSFeed _feed = new RSSFeed();
 	public RSSFeed parseXml(String xml) {
 
-        //Getting XML content
+        //getting XML content
 		URL url = null;
 		try {
 
-            // Find the new URL from the given URL
+            //find the new URL from the given URL
 			url = new URL(xml);
 		} catch (MalformedURLException e1) {
 
-            // Throw an exception
+            //throw an exception
 			e1.printStackTrace();
 		}
 
         //get the DOM element of the XML file. Below function will parse the XML content and will give you DOM element.
 		try {
 
-            // Create a new DocumentBuilder
+            //create a new DocumentBuilder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
-            // Parse the XML
+            //parse the XML
 			Document doc = db.parse(new InputSource(url.openStream()));
 
-            // Normalize the data
+            //normalize the data
 			doc.getDocumentElement().normalize();
 
-            //Get each xml child element value by passing element node name
+            //get each xml child element value by passing element node name
 
-            // Get all <item> tags.
+            //get all <item> tags.
 			NodeList nl = doc.getElementsByTagName("item");
 
-            // Get size of the list
+            //get size of the list
 			int length = nl.getLength();
 
-            // looping through all item nodes
+            //looping through all item nodes
 			for (int i = 0; i < length; i++) {
 
 				Node currentNode = nl.item(i);
 				RSSItem _item = new RSSItem();
 
-                // Create a new node of the first item
+                //create a new node of the first item
 				NodeList nchild = currentNode.getChildNodes();
 
-                // Get size of the child list
+                //get size of the child list
 				int clength = nchild.getLength();
 
-                // For all the children of a node
+                //for all the children of a node
 				for (int j = 0; j < clength; j++) {
 
-                    // Get the name of the child
+                    //get the name of the child
 					Node thisNode = nchild.item(j);
 					String theString = null;
 
-                    // If there is at least one child element
+                    //if there is at least one child element
 					 if (thisNode != null && thisNode.getFirstChild() != null) {
 
-                         // Set the string to be the value of the node
+                         //set the string to be the value of the node
 				            theString = nchild.item(j).getFirstChild().getNodeValue();
 				        }
 
-                    // If the string isn't null
+                    //if the string isn't null
 					if (theString != null) {
 
-                        // Set the appropriate value
+                        //set the appropriate value
 						String nodeName = thisNode.getNodeName();
 						if ("title".equals(nodeName)) {
 							_item.setTitle(theString);
 
 						}
 
+                        //feed link
 						else if ("link".equals(nodeName)) {
 								_item.setLink(theString);
                         }
 
-                        //this is used when getImage() fails (this happens when img is placed in content:encoded)
-                        //and to set complete description
+                        //complete description from content:encoded
                         else if ("content:encoded".equals(nodeName)) {
 
                                 org.jsoup.nodes.Document docHtml = Jsoup
@@ -119,13 +119,10 @@ public class DOMParser {
                             //setImage2() src
                             _item.setImage2(src);
 
-                            //this is used to get the complete description (that is in content:encoded in most of the feeds)
-                            //this method replaces getDescription method that sometimes parse truncated description
-
 							//set complete description
 							_item.setCompleteDescription(theString);
 
-                        //description is used when complete description returns 'no desc'
+                        //description method is used when complete description returns 'no desc'
                         } else if ("description".equals(nodeName)) {
 							_item.setDescription(theString);
 
@@ -143,25 +140,24 @@ public class DOMParser {
 
 						}
 
+                        //publication date
 						else if ("pubDate".equals(nodeName)) {
 
-                            // replace some text inside date
+                            //replace some text inside date
 							String formatedDate = theString.replace(" +0000", "");
 
-                            //change date format
-
-                            //we get locale settings from the phone
+                            //get locale settings from the phone
 							Locale loc = Resources.getSystem().getConfiguration().locale;
 
+                            //change date format
                             SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss",  java.util.Locale.US);
                             Date dateObj = curFormater.parse(formatedDate);
-                            //... and set it dynamically
                             SimpleDateFormat postFormater = new SimpleDateFormat("EEE, dd.MM.yyyy - HH:mm",  loc);
 
-                            //we get the timezone settings from the phone
+                            //get the timezone settings from the phone
 							String timezoneID = TimeZone.getDefault().getID();
 
-                            //... and set it dynamically
+                            //set it dynamically
 							postFormater.setTimeZone(TimeZone.getTimeZone(timezoneID));
                             String newDateStr = postFormater.format(dateObj);
 
@@ -170,7 +166,7 @@ public class DOMParser {
 					}
 				}
 
-                // Add the new item to the RSS feed
+                //add the new item to the RSS feed
 				_feed.addItem(_item);
 			}
 
@@ -178,7 +174,7 @@ public class DOMParser {
 			e.printStackTrace();
 		}
 
-        // Return the feed
+        //return the feed
 		return _feed;
 	}
 

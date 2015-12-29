@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- dimensions for devices sizes > 820dp (tablets) -->
+<!-- Dimensions for devices sizes > 820dp (tablets) -->
 
 <resources>
     <dimen name="activity_horizontal_margin">64dp</dimen>

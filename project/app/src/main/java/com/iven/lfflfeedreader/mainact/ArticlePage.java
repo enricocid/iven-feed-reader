@@ -124,7 +124,6 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
         webview_settings.setDefaultTextEncodingName("utf-8");
 
         //enum for controlling the layout of html. NORMAL means no rendering changes.
-        //this is the recommended choice for maximum compatibility across different platforms and Android versions.
         //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
         webview_settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 

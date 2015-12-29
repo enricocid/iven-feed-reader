@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the fab button to provide back navigation on articles pages -->
+<!-- This is the FAB button to provide back navigation on articles pages -->
 
 <android.support.design.widget.FloatingActionButton
     xmlns:app="http://schemas.android.com/apk/res-auto"

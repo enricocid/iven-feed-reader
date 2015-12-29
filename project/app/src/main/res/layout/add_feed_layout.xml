@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for the add feeds dialog-->
+<!-- This is the layout for the add feeds dialog -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +13,7 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp">
 
+    <!-- Message -->
     <TextView
         android:id="@android:id/message"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
         android:layout_gravity="center_horizontal"
         tools:ignore="UnusedAttribute" />
 
-    <!-- url-->
+    <!-- Url -->
     <EditText
         android:id="@+id/txt1"
         android:layout_width="match_parent"
@@ -44,7 +45,7 @@
         android:layout_gravity="center_horizontal"
         tools:ignore="UnusedAttribute" />
 
-    <!-- title-->
+    <!-- Title -->
     <EditText
         android:id="@+id/txt2"
         android:layout_width="match_parent"

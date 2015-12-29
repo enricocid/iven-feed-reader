@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- googlish splash screen -->
+<!-- Googlish splash screen -->
 
 <layer-list android:opacity="opaque"
     xmlns:android="http://schemas.android.com/apk/res/android">

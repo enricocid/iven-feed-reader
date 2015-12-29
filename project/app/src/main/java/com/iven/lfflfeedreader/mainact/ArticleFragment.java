@@ -46,7 +46,7 @@ public class ArticleFragment extends Fragment {
         //position
         int fPos;
 
-        //Initialize the feed (i.e. get all the data)
+        //initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
 		fPos = getArguments().getInt("pos");
         feedItem = fFeed.getItem(fPos);
@@ -71,14 +71,14 @@ public class ArticleFragment extends Fragment {
                 ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.article_fragment, container, false);
 
-        //Article title and subtitle
+        //article title and subtitle
         //title
         TextView title = (TextView) rootView.findViewById(R.id.title);
 
         //subtitle
         TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
 
-        //Action Buttons
+        //action Buttons
 
         //read more button
         ImageButton button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
@@ -134,20 +134,17 @@ public class ArticleFragment extends Fragment {
         subtitle.setText(feedDate);
 
         //set the articles text size from preferences
-        //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-        // TypedValue.COMPLEX_UNIT_SP = the text unit, in this case SP
-        // size = the text size from preferences
 
         //get the chosen article's text size from preferences
         float size = Preferences.resolveTextSizeResId(getContext());
 
-        //set it
+        //set it in SP unit
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 5);
 
         //if the preference is enabled remove the imageview from the linear layout
 
-        //imageview
+        //ImageView
         ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
 
         //initialize the article view linear layout
@@ -163,7 +160,7 @@ public class ArticleFragment extends Fragment {
         //if getImage() method fails (i.e when img is in content:encoded) load image2
         else if (imageLink.isEmpty()) {
 
-            //use glide to load the image into the imageview (imageView)
+            //use glide to load the image into the ImageView (imageView)
             Glide.with(getActivity()).load(imageLink2)
 
                     //disable cache to avoid garbage collection that may produce crashes
@@ -187,7 +184,7 @@ public class ArticleFragment extends Fragment {
 
                                                      final Intent intent;
 
-                                                     //use glide to load the image into the imageview (imageView)
+                                                     //use glide to load the image into the ImageView (imageView)
                                                      //if getImage() method fails (i.e when img is in content:encoded) load image2
                                                      if (imageLink.isEmpty()) {
 
@@ -209,10 +206,9 @@ public class ArticleFragment extends Fragment {
                                              }
             );
 
-        //Set the article's content
+        //set the article's content
 
-        //we use complete description by default, but sometimes the method returns null
-        //so, if getCompleteDescription is null use description
+        //use complete description by default, but sometimes the method returns null
         if(feedCompleteDescription.contains("no desc")) {
             datDescription = Jsoup.parse(feedDescription).text().replace("Continua a leggere...", "");
 
@@ -222,9 +218,7 @@ public class ArticleFragment extends Fragment {
 
         }
 
-        //replace some items since this is a simple textview
-        //and continue reading hyperlinks are not clickable
-        //so we are going to replace them with an empty text
+        //replace some items since this is a simple TextView
 		String datDescription2format = datDescription.replace("Continue reading...", "");
 
         String datDescription3format = datDescription2format.replace("Visit on site http://www.noobslab.com", "");
@@ -233,7 +227,7 @@ public class ArticleFragment extends Fragment {
 
         String datDescription5format = datDescription4format.replace("(read more)", "");
 
-        //load the article inside a text view
+        //load the article inside a TextView
         TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
         //set the articles text
@@ -254,7 +248,7 @@ public class ArticleFragment extends Fragment {
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share) + " '" + feedTitle + "'"));
     }
 
-    //Read more method
+    //read more method
     private void continueReading() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(feedLink));
         CharSequence title2 = getResources().getText(R.string.chooser_title);

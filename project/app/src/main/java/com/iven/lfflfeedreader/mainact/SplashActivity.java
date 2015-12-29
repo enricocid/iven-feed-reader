@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity {
 		}
     }
 
-    //Using intents we send the lfflfeed (the parsed xml to populate the listview)
+    //using intents we send the lfflfeed (the parsed xml to populate the listview)
     // from the async task to listactivity
 	private void startListActivity(RSSFeed lfflfeed) {
 
@@ -70,9 +70,7 @@ public class SplashActivity extends AppCompatActivity {
         finish();
                 }
 
-    //parse the xml in an async task
-    //An asynchronous task is defined by a computation that runs on a background thread
-    // and whose result is published on the UI thread.
+    //parse the xml in an async task (background thread)
 	private class AsyncLoadXMLFeed extends AsyncTask<Void, Void, Void> {
 
 		@Override

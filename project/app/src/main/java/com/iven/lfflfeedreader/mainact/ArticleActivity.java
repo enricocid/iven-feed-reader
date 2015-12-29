@@ -62,8 +62,7 @@ public class ArticleActivity extends AppCompatActivity {
 		//get the context
 		context = getBaseContext();
 
-        //initialize ViewPager and the adapter onCreate to avoid AS warning
-        //'field can be converted to a local variable'
+        //initialize ViewPager and the adapter
 		ViewPager pager;
 		PagerAdapter mPagerAdapter;
 
@@ -76,11 +75,7 @@ public class ArticleActivity extends AppCompatActivity {
 
 	}
 
-    //Viewpager custom adapter, we extend FragmentStatePagerAdapter to handle a large number of dynamic items
-    //FragmentStatePagerAdapter should be used when we have to use dynamic fragments
-    //as their data could be stored in the savedInstanceState.
-    // Also it wont affect the performance even if there are large number of fragments.
-
+    //viewpager custom adapter, use FragmentStatePagerAdapter to handle a large number of items
 	private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
 						public MyPagerAdapter(FragmentManager fm) {

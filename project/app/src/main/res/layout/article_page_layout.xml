@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for articles link loading using webview -->
+<!-- This is the layout for articles link loading using WebView -->
 
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,13 +9,13 @@
     android:orientation="vertical"
     android:background="?attr/theme_background">
 
-    <!-- swipe to refresh-->
+    <!-- Swipe to refresh -->
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout_ap"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <!-- scrollview-->
+    <!-- Scrollview -->
     <android.support.v4.widget.NestedScrollView
         android:scrollbars="vertical"
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:visibility="invisible"
                 />
 
-            <!-- webview -->
+            <!-- WebView -->
         <WebView
             android:id="@+id/web_view"
             android:visibility="invisible"
@@ -51,10 +51,10 @@
 
 </android.support.v4.widget.SwipeRefreshLayout>
 
-    <!-- the fab -->
+    <!-- The FAB -->
     <include layout="@layout/fab_back" />
 
-    <!-- loading text -->
+    <!-- Loading text -->
     <TextView
         android:contentDescription="@string/desc"
         android:id="@+id/loading_text"

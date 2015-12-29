@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- colors-->
+<!-- Colors-->
 
 <resources>
 
-    <!-- Main colors-->
+    <!-- Main colors -->
     <color name="translucent">#95000000</color>
     <color name="primary">#009688</color>
     <color name="primary_dark">#00796B</color>
@@ -15,21 +15,21 @@
     <color name="subtitles_color_dark">#5e5e5e</color>
     <color name="theme_bg_dark">@color/dialog_bg</color>
 
-    <!--Changelog and credits theme colors-->
+    <!-- Changelog and credits theme colors -->
     <color name="dialog_bg">#212121</color>
     <color name="dialog_title">#EF5350</color>
 
-    <!--Used for splash layout-->
+    <!-- Used for splash layout -->
     <color name="splash_red">@color/dialog_title</color>
     <color name="quantum_grey">#ff898989</color>
 
-    <!--Used for refresh layout-->
+    <!-- Used for refresh layout-->
     <color name="refresh_color">@color/dialog_title</color>
 
     <!-- Share and continue reading buttons highlight color -->
     <color name="highlight">@color/accent_color</color>
 
-    <!-- fab color-->
+    <!-- FAB color -->
     <color name="fab_primary">@color/accent_color</color>
 
 </resources>

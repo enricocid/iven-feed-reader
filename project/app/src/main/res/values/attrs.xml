@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- we use attr references to set resources depending of the theme selected-->
-<!-- how? -->
-
-<!-- for example: to change the info activity background on light/dark theme (see: activity_pref) -->
-<!-- we create new reference here, e.g. theme_background -->
-<!-- and we set the background in this way -->
-<!-- android:background="?attr/theme_background" -->
-<!-- then we are going to set the color or the drawable for the attr inside the theme of the activity (styles)-->
-<!-- For info activity the light/dark themes are: Theme_iven_info and Theme_iven_info_dark -->
-<!-- So we will add <item name="theme_background">@color/iven14</item> -->
+<!-- Use attr references to set resources depending of the theme selected -->
 
 <resources>
 

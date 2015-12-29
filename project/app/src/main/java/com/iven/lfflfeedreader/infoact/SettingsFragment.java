@@ -81,7 +81,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         //initialize version from BuildConfig
         String version = BuildConfig.VERSION_NAME;
 
-        //get the Version preference
+        //get the version preference
         android.support.v7.preference.Preference preferenceversion = findPreference("build_number");
 
         //dynamically set app's version
@@ -128,7 +128,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
 
-                //on theme on/off restart the app
+                //on theme selection restart the app
                 if (key.equals(getResources().getString(R.string.pref_theme))) {
                     restartApp();
                 }

@@ -68,7 +68,7 @@ public class CreditsDialog extends DialogFragment {
         //set bg transparent because we will apply the bg using the activity's theme
         webView.setBackgroundColor(Color.TRANSPARENT);
 
-        // Load from credits.html in the raw folder
+        //load from credits.html in the raw folder
         webView.loadUrl("file:///android_res/raw/credits.html");
 
         //override this method to load the urls inside external browser

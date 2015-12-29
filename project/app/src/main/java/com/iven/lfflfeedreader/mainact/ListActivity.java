@@ -89,7 +89,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //Context theme wrapper
     ContextThemeWrapper themewrapper;
 
-    //Navigation drawer
+    //navigation drawer
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout mDrawerLayout;
 
@@ -291,12 +291,11 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         //Tie DrawerLayout events to the ActionBarToggle:
-        //it adds the hamburger icon
-        //and handle the drawer slide event
+        //it adds the hamburger icon and handle the drawer slide event
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
                 R.string.app_name) {
 
-            //Called when the drawer is opened
+        //Called when the drawer is opened
         public void onDrawerOpened(View drawerView) {
 
             super.onDrawerOpened(drawerView);
@@ -309,7 +308,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         }
 
-            //Called when the drawer is closed
+        //Called when the drawer is closed
         public void onDrawerClosed(View view) {
             super.onDrawerClosed(view);
             //change toolbar title to the app's name
@@ -371,7 +370,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                             }
         );
 
-        //Dynamic ListView and database handling
+        //dynamic ListView and database handling
 
         //initialize the dynamic ListView
         listfeed =(ListView) findViewById(R.id.listfeed);
@@ -424,8 +423,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         adapter_dynamic = new CustomDynamicAdapter(this, mUrls, mFeeds);
 
         //refresh the dynamic list
-        //this is needed to update the dynamic list
-        // when we delete items from the tables
         adapter_dynamic.notifyDataSetChanged();
 
         //set the custom adapter
@@ -477,11 +474,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                     }
                 });
 
-                    //when You select by long clicking a feed the ListView becomes disabled
-                    //the dialog is dismissable when there is a touch outside the dialog's bounds
-                    //so, if You click outside th dialog area You won't be able to click on ListView
-                    //items previously disabled
-                    //we can override onCancel method to make ListView clickable again
+                    //when You select by long clicking a feed the ListView becomes disabled to avoid unwanted clicks
                     alert.setOnCancelListener(
                             new DialogInterface.OnCancelListener() {
 
@@ -556,8 +549,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         listfeed.setAdapter(adapter_dynamic);
 
                         //populate the tables of the sqlite database with these values
-                        // here we store names and urls that will be used on app's
-                        //resume to populate the ListView
 
                         //fill the urls column
                         mydb.execSQL("insert into feedslist (url) values(?);", new String[]{feedcustom});
@@ -582,8 +573,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         Cursor cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
         Cursor cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
-        //we set null values for url and feed name at selected position, we're going
-        //to set these values dynamically to avoid "column index out of range" errors
+        //set these values dynamically to avoid "column index out of range" errors
 
         String url = "";
         String name = "";
@@ -593,7 +583,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
             while (!cursor.isAfterLast()) {
 
-                //we get items at selected position
+                //get items at selected position
                 url = mUrls.get(pos);
                 cursor.moveToNext();
             }
@@ -637,8 +627,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         mFeeds.remove(pos);
 
         //and update the dynamic list
-        //don't move this method above the db deletion method or
-        //you'll get javalangindexoutofboundsexception-invalid-index error
+        //don't move this method above the db deletion method or you'll get javalangindexoutofboundsexception-invalid-index error
         adapter_dynamic.notifyDataSetChanged();
         adapter_dynamic.notifyDataSetInvalidated();
         listfeed.setAdapter(adapter_dynamic);
@@ -652,7 +641,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 		}
 
     //create a pending Runnable that runs in background to close the drawer smoothly
-    //and to remove menu items from the toolbar
     public void closeDrawer() {
         final DrawerLayout mDrawerLayout;
 
@@ -668,9 +656,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }, 200);
         }
 
-    //this is the method to open a new feed rss
-    //the feed is parsed and the ListView will
-    //be updated
+    //this is the method to open a new feed rss on new Thread
     public void openNewFeed(final String datfeed) {
 
         //close the navigation drawer
@@ -679,8 +665,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //show swipe refresh
         swiperefresh.setRefreshing(true);
 
-        // Detect if there's a connection issue or not
-        // If there's a connection problem stop refreshing and show message
+        //detect if there's a connection issue or not: if there's a connection problem stop refreshing and show message
         if (cM.getActiveNetworkInfo() == null) {
             Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
             toast.show();
@@ -720,8 +705,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //new items will be added on top of the list activity's ListView
 	public void onRefresh() {
 
-        // Detect if there's a connection issue or not
-        // If there's a connection problem stop refreshing and show message
+        //detect if there's a connection issue or not: if there's a connection problem stop refreshing and show message
         if (cM.getActiveNetworkInfo() == null) {
             Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
             toast.show();
@@ -754,13 +738,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        // Sync the toggle state after onRestoreInstanceState has occurred.
+        //sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
 
     }
 
     //this is the custom list adapter for the home ListView
-    //we use a custom adapter to set a custom layout for items
     class CustomListAdapter extends BaseAdapter {
 
 		private LayoutInflater layoutInflater;
@@ -826,18 +809,15 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //subtitle= publication date
             pubDate.setText(feedDate);
 
-            //set the list items text size from preferences
-            //little explanation about setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-            // TypedValue.COMPLEX_UNIT_SP = the text unit, in this case SP
-            // size = the text size from preferences
+            //set the list items text size from preferences in SP unit
             lfflTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
             pubDate.setTextSize(TypedValue.COMPLEX_UNIT_SP, size -2);
 
-            //initialize the imageview
+            //initialize the ImageView
             ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
-            //if the preference is enabled remove the linear layout containing the imageview
+            //if the preference is enabled remove the linear layout containing the ImageView
             if (Preferences.imagesRemoved(getBaseContext())) {
 
                 LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
@@ -849,7 +829,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //if getImage() method fails (i.e when img is in content:encoded) load image2
             else if (imageLink.isEmpty()) {
 
-                //use glide to load the image into the imageview (lfflimage)
+                //use glide to load the image into the ImageView (lfflimage)
                 Glide.with(activity).load(imageLink2)
 
                             //set a placeholder image

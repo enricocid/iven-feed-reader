@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <!-- text size options-->
+    <!-- Text size options-->
     <string-array name="text_size_options">
             <item>@string/pref_text_verysmall</item>
             <item>@string/pref_text_small</item>
@@ -28,7 +28,7 @@
         <item>7</item>
     </string-array>
 
-    <!-- theme options-->
+    <!-- Theme options-->
     <string-array name="theme_options">
         <item>@string/light_theme</item>
         <item>@string/dark_theme</item>

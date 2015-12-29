@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for the home activity (ListActivity)-->
-<!-- without elevation on navigation drawer (for pre-lollipop devices)-->
+<!-- this is the layout for the home activity (ListActivity) with elevation on navigation drawer -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -18,10 +17,10 @@
     android:elevation="6dp"
     android:background="?attr/theme_background">
 
-    <!-- the layout containing the articles list-->
+    <!-- The layout containing the articles list -->
     <include layout="@layout/articles_list" />
 
-    <!-- the layout containing the dynamic listview inside the drawer-->
+    <!-- The layout containing the dynamic ListView inside the drawer -->
     <include layout="@layout/dynamic_list" />
 
 </android.support.v4.widget.DrawerLayout>

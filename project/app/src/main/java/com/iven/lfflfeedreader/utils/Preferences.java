@@ -35,10 +35,7 @@ public class Preferences {
     //darker theme
     static int darker = R.style.Theme_iven_darker;
 
-    //we define a method to handle the list multi-preference dialog
-
     //multi-preference dialog for articles text size
-
     public static float resolveTextSizeResId(Context context) {
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_text_size), String.valueOf(1));
@@ -58,7 +55,6 @@ public class Preferences {
     }
 
     //multi-preference dialog for list items text size
-
     public static float resolveTextSizeListResId(Context context) {
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_text_size_list), String.valueOf(6));
@@ -74,7 +70,6 @@ public class Preferences {
     }
 
     //multi-preference dialog for theme options
-
     public static int resolveTheme(Context context) {
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_theme), String.valueOf(8));
@@ -89,7 +84,7 @@ public class Preferences {
         }
     }
 
-    //Apply selected theme
+    //method to apply selected theme
     public static void applyTheme(ContextThemeWrapper contextThemeWrapper, Context context) {
         int theme = Preferences.resolveTheme(context);
         contextThemeWrapper.setTheme(theme);
@@ -108,7 +103,7 @@ public class Preferences {
                 .getBoolean("lightcolored", false);
     }
 
-    //If yes apply LightStatusBar loading
+    //if yes apply LightStatusBar icons
     public static void applyLightIcons(Activity activity) {
         if (Build.VERSION.SDK_INT >= 23) {
         if (Preferences.LightIconsEnabled(activity)) {
@@ -123,7 +118,7 @@ public class Preferences {
             .getBoolean("Navibar", false);
         }
 
-    //If yes apply Navigation tint
+    //if yes apply Navigation tint
     public static void applyNavTint(Activity activity, Context context, int color) {
         if (Build.VERSION.SDK_INT >= 21) {
             if (Preferences.NavTintEnabled(activity)) {
@@ -132,14 +127,14 @@ public class Preferences {
         }
     }
 
-    //is immersive mode enabled
+    //is immersive mode enabled?
     public static boolean immersiveEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Immerseme", false);
 
     }
 
-    //If yes apply Immersive mode
+    //if yes apply immersive mode
     public static void applyImmersiveMode(Activity activity) {
         if (Build.VERSION.SDK_INT >= 19) {
             if (Preferences.immersiveEnabled(activity)) {
