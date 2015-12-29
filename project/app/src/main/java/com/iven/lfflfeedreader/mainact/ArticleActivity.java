@@ -1,7 +1,6 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,21 +19,21 @@ import com.iven.lfflfeedreader.utils.Preferences;
 public class ArticleActivity extends AppCompatActivity {
 
     //feed
-	RSSFeed feed;
+    RSSFeed feed;
 
     //position
-	int pos;
+    int pos;
 
     //ContextThemeWrapper
     ContextThemeWrapper themewrapper;
 
     //context
-	Context context;
+    Context context;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
         //apply preferences
 
@@ -52,65 +51,65 @@ public class ArticleActivity extends AppCompatActivity {
         //set the immersive mode (only for >= KitKat) if the preference is enabled
         Preferences.applyImmersiveMode(this);
 
-		//set the view
-		setContentView(R.layout.article_activity);
+        //set the view
+        setContentView(R.layout.article_activity);
 
-		//get the feed using intents
-		feed = (RSSFeed) getIntent().getExtras().get("feed");
-		pos = getIntent().getExtras().getInt("pos");
+        //get the feed using intents
+        feed = (RSSFeed) getIntent().getExtras().get("feed");
+        pos = getIntent().getExtras().getInt("pos");
 
-		//get the context
-		context = getBaseContext();
+        //get the context
+        context = getBaseContext();
 
         //initialize ViewPager and the adapter
-		ViewPager pager;
-		PagerAdapter mPagerAdapter;
+        ViewPager pager;
+        PagerAdapter mPagerAdapter;
 
-		//set the viewpager that allows to swipe through articles
-		mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
-		pager = (ViewPager) findViewById(R.id.pager);
-		pager.setAdapter(mPagerAdapter);
+        //set the viewpager that allows to swipe through articles
+        mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        pager = (ViewPager) findViewById(R.id.pager);
+        pager.setAdapter(mPagerAdapter);
         pager.setCurrentItem(pos);
         pager.setClipToPadding(false);
 
-	}
+    }
 
     //viewpager custom adapter, use FragmentStatePagerAdapter to handle a large number of items
-	private class MyPagerAdapter extends FragmentStatePagerAdapter {
+    private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
-						public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(FragmentManager fm) {
 
-							super(fm);
-						}
+            super(fm);
+        }
 
-						@Override
-						public Fragment getItem(int position) {
+        @Override
+        public Fragment getItem(int position) {
 
-								ArticleFragment frag = new ArticleFragment();
-								Bundle bundle = new Bundle();
-								bundle.putSerializable("feed", feed);
-								bundle.putInt("pos", position);
-								frag.setArguments(bundle);
+            ArticleFragment frag = new ArticleFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("feed", feed);
+            bundle.putInt("pos", position);
+            frag.setArguments(bundle);
 
-								return frag;
+            return frag;
 
-                            }
+        }
 
-		@Override
-		public int getCount() {
-			return feed.getItemCount();
-		}
-			}
+        @Override
+        public int getCount() {
+            return feed.getItemCount();
+        }
+    }
 
-	//(only for >= KitKat)
-	//fix Immersive mode navigation becomes sticky after minimise-restore
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-				if (hasFocus) {
-					Preferences.applyImmersiveMode(this);
-				}
-			}
-	}
+    //(only for >= KitKat)
+    //fix Immersive mode navigation becomes sticky after minimise-restore
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            Preferences.applyImmersiveMode(this);
+        }
+    }
+}
 
 

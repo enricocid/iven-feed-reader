@@ -106,17 +106,17 @@ public class Preferences {
     //if yes apply LightStatusBar icons
     public static void applyLightIcons(Activity activity) {
         if (Build.VERSION.SDK_INT >= 23) {
-        if (Preferences.LightIconsEnabled(activity)) {
-            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            if (Preferences.LightIconsEnabled(activity)) {
+                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
         }
-      }
     }
 
     //Is navigation bar tint enabled?
     public static boolean NavTintEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
-            .getBoolean("Navibar", false);
-        }
+                .getBoolean("Navibar", false);
+    }
 
     //if yes apply Navigation tint
     public static void applyNavTint(Activity activity, Context context, int color) {
@@ -159,8 +159,8 @@ public class Preferences {
 
     //are images removed?
     public static boolean imagesRemoved(Context context) {
-                return PreferenceManager.getDefaultSharedPreferences(context)
-                        .getBoolean("images", false);
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("images", false);
     }
 
     //preference to enable built in feeds menu
@@ -168,5 +168,5 @@ public class Preferences {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("builtin", false);
 
-        }
     }
+}

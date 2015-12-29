@@ -21,19 +21,19 @@
 
         <!-- The article's image-->
         <ImageView
-        android:contentDescription="@string/desc"
-        android:id="@+id/thumb"
-        android:layout_width="130sp"
-        android:layout_height="106sp"
-        />
+            android:contentDescription="@string/desc"
+            android:id="@+id/thumb"
+            android:layout_width="130sp"
+            android:layout_height="106sp" />
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/layout"
         android:layout_toStartOf="@+id/layout"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <!-- Title-->
         <TextView
@@ -48,7 +48,7 @@
             android:ellipsize="end"
             android:textColor="?attr/text_title_theme"
             android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <!-- Date-->
         <TextView
@@ -65,6 +65,6 @@
             android:layout_marginBottom="16sp"
             android:layout_marginLeft="16sp"
             android:layout_marginStart="16sp"
-            android:layout_below="@+id/title"/>
+            android:layout_below="@+id/title" />
     </RelativeLayout>
 </RelativeLayout>

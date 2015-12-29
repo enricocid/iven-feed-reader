@@ -16,10 +16,10 @@ package com.iven.lfflfeedreader.utils;
  * limitations under the License.
  */
 
-        import android.view.View;
-        import android.support.design.widget.CoordinatorLayout;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.v4.view.ViewCompat;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
 
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     public ScrollAwareFABBehavior() {

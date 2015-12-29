@@ -89,6 +89,7 @@ public class CreditsDialog extends DialogFragment {
                                          return true;
 
                                      }
+
                                      @Override
                                      public void onReceivedError(WebView webView, int errorCode, String description, String failingUrl) {
                                          try {

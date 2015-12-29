@@ -1,5 +1,6 @@
 package com.iven.lfflfeedreader.infoact;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,11 +15,10 @@ import android.webkit.WebView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.iven.lfflfeedreader.R;
-import android.annotation.SuppressLint;
 
 public class ChangelogDialog extends DialogFragment {
 
-	public static ChangelogDialog create(int accentColor) {
+    public static ChangelogDialog create(int accentColor) {
         ChangelogDialog dialog = new ChangelogDialog();
         Bundle args = new Bundle();
         args.putInt("accent_color", accentColor);
@@ -43,12 +43,12 @@ public class ChangelogDialog extends DialogFragment {
 
                 //see material dialog docs for more info
                 //https://github.com/afollestad/material-dialogs
-                        .titleColorRes(R.color.dialog_title)
-                        .positiveColor(ContextCompat.getColor(getContext(), R.color.primary))
-                        .title(R.string.changelog)
-                        .customView(customView, false)
-                        .positiveText(android.R.string.ok)
-                        .backgroundColorRes(R.color.dialog_bg)
+                .titleColorRes(R.color.dialog_title)
+                .positiveColor(ContextCompat.getColor(getContext(), R.color.primary))
+                .title(R.string.changelog)
+                .customView(customView, false)
+                .positiveText(android.R.string.ok)
+                .backgroundColorRes(R.color.dialog_bg)
                 .build();
 
         //initialize the webview
@@ -66,5 +66,5 @@ public class ChangelogDialog extends DialogFragment {
         //load from changelog.html in the raw folder
         webView.loadUrl("file:///android_res/raw/changelog.html");
         return dialog;
-	}
+    }
 }

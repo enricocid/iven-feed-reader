@@ -1,9 +1,5 @@
 package com.iven.lfflfeedreader.mainact;
 
-import com.iven.lfflfeedreader.R;
-import com.iven.lfflfeedreader.utils.Preferences;
-import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
-
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,11 +11,15 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import com.iven.lfflfeedreader.R;
+import com.iven.lfflfeedreader.utils.Preferences;
+import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
 public class ArticlePage extends AppCompatActivity implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
@@ -39,13 +39,13 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         //get the feed's link from the intent
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras != null) {
+            if (extras != null) {
                 feedurl = extras.getString("feedselected");
             }
         }
@@ -177,16 +177,16 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
         //reload the page
         wv.reload();
 
-        }
+    }
 
     //(only for >= KitKat)
     //fix Immersive mode navigation becomes sticky after minimise-restore
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-                if (hasFocus) {
-                    Preferences.applyImmersiveMode(this);
-            }
+        if (hasFocus) {
+            Preferences.applyImmersiveMode(this);
         }
     }
+}
 

@@ -2,8 +2,7 @@
 
 <!-- This is the FAB button to provide back navigation on articles pages -->
 
-<android.support.design.widget.FloatingActionButton
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/back"
     android:layout_gravity="bottom|end"
@@ -13,4 +12,4 @@
     android:theme="@style/FloatingAccentButtonOverlay"
     app:layout_anchorGravity="bottom|right|end"
     android:src="?attr/back_icon"
-    android:visibility="invisible"/>
+    android:visibility="invisible" />

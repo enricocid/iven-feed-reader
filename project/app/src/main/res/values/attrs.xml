@@ -4,17 +4,17 @@
 
 <resources>
 
-    <attr name="title_color" format="color"/>
-    <attr name="article_text_color" format="color"/>
-    <attr name="theme_background" format="color"/>
-    <attr name="webview_icon" format="reference"/>
-    <attr name="text_title_theme" format="reference"/>
-    <attr name="text_date_theme" format="reference"/>
-    <attr name="textsize_icon" format="reference"/>
-    <attr name="plus_icon" format="reference"/>
-    <attr name="back_icon" format="reference"/>
-    <attr name="share_icon" format="reference"/>
-    <attr name="xda_icon" format="reference"/>
-    <attr name="rss_icon" format="reference"/>
-    <attr name="theme_icon" format="reference"/>
+    <attr name="title_color" format="color" />
+    <attr name="article_text_color" format="color" />
+    <attr name="theme_background" format="color" />
+    <attr name="webview_icon" format="reference" />
+    <attr name="text_title_theme" format="reference" />
+    <attr name="text_date_theme" format="reference" />
+    <attr name="textsize_icon" format="reference" />
+    <attr name="plus_icon" format="reference" />
+    <attr name="back_icon" format="reference" />
+    <attr name="share_icon" format="reference" />
+    <attr name="xda_icon" format="reference" />
+    <attr name="rss_icon" format="reference" />
+    <attr name="theme_icon" format="reference" />
 </resources>

@@ -1,13 +1,5 @@
 package com.iven.lfflfeedreader.mainact;
 
-import com.bumptech.glide.Glide;
-
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.iven.lfflfeedreader.R;
-import com.iven.lfflfeedreader.domparser.RSSFeed;
-import com.iven.lfflfeedreader.domparser.RSSItem;
-import com.iven.lfflfeedreader.utils.Preferences;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,12 +14,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.iven.lfflfeedreader.R;
+import com.iven.lfflfeedreader.domparser.RSSFeed;
+import com.iven.lfflfeedreader.domparser.RSSItem;
+import com.iven.lfflfeedreader.utils.Preferences;
+
 import org.jsoup.Jsoup;
 
 public class ArticleFragment extends Fragment {
 
     //feed
-	RSSFeed fFeed;
+    RSSFeed fFeed;
     RSSItem feedItem;
     String feedDescription;
     String feedCompleteDescription;
@@ -38,17 +37,17 @@ public class ArticleFragment extends Fragment {
     String feedTitle;
     String feedDate;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
         //position
         int fPos;
 
         //initialize the feed (i.e. get all the data)
         fFeed = (RSSFeed) getArguments().getSerializable("feed");
-		fPos = getArguments().getInt("pos");
+        fPos = getArguments().getInt("pos");
         feedItem = fFeed.getItem(fPos);
 
         //get the content
@@ -63,12 +62,12 @@ public class ArticleFragment extends Fragment {
 
     }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-                //set the view
-                ViewGroup rootView = (ViewGroup) inflater
+        //set the view
+        ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.article_fragment, container, false);
 
         //article title and subtitle
@@ -178,48 +177,48 @@ public class ArticleFragment extends Fragment {
                     .into(imageView);
         }
 
-            //we can open the image on web browser on long click on the image
-            imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                                                 public boolean onLongClick(View v) {
+        //we can open the image on web browser on long click on the image
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                                             public boolean onLongClick(View v) {
 
-                                                     final Intent intent;
+                                                 final Intent intent;
 
-                                                     //use glide to load the image into the ImageView (imageView)
-                                                     //if getImage() method fails (i.e when img is in content:encoded) load image2
-                                                     if (imageLink.isEmpty()) {
+                                                 //use glide to load the image into the ImageView (imageView)
+                                                 //if getImage() method fails (i.e when img is in content:encoded) load image2
+                                                 if (imageLink.isEmpty()) {
 
-                                                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink2));
+                                                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink2));
 
-                                                     }
-
-                                                     //else use image
-                                                     else {
-                                                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink));
-
-                                                     }
-
-                                                     //open the image
-                                                     openImageLink(intent);
-
-                                                     return true;
                                                  }
+
+                                                 //else use image
+                                                 else {
+                                                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink));
+
+                                                 }
+
+                                                 //open the image
+                                                 openImageLink(intent);
+
+                                                 return true;
                                              }
-            );
+                                         }
+        );
 
         //set the article's content
 
         //use complete description by default, but sometimes the method returns null
-        if(feedCompleteDescription.contains("no desc")) {
+        if (feedCompleteDescription.contains("no desc")) {
             datDescription = Jsoup.parse(feedDescription).text().replace("Continua a leggere...", "");
 
-        // else, use complete description
+            // else, use complete description
         } else {
             datDescription = Jsoup.parse(feedCompleteDescription).text().replace("Continua a leggere...", "");
 
         }
 
         //replace some items since this is a simple TextView
-		String datDescription2format = datDescription.replace("Continue reading...", "");
+        String datDescription2format = datDescription.replace("Continue reading...", "");
 
         String datDescription3format = datDescription2format.replace("Visit on site http://www.noobslab.com", "");
 
@@ -231,14 +230,14 @@ public class ArticleFragment extends Fragment {
         TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
         //set the articles text
-		articletext.setText(datDescription5format);
+        articletext.setText(datDescription5format);
 
         //set the article text size according to preferences
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
         return rootView;
 
-	}
+    }
 
     //share method
     private void share() {
@@ -265,8 +264,7 @@ public class ArticleFragment extends Fragment {
     }
 
     //method to open the feed link using a webview
-    private void openFeedPage(String datfeed)
-    {
+    private void openFeedPage(String datfeed) {
         //we send the url and the title using intents to ArticlePage activity
         final Intent intent = new Intent(getActivity(), ArticlePage.class);
 
@@ -278,8 +276,7 @@ public class ArticleFragment extends Fragment {
     }
 
     //method to open the image link
-    private void openImageLink(Intent intent)
-    {
+    private void openImageLink(Intent intent) {
         CharSequence title2 = getResources().getText(R.string.chooser_title);
         Intent chooser = Intent.createChooser(intent, title2);
         startActivity(chooser);

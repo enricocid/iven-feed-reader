@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <!-- The layout for the dynamic ListView -->
+<!-- The layout for the dynamic ListView -->
 <FrameLayout
     android:clickable="true"
     android:id="@+id/content_frame"

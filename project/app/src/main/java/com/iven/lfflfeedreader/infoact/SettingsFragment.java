@@ -32,11 +32,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         SwitchPreferenceCompat navtint = (SwitchPreferenceCompat) findPreference("Navibar");
 
         //hide this option on pre-lollipop devices
-        if (Build.VERSION.SDK_INT < 21){
+        if (Build.VERSION.SDK_INT < 21) {
             navtint.setEnabled(false);
             navtint.setSummary(getString(R.string.prelollipop));
 
-        //show this option on >= lollipop devices
+            //show this option on >= lollipop devices
         } else {
             navtint.setEnabled(true);
         }
@@ -45,7 +45,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         SwitchPreferenceCompat immersivemode = (SwitchPreferenceCompat) findPreference("Immerseme");
 
         //hide this option on pre-ics devices
-        if (Build.VERSION.SDK_INT < 19){
+        if (Build.VERSION.SDK_INT < 19) {
             immersivemode.setEnabled(false);
             immersivemode.setSummary(getString(R.string.preics));
 
@@ -58,7 +58,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         SwitchPreferenceCompat LightStatusBar = (SwitchPreferenceCompat) findPreference("lightcolored");
 
         //hide this option on pre-marshmallow devices
-        if (Build.VERSION.SDK_INT < 23){
+        if (Build.VERSION.SDK_INT < 23) {
             LightStatusBar.setEnabled(false);
             LightStatusBar.setSummary(getString(R.string.premarshmallow));
 
@@ -71,7 +71,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         android.support.v7.preference.Preference preferencecache = findPreference("clearcache");
 
         preferencecache.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick (Preference preference) {
+            public boolean onPreferenceClick(Preference preference) {
 
                 clearApplicationData();
                 return false;
@@ -94,7 +94,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         android.support.v7.preference.Preference preferencechangelog = findPreference("changelog");
 
         preferencechangelog.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick (Preference preference) {
+            public boolean onPreferenceClick(Preference preference) {
 
                 showChangelog();
                 return false;
@@ -104,7 +104,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         android.support.v7.preference.Preference preferencecredits = findPreference("credits");
 
         preferencecredits.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick (Preference preference) {
+            public boolean onPreferenceClick(Preference preference) {
 
                 showInfo();
                 return false;
@@ -115,7 +115,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         android.support.v7.preference.Preference preferencesource = findPreference("source");
 
         preferencesource.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick (Preference preference) {
+            public boolean onPreferenceClick(Preference preference) {
 
                 showSource();
                 return false;
@@ -223,13 +223,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     //method to open the git page
     private void showSource() {
 
-        try
-        {
+        try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/enricocid/iven-feed-reader")));
 
             //if no browser is found open Google Play Store
-        } catch (ActivityNotFoundException anfe)
-        {
+        } catch (ActivityNotFoundException anfe) {
 
             Toast toast = Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT);
             toast.show();
@@ -237,7 +235,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         }
 
     }
-    
+
     //method to restart the app and apply the changes
     private void restartApp() {
         Intent newIntent = new Intent(getActivity(), SplashActivity.class);
