@@ -39,7 +39,10 @@ public class InfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //provide back navigation
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
