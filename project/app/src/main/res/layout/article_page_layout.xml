@@ -2,39 +2,19 @@
 
 <!-- This is the layout for articles link loading using WebView -->
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/theme_background">
 
-    <!-- Swipe to refresh -->
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout_ap"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!-- Toolbar -->
+    <include layout="@layout/toolbar" />
 
-        <!-- Scrollview -->
-        <android.support.v4.widget.NestedScrollView
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal"
-                android:descendantFocusability="blocksDescendants">
-
-                <!-- JavaScript switch -->
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/js"
-                    android:layout_margin="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/JS_script_on"
-                    android:visibility="invisible" />
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/AppProgressBarHorizontalStyle" />
 
                 <!-- WebView -->
                 <WebView
@@ -43,28 +23,4 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-            </LinearLayout>
-
-        </android.support.v4.widget.NestedScrollView>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-    <!-- The FAB -->
-    <include layout="@layout/fab_back" />
-
-    <!-- Loading text -->
-    <TextView
-        android:contentDescription="@string/desc"
-        android:id="@+id/loading_text"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="@string/loading"
-        android:layout_margin="16dp"
-        android:textColor="?attr/title_color"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-        android:textStyle="bold|italic" />
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

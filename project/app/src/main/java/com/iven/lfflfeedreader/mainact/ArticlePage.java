@@ -2,42 +2,96 @@ package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CompoundButton;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.utils.Preferences;
-import com.iven.lfflfeedreader.utils.ScrollAwareFABBehavior;
 
-public class ArticlePage extends AppCompatActivity implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
+public class ArticlePage extends AppCompatActivity {
 
     //initialize feed infos
     String feedurl;
 
     //webview
     WebView wv;
+    WebSettings ws;
 
     //ContextThemeWrapper
     ContextThemeWrapper themewrapper;
 
     //others
-    SwipeRefreshLayout swipeRefreshLayout;
-    SwitchCompat js_button;
-    FloatingActionButton fab_back;
+    AppCompatCheckBox js_button;
+    Toolbar toolbar;
+    Toast toast;
+    ProgressBar progressBar;
 
+    //create the toolbar's menu
     @SuppressLint("SetJavaScriptEnabled")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.wb_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        MenuItem actionViewItem = menu.findItem(R.id.checkbox);
+
+        //retrieve the ActionView from menu
+        final View v = MenuItemCompat.getActionView(actionViewItem);
+
+        //find the button within actionview
+        js_button = (AppCompatCheckBox) v.findViewById(R.id.js);
+
+        js_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    //enable JavaScript
+                    ws.setJavaScriptEnabled(true);
+
+                    //set Toolbar title to 'JavaScript On'
+                    toolbar.setTitle("JavaScript On");
+                    wv.reload();
+                } else {
+
+                    //disable JavaScript
+                    ws.setJavaScriptEnabled(false);
+
+                    //set Toolbar title to 'JavaScript Off'
+                    toolbar.setTitle("JavaScript Off");
+                    wv.reload();
+                }
+            }
+        });
+
+        // Handle button click here
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,64 +122,60 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
         //set the view
         setContentView(R.layout.article_page_layout);
 
-        //back button
-        fab_back = (FloatingActionButton) findViewById(R.id.back);
+        //set the toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        //this is the click listener to provide back navigation
-        View.OnClickListener listener_back = new View.OnClickListener() {
+        //provide back navigation
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                overridePendingTransition(0, 0);
             }
-        };
+        });
 
-        //set back button on click listener
-        fab_back.setOnClickListener(listener_back);
+        //use a custom color
+        toolbar.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.wb_toolbar));
 
-        //set fab's behavior
-        //initialize coordinator layout
-        CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab_back.getLayoutParams();
-        p.setBehavior(new ScrollAwareFABBehavior());
-        fab_back.setLayoutParams(p);
+        //set status bar color on >= lollipop
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.wb_statusbar));
+        }
 
-        //initialize SwipeRefreshLayout
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout_ap);
-
-        //set on refresh listener
-        swipeRefreshLayout.setOnRefreshListener(this);
-
-        //set the default color of the arrow
-        swipeRefreshLayout.setColorSchemeResources(R.color.refresh_color);
+        //set toolbar title
+        getSupportActionBar().setTitle("JavaScript Off");
 
         //initialize the webview & its settings
         wv = (WebView) findViewById(R.id.web_view);
 
-        final WebSettings webview_settings = wv.getSettings();
+        ws = wv.getSettings();
 
-        //the loading text
-        final TextView text_load = (TextView) findViewById(R.id.loading_text);
-
-        //switch button to enable JavaScript
-        js_button = (SwitchCompat) findViewById(R.id.js);
-
-        js_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    wv.getSettings().setJavaScriptEnabled(true);
-                    wv.reload();
-                } else {
-                    wv.getSettings().setJavaScriptEnabled(false);
-                    wv.reload();
-                }
-            }
-        });
+        //initialize the progress bar
+        progressBar = (ProgressBar) findViewById(R.id.progress);
 
         //set default encoding
-        webview_settings.setDefaultTextEncodingName("utf-8");
+        ws.setDefaultTextEncodingName("utf-8");
 
         //enum for controlling the layout of html. NORMAL means no rendering changes.
         //for more info http://developer.android.com/reference/android/webkit/WebSettings.LayoutAlgorithm.html
-        webview_settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
+        ws.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
+
+        //other WebView Settings
+
+        //fit screen size
+        ws.setLoadWithOverviewMode(true);
+        ws.setUseWideViewPort(true);
+
+        //enable pinch to zoom
+        ws.setBuiltInZoomControls(true);
+        if (Build.VERSION.SDK_INT >= 11) {
+            ws.setDisplayZoomControls(false);
+        }
 
         //load the article's url
         wv.loadUrl(feedurl);
@@ -142,41 +192,39 @@ public class ArticlePage extends AppCompatActivity implements android.support.v4
 
                 running = Math.max(running, 1); // First request move it to 1.
 
-                //and hide JS, fab buttons and the web icon
-                js_button.setVisibility(View.INVISIBLE);
-                fab_back.hide();
-                text_load.setVisibility(View.VISIBLE);
-
                 //hide WebView
                 wv.setVisibility(View.INVISIBLE);
 
-                //show progress circle
-                swipeRefreshLayout.setRefreshing(true);
+                //show loading toast
+                toast = Toast.makeText(getBaseContext(), getResources().getString(R.string.loading), Toast.LENGTH_LONG);
+
+                toast.show();
+
+                //show progress bar
+                progressBar.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 6));
+                progressBar.setVisibility(View.VISIBLE);
+
             }
 
-            //stop progress circle when the page is finished loading
-            //and show the webview and other things
+            //stop progress bar when the page is finished loading
+            //and show the webview
             @Override
             public void onPageFinished(WebView view, String url) {
                 if (--running == 0) { // just "running--;" if you add a timer.
 
                     //show WebView
                     wv.setVisibility(View.VISIBLE);
-                    swipeRefreshLayout.setRefreshing(false);
-                    js_button.setVisibility(View.VISIBLE);
-                    text_load.setVisibility(View.INVISIBLE);
-                    fab_back.show();
+
+                    //cancel the toast if WebView has finished loading
+                    toast.cancel();
+
+                    //hide progress bar
+                    progressBar.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0));
+                    progressBar.setVisibility(View.INVISIBLE);
+
                 }
             }
         });
-    }
-
-    //refresh the page using swipe refresh layout
-    public void onRefresh() {
-
-        //reload the page
-        wv.reload();
-
     }
 
     //(only for >= KitKat)

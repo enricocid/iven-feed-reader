@@ -143,9 +143,19 @@
 
     <style name="PlainText" />
 
-    <!-- FAB appearance -->
-    <style name="FloatingAccentButtonOverlay">
-        <item name="colorAccent">@color/accent_color</item>
+    <!-- Progress bar style -->
+    <style name="AppProgressBarHorizontalStyle" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_background</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- CheckBox button style -->
+    <style name="CheckBox.JavaScript" parent="Base.Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="colorAccent">@color/checkbox_on</item>
     </style>
 
 </resources>

@@ -29,7 +29,10 @@
     <!-- Share and continue reading buttons highlight color -->
     <color name="highlight">@color/accent_color</color>
 
-    <!-- FAB color -->
-    <color name="fab_primary">@color/accent_color</color>
+    <!-- Used for checkbox button-->
+    <color name="checkbox_on">#FFC107</color>
 
+    <!--Color for article's page toolbar and status bar-->
+    <color name="wb_toolbar">#607D8B</color>
+    <color name="wb_statusbar">#455A64</color>
 </resources>

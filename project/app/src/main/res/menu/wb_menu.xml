@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the toolbar menu on article's page -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- JavaScript button -->
+    <item
+        android:id="@+id/checkbox"
+        app:showAsAction="always"
+        app:actionLayout="@layout/checkbox_wb"
+        android:title="@string/JS_script_on" />
+
+</menu>

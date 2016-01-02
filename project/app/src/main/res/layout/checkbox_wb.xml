@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the layout for the CheckBox button to enable JavaScript on article's page -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <!-- JavaScript checkbox -->
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:theme="@style/CheckBox.JavaScript"
+        android:id="@+id/js"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
