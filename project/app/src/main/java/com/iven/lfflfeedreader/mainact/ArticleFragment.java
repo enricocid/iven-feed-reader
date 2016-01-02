@@ -97,6 +97,24 @@ public class ArticleFragment extends Fragment {
         //set Read more listener
         button_continue_reading.setOnClickListener(listener_forward);
 
+        if (Preferences.WebViewEnabled(getContext())) {
+
+            //this is the method to handle the continue reading long button click
+            View.OnLongClickListener listener_external = new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    //open the url using external browser if webview is enabled
+                    continueReading();
+
+                    return true;
+                }
+            };
+
+            //set the long click listener
+            button_continue_reading.setOnLongClickListener(listener_external);
+        }
+
         //share button
         ImageButton button_share = (ImageButton) rootView.findViewById(R.id.button_share);
 
