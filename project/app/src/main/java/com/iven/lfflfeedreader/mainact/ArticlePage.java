@@ -45,7 +45,6 @@ public class ArticlePage extends AppCompatActivity {
     ProgressBar progressBar;
 
     //create the toolbar's menu
-    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -55,6 +54,7 @@ public class ArticlePage extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
