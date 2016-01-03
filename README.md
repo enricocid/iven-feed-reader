@@ -34,7 +34,7 @@ This work is 100% Free and is released under gpl license.
 
 
 
-You can download the latest (7.3.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (7.3.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 It's also on Google Play:
 
