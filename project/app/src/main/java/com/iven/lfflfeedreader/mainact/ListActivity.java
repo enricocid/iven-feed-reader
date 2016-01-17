@@ -157,8 +157,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
+                        final int mItemId = item.getItemId();
+
                         //share button using share intent
-                        switch (item.getItemId()) {
+                        switch (mItemId) {
                             case R.id.share_option:
 
                                 //close DrawerLayout
@@ -170,10 +172,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
                                 i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
                                 startActivity(Intent.createChooser(i, getString(R.string.share)));
-                        }
+                                break;
 
-                        //rate button
-                        switch (item.getItemId()) {
+                            //rate button
                             case R.id.rate:
 
                                 //close DrawerLayout
@@ -181,9 +182,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //call rate method
                                 rate(list);
-                        }
-
-                        switch (item.getItemId()) {
+                                break;
                             case R.id.mail:
 
                                 //close DrawerLayout
@@ -196,63 +195,54 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 if (intent != null) {
                                     startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
                                 }
+                                break;
 
-                        }
-
-                        //built in feeds
-                        //open them using openNewFeed() method
-                        switch (item.getItemId()) {
+                            //built in feeds
+                            //open them using openNewFeed() method
                             case R.id.noobs:
 
                                 //open the feed on background thread calling openNewFeed method and refresh the ListView
                                 openNewFeed("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
-                        }
+                                break;
 
-                        switch (item.getItemId()) {
                             case R.id.softpedia:
 
                                 //open Softpedia feed
                                 openNewFeed("http://feeds.feedburner.com/SoftpediaNews/Linux");
-                        }
+                                break;
 
-                        switch (item.getItemId()) {
                             case R.id.web8:
 
                                 //open Web Upd8 feed
                                 openNewFeed("http://feeds.feedburner.com/webupd8/YqnT");
-                        }
+                                break;
 
-                        switch (item.getItemId()) {
                             case R.id.omg:
 
                                 //open OMG! Ubuntu! feed
                                 openNewFeed("http://feeds.feedburner.com/d0od");
-                        }
+                                break;
 
-                        switch (item.getItemId()) {
                             case R.id.police:
 
                                 //open Android Police feed
                                 openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
-                        }
+                                break;
 
-                        switch (item.getItemId()) {
                             case R.id.androidcommunity:
 
                                 //open Android Police feed
                                 openNewFeed("http://androidcommunity.com/feed/");
-                        }
+                                break;
 
 
-                        //this is the button to add feed
-                        switch (item.getItemId()) {
+                            //this is the button to add feed
+
                             case R.id.xda:
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
-                        }
-
-                        switch (item.getItemId()) {
+                                break;
 
                             case R.id.option:
 
@@ -262,22 +252,21 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 //open Settings Activity
                                 Intent ii = new Intent(ListActivity.this, InfoActivity.class);
                                 startActivity(ii);
-                        }
+                                break;
 
-                        //this is the button to add feed
-                        switch (item.getItemId()) {
+                            //this is the button to add feed
                             case R.id.addfeed:
 
                                 //call addFeed method
                                 addFeed();
-                        }
+                                break;
 
-                        //this is the button to add feed
-                        switch (item.getItemId()) {
+                            //this is the button to add feed
                             case R.id.xda2:
 
                                 //open default feed (xda)
                                 openNewFeed("http://feeds.feedburner.com/xdadevs");
+                                break;
                         }
 
                         return false;
