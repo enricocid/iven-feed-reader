@@ -97,3 +97,11 @@ http://jsoup.org/
 
 Git page:
 https://github.com/bumptech/glide
+
+
+-------------------
+This app follows the **KISS phylosophy** (https://en.wikipedia.org/wiki/KISS_principle), it means that the code/design will be kept simple & fast with no useless implementations/features.
+Anyway, if You have a feature request please send us an email with the following informations (use Issues for bug reports only please):
+
+- Description of the feature;
+- Why You think it would be useful;
