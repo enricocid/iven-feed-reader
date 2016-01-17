@@ -1,4 +1,4 @@
-#IVEN FEED READER
+#IVEN NEWS READER
 ================
 
 
@@ -6,7 +6,7 @@
 
 Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
 
-The app supports 2.3+ devices (minSdkVersion=9) and, thanks to support libs, provides Material theme/elements (Toolbar, material preferences) across all Android versions supported.
+The app supports 2.3+ devices (minSdkVersion=9) and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
 
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
@@ -14,7 +14,7 @@ The app supports 2.3+ devices (minSdkVersion=9) and, thanks to support libs, pro
 
 You can download the latest (7.3.3) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
-The app it's also on Google Play Store:
+The app is also on Google Play Store:
 
 <a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
   <img alt="Get it on Google Play"
@@ -22,9 +22,22 @@ The app it's also on Google Play Store:
 </a>
 
 
-Some noticeable features are the light/dark/darker themes, dark status bar icons (>=Marshmallow), immersive mode (>=KitKat), navbar tint (>=KitKat), in-app WebView, option to disable images, text size options, swipe to refresh layout, responsive toolbar design and a Googlish splash screen/action buttons.
+Some noticeable features:
 
-You can also add **CUSTOM FEEDS** by opening the navigation drawer. There You can click the add button from the Toolbar, compile the dialog text fields, et voila! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
+- Light/dark/darker themes;
+- Dark status bar icons (>=Marshmallow)
+- Immersive mode (>=KitKat)
+- Navbar tint (>=KitKat)
+- In-app WebView
+- Option to disable images
+- Text size options
+- Swipe to refresh layout
+- Responsive toolbar design
+- Googlish splash screen/action buttons.
+
+Last but not least:
+
+You can also add **CUSTOM FEEDS** by opening the navigation drawer. There You can click the add button from the Toolbar, compile the dialog text fields, et voilà! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
 You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
 
 
