@@ -30,7 +30,7 @@ F-Droid
 
 Amazon appstore
 
-<a href="gnegne">
+<a href="http://www.amazon.com/Iven-News-Reader/dp/B01AZHMA28/ref=sr_1_1?s=mobile-apps&ie=UTF8&qid=1453576505&sr=1-1&keywords=iven+news+reader">
   <img alt="Get it on Amazon appstore"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/amazon.png" />
 </a>
 
