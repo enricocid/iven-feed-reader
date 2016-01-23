@@ -14,12 +14,29 @@ The app supports 2.3+ devices (minSdkVersion=9) and provides Material theme/elem
 
 You can download the latest (7.3.3) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
-The app is also on Google Play Store:
+The app is available on:
+
+Google Play Store
 
 <a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
   <img alt="Get it on Google Play"
-       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/gplay.png" />
 </a>
+
+F-Droid
+
+<a href="https://f-droid.org/repository/browse/?fdid=com.iven.lfflfeedreader">
+  <img alt="Get it on F-Droid"
+       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/fdroid.png" />
+</a>
+
+Amazon appstore
+
+<a href="gnegne">
+  <img alt="Get it on Amazon appstore"
+       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/amazon.png" />
+</a>
+
 
 
 Some noticeable features:
