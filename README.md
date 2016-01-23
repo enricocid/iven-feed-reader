@@ -19,22 +19,19 @@ The app is available on:
 Google Play Store
 
 <a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
-  <img alt="Get it on Google Play"
-       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/gplay.png" />
+  <img alt="Get it on Google Play"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/gplay.png" />
 </a>
 
 F-Droid
 
 <a href="https://f-droid.org/repository/browse/?fdid=com.iven.lfflfeedreader">
-  <img alt="Get it on F-Droid"
-       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/fdroid.png" />
+  <img alt="Get it on F-Droid"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/fdroid.png" />
 </a>
 
 Amazon appstore
 
 <a href="gnegne">
-  <img alt="Get it on Amazon appstore"
-       src="https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/amazon.png" />
+  <img alt="Get it on Amazon appstore"       src="https://raw.githubusercontent.com/enricocid/Stores_badges/master/amazon.png" />
 </a>
 
 
