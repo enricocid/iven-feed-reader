@@ -41,7 +41,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:preference-v7:23+'
     compile 'com.android.support:percent:23.+'
-    compile('com.github.afollestad.material-dialogs:core:0.8.5.3@aar') {
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.4@aar') {
         transitive = true
     }
     compile "org.jsoup:jsoup:1.8.+"
