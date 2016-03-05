@@ -13,8 +13,8 @@ android {
         applicationId "com.iven.lfflfeedreader"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 55
-        versionName "7.3.3"
+        versionCode 56
+        versionName "7.3.4"
     }
 
     buildTypes {
@@ -41,7 +41,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:preference-v7:23+'
     compile 'com.android.support:percent:23.+'
-    compile('com.github.afollestad.material-dialogs:core:0.8.5.5@aar') {
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.6@aar') {
         transitive = true
     }
     compile "org.jsoup:jsoup:1.8.+"
