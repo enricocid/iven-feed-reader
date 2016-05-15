@@ -1,6 +1,7 @@
 package com.iven.lfflfeedreader.domparser;
 
 import android.content.res.Resources;
+import android.webkit.MimeTypeMap;
 
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
@@ -119,7 +120,7 @@ public class DOMParser {
                             String src = imgEle.attr("src");
 
                             //setImage2() src
-                            _item.setImage2(src);
+                            _item.setImage2(processImageUrl(src));
 
                             //set complete description
                             _item.setCompleteDescription(theString);
@@ -138,7 +139,7 @@ public class DOMParser {
                             String src = imgEle.attr("src");
 
                             //setImage() src
-                            _item.setImage(src);
+                            _item.setImage(processImageUrl(src));
 
                         }
 
@@ -180,4 +181,13 @@ public class DOMParser {
         return _feed;
     }
 
+    //process images urls to get a "pure" image link, i.e something.extension (extension= .jpg, .png, .gif etc)
+    private String processImageUrl(String imagesUrl) {
+
+        //get image extension
+        String extension =  MimeTypeMap.getFileExtensionFromUrl(imagesUrl);
+
+        //return pure url
+        return imagesUrl.substring(0, imagesUrl.indexOf(extension)) + extension;
+    }
 }

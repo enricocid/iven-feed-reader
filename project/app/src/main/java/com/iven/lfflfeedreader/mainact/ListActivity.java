@@ -820,6 +820,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 //use glide to load the image into the ImageView (lfflimage)
                 Glide.with(activity).load(imageLink2)
 
+                        //load images as bitmaps to get fixed dimensions
+                        .asBitmap()
+
                         //set a placeholder image
                         .placeholder(R.drawable.image_area)
 
@@ -831,6 +834,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             } else {
 
                 Glide.with(activity).load(imageLink)
+
+                        //load images as bitmaps to get fixed dimensions
+                        .asBitmap()
 
                         //set a placeholder image
                         .placeholder(R.drawable.image_area)

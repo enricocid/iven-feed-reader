@@ -180,6 +180,9 @@ public class ArticleFragment extends Fragment {
             //use glide to load the image into the ImageView (imageView)
             Glide.with(getActivity()).load(imageLink2)
 
+                    //load images as bitmaps to get fixed dimensions
+                    .asBitmap()
+
                     //disable cache to avoid garbage collection that may produce crashes
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(imageView);
@@ -189,6 +192,9 @@ public class ArticleFragment extends Fragment {
 
             //load the parsed article's image using glide
             Glide.with(getActivity()).load(imageLink)
+
+                    //load images as bitmaps to get fixed dimensions
+                    .asBitmap()
 
                     //disable cache to avoid garbage collection that may produce crashes
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
