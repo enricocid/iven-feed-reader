@@ -12,7 +12,7 @@ The app supports 2.3+ devices (minSdkVersion=9) and provides Material theme/elem
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
 
 
-You can download the latest (7.3.5) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (7.3.6) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 The app is available on:
 
