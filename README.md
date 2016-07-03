@@ -1,6 +1,9 @@
 #IVEN NEWS READER
 ================
 
+**NOTICE: THE APP IS NOW DEPRECATED AND WON'T RECEIVE THE SUPPORT FOR NEWER ANDROID VERSIONS >6.0.1**
+
+
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header.png)
 
