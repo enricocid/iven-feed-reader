@@ -53,6 +53,15 @@ This work is 100% Free and is released under gpl license.
 -------------
 **THANKS TO**
 
+**- Ivan D'Ortenzio**
+@ivn888
+
+Git page:
+https://github.com/ivn888
+
+RSSfeed sample:
+https://github.com/zackehh/RSSDemo
+
 **- Isaac Whitfield**
 @zackehh
 
