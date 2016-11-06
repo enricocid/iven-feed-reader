@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -34,7 +33,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.AlertDialogWrapper;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -44,6 +42,7 @@ import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.domparser.RSSItem;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
+import com.iven.lfflfeedreader.utils.HomeUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
 
 import java.util.ArrayList;
@@ -62,10 +61,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //Home ListView
     ListView list;
     CustomListAdapter adapter;
-
-    //Dynamic ListView
-    private List<String> mUrls;
-    private List<String> mFeeds;
     SQLiteDatabase mydb;
     CustomDynamicAdapter adapter_dynamic;
     ListView listfeed;
@@ -73,14 +68,11 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     String feedcustom2;
 
     //Others
-    Intent intent;
     SwipeRefreshLayout swiperefresh;
 
     //menu items
     Menu menu;
     MenuItem addfeed;
-    MenuItem default_feeds;
-    MenuItem xda;
 
     //Connectivity manager
     ConnectivityManager cM;
@@ -95,6 +87,11 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //the default feed
     String feedURL = SplashActivity.default_feed_value;
 
+
+    //Dynamic ListView
+    private List<String> mUrls;
+    private List<String> mFeeds;
+
     //create the toolbar's menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,12 +102,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //initialize add feed menu items
         addfeed = menu.findItem(R.id.addfeed);
-
-        //xda menu item
-        xda = menu.findItem(R.id.xda2);
-
-        //built in feeds
-        default_feeds = menu.findItem(R.id.default_feeds);
 
         return super.onCreateOptionsMenu(menu);
 
@@ -167,11 +158,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 closeDrawer();
 
                                 //open Google Play Store page
-                                Intent i = new Intent(Intent.ACTION_SEND);
-                                i.setType("text/plain");
-                                i.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader");
-                                i.putExtra(android.content.Intent.EXTRA_SUBJECT, ("Lffl Feed Reader"));
-                                startActivity(Intent.createChooser(i, getString(R.string.share)));
+                                HomeUtils.shareGoogleStorePage(ListActivity.this);
                                 break;
 
                             //rate button
@@ -181,67 +168,17 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 closeDrawer();
 
                                 //call rate method
-                                rate(list);
+                                HomeUtils.rate(ListActivity.this);
+
                                 break;
+
                             case R.id.mail:
 
                                 //close DrawerLayout
                                 closeDrawer();
 
-                                //send a mail to us
-                                intent = new Intent(android.content.Intent.ACTION_SEND);
-                                intent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"ivenfeedreader@outlook.com"});
-                                intent.setType("message/rfc822");
-                                if (intent != null) {
-                                    startActivity(Intent.createChooser(intent, getString(R.string.emailC)));
-                                }
-                                break;
+                                HomeUtils.mailus(ListActivity.this);
 
-                            //built in feeds
-                            //open them using openNewFeed() method
-                            case R.id.noobs:
-
-                                //open the feed on background thread calling openNewFeed method and refresh the ListView
-                                openNewFeed("http://feeds.feedburner.com/NoobslabUbuntu/linuxNewsReviewsTutorialsApps");
-                                break;
-
-                            case R.id.softpedia:
-
-                                //open Softpedia feed
-                                openNewFeed("http://feeds.feedburner.com/SoftpediaNews/Linux");
-                                break;
-
-                            case R.id.web8:
-
-                                //open Web Upd8 feed
-                                openNewFeed("http://feeds.feedburner.com/webupd8/YqnT");
-                                break;
-
-                            case R.id.omg:
-
-                                //open OMG! Ubuntu! feed
-                                openNewFeed("http://feeds.feedburner.com/d0od");
-                                break;
-
-                            case R.id.police:
-
-                                //open Android Police feed
-                                openNewFeed("http://feeds.feedburner.com/androidpolice/wszl");
-                                break;
-
-                            case R.id.androidcommunity:
-
-                                //open Android Police feed
-                                openNewFeed("http://androidcommunity.com/feed/");
-                                break;
-
-
-                            //this is the button to add feed
-
-                            case R.id.xda:
-
-                                //open default feed (xda)
-                                openNewFeed("http://feeds.feedburner.com/xdadevs");
                                 break;
 
                             case R.id.option:
@@ -259,13 +196,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //call addFeed method
                                 addFeed();
-                                break;
-
-                            //this is the button to add feed
-                            case R.id.xda2:
-
-                                //open default feed (xda)
-                                openNewFeed("http://feeds.feedburner.com/xdadevs");
                                 break;
                         }
 
@@ -292,8 +222,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 toolbar.setTitle(getResources().getString(R.string.feedmenu));
 
                 //show the add feed menu option
-                showAddFeed();
-
+                HomeUtils.showAddFeed(addfeed);
             }
 
             //Called when the drawer is closed
@@ -303,14 +232,13 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 toolbar.setTitle(getResources().getString(R.string.app_name));
 
                 //hide the add feed menu option
-                hideAddFeed();
-
+                HomeUtils.hideAddFeed(addfeed);
             }
 
         };
 
         //this handle the hamburger animation
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         //initialize swipe to refresh layout
         swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
@@ -442,64 +370,63 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                     listfeed.setEnabled(false);
 
                                                     //on long click we create a new alert dialog
-                                                    AlertDialogWrapper.Builder alert = new AlertDialogWrapper.Builder(
-                                                            ListActivity.this);
 
-                                                    alert.setTitle(R.string.deletedialogtitle);
-                                                    alert.setMessage(getResources().getString(R.string.deletedialogquestion) + " '" + mFeeds.get(datposition) + "' ?");
-                                                    alert.setPositiveButton(R.string.deleteok, new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
+                                                    new MaterialDialog.Builder(ListActivity.this)
 
-                                                            //on positive click we delete the feed from selected position
+                                                            .title(R.string.deletedialogtitle)
+                                                            .content(getResources().getString(R.string.deletedialogquestion) + " '" + mFeeds.get(datposition) + "' ?")
 
-                                                            //we're gonna delete them from the db calling this method:
-                                                            removedatFeed(datposition);
+                                                            .positiveText(R.string.deleteok)
+                                                            .negativeText(R.string.deleteno)
 
-                                                            //enable ListView clicks
-                                                            listfeed.setEnabled(true);
-
-                                                        }
-                                                    });
-
-                                                    //when You select by long clicking a feed the ListView becomes disabled to avoid unwanted clicks
-                                                    alert.setOnCancelListener(
-                                                            new DialogInterface.OnCancelListener() {
-
+                                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
                                                                 @Override
-                                                                public void onCancel(DialogInterface dialog) {
+                                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                                    //on positive click we delete the feed from selected position
+
+                                                                    //we're gonna delete them from the db calling this method:
+                                                                    removedatFeed(datposition);
 
                                                                     //enable ListView clicks
                                                                     listfeed.setEnabled(true);
-
                                                                 }
-                                                            }
+                                                            })
 
-                                                    );
+                                                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                                                @Override
+                                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                                    //enable ListView clicks
+                                                                    listfeed.setEnabled(true);
+                                                                }
 
-                                                    //on negative button we dismiss the dialog
-                                                    alert.setNegativeButton(R.string.deleteno, new DialogInterface.OnClickListener()
+                                                            })
 
-                                                    {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            .cancelListener(new DialogInterface.OnCancelListener() {
 
-                                                            //dismiss the dialog
-                                                            dialog.dismiss();
-
-                                                            //enable ListView clicks
-                                                            listfeed.setEnabled(true);
-
-                                                        }
-                                                    });
-
-                                                    alert.show();
+                                                                @Override
+                                                                public void onCancel(DialogInterface dialog) {
+                                                                    //enable ListView clicks
+                                                                    listfeed.setEnabled(true);
+                                                                }
+                                                            })
+                                                            .show();
                                                     return false;
                                                 }
                                             }
 
         );
     }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        //sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+
+    }
+
+    //Adapters for the Home and Dynamic ListViews
 
     //method to add feeds inside the db and the dynamic ListView
     public void addFeed() {
@@ -621,12 +548,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         listfeed.setAdapter(adapter_dynamic);
     }
 
-    //this is the rate button
-    public void rate(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://details?id=com.iven.lfflfeedreader"));
-        startActivity(intent);
-    }
+
+    //Custom methods starts here
 
     //create a pending Runnable that runs in background to close the drawer smoothly
     public void closeDrawer() {
@@ -638,7 +561,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             @Override
             public void run() {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-                hideAddFeed();
+
+                //hide the add feed menu option
+                HomeUtils.hideAddFeed(addfeed);
 
             }
         }, 200);
@@ -678,7 +603,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 swiperefresh.setRefreshing(false);
 
                                 //set feedURL calling setFeedString method, it is important if we want working swipe refresh listener
-                                setFeedString(datfeed);
+                                //setFeedString(datfeed);
+                                HomeUtils.setFeedString(datfeed);
+
                             }
                         }
                     });
@@ -722,21 +649,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        //sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
-
-    }
-
     //this is the custom list adapter for the home ListView
     class CustomListAdapter extends BaseAdapter {
 
         private LayoutInflater layoutInflater;
 
-        public CustomListAdapter(ListActivity activity) {
+        CustomListAdapter(ListActivity activity) {
 
             //initialize layout inflater
             layoutInflater = (LayoutInflater) activity
@@ -826,7 +744,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         //set a placeholder image
                         .placeholder(R.drawable.image_area)
 
-                                //disable cache to avoid garbage collection that may produce crashes
+                        //disable cache to avoid garbage collection that may produce crashes
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .into(lfflImage);
 
@@ -841,7 +759,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         //set a placeholder image
                         .placeholder(R.drawable.image_area)
 
-                                //disable cache to avoid garbage collection that may produce crashes
+                        //disable cache to avoid garbage collection that may produce crashes
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .into(lfflImage);
             }
@@ -849,10 +767,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             return listItem;
         }
     }
-
-
-    //this is the custom dynamic adapter for the custom feeds ListView
-    //we set two items for feeds names/urls and a visible TextView for feeds names
 
     class CustomDynamicAdapter extends BaseAdapter {
 
@@ -864,7 +778,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //for feeds names
         private List<String> mList2;
 
-        public CustomDynamicAdapter(ListActivity activity, List<String> list, List<String> list2) {
+        CustomDynamicAdapter(ListActivity activity, List<String> list, List<String> list2) {
 
             //for urls
             mList = list;
@@ -916,46 +830,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
             return listItem;
         }
-    }
-
-    private void hideAddFeed() {
-
-        //hide addfeed menu item
-        addfeed.setVisible(false);
-
-        if (Preferences.builtfeedsEnabled(getBaseContext())) {
-
-            //hide built in feeds menu if enabled
-            default_feeds.setVisible(false);
-
-        } else {
-
-            //hide xda menu item
-            xda.setVisible(false);
-        }
-
-    }
-
-    private void showAddFeed() {
-
-        //show addfeed menu item
-        addfeed.setVisible(true);
-
-        if (Preferences.builtfeedsEnabled(getBaseContext())) {
-
-            //show built in feeds menu if enabled
-            default_feeds.setVisible(true);
-        } else {
-
-            //show xda menu item
-            xda.setVisible(true);
-        }
-    }
-
-    //method to set the feed string on feed click
-    private void setFeedString(String feed_string) {
-
-        feedURL = feed_string;
     }
 }
 

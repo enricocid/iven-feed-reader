@@ -6,5 +6,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@drawable/background_splash_connection"/>
+    android:background="@drawable/background_splash_connection"
+    tools:context=".SplashActivity" />

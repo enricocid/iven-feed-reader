@@ -3,9 +3,9 @@
 <!-- this is the layout for the home activity (ListActivity) with elevation on navigation drawer -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- The toolbar -->
     <include layout="@layout/toolbar" />
@@ -14,8 +14,8 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="6dp"
-        android:background="?attr/theme_background">
+        android:background="?attr/theme_background"
+        android:elevation="6dp">
 
         <!-- The layout containing the articles list -->
         <include layout="@layout/articles_list" />

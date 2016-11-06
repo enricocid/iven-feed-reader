@@ -14,29 +14,16 @@ public class Preferences {
 
     //This is where preferences are stored.
 
-    //Text size options
-    static float verysmall = 12;
-    static float small = 18;
-    static float medium = 24;
-    static float large = 30;
-    static float verylarge = 36;
-    static float small_list = 10;
-    static float medium_list = 14;
-    static float large_list = 18;
-
-    //Themes options
-
-    //light theme
-    static int light = R.style.Theme_iven;
-
-    //dark theme
-    static int dark = R.style.Theme_iven_dark;
-
-    //darker theme
-    static int darker = R.style.Theme_iven_darker;
-
     //multi-preference dialog for articles text size
     public static float resolveTextSizeResId(Context context) {
+
+        //Text size options
+        float verysmall = 12;
+        float small = 18;
+        float medium = 24;
+        float large = 30;
+        float verylarge = 36;
+
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_text_size), String.valueOf(1));
         switch (Integer.parseInt(choice)) {
@@ -56,6 +43,12 @@ public class Preferences {
 
     //multi-preference dialog for list items text size
     public static float resolveTextSizeListResId(Context context) {
+
+        //Text size options
+        float small_list = 10;
+        float medium_list = 14;
+        float large_list = 18;
+
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_text_size_list), String.valueOf(6));
         switch (Integer.parseInt(choice)) {
@@ -70,7 +63,19 @@ public class Preferences {
     }
 
     //multi-preference dialog for theme options
-    public static int resolveTheme(Context context) {
+    private static int resolveTheme(Context context) {
+
+        //Themes options
+
+        //light theme
+        int light = R.style.Theme_iven;
+
+        //dark theme
+        int dark = R.style.Theme_iven_dark;
+
+        //darker theme
+        int darker = R.style.Theme_iven_darker;
+
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_theme), String.valueOf(8));
         switch (Integer.parseInt(choice)) {
@@ -98,7 +103,7 @@ public class Preferences {
     }
 
     //are light icons enabled?
-    public static boolean LightIconsEnabled(Context context) {
+    private static boolean LightIconsEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("lightcolored", false);
     }
@@ -113,7 +118,7 @@ public class Preferences {
     }
 
     //Is navigation bar tint enabled?
-    public static boolean NavTintEnabled(Context context) {
+    private static boolean NavTintEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Navibar", false);
     }
@@ -128,7 +133,7 @@ public class Preferences {
     }
 
     //is immersive mode enabled?
-    public static boolean immersiveEnabled(Context context) {
+    private static boolean immersiveEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("Immerseme", false);
 
@@ -161,12 +166,5 @@ public class Preferences {
     public static boolean imagesRemoved(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("images", false);
-    }
-
-    //preference to enable built in feeds menu
-    public static boolean builtfeedsEnabled(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("builtin", false);
-
     }
 }

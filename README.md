@@ -1,7 +1,7 @@
-#IVEN NEWS READER
-================
+-# Iven News Reader
+ -Simple app to read feed rss
 
-**NOTICE: THE APP IS NOW DEPRECATED AND WON'T RECEIVE THE SUPPORT FOR NEWER ANDROID VERSIONS >6.0.1**
+
 
 
 
@@ -9,13 +9,26 @@
 
 Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
 
-The app supports 2.3+ devices (minSdkVersion=9) and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
+The app supports 3.0+ devices and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
 
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
 
 
-You can download the latest (7.3.6) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (2.0.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+
+
+Google Play Store
+
+<a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
+  <img alt="Get it on Google Play"       src="https://raw.githubusercontent.com/enricocid/Storage-USB/master/art/gplay.png" />
+</a>
+ 
+F-Droid
+ 
+<a href="https://f-droid.org/repository/browse/?fdid=com.iven.lfflfeedreader">
+  <img alt="Get it on F-Droid"       src="https://raw.githubusercontent.com/enricocid/Storage-USB/master/art/fdroid.png" />
+</a>
 
 
 Some noticeable features:

@@ -1,12 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.iven.lfflfeedreader"
-    android:versionCode="58"
-    android:versionName="7.3.6"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-sdk
-            android:minSdkVersion="9"
-            android:targetSdkVersion="23" />
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.iven.lfflfeedreader">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,49 +8,63 @@
 
     <application
         android:allowBackup="false"
-        tools:replace="android:allowBackup, android:icon"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme_iven">
-        
-    <uses-library android:required="false" android:name="com.sec.android.app.multiwindow"/>
-    <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
-    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip"/>
-    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip"/>
-    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip"/>
-    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip"/>
+        android:theme="@style/Theme_iven"
+        tools:replace="android:allowBackup, android:icon">
+
+        <uses-library
+            android:name="com.sec.android.app.multiwindow"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.sec.android.support.multiwindow"
+            android:value="true" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+            android:value="598.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+            android:value="598.0dip" />
 
         <activity
-        android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
-        android:theme="@style/TranslucentSplash">
+            android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
+            android:theme="@style/TranslucentSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.iven.lfflfeedreader.mainact.ListActivity"
-            android:theme="@style/Theme_iven"
-            android:screenOrientation="portrait" />
-
-        <activity android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven"
-            />
+            android:theme="@style/Theme_iven" />
 
         <activity
-    	android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
-    	android:label="@string/settings"
-    	android:screenOrientation="portrait"
-    	android:theme="@style/Theme_iven"/>
+            android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_iven" />
+
+        <activity
+            android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
+            android:label="@string/settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_iven" />
 
         <activity
             android:name="com.iven.lfflfeedreader.mainact.ArticlePage"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven"/>
-        
+            android:theme="@style/Theme_iven" />
+
     </application>
 
 </manifest>

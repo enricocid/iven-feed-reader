@@ -3,18 +3,18 @@
 <!-- This is the layout for Info Activity -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/theme_background"
     android:fitsSystemWindows="true"
-    android:background="?attr/theme_background">
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar" />
 
     <fragment
         android:name="com.iven.lfflfeedreader.infoact.SettingsFragment"
-        android:tag="com.iven.lfflfeedreader.infoact.SettingsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:tag="com.iven.lfflfeedreader.infoact.SettingsFragment" />
 
 </LinearLayout>

@@ -74,6 +74,16 @@ public class ArticleActivity extends AppCompatActivity {
 
     }
 
+    //(only for >= KitKat)
+    //fix Immersive mode navigation becomes sticky after minimise-restore
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            Preferences.applyImmersiveMode(this);
+        }
+    }
+
     //viewpager custom adapter, use FragmentStatePagerAdapter to handle a large number of items
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -98,16 +108,6 @@ public class ArticleActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             return feed.getItemCount();
-        }
-    }
-
-    //(only for >= KitKat)
-    //fix Immersive mode navigation becomes sticky after minimise-restore
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            Preferences.applyImmersiveMode(this);
         }
     }
 }

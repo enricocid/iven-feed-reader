@@ -4,45 +4,45 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="start"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingTop="8dp">
 
     <!-- Message -->
     <TextView
         android:id="@android:id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
-        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        tools:text="Message"
         android:text="@string/adddialogfeed"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="UnusedAttribute" />
+        android:textSize="16sp"
+        tools:ignore="UnusedAttribute"
+        tools:text="Message" />
 
     <!-- Url -->
     <EditText
         android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
-        android:singleLine="true"
-        android:lines="1"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/url_name"
+        android:lines="1"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:hint="@string/url_name"
-        android:layout_gravity="center_horizontal"
+        android:singleLine="true"
+        android:textSize="16sp"
         tools:ignore="UnusedAttribute" />
 
     <!-- Title -->
@@ -50,15 +50,15 @@
         android:id="@+id/txt2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/title_name"
+        android:lines="1"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:singleLine="true"
-        android:lines="1"
-        android:hint="@string/title_name"
-        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
         tools:ignore="UnusedAttribute" />
 
 </LinearLayout>

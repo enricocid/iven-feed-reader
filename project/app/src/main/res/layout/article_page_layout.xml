@@ -5,8 +5,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="?attr/theme_background">
+    android:background="?attr/theme_background"
+    android:orientation="vertical">
 
     <!-- Toolbar -->
     <include layout="@layout/toolbar" />
@@ -16,11 +16,11 @@
         android:id="@+id/progress"
         style="@style/AppProgressBarHorizontalStyle" />
 
-                <!-- WebView -->
-                <WebView
-                    android:id="@+id/web_view"
-                    android:visibility="invisible"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+    <!-- WebView -->
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </LinearLayout>

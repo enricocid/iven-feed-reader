@@ -8,84 +8,37 @@
     <!-- Share -->
     <item
         android:id="@+id/share_option"
-        app:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/share" />
+        android:title="@string/share"
+        app:showAsAction="never" />
 
     <!-- Rate -->
     <item
         android:id="@+id/rate"
-        app:showAsAction="never"
         android:orderInCategory="200"
-        android:title="@string/rate_me" />
+        android:title="@string/rate_me"
+        app:showAsAction="never" />
 
     <!-- Mail us -->
     <item
         android:id="@+id/mail"
-        app:showAsAction="never"
         android:orderInCategory="200"
-        android:title="@string/email" />
+        android:title="@string/email"
+        app:showAsAction="never" />
 
     <!-- Settings -->
     <item
         android:id="@+id/option"
-        app:showAsAction="never"
         android:orderInCategory="200"
-        android:title="@string/settings" />
+        android:title="@string/settings"
+        app:showAsAction="never" />
 
     <!-- Add feed -->
     <item
         android:id="@+id/addfeed"
-        app:showAsAction="always"
         android:icon="?attr/plus_icon"
         android:title="@string/feedmenu"
-        android:visible="false" />
-
-    <!-- XDA feed (default) -->
-    <item
-        android:id="@+id/xda2"
-        app:showAsAction="always"
-        android:title="@string/xda"
-        android:icon="?attr/xda_icon"
-        android:visible="false" />
-
-    <!-- Built in feeds menu -->
-    <item
-        android:id="@+id/default_feeds"
         android:visible="false"
-        app:showAsAction="always"
-        android:icon="?attr/rss_icon"
-        android:title="@string/moar">
+        app:showAsAction="always" />
 
-        <menu>
-
-            <item
-                android:id="@+id/xda"
-                android:title="@string/xda" />
-
-            <item
-                android:id="@+id/police"
-                android:title="@string/police" />
-
-            <item
-                android:id="@+id/androidcommunity"
-                android:title="@string/ac" />
-
-            <item
-                android:id="@+id/noobs"
-                android:title="@string/noobs" />
-
-            <item
-                android:id="@+id/softpedia"
-                android:title="@string/softpedia" />
-
-            <item
-                android:id="@+id/web8"
-                android:title="@string/web8" />
-
-            <item
-                android:id="@+id/omg"
-                android:title="@string/omg" />
-        </menu>
-    </item>
 </menu>

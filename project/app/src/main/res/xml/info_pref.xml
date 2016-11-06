@@ -3,90 +3,83 @@
 <!-- Preferences -->
 
 <android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/preference_screen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/preference_screen">
+    android:layout_height="match_parent">
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/opts" />
 
     <!-- Theme -->
     <android.support.v7.preference.ListPreference
-        android:key="@string/pref_theme"
-        android:summary="@string/themesum"
+        android:defaultValue="8"
+        android:dialogIcon="?attr/theme_icon"
         android:entries="@array/theme_options"
         android:entryValues="@array/pref_theme_list_values"
-        android:defaultValue="8"
-        android:title="@string/pref_theme_title"
-        android:dialogIcon="?attr/theme_icon" />
+        android:key="@string/pref_theme"
+        android:summary="@string/themesum"
+        android:title="@string/pref_theme_title" />
 
     <!-- Dark status bar icons -->
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
         android:key="lightcolored"
-        android:title="@string/light_mode"
         android:summary="@string/light_mode_sum"
-        android:defaultValue="false" />
+        android:title="@string/light_mode" />
 
     <!-- Navigation bar tint -->
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
         android:key="Navibar"
-        android:title="@string/nav_color"
         android:summary="@string/nav_color_sum"
-        android:defaultValue="false" />
+        android:title="@string/nav_color" />
 
     <!-- Immersive mode -->
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
         android:key="Immerseme"
-        android:title="@string/immersive_mode"
         android:summary="@string/immersive_mode_sum"
-        android:defaultValue="false" />
+        android:title="@string/immersive_mode" />
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/moreopts" />
 
     <!-- Disable images -->
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
         android:key="images"
-        android:title="@string/no_images"
         android:summary="@string/no_images_sum"
-        android:defaultValue="false" />
+        android:title="@string/no_images" />
 
     <!-- WebView -->
     <android.support.v7.preference.SwitchPreferenceCompat
+        android:defaultValue="false"
         android:key="WebViewLoad"
-        android:title="@string/Reading"
         android:summary="@string/Readingsum"
-        android:defaultValue="false" />
-
-    <!-- Built in feeds -->
-    <android.support.v7.preference.SwitchPreferenceCompat
-        android:key="builtin"
-        android:title="@string/moar_pref"
-        android:summary="@string/moar_pref_sum"
-        android:defaultValue="false" />
+        android:title="@string/Reading" />
 
     <!-- TextSize options -->
     <android.support.v7.preference.ListPreference
-        android:key="@string/pref_text_size"
-        android:summary="@string/pref_text_size_summary"
+        android:defaultValue="1"
+        android:dialogIcon="?attr/textsize_icon"
         android:entries="@array/text_size_options"
         android:entryValues="@array/pref_text_size_values"
-        android:defaultValue="1"
-        android:title="@string/pref_text_size_title"
-        android:dialogIcon="?attr/textsize_icon" />
+        android:key="@string/pref_text_size"
+        android:summary="@string/pref_text_size_summary"
+        android:title="@string/pref_text_size_title" />
 
     <android.support.v7.preference.ListPreference
-        android:key="@string/pref_text_size_list"
-        android:summary="@string/pref_text_size_list_summary"
+        android:defaultValue="6"
+        android:dialogIcon="?attr/textsize_icon"
         android:entries="@array/text_size_list_options"
         android:entryValues="@array/pref_text_size_list_values"
-        android:defaultValue="6"
-        android:title="@string/pref_text_size_list_title"
-        android:dialogIcon="?attr/textsize_icon" />
+        android:key="@string/pref_text_size_list"
+        android:summary="@string/pref_text_size_list_summary"
+        android:title="@string/pref_text_size_list_title" />
 
     <!-- Clear cache -->
     <android.support.v7.preference.Preference
         android:key="clearcache"
-        android:title="@string/clear_cache"
-        android:summary="@string/clear_cache_sum" />
+        android:summary="@string/clear_cache_sum"
+        android:title="@string/clear_cache" />
 
     <android.support.v7.preference.PreferenceCategory android:title="@string/aboutopts" />
 

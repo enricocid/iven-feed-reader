@@ -185,7 +185,7 @@ public class DOMParser {
     private String processImageUrl(String imagesUrl) {
 
         //get image extension
-        String extension =  MimeTypeMap.getFileExtensionFromUrl(imagesUrl);
+        String extension = MimeTypeMap.getFileExtensionFromUrl(imagesUrl);
 
         //return pure url
         return imagesUrl.substring(0, imagesUrl.indexOf(extension)) + extension;

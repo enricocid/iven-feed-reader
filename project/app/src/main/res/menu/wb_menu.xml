@@ -8,8 +8,8 @@
     <!-- JavaScript button -->
     <item
         android:id="@+id/checkbox"
-        app:showAsAction="always"
+        android:title="@string/JS_script_on"
         app:actionLayout="@layout/checkbox_wb"
-        android:title="@string/JS_script_on" />
+        app:showAsAction="always" />
 
 </menu>

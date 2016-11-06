@@ -2,11 +2,10 @@
 
 <!-- This is the layout for the home articles ListView -->
 
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <!-- Swipe to refresh -->
     <android.support.v4.widget.SwipeRefreshLayout
@@ -16,9 +15,9 @@
 
         <!-- The home ListView -->
         <ListView
+            android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@android:id/list"
             android:cacheColorHint="@android:color/transparent"
             android:listSelector="@drawable/activated_background" />
 

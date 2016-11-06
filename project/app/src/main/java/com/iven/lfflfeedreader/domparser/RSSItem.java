@@ -22,21 +22,49 @@ public class RSSItem implements Serializable {
     private String rss_link = "no link";
     private String item_image2 = "no image";
 
+    public String getTitle() {
+        return item_title;
+    }
+
     //set 'em all
     void setTitle(String title) {
         item_title = title;
+    }
+
+    public String getDescription() {
+        return item_desc;
     }
 
     void setDescription(String description) {
         item_desc = description;
     }
 
+    public String getCompleteDescription() {
+        return complete_desc;
+    }
+
     void setCompleteDescription(String complete_description) {
         complete_desc = complete_description;
     }
 
+    public String getDate() {
+        return item_date;
+    }
+
     void setDate(String pubdate) {
         item_date = pubdate;
+    }
+
+    public String getLink() {
+        return rss_link;
+    }
+
+    void setLink(String link) {
+        rss_link = link;
+    }
+
+    public String getImage() {
+        return item_image;
     }
 
     void setImage(String image) {
@@ -44,41 +72,12 @@ public class RSSItem implements Serializable {
         item_image = image;
     }
 
+    public String getImage2() {
+        return item_image2;
+    }
+
     void setImage2(String image2) {
 
         item_image2 = image2;
-    }
-
-    void setLink(String link) {
-        rss_link = link;
-    }
-
-    public String getTitle() {
-        return item_title;
-    }
-
-
-    public String getDescription() {
-        return item_desc;
-    }
-
-    public String getCompleteDescription() {
-        return complete_desc;
-    }
-
-    public String getDate() {
-        return item_date;
-    }
-
-    public String getLink() {
-        return rss_link;
-    }
-
-    public String getImage() {
-        return item_image;
-    }
-
-    public String getImage2() {
-        return item_image2;
     }
 }

@@ -24,6 +24,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     private SharedPreferences.OnSharedPreferenceChangeListener mListenerOptions;
 
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+
+        return dir.delete();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,20 +197,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
             }
         }
-    }
-
-    public static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-
-        return dir.delete();
     }
 
     //method to open the credits dialog

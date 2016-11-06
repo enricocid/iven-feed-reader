@@ -9,10 +9,10 @@
 
     <!-- Feeds title-->
     <TextView
-        android:layout_margin="16dp"
         android:id="@+id/title_dyn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="20sp"

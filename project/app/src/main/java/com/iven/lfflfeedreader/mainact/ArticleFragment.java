@@ -19,6 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.domparser.RSSItem;
+import com.iven.lfflfeedreader.utils.ArticleUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
 
 import org.jsoup.Jsoup;
@@ -87,9 +88,9 @@ public class ArticleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Preferences.WebViewEnabled(getContext())) {
-                    openFeedPage(feedLink);
+                    ArticleUtils.openFeedPage(getActivity(), feedLink);
                 } else {
-                    continueReading();
+                    ArticleUtils.continueReading(getActivity(), feedLink);
                 }
             }
         };
@@ -105,7 +106,7 @@ public class ArticleFragment extends Fragment {
                 public boolean onLongClick(View v) {
 
                     //open the url using external browser if webview is enabled
-                    continueReading();
+                    ArticleUtils.continueReading(getActivity(), feedLink);
 
                     return true;
                 }
@@ -122,7 +123,8 @@ public class ArticleFragment extends Fragment {
         View.OnClickListener listener_share = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                share();
+                ArticleUtils.share(getActivity(), feedLink, feedTitle);
+
             }
         };
 
@@ -136,7 +138,9 @@ public class ArticleFragment extends Fragment {
         View.OnClickListener listener_back = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goBack();
+                AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+                ArticleUtils.goBack(appCompatActivity);
+
             }
         };
 
@@ -222,7 +226,8 @@ public class ArticleFragment extends Fragment {
                                                  }
 
                                                  //open the image
-                                                 openImageLink(intent);
+                                                 ArticleUtils.openImageLink(getActivity(), intent);
+
 
                                                  return true;
                                              }
@@ -261,48 +266,5 @@ public class ArticleFragment extends Fragment {
 
         return rootView;
 
-    }
-
-    //share method
-    private void share() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, feedLink);
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.share) + " '" + feedTitle + "'"));
-    }
-
-    //read more method
-    private void continueReading() {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(feedLink));
-        CharSequence title2 = getResources().getText(R.string.chooser_title);
-        Intent chooser = Intent.createChooser(intent, title2);
-        startActivity(chooser);
-    }
-
-    //back navigation method
-    private void goBack() {
-
-        //Cast getActivity() to AppCompatActivity to have access to support appcompat methods (onBackPressed();)
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.onBackPressed();
-    }
-
-    //method to open the feed link using a webview
-    private void openFeedPage(String datfeed) {
-        //we send the url and the title using intents to ArticlePage activity
-        final Intent intent = new Intent(getActivity(), ArticlePage.class);
-
-        intent.putExtra("feedselected", datfeed);
-
-        //and start a new ArticlePage activity with the selected feed
-        startActivity(intent);
-        getActivity().overridePendingTransition(0, 0);
-    }
-
-    //method to open the image link
-    private void openImageLink(Intent intent) {
-        CharSequence title2 = getResources().getText(R.string.chooser_title);
-        Intent chooser = Intent.createChooser(intent, title2);
-        startActivity(chooser);
     }
 }

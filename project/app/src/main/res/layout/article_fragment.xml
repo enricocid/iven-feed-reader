@@ -3,31 +3,30 @@
 <!-- This is the layout for Articles using text view -->
 
 <!-- Scrollview -->
-<ScrollView
-    android:scrollbars="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:scrollbars="vertical">
 
     <LinearLayout
         android:id="@+id/article_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center_horizontal"
         android:layout_margin="8dp"
-        android:descendantFocusability="blocksDescendants">
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical">
 
         <!-- Title -->
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="10"
-            android:textSize="24sp"
             android:layout_marginBottom="16dp"
-            android:textColor="?attr/title_color"
+            android:maxLines="10"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:textColor="?attr/title_color"
+            android:textSize="24sp"
             android:textStyle="bold|italic" />
 
         <!-- Subtitle -->
@@ -35,41 +34,41 @@
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="?attr/title_color"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+            android:textColor="?attr/title_color"
+            android:textSize="14sp"
             android:textStyle="italic" />
 
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/listDivider" />
 
         <!-- Article's image -->
         <ImageView
-            android:contentDescription="@string/desc"
             android:id="@+id/img"
-            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/desc" />
 
         <!-- Article TextView -->
         <TextView
             android:id="@+id/webv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
             android:textColor="?attr/article_text_color"
             android:textSize="@dimen/txtSize"
-            android:typeface="sans"
-            android:lineSpacingMultiplier="1.2" />
+            android:typeface="sans" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:background="?android:attr/listDivider" />
 
         <!-- Action buttons (Read more..., Share, Go back) -->
         <include layout="@layout/action_buttons" />

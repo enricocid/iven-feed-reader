@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- The layout for the dynamic ListView -->
-<FrameLayout
-    android:clickable="true"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
     android:layout_width="290dp"
     android:layout_height="match_parent"
-    android:background="?attr/theme_background"
     android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="?attr/theme_background"
+    android:clickable="true"
+    android:fitsSystemWindows="true">
 
     <!-- The dynamic ListView -->
     <ListView
+        android:id="@+id/listfeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listfeed"
         android:cacheColorHint="@android:color/transparent" />
 
 </FrameLayout>
