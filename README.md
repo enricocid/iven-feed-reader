@@ -15,7 +15,7 @@ The app supports 3.0+ devices and provides Material theme/elements (Toolbar, mat
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
 
 
-You can download the latest (2.0.1) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (2.0.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
 
 
 Google Play Store

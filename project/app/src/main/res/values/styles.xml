@@ -34,11 +34,9 @@
         <item name="article_text_color">@color/titles_color</item>
         <item name="back_icon">@drawable/ic_back</item>
         <item name="share_icon">@drawable/ic_share</item>
-        <item name="xda_icon">@drawable/ic_xda</item>
         <item name="plus_icon">@drawable/ic_plus</item>
         <item name="webview_icon">@drawable/ic_webview</item>
         <item name="textsize_icon">@drawable/ic_format_text</item>
-        <item name="rss_icon">@drawable/ic_rss</item>
         <item name="theme_icon">@drawable/ic_invert_colors</item>
     </style>
 
@@ -64,9 +62,7 @@
         <item name="textsize_icon">@drawable/ic_format_text_dark</item>
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
-        <item name="xda_icon">@drawable/ic_xda_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
-        <item name="rss_icon">@drawable/ic_rss_dark</item>
         <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
     </style>
 
@@ -92,9 +88,7 @@
         <item name="textsize_icon">@drawable/ic_format_text_dark</item>
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
-        <item name="xda_icon">@drawable/ic_xda_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
-        <item name="rss_icon">@drawable/ic_rss_dark</item>
         <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
     </style>
 
