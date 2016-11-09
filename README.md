@@ -5,14 +5,14 @@
 
 
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header2.png)
 
 Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
 
 The app supports 3.0+ devices and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
 
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase2.png)
 
 
 You can download the latest (2.0.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
