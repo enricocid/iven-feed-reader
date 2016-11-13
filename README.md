@@ -8,9 +8,6 @@
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header2.png)
 
 
-[![Alt text](http://i3.ytimg.com/vi/N2bnOcN0iSU/hqdefault.jpg)](https://www.youtube.com/watch?v=N2bnOcN0iSU)
-
-
 
 Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
 
