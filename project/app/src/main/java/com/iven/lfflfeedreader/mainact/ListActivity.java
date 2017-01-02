@@ -9,11 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
@@ -33,8 +33,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
@@ -371,17 +369,13 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                                     //on long click we create a new alert dialog
 
-                                                    new MaterialDialog.Builder(ListActivity.this)
+                                                    new AlertDialog.Builder(ListActivity.this)
 
-                                                            .title(R.string.deletedialogtitle)
-                                                            .content(getResources().getString(R.string.deletedialogquestion) + " '" + mFeeds.get(datposition) + "' ?")
+                                                            .setTitle(R.string.deletedialogtitle)
+                                                            .setMessage(getResources().getString(R.string.deletedialogquestion) + " '" + mFeeds.get(datposition) + "' ?")
 
-                                                            .positiveText(R.string.deleteok)
-                                                            .negativeText(R.string.deleteno)
-
-                                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                                                @Override
-                                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
                                                                     //on positive click we delete the feed from selected position
 
                                                                     //we're gonna delete them from the db calling this method:
@@ -391,24 +385,25 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                                     listfeed.setEnabled(true);
                                                                 }
                                                             })
+                                                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    //on positive click we delete the feed from selected position
 
-                                                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                                                @Override
-                                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                                    //we're gonna delete them from the db calling this method:
+                                                                    removedatFeed(datposition);
+
                                                                     //enable ListView clicks
                                                                     listfeed.setEnabled(true);
                                                                 }
-
                                                             })
-
-                                                            .cancelListener(new DialogInterface.OnCancelListener() {
-
+                                                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                                                 @Override
                                                                 public void onCancel(DialogInterface dialog) {
                                                                     //enable ListView clicks
                                                                     listfeed.setEnabled(true);
                                                                 }
                                                             })
+
                                                             .show();
                                                     return false;
                                                 }
@@ -430,32 +425,28 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
     //method to add feeds inside the db and the dynamic ListView
     public void addFeed() {
+        //dialog view
+        final ViewGroup nullParent = null;
 
-        new MaterialDialog.Builder(this)
+        final View dialogView = ListActivity.this.getLayoutInflater().inflate(R.layout.add_feed_layout, nullParent);
 
-                .title(R.string.adddialogtitle)
-                .negativeText(android.R.string.no)
-                .positiveText(android.R.string.ok)
-                .customView(R.layout.add_feed_layout, false)
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
-                    }
-                })
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+        new AlertDialog.Builder(ListActivity.this)
 
+
+                .setTitle(R.string.adddialogtitle)
+                .setView(dialogView)
+
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
                         //on click ok we get the text inputs:
 
                         //get the feeds urls from the input and add to array list
-                        final EditText edt1 = (EditText) dialog.findViewById(R.id.txt1);
+                        final EditText edt1 = (EditText) dialogView.findViewById(R.id.txt1);
                         feedcustom = edt1.getText().toString();
                         mUrls.add(feedcustom);
 
                         //get the feeds names from the input and add to array list
-                        final EditText edt2 = (EditText) dialog.findViewById(R.id.txt2);
+                        final EditText edt2 = (EditText) dialogView.findViewById(R.id.txt2);
                         feedcustom2 = edt2.getText().toString();
                         mFeeds.add(feedcustom2);
 
@@ -470,9 +461,13 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                         //fill the names column
                         mydb.execSQL("insert into subtitleslist (name) values(?);", new String[]{feedcustom2});
-
                     }
+                })
 
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
                 }).show();
     }
 

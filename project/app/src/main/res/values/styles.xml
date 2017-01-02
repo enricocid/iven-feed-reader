@@ -28,7 +28,6 @@
         <item name="theme_background">@android:color/white</item>
         <item name="text_title_theme">@color/titles_color</item>
         <item name="text_date_theme">@color/subtitles_color</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
         <item name="title_color">@color/titles_color</item>
         <item name="article_text_color">@color/titles_color</item>
@@ -36,8 +35,6 @@
         <item name="share_icon">@drawable/ic_share</item>
         <item name="plus_icon">@drawable/ic_plus</item>
         <item name="webview_icon">@drawable/ic_webview</item>
-        <item name="textsize_icon">@drawable/ic_format_text</item>
-        <item name="theme_icon">@drawable/ic_invert_colors</item>
     </style>
 
     <!-- Dark theme for all activities -->
@@ -54,16 +51,13 @@
         <item name="theme_background">@color/theme_bg_dark</item>
         <item name="text_title_theme">@color/titles_color_dark</item>
         <item name="text_date_theme">@color/subtitles_color_dark</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
         <item name="title_color">@color/titles_color_dark</item>
         <item name="article_text_color">@color/titles_color_dark</item>
         <item name="plus_icon">@drawable/ic_plus_dark</item>
-        <item name="textsize_icon">@drawable/ic_format_text_dark</item>
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
-        <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
     </style>
 
     <!-- Darker theme for all activities -->
@@ -80,16 +74,13 @@
         <item name="theme_background">@android:color/black</item>
         <item name="text_title_theme">@color/titles_color_dark</item>
         <item name="text_date_theme">@color/subtitles_color_dark</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
         <item name="title_color">@color/titles_color_dark</item>
         <item name="article_text_color">@color/titles_color_dark</item>
         <item name="plus_icon">@drawable/ic_plus_dark</item>
-        <item name="textsize_icon">@drawable/ic_format_text_dark</item>
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
-        <item name="theme_icon">@drawable/ic_invert_colors_dark</item>
     </style>
 
     <!-- Responsive toolbar -->

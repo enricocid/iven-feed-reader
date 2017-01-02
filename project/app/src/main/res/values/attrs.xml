@@ -10,9 +10,7 @@
     <attr name="webview_icon" format="reference" />
     <attr name="text_title_theme" format="reference" />
     <attr name="text_date_theme" format="reference" />
-    <attr name="textsize_icon" format="reference" />
     <attr name="plus_icon" format="reference" />
     <attr name="back_icon" format="reference" />
     <attr name="share_icon" format="reference" />
-    <attr name="theme_icon" format="reference" />
 </resources>

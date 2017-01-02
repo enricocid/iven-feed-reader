@@ -4,7 +4,6 @@
 
 <resources>
     <string name="emailC">Invia con</string>
-    <string name="lib1sum">Codice sorgente</string>
     <string name="error">Installa un browser</string>
     <string name="share">Condividi</string>
     <string name="email">Contattaci</string>
@@ -17,7 +16,6 @@
     <string name="Reading">Usa webview</string>
     <string name="Readingsum">Leggi di più usando la in-app webview</string>
     <string name="JS_script_on">Abilita javascript</string>
-    <string name="build_number">Versione build</string>
     <string name="nav_color">Abilita tinta navbar</string>
     <string name="nav_color_sum">Verrà abilitata la tinta della barra di navigazione</string>
     <string name="clear_cache">Pulisci cache app</string>
@@ -38,23 +36,16 @@
     <string name="no_images_sum">Disabilita la visualizzazione delle immagini degli articoli</string>
     <string name="light_mode">Icone status bar dark</string>
     <string name="light_mode_sum">Abilita le icone dark nella status bar</string>
-    <string name="version">Versione app</string>
     <string name="deletedialogtitle">Eliminazione feed</string>
     <string name="deletedialogquestion">Vuoi eliminare</string>
-    <string name="deleteok">Elimina</string>
-    <string name="deleteno">Annulla</string>
     <string name="adddialogtitle">Aggiunta feed</string>
     <string name="url_name">Url qui</string>
     <string name="title_name">Nome qui</string>
     <string name="feedmenu">Aggiungi feed</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
     <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
-    <string name="preics">Opzione non disponibile su smartphone pre-ICS</string>
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
-    <string name="moar">Feed predefiniti</string>
     <string name="no_internet">Connettiti ad internet per favore</string>
-    <string name="moar_pref">Mostra feeds predefiniti</string>
-    <string name="moar_pref_sum">Mostra un menu con dei feed predefiniti se abilitata</string>
     <string name="loading">Per favore attendi &#8230;</string>
     <string name="light_theme">Chiaro</string>
     <string name="dark_theme">Scuro</string>

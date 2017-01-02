@@ -2,17 +2,16 @@
 
 <!-- Preferences -->
 
-<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/preference_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/opts" />
+    <PreferenceCategory android:title="@string/opts" />
 
     <!-- Theme -->
-    <android.support.v7.preference.ListPreference
+    <ListPreference
         android:defaultValue="8"
-        android:dialogIcon="?attr/theme_icon"
         android:entries="@array/theme_options"
         android:entryValues="@array/pref_theme_list_values"
         android:key="@string/pref_theme"
@@ -20,55 +19,53 @@
         android:title="@string/pref_theme_title" />
 
     <!-- Dark status bar icons -->
-    <android.support.v7.preference.SwitchPreferenceCompat
+    <SwitchPreference
         android:defaultValue="false"
         android:key="lightcolored"
         android:summary="@string/light_mode_sum"
         android:title="@string/light_mode" />
 
     <!-- Navigation bar tint -->
-    <android.support.v7.preference.SwitchPreferenceCompat
+    <SwitchPreference
         android:defaultValue="false"
         android:key="Navibar"
         android:summary="@string/nav_color_sum"
         android:title="@string/nav_color" />
 
     <!-- Immersive mode -->
-    <android.support.v7.preference.SwitchPreferenceCompat
+    <SwitchPreference
         android:defaultValue="false"
         android:key="Immerseme"
         android:summary="@string/immersive_mode_sum"
         android:title="@string/immersive_mode" />
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/moreopts" />
+    <PreferenceCategory android:title="@string/moreopts" />
 
     <!-- Disable images -->
-    <android.support.v7.preference.SwitchPreferenceCompat
+    <SwitchPreference
         android:defaultValue="false"
         android:key="images"
         android:summary="@string/no_images_sum"
         android:title="@string/no_images" />
 
     <!-- WebView -->
-    <android.support.v7.preference.SwitchPreferenceCompat
+    <SwitchPreference
         android:defaultValue="false"
         android:key="WebViewLoad"
         android:summary="@string/Readingsum"
         android:title="@string/Reading" />
 
     <!-- TextSize options -->
-    <android.support.v7.preference.ListPreference
+    <ListPreference
         android:defaultValue="1"
-        android:dialogIcon="?attr/textsize_icon"
         android:entries="@array/text_size_options"
         android:entryValues="@array/pref_text_size_values"
         android:key="@string/pref_text_size"
         android:summary="@string/pref_text_size_summary"
         android:title="@string/pref_text_size_title" />
 
-    <android.support.v7.preference.ListPreference
+    <ListPreference
         android:defaultValue="6"
-        android:dialogIcon="?attr/textsize_icon"
         android:entries="@array/text_size_list_options"
         android:entryValues="@array/pref_text_size_list_values"
         android:key="@string/pref_text_size_list"
@@ -76,31 +73,9 @@
         android:title="@string/pref_text_size_list_title" />
 
     <!-- Clear cache -->
-    <android.support.v7.preference.Preference
+    <Preference
         android:key="clearcache"
         android:summary="@string/clear_cache_sum"
         android:title="@string/clear_cache" />
 
-    <android.support.v7.preference.PreferenceCategory android:title="@string/aboutopts" />
-
-    <!-- Changelog -->
-    <android.support.v7.preference.Preference
-        android:key="changelog"
-        android:title="@string/changelog" />
-
-    <!-- Credits -->
-    <android.support.v7.preference.Preference
-        android:key="credits"
-        android:title="@string/info" />
-
-    <!-- Source code -->
-    <android.support.v7.preference.Preference
-        android:key="source"
-        android:title="@string/lib1sum" />
-
-    <!-- Build number -->
-    <android.support.v7.preference.Preference
-        android:key="build_number"
-        android:title="@string/build_number" />
-
-</android.support.v7.preference.PreferenceScreen>
+</PreferenceScreen>
