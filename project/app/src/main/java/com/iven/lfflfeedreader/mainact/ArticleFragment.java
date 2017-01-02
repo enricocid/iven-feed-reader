@@ -13,13 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.domparser.RSSItem;
 import com.iven.lfflfeedreader.utils.ArticleUtils;
+import com.iven.lfflfeedreader.utils.GlideUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
 
 import org.jsoup.Jsoup;
@@ -181,28 +179,13 @@ public class ArticleFragment extends Fragment {
         //if getImage() method fails (i.e when img is in content:encoded) load image2
         else if (imageLink.isEmpty()) {
 
-            //use glide to load the image into the ImageView (imageView)
-            Glide.with(getActivity()).load(imageLink2)
-
-                    //load images as bitmaps to get fixed dimensions
-                    .asBitmap()
-
-                    //disable cache to avoid garbage collection that may produce crashes
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .into(imageView);
+            GlideUtils.loadImage(getActivity(), imageLink2, imageView);
 
             //else use image
         } else {
 
-            //load the parsed article's image using glide
-            Glide.with(getActivity()).load(imageLink)
+            GlideUtils.loadImage(getActivity(), imageLink, imageView);
 
-                    //load images as bitmaps to get fixed dimensions
-                    .asBitmap()
-
-                    //disable cache to avoid garbage collection that may produce crashes
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .into(imageView);
         }
 
         //we can open the image on web browser on long click on the image
@@ -211,8 +194,7 @@ public class ArticleFragment extends Fragment {
 
                                                  final Intent intent;
 
-                                                 //use glide to load the image into the ImageView (imageView)
-                                                 //if getImage() method fails (i.e when img is in content:encoded) load image2
+                                                 //open imageview links
                                                  if (imageLink.isEmpty()) {
 
                                                      intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imageLink2));

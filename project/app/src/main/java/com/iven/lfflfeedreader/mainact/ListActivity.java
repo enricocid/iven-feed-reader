@@ -32,14 +32,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.domparser.RSSItem;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
+import com.iven.lfflfeedreader.utils.GlideUtils;
 import com.iven.lfflfeedreader.utils.HomeUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
 
@@ -730,33 +728,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             //if getImage() method fails (i.e when img is in content:encoded) load image2
             else if (imageLink.isEmpty()) {
 
-                //use glide to load the image into the ImageView (lfflimage)
-                Glide.with(activity).load(imageLink2)
-
-                        //load images as bitmaps to get fixed dimensions
-                        .asBitmap()
-
-                        //set a placeholder image
-                        .placeholder(R.drawable.image_area)
-
-                        //disable cache to avoid garbage collection that may produce crashes
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .into(lfflImage);
+                GlideUtils.loadImage(activity, imageLink2, lfflImage);
 
                 //else use image
             } else {
 
-                Glide.with(activity).load(imageLink)
-
-                        //load images as bitmaps to get fixed dimensions
-                        .asBitmap()
-
-                        //set a placeholder image
-                        .placeholder(R.drawable.image_area)
-
-                        //disable cache to avoid garbage collection that may produce crashes
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .into(lfflImage);
+                GlideUtils.loadImage(activity, imageLink, lfflImage);
             }
 
             return listItem;
