@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class saveUtils {
 
     //save color
-    public static void saveFeedUrl(Context context, String feed) {
+    static void saveFeedUrl(Context context, String feed) {
 
         SharedPreferences preferenceColor;
         preferenceColor = context.getSharedPreferences("feeds", Context.MODE_PRIVATE);
