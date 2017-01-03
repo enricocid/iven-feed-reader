@@ -601,7 +601,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                                 //set feedURL calling setFeedString method, it is important if we want working swipe refresh listener
                                 //setFeedString(datfeed);
-                                HomeUtils.setFeedString(datfeed);
+                                feedURL = HomeUtils.setFeedString(ListActivity.this, datfeed);
 
                             }
                         }

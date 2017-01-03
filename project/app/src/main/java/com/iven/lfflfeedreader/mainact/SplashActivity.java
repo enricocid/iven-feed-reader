@@ -12,11 +12,12 @@ import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.utils.Preferences;
+import com.iven.lfflfeedreader.utils.saveUtils;
 
 public class SplashActivity extends AppCompatActivity {
 
     //the default feed
-    public static String default_feed_value = "http://feeds.feedburner.com/androidcentral";
+    public static String default_feed_value;
 
     //the items
     RSSFeed lfflfeed;
@@ -25,6 +26,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        default_feed_value = saveUtils.getFeedUrl(SplashActivity.this);
+        
         //set the navbar tint if the preference is enabled
         Preferences.applyNavTint(this, getBaseContext(), R.color.quantum_grey);
 
