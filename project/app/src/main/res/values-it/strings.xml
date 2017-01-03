@@ -4,6 +4,7 @@
 
 <resources>
     <string name="error">Installa un browser</string>
+    <string name="share">Condividi</string>
     <string name="chooser_title">Scegli il browser &#8230;</string>
     <string name="opts">Opzioni tema</string>
     <string name="moreopts">Altre opzioni</string>
