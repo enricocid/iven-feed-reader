@@ -139,14 +139,6 @@ public class ArticlePage extends AppCompatActivity {
             }
         });
 
-        //use a custom color
-        toolbar.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.wb_toolbar));
-
-        //set status bar color on >= lollipop
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(getBaseContext(), R.color.wb_statusbar));
-        }
-
         //set toolbar title
         getSupportActionBar().setTitle("JavaScript Off");
 
