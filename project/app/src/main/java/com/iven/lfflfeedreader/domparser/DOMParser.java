@@ -45,8 +45,6 @@ public class DOMParser {
             e1.printStackTrace();
         }
 
-        Document doc;
-
         //get the DOM element of the XML file. Below function will parse the XML content and will give you DOM element.
         try {
 
@@ -55,7 +53,7 @@ public class DOMParser {
             DocumentBuilder db = dbf.newDocumentBuilder();
 
             //parse the XML
-            doc = db.parse(new InputSource(url.openStream()));
+            Document doc = db.parse(new InputSource(url.openStream()));
 
             //normalize the data
             doc.getDocumentElement().normalize();
