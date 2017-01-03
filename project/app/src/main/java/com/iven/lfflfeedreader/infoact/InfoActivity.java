@@ -69,13 +69,21 @@ public class InfoActivity extends AppCompatActivity {
 
     public static class SettingsFragment extends PreferenceFragment {
 
+        SwitchPreference LightStatusBar;
+        Preference preferenceCache;
+
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerOptions;
 
         public static boolean deleteDir(File dir) {
-            if (dir != null && dir.isDirectory()) {
-                String[] children = dir.list();
-                for (int i = 0; i < children.length; i++) {
-                    boolean success = deleteDir(new File(dir, children[i]));
+
+            final String[] children = dir.list();
+            boolean success;
+
+            if (dir.isDirectory()) {
+
+                for (String s: children) {
+                    success = deleteDir(new File(dir, s));
+
                     if (!success) {
                         return false;
                     }
@@ -92,7 +100,7 @@ public class InfoActivity extends AppCompatActivity {
             addPreferencesFromResource(R.xml.info_pref);
 
             //get LightStatusBar preference
-            SwitchPreference LightStatusBar = (SwitchPreference) findPreference("lightcolored");
+            LightStatusBar = (SwitchPreference) findPreference("lightcolored");
 
             //hide this option on pre-marshmallow devices
             if (Build.VERSION.SDK_INT < 23) {
@@ -105,9 +113,9 @@ public class InfoActivity extends AppCompatActivity {
             }
 
             //get the clear cache preference
-            Preference preferencecache = findPreference("clearcache");
+            preferenceCache = findPreference("clearcache");
 
-            preferencecache.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            preferenceCache.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 public boolean onPreferenceClick(Preference preference) {
 
                     clearApplicationData();
