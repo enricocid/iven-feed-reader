@@ -11,4 +11,6 @@
     <dimen name="txtSize">18sp</dimen>
     <dimen name="launchscreens_iven_icon_bottom">16.0dip</dimen>
     <dimen name="launchscreens_iven_logo_bottom">48.0dip</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="body_padding">4dp</dimen>
 </resources>

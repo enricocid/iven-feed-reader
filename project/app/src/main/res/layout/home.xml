@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This is the layout home activity (ListActivity) without elevation (for pre-lollipop devices) -->
+<!-- this is the layout for the home activity (ListActivity) with elevation on navigation drawer -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -10,12 +10,12 @@
     <!-- The toolbar -->
     <include layout="@layout/toolbar" />
 
-    <!-- The drawer -->
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/theme_background">
+        android:background="?attr/theme_background"
+        android:elevation="6dp">
 
         <!-- The layout containing the articles list -->
         <include layout="@layout/articles_list" />

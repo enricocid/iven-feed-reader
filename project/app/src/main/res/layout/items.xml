@@ -25,6 +25,7 @@
             android:layout_width="130sp"
             android:layout_height="106sp"
             android:contentDescription="@string/desc" />
+
     </LinearLayout>
 
     <RelativeLayout

@@ -11,7 +11,7 @@
 
 Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
 
-The app supports 3.0+ devices and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
+The app supports 5.0+ devices and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
 
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase2.png)
@@ -37,14 +37,15 @@ Some noticeable features:
 
 - Light/dark/darker themes;
 - Dark status bar icons (>=Marshmallow)
-- Immersive mode (>=KitKat)
-- Navbar tint (>=KitKat)
+- Immersive mode
+- Navbar tint 
 - In-app WebView
 - Option to disable images
 - Text size options
 - Swipe to refresh layout
 - Responsive toolbar design
 - Googlish splash screen/action buttons.
+- Custom about activity
 
 Last but not least:
 
@@ -109,15 +110,6 @@ http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 **- Android Support Libraries**
 - Android Support v4;
 - Android Support Appcompatv7;
-- Android Design Support library;
-- Android v7 Preference;
-- Android Support Percent;
-
-**- material-dialogs core by Aidan Follestad**
-@afollestad
-
-Git page:
-https://github.com/afollestad/material-dialogs
 
 **- Jsoup by Jonathan Hedley**
 @jhy

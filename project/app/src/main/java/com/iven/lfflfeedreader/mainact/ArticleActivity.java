@@ -87,7 +87,7 @@ public class ArticleActivity extends AppCompatActivity {
     //viewpager custom adapter, use FragmentStatePagerAdapter to handle a large number of items
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
-        public MyPagerAdapter(FragmentManager fm) {
+        MyPagerAdapter(FragmentManager fm) {
 
             super(fm);
         }

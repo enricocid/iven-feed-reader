@@ -32,10 +32,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
 import com.iven.lfflfeedreader.domparser.RSSFeed;
 import com.iven.lfflfeedreader.domparser.RSSItem;
+import com.iven.lfflfeedreader.infoact.AboutActivity;
 import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.GlideUtils;
 import com.iven.lfflfeedreader.utils.HomeUtils;
@@ -185,6 +187,12 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 //open Settings Activity
                                 Intent ii = new Intent(ListActivity.this, InfoActivity.class);
                                 startActivity(ii);
+                                break;
+
+                            case R.id.info:
+                                //open Settings Activity
+                                Intent info = new Intent(ListActivity.this, AboutActivity.class);
+                                startActivity(info);
                                 break;
 
                             //this is the button to add feed

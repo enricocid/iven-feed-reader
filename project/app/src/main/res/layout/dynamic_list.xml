@@ -15,7 +15,6 @@
         android:id="@+id/listfeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:cacheColorHint="@android:color/transparent"
-        android:listSelector="@drawable/activated_background" />
+        android:cacheColorHint="@android:color/transparent" />
 
 </FrameLayout>

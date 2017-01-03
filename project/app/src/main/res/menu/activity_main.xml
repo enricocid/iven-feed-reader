@@ -33,6 +33,13 @@
         android:title="@string/settings"
         app:showAsAction="never" />
 
+    <!-- info -->
+    <item
+        android:id="@+id/info"
+        android:orderInCategory="200"
+        android:title="@string/about"
+        app:showAsAction="never" />
+
     <!-- Add feed -->
     <item
         android:id="@+id/addfeed"

@@ -16,7 +16,7 @@ import com.iven.lfflfeedreader.utils.Preferences;
 public class SplashActivity extends AppCompatActivity {
 
     //the default feed
-    public static String default_feed_value = "http://feeds.feedburner.com/xda-developers/xda-dev";
+    public static String default_feed_value = "http://feeds.feedburner.com/androidcentral";
 
     //the items
     RSSFeed lfflfeed;

@@ -6,9 +6,9 @@
 
     <!-- Main colors -->
     <color name="translucent">#95000000</color>
-    <color name="primary">#009688</color>
-    <color name="primary_dark">#00796B</color>
-    <color name="accent_color">@color/primary</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent_color">#FF4081</color>
     <color name="titles_color">#4e4e4e</color>
     <color name="titles_color_dark">#b1b1b1</color>
     <color name="subtitles_color">#a1a1a1</color>

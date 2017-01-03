@@ -45,6 +45,10 @@
         </activity>
 
         <activity
+            android:name="com.iven.lfflfeedreader.infoact.AboutActivity"
+            android:label="@string/about" />
+
+        <activity
             android:name="com.iven.lfflfeedreader.mainact.ListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_iven" />

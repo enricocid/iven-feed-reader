@@ -18,8 +18,7 @@
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:cacheColorHint="@android:color/transparent"
-            android:listSelector="@drawable/activated_background" />
+            android:cacheColorHint="@android:color/transparent" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

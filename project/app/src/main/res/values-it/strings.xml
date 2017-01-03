@@ -43,11 +43,16 @@
     <string name="title_name">Nome qui</string>
     <string name="feedmenu">Aggiungi feed</string>
     <string name="adddialogfeed">Inserisci il tuo feed nel formato RSS</string>
-    <string name="prelollipop">Opzione non disponibile su smartphone pre-Lollipop</string>
     <string name="premarshmallow">Opzione non disponibile su smartphone pre-Marshmallow</string>
     <string name="no_internet">Connettiti ad internet per favore</string>
     <string name="loading">Per favore attendi &#8230;</string>
     <string name="light_theme">Chiaro</string>
     <string name="dark_theme">Scuro</string>
     <string name="darkest_theme">Più scuro</string>
+
+    <string name="dev_infos">Info developer</string>
+    <string name="credits">Crediti</string>
+    <string name="libs">Librerie</string>
+    <string name="application_info">Info applicazione</string>
+    <string name="version">Versione</string>
 </resources>

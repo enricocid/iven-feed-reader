@@ -17,6 +17,7 @@ public class GlideUtils {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 Glide.with(activity).load(who)
 
                         //load images as bitmaps to get fixed dimensions

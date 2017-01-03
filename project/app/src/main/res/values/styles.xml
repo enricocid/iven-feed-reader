@@ -147,4 +147,30 @@
         <item name="colorAccent">@color/checkbox_on</item>
     </style>
 
+    <!-- About styling -->
+
+    <!-- Titles -->
+    <style name="HeadlineTextStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Subtitles -->
+    <style name="SubtitleStyle">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Subhead</item>
+        <item name="android:paddingTop">@dimen/padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Body -->
+    <style name="BodyStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/body_padding</item>
+        <item name="android:paddingBottom">@dimen/body_padding</item>
+    </style>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- this is the layout for the toolbar without elevation (for pre-lollipop devices) -->
+<!-- This is the layout for the toolbar with elevation -->
 
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,6 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
+    android:elevation="6dp"
     android:minHeight="?attr/actionBarSize"
     app:contentInsetStart="@dimen/second_keyline"
     app:popupTheme="?attr/popupTheme"

@@ -91,32 +91,6 @@ public class InfoActivity extends AppCompatActivity {
 
             addPreferencesFromResource(R.xml.info_pref);
 
-            //get navigation bar tint preference
-            SwitchPreference navtint = (SwitchPreference) findPreference("Navibar");
-
-            //hide this option on pre-lollipop devices
-            if (Build.VERSION.SDK_INT < 21) {
-                navtint.setEnabled(false);
-                navtint.setSummary(getString(R.string.prelollipop));
-
-                //show this option on >= lollipop devices
-            } else {
-                navtint.setEnabled(true);
-            }
-
-            //get immersive mode preference
-            SwitchPreference immersivemode = (SwitchPreference) findPreference("Immerseme");
-
-            //hide this option on pre-ics devices
-            if (Build.VERSION.SDK_INT < 19) {
-                immersivemode.setEnabled(false);
-                immersivemode.setSummary(getString(R.string.preics));
-
-                //show this option on >= ics devices
-            } else {
-                immersivemode.setEnabled(true);
-            }
-
             //get LightStatusBar preference
             SwitchPreference LightStatusBar = (SwitchPreference) findPreference("lightcolored");
 
@@ -159,6 +133,7 @@ public class InfoActivity extends AppCompatActivity {
         @Override
         public void onResume() {
             super.onResume();
+
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListenerOptions);
         }
 

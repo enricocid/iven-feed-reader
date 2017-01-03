@@ -4,6 +4,22 @@
 
 <resources>
 
+    <!-- About things -->
+    <string name="about" translatable="false">About</string>
+    <string name="dev_infos">Developer info</string>
+    <string name="dev_name" translatable="false">\u2022 Enrico D\'Ortenzio</string>
+    <string name="credits">Credits</string>
+    <string name="ivan" translatable="false">\u2022 Ivan D\'Ortenzio</string>
+    <string name="stack" translatable="false">\u2022 stackoverflow</string>
+    <string name="lucas" translatable="false">\u2022 Lucas Urbas</string>
+    <string name="libs">Libraries</string>
+    <string name="supportv4" translatable="false">\u2022 v4 support library</string>
+    <string name="appcompat" translatable="false">\u2022 v7 appcompat library</string>
+    <string name="glide" translatable="false">\u2022 glide</string>
+    <string name="jsoup" translatable="false">\u2022 jsoup</string>
+    <string name="application_info">Application info</string>
+    <string name="version">Version</string>
+
     <string name="app_name" translatable="false">Iven News Reader</string>
     <string name="desc" translatable="false">placeholder</string>
     <string name="email">Contact us</string>
@@ -25,7 +41,6 @@
     <string name="moreopts">Other options</string>
     <string name="settings">Options</string>
     <string name="changelog" translatable="false">Changelog</string>
-    <string name="prelollipop">Option not available on pre-Lollipop devices</string>
     <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
 
     <!-- Theme options -->

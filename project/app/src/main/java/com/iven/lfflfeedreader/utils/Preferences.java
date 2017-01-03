@@ -141,7 +141,7 @@ public class Preferences {
 
     //if yes apply immersive mode
     public static void applyImmersiveMode(Activity activity) {
-        if (Build.VERSION.SDK_INT >= 19) {
+
             if (Preferences.immersiveEnabled(activity)) {
                 //immersive mode
                 activity.getWindow().getDecorView().setSystemUiVisibility(
@@ -159,8 +159,6 @@ public class Preferences {
                 );
             }
         }
-    }
-
 
     //are images removed?
     public static boolean imagesRemoved(Context context) {
