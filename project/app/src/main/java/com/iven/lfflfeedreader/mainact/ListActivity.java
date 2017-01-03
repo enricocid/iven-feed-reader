@@ -393,10 +393,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                             })
                                                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                                                 public void onClick(DialogInterface dialog, int which) {
-                                                                    //on positive click we delete the feed from selected position
-
-                                                                    //we're gonna delete them from the db calling this method:
-                                                                    removedatFeed(datposition);
 
                                                                     //enable ListView clicks
                                                                     listfeed.setEnabled(true);
