@@ -1,12 +1,16 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.LeadingMarginSpan;
+import android.text.style.QuoteSpan;
+import android.text.style.StyleSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,12 +152,20 @@ public class ArticleFragment extends Fragment {
         //set back button on click listener
         button_back.setOnClickListener(listener_back);
 
+        Spannable titleSpan = new SpannableString(feedTitle.toUpperCase());
+
+        titleSpan.setSpan(new StyleSpan(Typeface.BOLD), 0, titleSpan.length(), 0);
+
         //dynamically set title and subtitle according to the feed data
         //set title of the article
-        title.setText(feedTitle);
+        title.setText(titleSpan);
+
+        Spannable subtitleSpan = new SpannableString(feedDate);
+
+        subtitleSpan.setSpan(new StyleSpan(Typeface.BOLD), 0, subtitleSpan.length(), 0);
 
         //set the date of the article to subtitle
-        subtitle.setText(feedDate);
+        subtitle.setText(subtitleSpan);
 
         //set the articles text size from preferences
 
@@ -238,11 +250,22 @@ public class ArticleFragment extends Fragment {
 
         String datDescription4format = datDescription3format.replace("(read more)", "");
 
+
         //load the article inside a TextView
         TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
+        Spannable storySpan = new SpannableString(datDescription4format);
+
+        storySpan.setSpan(new StyleSpan(Typeface.ITALIC), 0, storySpan.length(), 0);
+
+        LeadingMarginSpan leadingMarginSpan = new android.text.style.LeadingMarginSpan.Standard(10);
+        QuoteSpan quoteSpan = new QuoteSpan();
+
+        storySpan.setSpan(quoteSpan, 0, 0, 0);
+        storySpan.setSpan(leadingMarginSpan, 0, storySpan.length(), 0);
+
         //set the articles text
-        articletext.setText(datDescription4format);
+        articletext.setText(storySpan);
 
         //set the article text size according to preferences
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
