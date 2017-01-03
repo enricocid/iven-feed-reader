@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -232,17 +234,15 @@ public class ArticleFragment extends Fragment {
         //replace some items since this is a simple TextView
         String datDescription2format = datDescription.replace("Continue reading...", "");
 
-        String datDescription3format = datDescription2format.replace("Visit on site http://www.noobslab.com", "");
+        String datDescription3format = datDescription2format.replace("Read More", "");
 
-        String datDescription4format = datDescription3format.replace("Read More", "");
-
-        String datDescription5format = datDescription4format.replace("(read more)", "");
+        String datDescription4format = datDescription3format.replace("(read more)", "");
 
         //load the article inside a TextView
         TextView articletext = (TextView) rootView.findViewById(R.id.webv);
 
         //set the articles text
-        articletext.setText(datDescription5format);
+        articletext.setText(datDescription4format);
 
         //set the article text size according to preferences
         articletext.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
