@@ -25,7 +25,6 @@
     <string name="more" translatable="false">Info</string>
     <string name="error">Install a browser</string>
     <string name="share">Share</string>
-    <string name="company_name" translatable="false">iven</string>
     <string name="chooser_title">Choose your browser &#8230;</string>
     <string name="no_internet">Connect to the internet please</string>
     <string name="loading">Please wait &#8230;</string>

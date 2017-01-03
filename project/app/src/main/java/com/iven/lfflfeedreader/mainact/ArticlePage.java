@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
@@ -38,11 +37,12 @@ public class ArticlePage extends AppCompatActivity {
     //ContextThemeWrapper
     ContextThemeWrapper themewrapper;
 
-    //others
+    //view
     AppCompatCheckBox js_button;
     Toolbar toolbar;
     Toast toast;
     ProgressBar progressBar;
+    View v;
 
     //create the toolbar's menu
     @Override
@@ -61,7 +61,7 @@ public class ArticlePage extends AppCompatActivity {
         MenuItem actionViewItem = menu.findItem(R.id.checkbox);
 
         //retrieve the ActionView from menu
-        final View v = MenuItemCompat.getActionView(actionViewItem);
+        v = MenuItemCompat.getActionView(actionViewItem);
 
         //find the button within actionview
         js_button = (AppCompatCheckBox) v.findViewById(R.id.js);
@@ -169,9 +169,6 @@ public class ArticlePage extends AppCompatActivity {
             ws.setDisplayZoomControls(false);
         }
 
-        //load the article's url
-        wv.loadUrl(feedurl);
-
         //for more info about the next method:
         //http://stackoverflow.com/questions/3149216/how-to-listen-for-a-webview-finishing-loading-a-url-in-android
         wv.setWebViewClient(new WebViewClient() {
@@ -217,7 +214,16 @@ public class ArticlePage extends AppCompatActivity {
                 }
             }
         });
+
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                wv.loadUrl(feedurl);
+
+            }
+        });
     }
+
 
     //(only for >= KitKat)
     //fix Immersive mode navigation becomes sticky after minimise-restore

@@ -42,7 +42,30 @@ public class ArticleFragment extends Fragment {
     String feedLink;
     String feedTitle;
     String feedDate;
+    String datDescriptionFirstformat;
+    String datDescriptionSecondformat;
+    String datDescriptionThirdformat;
 
+    //views
+    ViewGroup rootView;
+    TextView title;
+    TextView subtitle;
+    ImageButton button_continue_reading;
+    ImageButton button_share;
+    ImageButton button_back;
+    ImageView imageView;
+    LinearLayout article_default_linearLayout;
+    TextView articletext;
+
+    //Spannable
+    Spannable titleSpan;
+    Spannable subtitleSpan;
+    Spannable storySpan;
+    LeadingMarginSpan leadingMarginSpan;
+    QuoteSpan quoteSpan;
+
+    float size;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -73,20 +96,20 @@ public class ArticleFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         //set the view
-        ViewGroup rootView = (ViewGroup) inflater
+        rootView = (ViewGroup) inflater
                 .inflate(R.layout.article_fragment, container, false);
 
         //article title and subtitle
         //title
-        TextView title = (TextView) rootView.findViewById(R.id.title);
+        title = (TextView) rootView.findViewById(R.id.title);
 
         //subtitle
-        TextView subtitle = (TextView) rootView.findViewById(R.id.subtitle);
+        subtitle = (TextView) rootView.findViewById(R.id.subtitle);
 
         //action Buttons
 
         //read more button
-        ImageButton button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
+        button_continue_reading = (ImageButton) rootView.findViewById(R.id.button_continue);
 
         //this is the method to handle the continue reading button click
         View.OnClickListener listener_forward = new View.OnClickListener() {
@@ -122,7 +145,7 @@ public class ArticleFragment extends Fragment {
         }
 
         //share button
-        ImageButton button_share = (ImageButton) rootView.findViewById(R.id.button_share);
+        button_share = (ImageButton) rootView.findViewById(R.id.button_share);
 
         //this is the method to handle the share button click
         View.OnClickListener listener_share = new View.OnClickListener() {
@@ -137,7 +160,7 @@ public class ArticleFragment extends Fragment {
         button_share.setOnClickListener(listener_share);
 
         //back button
-        ImageButton button_back = (ImageButton) rootView.findViewById(R.id.button_back);
+        button_back = (ImageButton) rootView.findViewById(R.id.button_back);
 
         //this is the click listener to provide back navigation
         View.OnClickListener listener_back = new View.OnClickListener() {
@@ -152,7 +175,7 @@ public class ArticleFragment extends Fragment {
         //set back button on click listener
         button_back.setOnClickListener(listener_back);
 
-        Spannable titleSpan = new SpannableString(feedTitle.toUpperCase());
+        titleSpan = new SpannableString(feedTitle.toUpperCase());
 
         titleSpan.setSpan(new StyleSpan(Typeface.BOLD), 0, titleSpan.length(), 0);
 
@@ -160,7 +183,7 @@ public class ArticleFragment extends Fragment {
         //set title of the article
         title.setText(titleSpan);
 
-        Spannable subtitleSpan = new SpannableString(feedDate);
+        subtitleSpan = new SpannableString(feedDate);
 
         subtitleSpan.setSpan(new StyleSpan(Typeface.BOLD), 0, subtitleSpan.length(), 0);
 
@@ -170,7 +193,7 @@ public class ArticleFragment extends Fragment {
         //set the articles text size from preferences
 
         //get the chosen article's text size from preferences
-        float size = Preferences.resolveTextSizeResId(getContext());
+        size = Preferences.resolveTextSizeResId(getContext());
 
         //set it in SP unit
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, size + 4);
@@ -179,10 +202,10 @@ public class ArticleFragment extends Fragment {
         //if the preference is enabled remove the imageview from the linear layout
 
         //ImageView
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.img);
+        imageView = (ImageView) rootView.findViewById(R.id.img);
 
         //initialize the article view linear layout
-        LinearLayout article_default_linearLayout = (LinearLayout) rootView.findViewById(R.id.article_linearlayout);
+        article_default_linearLayout = (LinearLayout) rootView.findViewById(R.id.article_linearlayout);
 
         if (Preferences.imagesRemoved(getContext())) {
 
@@ -244,22 +267,21 @@ public class ArticleFragment extends Fragment {
         }
 
         //replace some items since this is a simple TextView
-        String datDescription2format = datDescription.replace("Continue reading...", "");
+        datDescriptionFirstformat = datDescription.replace("Continue reading...", "");
 
-        String datDescription3format = datDescription2format.replace("Read More", "");
+        datDescriptionSecondformat = datDescriptionFirstformat.replace("Read More", "");
 
-        String datDescription4format = datDescription3format.replace("(read more)", "");
-
+        datDescriptionThirdformat = datDescriptionSecondformat.replace("(read more)", "");
 
         //load the article inside a TextView
-        TextView articletext = (TextView) rootView.findViewById(R.id.webv);
+        articletext = (TextView) rootView.findViewById(R.id.webv);
 
-        Spannable storySpan = new SpannableString(datDescription4format);
+        storySpan = new SpannableString(datDescriptionThirdformat);
 
         storySpan.setSpan(new StyleSpan(Typeface.ITALIC), 0, storySpan.length(), 0);
 
-        LeadingMarginSpan leadingMarginSpan = new android.text.style.LeadingMarginSpan.Standard(10);
-        QuoteSpan quoteSpan = new QuoteSpan();
+        leadingMarginSpan = new android.text.style.LeadingMarginSpan.Standard(10);
+        quoteSpan = new QuoteSpan();
 
         storySpan.setSpan(quoteSpan, 0, 0, 0);
         storySpan.setSpan(leadingMarginSpan, 0, storySpan.length(), 0);

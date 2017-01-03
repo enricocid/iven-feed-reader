@@ -55,10 +55,10 @@
         <!-- Article TextView -->
         <TextView
             android:id="@+id/webv"
-            android:textAppearance="@style/BodyStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingMultiplier="1.5"
+            android:textAppearance="@style/BodyStyle"
             android:textColor="?attr/article_text_color"
             android:textSize="@dimen/txtSize" />
 

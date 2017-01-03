@@ -22,12 +22,15 @@ public class SplashActivity extends AppCompatActivity {
     //the items
     RSSFeed lfflfeed;
 
+    //Connectivity manager
+    ConnectivityManager connectivityManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         default_feed_value = saveUtils.getFeedUrl(SplashActivity.this);
-        
+
         //set the navbar tint if the preference is enabled
         Preferences.applyNavTint(this, getBaseContext(), R.color.quantum_grey);
 
@@ -35,10 +38,10 @@ public class SplashActivity extends AppCompatActivity {
         Preferences.applyLightIcons(this);
 
         // Detect if there's a connection issue or not
-        ConnectivityManager cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // If there's a connection problem
-        if (cM.getActiveNetworkInfo() == null) {
+        if (connectivityManager.getActiveNetworkInfo() == null) {
 
             // Show alert splash
             setContentView(R.layout.splash_no_internet);

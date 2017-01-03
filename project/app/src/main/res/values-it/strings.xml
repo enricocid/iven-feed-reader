@@ -47,7 +47,6 @@
     <string name="light_theme">Chiaro</string>
     <string name="dark_theme">Scuro</string>
     <string name="darkest_theme">Più scuro</string>
-
     <string name="dev_infos">Info developer</string>
     <string name="credits">Crediti</string>
     <string name="libs">Librerie</string>

@@ -3,7 +3,6 @@
 <!-- Action buttons (Read more..., Share, Go back) -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -27,9 +26,9 @@
         style="@style/ActionButtonIcon"
         android:layout_width="96sp"
         android:layout_height="96sp"
+        android:layout_weight="2"
         android:contentDescription="@string/desc"
-        android:src="?attr/share_icon"
-        android:layout_weight="2" />
+        android:src="?attr/share_icon" />
 
     <!-- Back button -->
     <ImageButton
@@ -37,8 +36,8 @@
         style="@style/ActionButtonIcon"
         android:layout_width="96sp"
         android:layout_height="96sp"
+        android:layout_weight="2"
         android:contentDescription="@string/desc"
-        android:src="?attr/back_icon"
-        android:layout_weight="2" />
+        android:src="?attr/back_icon" />
 
 </LinearLayout>

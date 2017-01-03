@@ -11,10 +11,10 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:elevation="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="?attr/popupTheme"
         tools:ignore="NewApi" />

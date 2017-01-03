@@ -55,40 +55,50 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     String imageLink2;
     String feedTitle;
     String feedDate;
-
-    //Home ListView
-    ListView list;
-    CustomListAdapter adapter;
-    SQLiteDatabase mydb;
-    CustomDynamicAdapter adapter_dynamic;
-    ListView listfeed;
     String feedcustom;
     String feedcustom2;
+    String feedURL;
 
-    //Others
+    //view
     SwipeRefreshLayout swiperefresh;
+    ContextThemeWrapper themewrapper;
+    ActionBarDrawerToggle mDrawerToggle;
+    Toolbar toolbar;
+    DrawerLayout mDrawerLayout;
+    Toast toast;
+    TextView itemTitle;
+    TextView pubDate;
+    ImageView lfflImage;
+    LinearLayout linearLayout;
+    TextView Title;
 
-    //menu items
+    //ListViews
+    ListView list;
+    CustomListAdapter adapter;
+    CustomDynamicAdapter adapter_dynamic;
+    ListView listfeed;
+    List<String> mList;
+    List<String> mList2;
+    //db
+    SQLiteDatabase mydb;
+    Cursor cursor;
+    Cursor cursor2;
+    Cursor cursor3;
+    String table1;
+    String table2;
+    String whereClause_url;
+    String whereClause_feed;
+    String[] whereArgs_url;
+    String[] whereArgs_name;
+    //menu
     Menu menu;
     MenuItem addfeed;
-
     //Connectivity manager
-    ConnectivityManager cM;
-
-    //Context theme wrapper
-    ContextThemeWrapper themewrapper;
-
-    //navigation drawer
-    ActionBarDrawerToggle mDrawerToggle;
-    DrawerLayout mDrawerLayout;
-
-    //the default feed
-    String feedURL = SplashActivity.default_feed_value;
-
-
-    //Dynamic ListView
+    ConnectivityManager connectivityManager;
+    float size;
     private List<String> mUrls;
     private List<String> mFeeds;
+    private LayoutInflater layoutInflater;
 
     //create the toolbar's menu
     @Override
@@ -110,11 +120,13 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         super.onCreate(savedInstanceState);
 
+        feedURL = SplashActivity.default_feed_value;
+
         //initialize the feeds items
         fFeed = (RSSFeed) getIntent().getExtras().get("feed");
 
         //initialize connectivity manager
-        cM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         //apply preferences
 
@@ -132,7 +144,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         setContentView(R.layout.home);
 
         //initialize the toolbar
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         //set the toolbar
         setSupportActionBar(toolbar);
@@ -157,14 +169,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 closeDrawer();
 
                                 //open Settings Activity
-                                Intent ii = new Intent(ListActivity.this, InfoActivity.class);
-                                startActivity(ii);
+                                Intent openSettings = new Intent(ListActivity.this, InfoActivity.class);
+                                startActivity(openSettings);
                                 break;
 
                             case R.id.info:
                                 //open Settings Activity
-                                Intent info = new Intent(ListActivity.this, AboutActivity.class);
-                                startActivity(info);
+                                Intent openInfo = new Intent(ListActivity.this, AboutActivity.class);
+                                startActivity(openInfo);
                                 break;
 
                             //this is the button to add feed
@@ -245,7 +257,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                 @Override
                                                 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                                                         long arg3) {
-                                                    int pos = arg2;
 
                                                     //on item click we send the feed to article activity
                                                     //using intents
@@ -254,7 +265,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                                     Intent intent = new Intent(ListActivity.this,
                                                             ArticleActivity.class);
                                                     intent.putExtras(bundle);
-                                                    intent.putExtra("pos", pos);
+                                                    intent.putExtra("pos", arg2);
 
                                                     //and we start the article activity to read the story
                                                     startActivity(intent);
@@ -278,8 +289,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         mydb.execSQL("CREATE TABLE IF NOT EXISTS subtitleslist (id INTEGER PRIMARY KEY AUTOINCREMENT,name varchar);");
 
         //using a cursor we're going to read the tables
-        final Cursor cursor2 = mydb.rawQuery("SELECT * FROM feedslist;", null);
-        final Cursor cursor3 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+        cursor2 = mydb.rawQuery("SELECT * FROM feedslist;", null);
+        cursor3 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
         //we create two new array list to be populated with the tables items (names & urls)
 
@@ -454,8 +465,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         //how?
 
         //using a cursor we select items from the two tables
-        Cursor cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
-        Cursor cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
+        cursor = mydb.rawQuery("SELECT * FROM feedslist;", null);
+        cursor2 = mydb.rawQuery("SELECT * FROM subtitleslist;", null);
 
         //set these values dynamically to avoid "column index out of range" errors
 
@@ -487,16 +498,16 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }
 
         //set the names of the two tables
-        String table1 = "feedslist";
-        String table2 = "subtitleslist";
+        table1 = "feedslist";
+        table2 = "subtitleslist";
 
         //set where clause
-        String whereClause_url = "url" + "=?";
-        String whereClause_feed = "name" + "=?";
+        whereClause_url = "url" + "=?";
+        whereClause_feed = "name" + "=?";
 
         //set the where arguments
-        String[] whereArgs_url = new String[]{String.valueOf(url)};
-        String[] whereArgs_name = new String[]{String.valueOf(name)};
+        whereArgs_url = new String[]{String.valueOf(url)};
+        whereArgs_name = new String[]{String.valueOf(name)};
 
         //delete 'em all
         mydb.delete(table1, whereClause_url, whereArgs_url);
@@ -522,7 +533,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
     //create a pending Runnable that runs in background to close the drawer smoothly
     public void closeDrawer() {
-        final DrawerLayout mDrawerLayout;
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -548,8 +558,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         swiperefresh.setRefreshing(true);
 
         //detect if there's a connection issue or not: if there's a connection problem stop refreshing and show message
-        if (cM.getActiveNetworkInfo() == null) {
-            Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
+        if (connectivityManager.getActiveNetworkInfo() == null) {
+            toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
             toast.show();
             swiperefresh.setRefreshing(false);
 
@@ -590,7 +600,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     public void onRefresh() {
 
         //detect if there's a connection issue or not: if there's a connection problem stop refreshing and show message
-        if (cM.getActiveNetworkInfo() == null) {
+        if (connectivityManager.getActiveNetworkInfo() == null) {
             Toast toast = Toast.makeText(getBaseContext(), R.string.no_internet, Toast.LENGTH_SHORT);
             toast.show();
             swiperefresh.setRefreshing(false);
@@ -620,8 +630,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
     //this is the custom list adapter for the home ListView
     class CustomListAdapter extends BaseAdapter {
-
-        private LayoutInflater layoutInflater;
 
         CustomListAdapter(ListActivity activity) {
 
@@ -670,32 +678,32 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             }
 
             //get the chosen items text size from preferences
-            float size = Preferences.resolveTextSizeListResId(getBaseContext());
+            size = Preferences.resolveTextSizeListResId(getBaseContext());
 
             //initialize the dynamic items (the title, subtitle)
-            TextView lfflTitle = (TextView) listItem.findViewById(R.id.title);
-            TextView pubDate = (TextView) listItem.findViewById(R.id.date);
+            itemTitle = (TextView) listItem.findViewById(R.id.title);
+            pubDate = (TextView) listItem.findViewById(R.id.date);
 
             //dynamically set title and subtitle according to the feed data
 
             //title
-            lfflTitle.setText(feedTitle);
+            itemTitle.setText(feedTitle);
 
             //subtitle= publication date
             pubDate.setText(feedDate);
 
             //set the list items text size from preferences in SP unit
-            lfflTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+            itemTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
 
             pubDate.setTextSize(TypedValue.COMPLEX_UNIT_SP, size - 2);
 
             //initialize the ImageView
-            ImageView lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
+            lfflImage = (ImageView) listItem.findViewById(R.id.thumb);
 
             //if the preference is enabled remove the linear layout containing the ImageView
             if (Preferences.imagesRemoved(getBaseContext())) {
 
-                LinearLayout linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
+                linearLayout = (LinearLayout) listItem.findViewById(R.id.layout);
                 linearLayout.removeAllViewsInLayout();
 
             }
@@ -717,14 +725,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     }
 
     class CustomDynamicAdapter extends BaseAdapter {
-
-        private LayoutInflater layoutInflater;
-
-        //for feeds urls
-        private List<String> mList;
-
-        //for feeds names
-        private List<String> mList2;
 
         CustomDynamicAdapter(ListActivity activity, List<String> list, List<String> list2) {
 
@@ -769,7 +769,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             }
 
             //initialize the dynamic items (feeds titles)
-            TextView Title = (TextView) listItem.findViewById(R.id.title_dyn);
+            Title = (TextView) listItem.findViewById(R.id.title_dyn);
 
             //dynamically set feed's title text according to the feed data
 
