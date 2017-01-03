@@ -5,27 +5,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Share -->
-    <item
-        android:id="@+id/share_option"
-        android:orderInCategory="100"
-        android:title="@string/share"
-        app:showAsAction="never" />
-
-    <!-- Rate -->
-    <item
-        android:id="@+id/rate"
-        android:orderInCategory="200"
-        android:title="@string/rate_me"
-        app:showAsAction="never" />
-
-    <!-- Mail us -->
-    <item
-        android:id="@+id/mail"
-        android:orderInCategory="200"
-        android:title="@string/email"
-        app:showAsAction="never" />
-
     <!-- Settings -->
     <item
         android:id="@+id/option"

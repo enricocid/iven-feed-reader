@@ -3,10 +3,7 @@
 <!-- Italian translations -->
 
 <resources>
-    <string name="emailC">Invia con</string>
     <string name="error">Installa un browser</string>
-    <string name="share">Condividi</string>
-    <string name="email">Contattaci</string>
     <string name="chooser_title">Scegli il browser &#8230;</string>
     <string name="opts">Opzioni tema</string>
     <string name="moreopts">Altre opzioni</string>

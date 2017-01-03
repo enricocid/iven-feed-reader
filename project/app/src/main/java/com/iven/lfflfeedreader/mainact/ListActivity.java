@@ -150,34 +150,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
                         //share button using share intent
                         switch (mItemId) {
-                            case R.id.share_option:
-
-                                //close DrawerLayout
-                                closeDrawer();
-
-                                //open Google Play Store page
-                                HomeUtils.shareGoogleStorePage(ListActivity.this);
-                                break;
-
-                            //rate button
-                            case R.id.rate:
-
-                                //close DrawerLayout
-                                closeDrawer();
-
-                                //call rate method
-                                HomeUtils.rate(ListActivity.this);
-
-                                break;
-
-                            case R.id.mail:
-
-                                //close DrawerLayout
-                                closeDrawer();
-
-                                HomeUtils.mailus(ListActivity.this);
-
-                                break;
 
                             case R.id.option:
 
