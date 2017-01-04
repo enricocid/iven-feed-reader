@@ -58,11 +58,6 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/credits"
-                style="@style/HeadlineTextStyle"
-                android:text="@string/credits" />
-
-            <TextView
                 style="@style/SubtitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,6 +74,11 @@
                 style="@style/BodyStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/credits"
+                style="@style/HeadlineTextStyle"
+                android:text="@string/credits" />
 
             <TextView
                 style="@style/SubtitleStyle"
