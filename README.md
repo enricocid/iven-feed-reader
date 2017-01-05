@@ -2,7 +2,7 @@
  -Simple Android news reader
 
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/solid.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/round.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/solid.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/round.png)
 
 
 Iven news Reader is a light and modern Android feed reader chat will allow You to read feeds in RSS format (the default blog is Android Central).
@@ -21,7 +21,7 @@ Features:
 - In-app webview;
 - Various customizations;
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/screens.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/screens.png)
 
 
 
