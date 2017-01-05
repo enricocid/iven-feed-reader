@@ -137,16 +137,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             checkPermissions();
         }
 
-
-/*        // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(ListActivity.this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(ListActivity.this,
-                    new String[]{Manifest.permission.SEND_SMS},
-                    REQUEST_CODE);
-        }*/
-
         feedURL = SplashActivity.default_feed_value;
 
 
