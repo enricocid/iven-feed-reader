@@ -65,7 +65,7 @@ public class ArticleFragment extends Fragment {
     QuoteSpan quoteSpan;
 
     float size;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 

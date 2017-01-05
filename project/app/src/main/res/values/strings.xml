@@ -38,6 +38,7 @@
     <string name="settings">Options</string>
     <string name="changelog" translatable="false">Changelog</string>
     <string name="premarshmallow">Option not available on pre-Marshmallow devices</string>
+    <string name="pref_notify">Notifications</string>
 
     <!-- Theme options -->
     <string name="pref_theme_title">App theme</string>
@@ -94,5 +95,25 @@
     <string name="url_name">Url here</string>
     <string name="title_name">Name here</string>
     <string name="adddialogfeed">Insert your custom feed in RSS format</string>
+
+    <!-- Notification options -->
+    <string name="pref_time" translatable="false">pref_time</string>
+    <string name="pref_time_title">Choose check interval</string>
+    <string name="pref_time_summary">Choose the time between every check</string>
+    <string name="sound">Notification sound</string>
+    <string name="sound_summary">Change notification sound</string>
+
+    <string name="news">&#160;new articles posted :D</string>
+    <string name="notify">Enable notifications</string>
+    <string name="notify_summary">Get a notification when new articles are posted</string>
+
+    <string name="pref_time_0">15 seconds</string>
+    <string name="pref_time_default">30 seconds</string>
+    <string name="pref_time_1">1 minute</string>
+    <string name="pref_time_2">5 minutes</string>
+    <string name="pref_time_3">10 minutes</string>
+    <string name="pref_time_4">20 minutes</string>
+    <string name="pref_time_5">30 minutes</string>
+    <string name="pref_time_6">1 hour</string>
 
 </resources>

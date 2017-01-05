@@ -42,12 +42,48 @@ public class Preferences {
     }
 
     //multi-preference dialog for list items text size
-    public static float resolveTextSizeListResId(Context context) {
+    static int resolveTime(Context context) {
 
         //Text size options
-        float small_list = 10;
-        float medium_list = 14;
-        float large_list = 18;
+        int minimum = 15;
+        int normal = 30;
+        int onemin = 60;
+        int fivemin = 300;
+        int tenmin = 600;
+        int twentymin = 1200;
+        int thirtymin = 1800;
+        int onehour = 3600;
+
+        String choice = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(context.getString(R.string.pref_time), String.valueOf(12));
+        switch (Integer.parseInt(choice)) {
+            case 11:
+                return minimum;
+            default:
+            case 12:
+                return normal;
+            case 13:
+                return onemin;
+            case 14:
+                return fivemin;
+            case 15:
+                return tenmin;
+            case 16:
+                return twentymin;
+            case 17:
+                return thirtymin;
+            case 18:
+                return onehour;
+        }
+    }
+
+    //multi-preference dialog for list items text size
+    public static int resolveTextSizeListResId(Context context) {
+
+        //Text size options
+        int small_list = 10;
+        int medium_list = 14;
+        int large_list = 18;
 
         String choice = PreferenceManager.getDefaultSharedPreferences(context)
                 .getString(context.getString(R.string.pref_text_size_list), String.valueOf(6));
@@ -164,5 +200,11 @@ public class Preferences {
     public static boolean imagesRemoved(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("images", false);
+    }
+
+    //are light icons enabled?
+    public static boolean notificationsEnabled(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("notifications", false);
     }
 }

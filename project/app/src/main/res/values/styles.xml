@@ -81,6 +81,7 @@
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
+
     </style>
 
     <!-- Responsive toolbar -->

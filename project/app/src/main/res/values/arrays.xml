@@ -39,4 +39,26 @@
         <item>9</item>
         <item>10</item>
     </string-array>
+
+    <string-array name="time_list_options">
+        <item>@string/pref_time_0</item>
+        <item>@string/pref_time_default</item>
+        <item>@string/pref_time_1</item>
+        <item>@string/pref_time_2</item>
+        <item>@string/pref_time_3</item>
+        <item>@string/pref_time_4</item>
+        <item>@string/pref_time_5</item>
+        <item>@string/pref_time_6</item>
+
+    </string-array>
+    <string-array name="pref_time_values">
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
 </resources>

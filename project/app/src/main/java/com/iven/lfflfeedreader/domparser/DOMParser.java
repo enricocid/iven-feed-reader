@@ -1,6 +1,7 @@
 package com.iven.lfflfeedreader.domparser;
 
 import android.content.res.Resources;
+import android.os.Build;
 import android.webkit.MimeTypeMap;
 
 import org.jsoup.Jsoup;
@@ -31,6 +32,7 @@ public class DOMParser {
 
     private RSSFeed _feed = new RSSFeed();
 
+    @SuppressWarnings("deprecation")
     public RSSFeed parseXml(String xml) {
 
         //getting XML content
@@ -149,8 +151,13 @@ public class DOMParser {
                             //replace some text inside date
                             String formatedDate = theString.replace(" +0000", "");
 
-                            //get locale settings from the phone
-                            Locale loc = Resources.getSystem().getConfiguration().locale;
+                            Locale loc;
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                loc = Resources.getSystem().getConfiguration().getLocales().get(0);
+                            } else {
+                                loc = Resources.getSystem().getConfiguration().locale;
+                            }
 
                             //change date format
                             SimpleDateFormat curFormater = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss", java.util.Locale.US);

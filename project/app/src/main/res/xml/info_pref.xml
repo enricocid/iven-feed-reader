@@ -7,6 +7,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <PreferenceCategory android:title="@string/notify" />
+
+    <!-- Notifications -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications"
+        android:summary="@string/notify_summary"
+        android:title="@string/notify" />
+
+    <!-- check interval -->
+    <ListPreference
+        android:defaultValue="12"
+        android:entries="@array/time_list_options"
+        android:entryValues="@array/pref_time_values"
+        android:key="@string/pref_time"
+        android:summary="@string/pref_time_summary"
+        android:title="@string/pref_time_title" />
+
+    <!-- ringtone -->
+    <RingtonePreference
+        android:key="audio"
+        android:ringtoneType="notification"
+        android:showDefault="true"
+        android:summary="@string/sound_summary"
+        android:title="@string/sound" />
+
     <PreferenceCategory android:title="@string/opts" />
 
     <!-- Theme -->

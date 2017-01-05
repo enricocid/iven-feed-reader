@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
+import android.preference.RingtonePreference;
 import android.preference.SwitchPreference;
 import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -71,6 +74,8 @@ public class InfoActivity extends AppCompatActivity {
 
         SwitchPreference LightStatusBar;
         Preference preferenceCache;
+        ListPreference timePreference;
+        RingtonePreference soundPreference;
 
         private SharedPreferences.OnSharedPreferenceChangeListener mListenerOptions;
 
@@ -81,7 +86,7 @@ public class InfoActivity extends AppCompatActivity {
 
             if (dir.isDirectory()) {
 
-                for (String s: children) {
+                for (String s : children) {
                     success = deleteDir(new File(dir, s));
 
                     if (!success) {
@@ -98,6 +103,9 @@ public class InfoActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
 
             addPreferencesFromResource(R.xml.info_pref);
+
+            //get preference screen
+            final PreferenceScreen screen = getPreferenceScreen();
 
             //get LightStatusBar preference
             LightStatusBar = (SwitchPreference) findPreference("lightcolored");
@@ -123,6 +131,21 @@ public class InfoActivity extends AppCompatActivity {
                 }
             });
 
+            //get sound and time preference
+            timePreference = (ListPreference) findPreference("pref_time");
+            soundPreference = (RingtonePreference) findPreference("audio");
+
+            if (Preferences.notificationsEnabled(getActivity())) {
+
+                screen.addPreference(timePreference);
+                screen.addPreference(soundPreference);
+
+            } else {
+                screen.removePreference(timePreference);
+                screen.removePreference(soundPreference);
+
+            }
+
             //initialize shared preference change listener
             //some preferences when enabled requires an app reboot
             mListenerOptions = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -130,7 +153,7 @@ public class InfoActivity extends AppCompatActivity {
                 public void onSharedPreferenceChanged(SharedPreferences preftheme, String key) {
 
                     //on theme selection restart the app
-                    if (key.equals(getResources().getString(R.string.pref_theme)) | key.equals("lightcolored") | key.equals("images") | key.equals("Navibar")) {
+                    if (key.equals(getResources().getString(R.string.pref_theme)) | key.equals("lightcolored") | key.equals("images") | key.equals("Navibar") | (key.equals("notifications"))) {
                         restartApp();
                     }
                 }

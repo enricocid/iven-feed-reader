@@ -1,14 +1,18 @@
 package com.iven.lfflfeedreader.mainact;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -42,11 +46,14 @@ import com.iven.lfflfeedreader.infoact.InfoActivity;
 import com.iven.lfflfeedreader.utils.GlideUtils;
 import com.iven.lfflfeedreader.utils.HomeUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
+import com.iven.lfflfeedreader.utils.notifyService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
+
+    private static final int REQUEST_CODE = 1;
 
     //feed
     RSSFeed fFeed;
@@ -58,6 +65,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     String feedcustom;
     String feedcustom2;
     String feedURL;
+    RSSItem firstItemDate;
+    String lastDate;
+    String lastDateFormat;
 
     //view
     SwipeRefreshLayout swiperefresh;
@@ -96,6 +106,9 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     //Connectivity manager
     ConnectivityManager connectivityManager;
     float size;
+    //notification
+    Intent notificationIntent;
+    int count;
     private List<String> mUrls;
     private List<String> mFeeds;
     private LayoutInflater layoutInflater;
@@ -120,7 +133,22 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         super.onCreate(savedInstanceState);
 
+        if (Preferences.notificationsEnabled(ListActivity.this)) {
+            checkPermissions();
+        }
+
+
+/*        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(ListActivity.this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ListActivity.this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    REQUEST_CODE);
+        }*/
+
         feedURL = SplashActivity.default_feed_value;
+
 
         //initialize the feeds items
         fFeed = (RSSFeed) getIntent().getExtras().get("feed");
@@ -248,6 +276,29 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         adapter = new CustomListAdapter(this);
 
         list.setAdapter(adapter);
+
+        //get the date of the last article posted
+        firstItemDate = fFeed.getItem(0);
+        lastDate = firstItemDate.getDate();
+
+        //get last five characters and remove the `:`
+        lastDateFormat = lastDate.substring(lastDate.length() - 5).replace(":", "");
+
+        notificationIntent = new Intent(ListActivity.this, notifyService.class);
+
+        //send date info to notify service
+        notificationIntent.putExtra(notifyService.PARAM_IN_MSG, lastDateFormat);
+
+        //start service if notifications are enabled
+        if (Preferences.notificationsEnabled(ListActivity.this)) {
+
+            ListActivity.this.startService(notificationIntent);
+
+        } else {
+
+            //stop service if notifications are disabled
+            ListActivity.this.stopService(notificationIntent);
+        }
 
         //handle main ListView clicks
         list.setOnItemClickListener(new
@@ -403,6 +454,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        stopService(notificationIntent);
 
     }
 
@@ -627,6 +686,17 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             thread.start();
         }
     }
+
+    public void checkPermissions() {
+        if (ContextCompat.checkSelfPermission(ListActivity.this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ListActivity.this,
+                    new String[]{Manifest.permission.SEND_SMS},
+                    REQUEST_CODE);
+        }
+    }
+
 
     //this is the custom list adapter for the home ListView
     class CustomListAdapter extends BaseAdapter {

@@ -28,4 +28,28 @@ public class saveUtils {
 
         return preferenceColor.getString("selectedFeed", "http://feeds.feedburner.com/androidcentral");
     }
+
+    //save last date
+    static void saveLastDate(Context context, String listCount) {
+
+        SharedPreferences preferenceColor;
+        preferenceColor = context.getSharedPreferences("date", Context.MODE_PRIVATE);
+
+
+        preferenceColor.edit()
+                .clear()
+                .apply();
+
+        preferenceColor.edit()
+                .putString("lastDate", listCount)
+                .apply();
+    }
+
+    //retrieve last date
+    static String getLastDate(final Context context) {
+
+        SharedPreferences preferenceColor = context.getSharedPreferences("date", Context.MODE_PRIVATE);
+
+        return preferenceColor.getString("lastDate", "0");
+    }
 }

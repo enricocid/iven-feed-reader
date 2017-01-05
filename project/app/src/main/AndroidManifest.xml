@@ -5,12 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme_iven"
         tools:replace="android:allowBackup, android:icon">
 
@@ -69,6 +70,19 @@
             android:name="com.iven.lfflfeedreader.mainact.ArticlePage"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_iven" />
+
+        <service
+            android:name="com.iven.lfflfeedreader.utils.notifyService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".utils.broadcastReceiver"
+            android:enabled="true"
+            android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="dontKillMe" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
