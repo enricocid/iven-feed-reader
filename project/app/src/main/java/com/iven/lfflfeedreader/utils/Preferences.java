@@ -41,7 +41,7 @@ public class Preferences {
         }
     }
 
-    //multi-preference dialog for list items text size
+    //multi-preference dialog for notification options
     static int resolveTime(Context context) {
 
         //Text size options
@@ -202,7 +202,7 @@ public class Preferences {
                 .getBoolean("images", false);
     }
 
-    //are light icons enabled?
+    //are notifications enabled?
     public static boolean notificationsEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean("notifications", false);
