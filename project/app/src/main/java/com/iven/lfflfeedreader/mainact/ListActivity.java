@@ -105,10 +105,10 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     MenuItem addfeed;
     //Connectivity manager
     ConnectivityManager connectivityManager;
-    float size;
+    int size;
     //notification
     Intent notificationIntent;
-    int count;
+
     private List<String> mUrls;
     private List<String> mFeeds;
     private LayoutInflater layoutInflater;
