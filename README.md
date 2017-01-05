@@ -1,24 +1,34 @@
 -# Iven News Reader
- -Simple app to read feed rss
+ -Simple Android news reader
+
+
+![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/solid.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/round.png)
+
+
+Iven news Reader is a light and modern Android feed reader chat will allow You to read feeds in RSS format (the default blog is Android Central).
+
+The app supports 5.0+ devices 
 
 
 
+Features: 
+
+- Notifications;
+- Custom feeds;
+- Simple but modern UI;
+- Themes;
+- Immersive mode;
+- In-app webview;
+- Various customizations;
+
+![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master/art/screens.png)
 
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/header2.png)
+
+You can download the latest (3.0) signed APK from this repo here: https://github.com/enricocid/iven-feed-reader/raw/master/project/app/app-release.apk
 
 
-
-Iven news Reader is a light and modern Android feed reader that will allow You to read feeds in RSS format (the default blog is XDA).
-
-The app supports 5.0+ devices and provides Material theme/elements (Toolbar, material preferences ...) across all Android versions supported, thanks to support libs.
-
-
-![ScreenShot](https://raw.githubusercontent.com/enricocid/lffl-feed-reader/master-as/art/showcase2.png)
-
-
-You can download the latest (2.0.2) signed APK from this repo here: https://github.com/enricocid/lffl-feed-reader/raw/master-as/project/app/app-release.apk
-
+The app is available on:
 
 Google Play Store
 
@@ -33,24 +43,9 @@ F-Droid
 </a>
 
 
-Some noticeable features:
 
-- Light/dark/darker themes;
-- Dark status bar icons (>=Marshmallow)
-- Immersive mode
-- Navbar tint 
-- In-app WebView
-- Option to disable images
-- Text size options
-- Swipe to refresh layout
-- Responsive toolbar design
-- Googlish splash screen/action buttons.
-- Custom about activity
 
-Last but not least:
 
-You can also add **CUSTOM FEEDS** by opening the navigation drawer. There You can click the add button from the Toolbar, compile the dialog text fields, et voilà! The feeds will be added to a sqlite database and the listview will be updated dynamically. 
-You can also delete them if You want by long clicking on them, the sqlite database and the listview will be updated  
 
 
 
