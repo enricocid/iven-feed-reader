@@ -51,7 +51,6 @@
     <string name="libs">Librerie</string>
     <string name="application_info">Info applicazione</string>
     <string name="version">Versione</string>
-    <string name="news">&#160;nuovi articoli postato :D</string>
 
     <string name="pref_notify">Notifiche</string>
     <string name="pref_time_title">Scegli intervallo controllo</string>
@@ -65,6 +64,7 @@
     <string name="pref_time_5">30 minuti</string>
     <string name="pref_time_6">1 ora</string>
     <string name="notify">Abilita notifiche</string>
+    <string name="news">Nuovi articoli postati :D</string>
     <string name="notify_summary">Ricevi una notifica quando vengono postati nuovi articoli</string>
     <string name="sound">Suono di notifica</string>
     <string name="sound_summary">Cambia il suono della notifica</string>

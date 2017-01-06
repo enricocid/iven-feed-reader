@@ -103,7 +103,7 @@
     <string name="sound">Notification sound</string>
     <string name="sound_summary">Change notification sound</string>
 
-    <string name="news">&#160;new articles posted :D</string>
+    <string name="news">New articles posted :D</string>
     <string name="notify">Enable notifications</string>
     <string name="notify_summary">Get a notification when new articles are posted</string>
 
