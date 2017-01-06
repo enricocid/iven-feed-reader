@@ -125,8 +125,8 @@ public class notifyService extends Service {
                         updatedDateFormat = updatedDate.substring(updatedDate.length() - 5).replace(":", "");
                         updatedLastDate = Integer.valueOf(updatedDateFormat);
 
-                        Log.d("firstDate", String.valueOf(lastDate));
-                        Log.d("updatedDate", String.valueOf(updatedLastDate));
+                /*        Log.d("firstDate", String.valueOf(lastDate));
+                        Log.d("updatedDate", String.valueOf(updatedLastDate));*/
 
                         if (updatedLastDate != lastDate) {
 

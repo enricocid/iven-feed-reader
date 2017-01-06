@@ -30,7 +30,7 @@ public class saveUtils {
     }
 
     //save last date
-    static void saveLastDate(Context context, String listCount) {
+    public static void saveLastDate(Context context, String listCount) {
 
         SharedPreferences preferenceColor;
         preferenceColor = context.getSharedPreferences("date", Context.MODE_PRIVATE);

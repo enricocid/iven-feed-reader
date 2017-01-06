@@ -47,6 +47,7 @@ import com.iven.lfflfeedreader.utils.GlideUtils;
 import com.iven.lfflfeedreader.utils.HomeUtils;
 import com.iven.lfflfeedreader.utils.Preferences;
 import com.iven.lfflfeedreader.utils.notifyService;
+import com.iven.lfflfeedreader.utils.saveUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +109,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
     int size;
     //notification
     Intent notificationIntent;
+    Intent broadcastIntent;
 
     private List<String> mUrls;
     private List<String> mFeeds;
@@ -634,6 +636,21 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 //setFeedString(datfeed);
                                 feedURL = HomeUtils.setFeedString(ListActivity.this, datfeed);
 
+                                //get the date of the last article posted
+                                firstItemDate = fFeed.getItem(0);
+                                lastDate = firstItemDate.getDate();
+
+                                //get last five characters and remove the `:`
+                                lastDateFormat = lastDate.substring(lastDate.length() - 5).replace(":", "");
+
+                                //send date info to notify service
+                                saveUtils.saveLastDate(getBaseContext(), lastDateFormat);
+
+                                stopService(notificationIntent);
+
+                                //the service will be restarted if killed
+                                broadcastIntent = new Intent("dontKillMe");
+                                sendBroadcast(broadcastIntent);
                             }
                         }
                     });
