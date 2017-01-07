@@ -70,9 +70,6 @@ This work is 100% Free and is released under gpl license.
 Git page:
 https://github.com/ivn888
 
-RSSfeed sample:
-https://github.com/zackehh/RSSDemo
-
 **- Isaac Whitfield**
 @zackehh
 
@@ -98,7 +95,7 @@ Support multiple themes in your Android app:
 http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
 
 **- Stack Overflow**
-
+http://stackoverflow.com/
 
 -------------------
 **USED LIBRARIES**
