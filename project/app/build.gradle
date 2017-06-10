@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     lintOptions {
         checkReleaseBuilds true
@@ -13,8 +13,8 @@ android {
         applicationId "com.iven.lfflfeedreader"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 63
-        versionName "3.0.2"
+        versionCode 64
+        versionName "3.0.3"
     }
 
     buildTypes {
@@ -34,8 +34,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'org.jsoup:jsoup:1.10.2'
-    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }
