@@ -13,12 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- The home ListView -->
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cacheColorHint="@android:color/transparent" />
+        <!-- The home RecyclerView -->
+        <include layout="@layout/recycler_view"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

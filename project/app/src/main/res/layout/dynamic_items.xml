@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This is the layout for dynamic ListView (feeds names) -->
+<!-- This is the layout for dynamic RecyclerView (feeds names + url) -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="@drawable/ripple"
     android:orientation="vertical">
 
     <!-- Feeds title-->
@@ -12,9 +13,23 @@
         android:id="@+id/title_dyn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:padding="8dp"
         android:textSize="20sp"
         android:textStyle="bold" />
-</LinearLayout>
+
+    <!-- Feeds subtitle-->
+    <TextView
+        android:id="@+id/subtitle_dyn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_dyn"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingBottom="8dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+</RelativeLayout>

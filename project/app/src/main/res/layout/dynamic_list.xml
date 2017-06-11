@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- The layout for the dynamic ListView -->
+<!-- The layout for the dynamic RecyclerView -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/content_frame"
     android:layout_width="290dp"
@@ -10,11 +10,7 @@
     android:clickable="true"
     android:fitsSystemWindows="true">
 
-    <!-- The dynamic ListView -->
-    <ListView
-        android:id="@+id/listfeed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:cacheColorHint="@android:color/transparent" />
+    <!-- The dynamic RecyclerView -->
+    <include layout="@layout/recycler_view_dynamic"/>
 
 </FrameLayout>
