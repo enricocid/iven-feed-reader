@@ -43,7 +43,6 @@
             android:ellipsize="end"
             android:lines="2"
             android:maxLines="2"
-            android:textColor="?attr/text_title_theme"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -58,7 +57,6 @@
             android:layout_marginBottom="16sp"
             android:layout_marginStart="16sp"
             android:layout_marginTop="21sp"
-            android:textColor="?attr/text_date_theme"
             android:textSize="12sp" />
     </RelativeLayout>
 </RelativeLayout>

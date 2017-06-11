@@ -3,9 +3,5 @@
 <!-- Ripple drawable used on API >= 21 -->
 
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/highlight">
-
-    <item
-        android:id="@android:id/mask"
-        android:drawable="@color/highlight" />
+    android:color="?attr/ripple_color">
 </ripple>

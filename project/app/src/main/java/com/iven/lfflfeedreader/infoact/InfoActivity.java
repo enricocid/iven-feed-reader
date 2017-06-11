@@ -39,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
         Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext(), R.color.accent_color);
+        Preferences.applyNavTint(this);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);

@@ -6,27 +6,28 @@
 
     <!-- Main colors -->
     <color name="translucent">#95000000</color>
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
-    <color name="accent_color">#FF4081</color>
-    <color name="titles_color">#4e4e4e</color>
-    <color name="titles_color_dark">#b1b1b1</color>
-    <color name="subtitles_color">#a1a1a1</color>
-    <color name="subtitles_color_dark">#5e5e5e</color>
-    <color name="theme_bg_dark">@color/dialog_bg</color>
-
-    <!-- Changelog and credits theme colors -->
-    <color name="dialog_bg">#212121</color>
-    <color name="dialog_title">#EF5350</color>
 
     <!-- Used for splash layout -->
-    <color name="splash_red">@color/dialog_title</color>
+    <color name="splash_red">@color/material_red_a400</color>
     <color name="quantum_grey">#ff898989</color>
 
-    <!-- Used for refresh layout-->
-    <color name="refresh_color">@color/dialog_title</color>
-
-    <!-- Share and continue reading buttons highlight color -->
-    <color name="highlight">@color/accent_color</color>
-
+    <!-- Theme colors -->
+    <color name="material_red_a400">#FF1744</color>
+    <color name="material_pink_a400">#F50057</color>
+    <color name="material_purple_a400">#D500F9</color>
+    <color name="material_deepPurple_a400">#651FFF</color>
+    <color name="material_indigo_a400">#3D5AFE</color>
+    <color name="material_blue_a400">#2979FF</color>
+    <color name="material_lightBlue_a400">#00B0FF</color>
+    <color name="material_cyan_a400">#00E5FF</color>
+    <color name="material_teal_a400">#1DE9B6</color>
+    <color name="material_green_a400">#00E676</color>
+    <color name="material_lightGreen_a400">#76FF03</color>
+    <color name="material_lime_a400">#C6FF00</color>
+    <color name="material_yellow_a400">#FFEA00</color>
+    <color name="material_amber_a400">#FFC400</color>
+    <color name="material_orange_a400">#FF9100</color>
+    <color name="material_deepOrange_a400">#FF3D00</color>
+    <color name="material_brown_400">#8D6E63</color>
+    <color name="material_blueGrey_400">#78909C</color>
 </resources>

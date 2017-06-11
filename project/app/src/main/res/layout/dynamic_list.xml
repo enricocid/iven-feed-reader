@@ -6,11 +6,11 @@
     android:layout_width="290dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="?attr/theme_background"
+    android:background="?attr/colorPrimary"
     android:clickable="true"
     android:fitsSystemWindows="true">
 
     <!-- The dynamic RecyclerView -->
-    <include layout="@layout/recycler_view_dynamic"/>
+    <include layout="@layout/recycler_view_dynamic" />
 
 </FrameLayout>

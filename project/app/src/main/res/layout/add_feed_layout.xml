@@ -21,7 +21,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="4dp"
-        android:fontFamily="sans-serif"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:text="@string/adddialogfeed"
@@ -36,12 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:fontFamily="sans-serif"
         android:hint="@string/url_name"
         android:lines="1"
+        android:maxLines="1"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:singleLine="true"
         android:textSize="16sp"
         tools:ignore="UnusedAttribute" />
 
@@ -52,12 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif"
         android:hint="@string/title_name"
         android:lines="1"
+        android:maxLines="1"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:singleLine="true"
         android:textSize="16sp"
         tools:ignore="UnusedAttribute" />
 

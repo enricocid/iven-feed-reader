@@ -49,6 +49,43 @@
     <string name="dark_theme">Dark</string>
     <string name="darkest_theme">Darker</string>
 
+    <string name="red">Red</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
+    <string name="deepPurple">Deep purple</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">Blue</string>
+    <string name="lightBlue">Light blue</string>
+    <string name="cyan">Cyan</string>
+    <string name="teal">Teal</string>
+    <string name="green">Green</string>
+    <string name="lightGreen">Light green</string>
+    <string name="lime">Lime</string>
+    <string name="yellow">Yellow</string>
+    <string name="amber">Amber</string>
+    <string name="orange">Orange</string>
+    <string name="deepOrange">Deep orange</string>
+    <string name="brown">Brown</string>
+    <string name="blueGrey">Blue grey</string>
+    <string name="red_dark">Red night</string>
+    <string name="pink_dark">Pink night</string>
+    <string name="purple_dark">Purple night</string>
+    <string name="deepPurple_dark">Deep purple night</string>
+    <string name="indigo_dark">Indigo night</string>
+    <string name="blue_dark">Blue night</string>
+    <string name="lightBlue_dark">Light blue night</string>
+    <string name="cyan_dark">Cyan night</string>
+    <string name="teal_dark">Teal night</string>
+    <string name="green_dark">Green night</string>
+    <string name="lightGreen_dark">Light green night</string>
+    <string name="lime_dark">Lime night</string>
+    <string name="yellow_dark">Yellow night</string>
+    <string name="amber_dark">Amber night</string>
+    <string name="orange_dark">Orange night</string>
+    <string name="deepOrange_dark">Deep orange night</string>
+    <string name="brown_dark">Brown night</string>
+    <string name="blueGrey_dark">Blue grey night</string>
+
     <!-- Dark status icons mode -->
     <string name="light_mode">Dark status icons</string>
     <string name="light_mode_sum">Enable dark colored status bar icons</string>

@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <!-- The home RecyclerView -->
-        <include layout="@layout/recycler_view"/>
+        <include layout="@layout/recycler_view" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

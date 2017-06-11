@@ -26,17 +26,7 @@ public class GlideUtils {
                         //disable cache to avoid garbage collection that may produce crashes
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
 
-                        //make a rounded ImageView
-                        .into(new BitmapImageViewTarget(where) {
-                            @Override
-                            protected void setResource(Bitmap resource) {
-                                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(activity.getResources(), resource);
-
-                                circularBitmapDrawable.setCornerRadius(10);
-
-                                where.setImageDrawable(circularBitmapDrawable);
-                            }
-                        });
+                        .into(where);
             }
         });
 

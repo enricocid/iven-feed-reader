@@ -2,7 +2,6 @@ package com.iven.lfflfeedreader.mainact;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -111,7 +110,7 @@ public class ArticlePage extends AppCompatActivity {
         Preferences.applyTheme(themewrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext(), R.color.accent_color);
+        Preferences.applyNavTint(this);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);
@@ -162,12 +161,6 @@ public class ArticlePage extends AppCompatActivity {
         //fit screen size
         ws.setLoadWithOverviewMode(true);
         ws.setUseWideViewPort(true);
-
-        //enable pinch to zoom
-        ws.setBuiltInZoomControls(true);
-        if (Build.VERSION.SDK_INT >= 11) {
-            ws.setDisplayZoomControls(false);
-        }
 
         //for more info about the next method:
         //http://stackoverflow.com/questions/3149216/how-to-listen-for-a-webview-finishing-loading-a-url-in-android

@@ -7,6 +7,7 @@
     <!-- Splash theme -->
     <style name="TranslucentSplash" parent="Theme.iven.custom">
         <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="colorAccent">@color/quantum_grey</item>
     </style>
 
     <style name="Theme.iven.custom" parent="@style/Theme.AppCompat.Light.NoActionBar">
@@ -14,74 +15,259 @@
         <item name="windowActionModeOverlay">true</item>
     </style>
 
-    <!-- Theme for all activities -->
-    <style name="Theme_iven" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="App.Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorAccent">@color/accent_color</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation
         </item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@android:color/white</item>
-        <item name="text_title_theme">@color/titles_color</item>
-        <item name="text_date_theme">@color/subtitles_color</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
-        <item name="title_color">@color/titles_color</item>
-        <item name="article_text_color">@color/titles_color</item>
         <item name="back_icon">@drawable/ic_back</item>
         <item name="share_icon">@drawable/ic_share</item>
         <item name="plus_icon">@drawable/ic_plus</item>
         <item name="webview_icon">@drawable/ic_webview</item>
     </style>
 
-    <!-- Dark theme for all activities -->
-    <style name="Theme_iven_dark" parent="Theme.AppCompat.NoActionBar">
+    <style name="Base.Theme" parent="App.Theme">
+        <item name="colorAccent">@android:color/black</item>
+        <item name="ripple_color">@android:color/black</item>
+    </style>
+
+    <style name="App.Theme.Dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
         <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation
         </item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@color/theme_bg_dark</item>
-        <item name="text_title_theme">@color/titles_color_dark</item>
-        <item name="text_date_theme">@color/subtitles_color_dark</item>
         <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
-        <item name="title_color">@color/titles_color_dark</item>
-        <item name="article_text_color">@color/titles_color_dark</item>
         <item name="plus_icon">@drawable/ic_plus_dark</item>
         <item name="back_icon">@drawable/ic_back_dark</item>
         <item name="share_icon">@drawable/ic_share_dark</item>
         <item name="webview_icon">@drawable/ic_webview_dark</item>
     </style>
 
-    <!-- Darker theme for all activities -->
-    <style name="Theme_iven_darker" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorPrimary">@android:color/black</item>
-        <item name="colorAccent">@color/accent_color</item>
-        <item name="toolbarStyle">@style/Custom.Widget.Toolbar</item>
-        <item name="toolbarNavigationButtonStyle">@style/Custom.Widget.Toolbar.Button.Navigation
-        </item>
-        <item name="actionOverflowButtonStyle">@style/Custom.Widget.ActionButton.Overflow</item>
-        <item name="theme_background">@android:color/black</item>
-        <item name="text_title_theme">@color/titles_color_dark</item>
-        <item name="text_date_theme">@color/subtitles_color_dark</item>
-        <item name="android:listSeparatorTextViewStyle">@style/ListSeparatorTextView</item>
-        <item name="title_color">@color/titles_color_dark</item>
-        <item name="article_text_color">@color/titles_color_dark</item>
-        <item name="plus_icon">@drawable/ic_plus_dark</item>
-        <item name="back_icon">@drawable/ic_back_dark</item>
-        <item name="share_icon">@drawable/ic_share_dark</item>
-        <item name="webview_icon">@drawable/ic_webview_dark</item>
+    <style name="Base.Theme.Dark" parent="App.Theme.Dark">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="ripple_color">@android:color/white</item>
+    </style>
 
+    <!-- Theme colors -->
+    <style name="Base.Theme.Red" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_red_a400</item>
+        <item name="ripple_color">@color/material_red_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Red" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_red_a400</item>
+        <item name="ripple_color">@color/material_red_a400</item>
+    </style>
+
+    <style name="Base.Theme.Pink" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_pink_a400</item>
+        <item name="ripple_color">@color/material_pink_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Pink" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_pink_a400</item>
+        <item name="ripple_color">@color/material_pink_a400</item>
+    </style>
+
+    <style name="Base.Theme.Purple" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_purple_a400</item>
+        <item name="ripple_color">@color/material_purple_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Purple" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_purple_a400</item>
+        <item name="ripple_color">@color/material_purple_a400</item>
+    </style>
+
+    <style name="Base.Theme.DeepPurple" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_deepPurple_a400</item>
+        <item name="ripple_color">@color/material_deepPurple_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.DeepPurple" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_deepPurple_a400</item>
+        <item name="ripple_color">@color/material_deepPurple_a400</item>
+    </style>
+
+    <style name="Base.Theme.Indigo" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_indigo_a400</item>
+        <item name="ripple_color">@color/material_indigo_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Indigo" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_indigo_a400</item>
+        <item name="ripple_color">@color/material_indigo_a400</item>
+    </style>
+
+    <style name="Base.Theme.Blue" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_blue_a400</item>
+        <item name="ripple_color">@color/material_blue_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Blue" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_blue_a400</item>
+        <item name="ripple_color">@color/material_blue_a400</item>
+    </style>
+
+    <style name="Base.Theme.LightBlue" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lightBlue_a400</item>
+        <item name="ripple_color">@color/material_lightBlue_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.LightBlue" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lightBlue_a400</item>
+        <item name="ripple_color">@color/material_lightBlue_a400</item>
+    </style>
+
+    <style name="Base.Theme.Cyan" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_cyan_a400</item>
+        <item name="ripple_color">@color/material_cyan_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Cyan" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_cyan_a400</item>
+        <item name="ripple_color">@color/material_cyan_a400</item>
+    </style>
+
+    <style name="Base.Theme.Teal" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_teal_a400</item>
+        <item name="ripple_color">@color/material_teal_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Teal" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_teal_a400</item>
+        <item name="ripple_color">@color/material_teal_a400</item>
+    </style>
+
+    <style name="Base.Theme.Green" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_green_a400</item>
+        <item name="ripple_color">@color/material_green_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Green" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_green_a400</item>
+        <item name="ripple_color">@color/material_green_a400</item>
+    </style>
+
+    <style name="Base.Theme.LightGreen" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lightGreen_a400</item>
+        <item name="ripple_color">@color/material_lightGreen_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.LightGreen" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lightGreen_a400</item>
+        <item name="ripple_color">@color/material_lightGreen_a400</item>
+    </style>
+
+    <style name="Base.Theme.Lime" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lime_a400</item>
+        <item name="ripple_color">@color/material_lime_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Lime" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_lime_a400</item>
+        <item name="ripple_color">@color/material_lime_a400</item>
+    </style>
+
+    <style name="Base.Theme.Yellow" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_yellow_a400</item>
+        <item name="ripple_color">@color/material_yellow_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Yellow" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_yellow_a400</item>
+        <item name="ripple_color">@color/material_yellow_a400</item>
+    </style>
+
+    <style name="Base.Theme.Amber" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_amber_a400</item>
+        <item name="ripple_color">@color/material_amber_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Amber" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_amber_a400</item>
+        <item name="ripple_color">@color/material_amber_a400</item>
+    </style>
+
+    <style name="Base.Theme.Orange" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_orange_a400</item>
+        <item name="ripple_color">@color/material_orange_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Orange" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_orange_a400</item>
+        <item name="ripple_color">@color/material_orange_a400</item>
+    </style>
+
+    <style name="Base.Theme.DeepOrange" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_deepOrange_a400</item>
+        <item name="ripple_color">@color/material_deepOrange_a400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.DeepOrange" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_deepOrange_a400</item>
+        <item name="ripple_color">@color/material_deepOrange_a400</item>
+    </style>
+
+    <style name="Base.Theme.Brown" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_brown_400</item>
+        <item name="ripple_color">@color/material_brown_400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.Brown" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_brown_400</item>
+        <item name="ripple_color">@color/material_brown_400</item>
+    </style>
+
+    <style name="Base.Theme.BlueGrey" parent="App.Theme">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_blueGrey_400</item>
+        <item name="ripple_color">@color/material_blueGrey_400</item>
+    </style>
+
+    <style name="Base.Theme.Dark.BlueGrey" parent="App.Theme.Dark">
+        <item name="colorPrimaryDark">?attr/colorAccent</item>
+        <item name="colorAccent">@color/material_blueGrey_400</item>
+        <item name="ripple_color">@color/material_blueGrey_400</item>
     </style>
 
     <!-- Responsive toolbar -->
@@ -106,7 +292,7 @@
     <style name="ListSeparatorTextView">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textColor">?attr/colorAccent</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:layout_marginBottom">16dp</item>
     </style>
@@ -124,14 +310,14 @@
     <style name="ActionButtonText" parent="@style/PlainText">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?attr/article_text_color</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">16dp</item>
 
     </style>
 
-    <style name="PlainText" />
+    <style name="PlainText">
+    </style>
 
     <!-- Progress bar style -->
     <style name="AppProgressBarHorizontalStyle" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
@@ -144,9 +330,7 @@
     </style>
 
     <!-- CheckBox button style -->
-    <style name="CheckBox.JavaScript" parent="Base.Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="colorAccent">@color/accent_color</item>
-    </style>
+    <style name="CheckBox.JavaScript" parent="Base.Widget.AppCompat.CompoundButton.CheckBox"/>
 
     <!-- About styling -->
 

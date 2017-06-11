@@ -15,7 +15,6 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.iven.lfflfeedreader.R;
 import com.iven.lfflfeedreader.domparser.DOMParser;
@@ -138,7 +137,7 @@ public class notifyService extends Service {
                                     .setContentText(getString(R.string.news))
                                     .setContentIntent(pi)
                                     .setAutoCancel(true)
-                                    .setColor(ContextCompat.getColor(getBaseContext(), R.color.accent_color))
+                                    .setColor(Preferences.getThemeAccentColor(getBaseContext()))
                                     .setSound(notificationSound)
                                     .build();
 

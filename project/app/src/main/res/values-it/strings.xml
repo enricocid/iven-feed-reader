@@ -68,4 +68,42 @@
     <string name="notify_summary">Ricevi una notifica quando vengono postati nuovi articoli</string>
     <string name="sound">Suono di notifica</string>
     <string name="sound_summary">Cambia il suono della notifica</string>
+
+    <string name="red">Rosso</string>
+    <string name="pink">Rosa</string>
+    <string name="purple">Viola</string>
+    <string name="deepPurple">Viola scuro</string>
+    <string name="indigo">Indaco</string>
+    <string name="blue">Blu</string>
+    <string name="lightBlue">Blu chiaro</string>
+    <string name="cyan">Ciano</string>
+    <string name="teal">Alzavola</string>
+    <string name="green">Verde</string>
+    <string name="lightGreen">Verde chiaro</string>
+    <string name="lime">Lime</string>
+    <string name="yellow">Giallo</string>
+    <string name="amber">Ambra</string>
+    <string name="orange">Arancio</string>
+    <string name="deepOrange">Arancio scuro</string>
+    <string name="brown">Marrone</string>
+    <string name="blueGrey">Grigio blu</string>
+
+    <string name="red_dark">Rosso notte</string>
+    <string name="pink_dark">Rosa notte</string>
+    <string name="purple_dark">Viola notte</string>
+    <string name="deepPurple_dark">Viola scuro notte</string>
+    <string name="indigo_dark">Indaco notte</string>
+    <string name="blue_dark">Blu notte</string>
+    <string name="lightBlue_dark">Blu chiaro notte</string>
+    <string name="cyan_dark">Ciano notte</string>
+    <string name="teal_dark">Alzavola notte</string>
+    <string name="green_dark">Verde notte</string>
+    <string name="lightGreen_dark">Verde chiaro notte</string>
+    <string name="lime_dark">Lime notte</string>
+    <string name="yellow_dark">Giallo notte</string>
+    <string name="amber_dark">Ambra notte</string>
+    <string name="orange_dark">Arancio notte</string>
+    <string name="deepOrange_dark">Arancio scuro notte</string>
+    <string name="brown_dark">Marrone notte</string>
+    <string name="blueGrey_dark">Grigio blu notte</string>
 </resources>

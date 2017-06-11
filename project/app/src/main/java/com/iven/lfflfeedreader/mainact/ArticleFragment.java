@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.LeadingMarginSpan;
-import android.text.style.QuoteSpan;
 import android.text.style.StyleSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -62,7 +61,6 @@ public class ArticleFragment extends Fragment {
     Spannable subtitleSpan;
     Spannable storySpan;
     LeadingMarginSpan leadingMarginSpan;
-    QuoteSpan quoteSpan;
 
     float size;
 
@@ -281,9 +279,7 @@ public class ArticleFragment extends Fragment {
         storySpan.setSpan(new StyleSpan(Typeface.ITALIC), 0, storySpan.length(), 0);
 
         leadingMarginSpan = new android.text.style.LeadingMarginSpan.Standard(10);
-        quoteSpan = new QuoteSpan();
 
-        storySpan.setSpan(quoteSpan, 0, 0, 0);
         storySpan.setSpan(leadingMarginSpan, 0, storySpan.length(), 0);
 
         //set the articles text

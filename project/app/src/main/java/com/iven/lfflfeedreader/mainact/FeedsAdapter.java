@@ -30,7 +30,6 @@ class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.SimpleViewHolder> {
 
         this.fFeed = fFeed;
 
-
     }
 
     @Override

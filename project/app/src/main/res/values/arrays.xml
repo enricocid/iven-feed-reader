@@ -32,12 +32,84 @@
     <string-array name="theme_options">
         <item>@string/light_theme</item>
         <item>@string/dark_theme</item>
-        <item>@string/darkest_theme</item>
+        <item>@string/red</item>
+        <item>@string/red_dark</item>
+        <item>@string/pink</item>
+        <item>@string/pink_dark</item>
+        <item>@string/purple</item>
+        <item>@string/purple_dark</item>
+        <item>@string/deepPurple</item>
+        <item>@string/deepPurple_dark</item>
+        <item>@string/indigo</item>
+        <item>@string/indigo_dark</item>
+        <item>@string/blue</item>
+        <item>@string/blue_dark</item>
+        <item>@string/lightBlue</item>
+        <item>@string/lightBlue_dark</item>
+        <item>@string/cyan</item>
+        <item>@string/cyan_dark</item>
+        <item>@string/teal</item>
+        <item>@string/teal_dark</item>
+        <item>@string/green</item>
+        <item>@string/green_dark</item>
+        <item>@string/lightGreen</item>
+        <item>@string/lightGreen_dark</item>
+        <item>@string/lime</item>
+        <item>@string/lime_dark</item>
+        <item>@string/yellow</item>
+        <item>@string/yellow_dark</item>
+        <item>@string/amber</item>
+        <item>@string/amber_dark</item>
+        <item>@string/orange</item>
+        <item>@string/orange_dark</item>
+        <item>@string/deepOrange</item>
+        <item>@string/deepOrange_dark</item>
+        <item>@string/brown</item>
+        <item>@string/brown_dark</item>
+        <item>@string/blueGrey</item>
+        <item>@string/blueGrey_dark</item>
     </string-array>
     <string-array name="pref_theme_list_values">
         <item>8</item>
         <item>9</item>
         <item>10</item>
+
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+
     </string-array>
 
     <string-array name="time_list_options">
@@ -52,13 +124,13 @@
 
     </string-array>
     <string-array name="pref_time_values">
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
     </string-array>
 </resources>

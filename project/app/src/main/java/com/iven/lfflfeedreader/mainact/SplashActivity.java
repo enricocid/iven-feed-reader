@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         default_feed_value = saveUtils.getFeedUrl(SplashActivity.this);
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext(), R.color.quantum_grey);
+        Preferences.applyNavTint(this);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);

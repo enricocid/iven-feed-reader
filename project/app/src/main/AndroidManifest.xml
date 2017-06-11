@@ -12,7 +12,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme_iven"
+        android:theme="@style/Base.Theme"
         tools:replace="android:allowBackup, android:icon">
 
         <uses-library
@@ -36,7 +36,7 @@
             android:value="598.0dip" />
 
         <activity
-            android:name="com.iven.lfflfeedreader.mainact.SplashActivity"
+            android:name=".mainact.SplashActivity"
             android:theme="@style/TranslucentSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,33 +47,33 @@
         </activity>
 
         <activity
-            android:name="com.iven.lfflfeedreader.infoact.AboutActivity"
+            android:name=".infoact.AboutActivity"
             android:screenOrientation="portrait"
             android:label="@string/about" />
 
         <activity
-            android:name="com.iven.lfflfeedreader.mainact.ListActivity"
+            android:name=".mainact.ListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven" />
+            android:theme="@style/Base.Theme" />
 
         <activity
-            android:name="com.iven.lfflfeedreader.mainact.ArticleActivity"
+            android:name=".mainact.ArticleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven" />
+            android:theme="@style/Base.Theme" />
 
         <activity
-            android:name="com.iven.lfflfeedreader.infoact.InfoActivity"
+            android:name=".infoact.InfoActivity"
             android:label="@string/settings"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven" />
+            android:theme="@style/Base.Theme" />
 
         <activity
-            android:name="com.iven.lfflfeedreader.mainact.ArticlePage"
+            android:name=".mainact.ArticlePage"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme_iven" />
+            android:theme="@style/Base.Theme" />
 
         <service
-            android:name="com.iven.lfflfeedreader.utils.notifyService"
+            android:name=".utils.notifyService"
             android:exported="false" />
 
         <receiver

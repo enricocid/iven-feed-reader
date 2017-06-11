@@ -24,8 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:maxLines="10"
-            android:textAppearance="@style/HeadlineTextStyle"
-            android:textColor="?attr/title_color"
             android:textSize="30sp" />
 
         <!-- Subtitle -->
@@ -33,8 +31,6 @@
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/SubtitleStyle"
-            android:textColor="?attr/title_color"
             android:textSize="20sp" />
 
         <!-- Divider -->
@@ -54,12 +50,11 @@
 
         <!-- Article TextView -->
         <TextView
+            android:textIsSelectable="true"
             android:id="@+id/webv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingMultiplier="1.5"
-            android:textAppearance="@style/BodyStyle"
-            android:textColor="?attr/article_text_color"
             android:textSize="@dimen/txtSize" />
 
         <View

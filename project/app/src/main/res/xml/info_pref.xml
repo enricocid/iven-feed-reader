@@ -18,7 +18,7 @@
 
     <!-- check interval -->
     <ListPreference
-        android:defaultValue="12"
+        android:defaultValue="47"
         android:entries="@array/time_list_options"
         android:entryValues="@array/pref_time_values"
         android:key="@string/pref_time"

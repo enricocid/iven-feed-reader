@@ -55,6 +55,8 @@ public class AboutActivity extends AppCompatActivity {
         //apply light status bar icons if enabled
         Preferences.applyLightIcons(this);
 
+        Preferences.applyNavTint(this);
+
         setContentView(R.layout.activity_about);
 
         //set the toolbar

@@ -138,7 +138,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         Preferences.applyTheme(contextThemeWrapper, getBaseContext());
 
         //set the navbar tint if the preference is enabled
-        Preferences.applyNavTint(this, getBaseContext(), R.color.accent_color);
+        Preferences.applyNavTint(this);
 
         //set LightStatusBar
         Preferences.applyLightIcons(this);
@@ -236,9 +236,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         //set on refresh listener
         swipeRefresh.setOnRefreshListener(this);
-
-        //set the default color of the arrow
-        swipeRefresh.setColorSchemeResources(R.color.refresh_color);
 
         //set the articles ListView and the dynamic ListView for custom feeds
 
@@ -363,7 +360,6 @@ public class ListActivity extends AppCompatActivity implements android.support.v
 
         new AlertDialog.Builder(ListActivity.this)
 
-
                 .setTitle(R.string.adddialogtitle)
                 .setView(dialogView)
 
@@ -399,7 +395,8 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                }).show();
+                })
+                .show();
     }
 
     //method to remove feeds inside the db and the dynamic ListView
@@ -627,7 +624,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             return mUrls.size();
         }
 
-        //simple view holder implementing on click and on long click
+        //simpe view holder implementing on click and on long click
         class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
             private TextView title, subtitle;
@@ -679,14 +676,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                //enable RecyclerView clicks
+                                //enable ListView clicks
                                 customFeedsRecyclerView.setEnabled(true);
                             }
                         })
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
                             @Override
                             public void onCancel(DialogInterface dialog) {
-                                //enable RecyclerView clicks
+                                //enable ListView clicks
                                 customFeedsRecyclerView.setEnabled(true);
                             }
                         })
