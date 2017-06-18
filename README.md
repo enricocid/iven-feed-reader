@@ -29,12 +29,6 @@ You can download the latest (3.1) signed APK from this repo here: https://github
 
 
 The app is available on:
-
-Google Play Store
-
-<a href="https://play.google.com/store/apps/details?id=com.iven.lfflfeedreader">
-  <img alt="Get it on Google Play"       src="https://raw.githubusercontent.com/enricocid/Storage-USB/master/art/gplay.png" />
-</a>
  
 F-Droid
  
