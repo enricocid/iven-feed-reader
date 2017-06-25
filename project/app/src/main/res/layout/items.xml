@@ -2,10 +2,16 @@
 
 <!-- This is the layout for the main ListView items-->
 
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv"
+    android:foreground="@drawable/ripple"
+    android:layout_margin="6dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="@drawable/ripple"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,14 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="16sp"
         android:layout_marginStart="24sp">
 
         <!-- The article's image-->
         <ImageView
             android:id="@+id/thumb"
-            android:layout_width="130sp"
-            android:layout_height="106sp"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/desc" />
 
     </LinearLayout>
@@ -60,3 +66,4 @@
             android:textSize="12sp" />
     </RelativeLayout>
 </RelativeLayout>
+</android.support.v7.widget.CardView>
