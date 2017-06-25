@@ -21,11 +21,11 @@ Features:
 - In-app webview;
 - Various customizations;
 
-![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/screens3.png)
+![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/screens4.png)
 
 
 
-You can download the latest (3.1) signed APK from this repo here: https://github.com/enricocid/iven-feed-reader/raw/master-as/project/app/app-release.apk
+You can download the latest (3.2) signed APK from this repo here: https://github.com/enricocid/iven-feed-reader/raw/master-as/project/app/app-release.apk
 
 
 The app is available on:
