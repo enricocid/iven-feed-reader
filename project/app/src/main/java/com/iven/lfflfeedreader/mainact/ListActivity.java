@@ -1,6 +1,7 @@
 package com.iven.lfflfeedreader.mainact;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -510,13 +511,14 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                 public void run() {
                     DOMParser tmpDOMParser = new DOMParser();
                     fFeed = tmpDOMParser.parseXml(datfeed);
+
                     ListActivity.this.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
                             if (fFeed != null && fFeed.getItemCount() > 0) {
 
-                                feedsAdapter.notifyDataSetChanged();
+                                recyclerView.setAdapter(new FeedsAdapter(ListActivity.this, fFeed));
 
                                 //close swipe refresh
                                 swipeRefresh.setRefreshing(false);
@@ -525,27 +527,33 @@ public class ListActivity extends AppCompatActivity implements android.support.v
                                 //setFeedString(datfeed);
                                 feedURL = HomeUtils.setFeedString(ListActivity.this, datfeed);
 
-                                //get the date of the last article posted
-                                firstItemDate = fFeed.getItem(0);
-                                lastDate = firstItemDate.getDate();
+                                //update last article info only if the notification service is enabled
+                                //this is needed to avoid users to accidentally enable notify service
+                                //when opening a new feed url
+                                if (isNotificationServiceRunning(notifyService.class)) {
+                                    //get the date of the last article posted
+                                    firstItemDate = fFeed.getItem(0);
+                                    lastDate = firstItemDate.getDate();
 
-                                //get last five characters and remove the `:`
-                                lastDateFormat = lastDate.substring(lastDate.length() - 5).replace(":", "");
+                                    //get last five characters and remove the `:`
+                                    lastDateFormat = lastDate.substring(lastDate.length() - 5).replace(":", "");
 
-                                //send date info to notify service
-                                saveUtils.saveLastDate(getBaseContext(), lastDateFormat);
+                                    //send date info to notify service
+                                    saveUtils.saveLastDate(getBaseContext(), lastDateFormat);
 
-                                stopService(notificationIntent);
+                                    stopService(notificationIntent);
 
-                                //the service will be restarted if killed
-                                broadcastIntent = new Intent("dontKillMe");
-                                sendBroadcast(broadcastIntent);
+                                    //the service will be restarted if killed
+                                    broadcastIntent = new Intent("dontKillMe");
+                                    sendBroadcast(broadcastIntent);
+                                }
                             }
                         }
                     });
                 }
             });
             thread.start();
+
         }
     }
 
@@ -593,6 +601,18 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }
     }
 
+    //used to check if notify service is running
+    //https://stackoverflow.com/questions/17588910/check-if-service-is-running-on-android
+    private boolean isNotificationServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Dynamic RecyclerView adapter
     class DynamicRVAdapter extends RecyclerView.Adapter<DynamicRVAdapter.SimpleViewHolder> {
 
@@ -624,7 +644,7 @@ public class ListActivity extends AppCompatActivity implements android.support.v
             return mUrls.size();
         }
 
-        //simpe view holder implementing on click and on long click
+        //simple view holder implementing on click and on long click
         class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
             private TextView title, subtitle;
@@ -695,4 +715,5 @@ public class ListActivity extends AppCompatActivity implements android.support.v
         }
     }
 }
+
 
