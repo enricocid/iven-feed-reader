@@ -162,6 +162,10 @@ public class ArticlePage extends AppCompatActivity {
         ws.setLoadWithOverviewMode(true);
         ws.setUseWideViewPort(true);
 
+        //enable pinch to zoom
+        ws.setBuiltInZoomControls(true);
+        ws.setDisplayZoomControls(false);
+
         //for more info about the next method:
         //http://stackoverflow.com/questions/3149216/how-to-listen-for-a-webview-finishing-loading-a-url-in-android
         wv.setWebViewClient(new WebViewClient() {
