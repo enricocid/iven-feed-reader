@@ -137,7 +137,7 @@ public class notifyService extends Service {
                                     .setContentText(getString(R.string.news))
                                     .setContentIntent(pi)
                                     .setAutoCancel(true)
-                                    .setColor(Preferences.getThemeAccentColor(getBaseContext()))
+                                    .setColor(ContextCompat.getColor(getBaseContext(), R.color.notification_color))
                                     .setSound(notificationSound)
                                     .build();
 

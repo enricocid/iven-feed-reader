@@ -10,6 +10,7 @@
     <!-- Used for splash layout -->
     <color name="splash_red">@color/material_red_a400</color>
     <color name="quantum_grey">#ff898989</color>
+    <color name="notification_color">#FF4081</color>
 
     <!-- Theme colors -->
     <color name="material_red_a400">#FF1744</color>
