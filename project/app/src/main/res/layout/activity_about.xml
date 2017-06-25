@@ -135,6 +135,30 @@
                 style="@style/SubtitleStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/recycler" />
+
+            <TextView
+                android:id="@+id/recyclerView_page"
+                style="@style/BodyStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/SubtitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card" />
+
+            <TextView
+                android:id="@+id/card_page"
+                style="@style/BodyStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/SubtitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/jsoup" />
 
             <TextView

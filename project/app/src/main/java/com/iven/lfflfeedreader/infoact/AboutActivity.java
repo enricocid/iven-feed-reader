@@ -22,10 +22,10 @@ public class AboutActivity extends AppCompatActivity {
     ContextThemeWrapper themeWrapper;
 
     //get all the TextViews
-    TextView dev, enricoGit, enricoGplus, credits, ivanGit, ivanGplus, stack, lucas, support4, appCompat, jsoup, glide, libraries, appInfo, build, sources;
+    TextView dev, enricoGit, enricoGplus, credits, ivanGit, ivanGplus, stack, lucas, support4, appCompat, recyclerView, cardView, jsoup, glide, libraries, appInfo, build, sources;
 
-    //Get all the Stings
-    String enricoGitPage, enricoGplusPage, ivanGitPage, ivanGplusPage, stackPage, lucasPage, support4page, appCompatPage, jsoupPage, glidePage, version, appGit;
+    //Get all the Strings
+    String enricoGitPage, enricoGplusPage, ivanGitPage, ivanGplusPage, stackPage, lucasPage, support4page, appCompatPage, recyclerViewPage, cardViewPage, jsoupPage, glidePage, version, appGit;
 
     //method to set clickable links
     @SuppressWarnings("deprecation")
@@ -143,6 +143,20 @@ public class AboutActivity extends AppCompatActivity {
         appCompatPage = "<a href='https://developer.android.com/topic/libraries/support-library/features.html'>page";
 
         appCompat.setText(setTextLinks(appCompatPage, appCompat));
+
+        //recyclerView
+        recyclerView = (TextView) findViewById(R.id.recyclerView_page);
+
+        recyclerViewPage = "<a href='https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html'>page";
+
+        recyclerView.setText(setTextLinks(recyclerViewPage, recyclerView));
+
+        //cardView
+        cardView = (TextView) findViewById(R.id.card_page);
+
+        cardViewPage = "<a href='https://developer.android.com/reference/android/support/v7/widget/CardView.html'>page";
+
+        cardView.setText(setTextLinks(cardViewPage, cardView));
 
         //jsoup
         jsoup = (TextView) findViewById(R.id.soup_page);

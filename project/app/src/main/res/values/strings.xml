@@ -15,6 +15,8 @@
     <string name="libs">Libraries</string>
     <string name="supportv4" translatable="false">\u2022 v4 support library</string>
     <string name="appcompat" translatable="false">\u2022 v7 appcompat library</string>
+    <string name="recycler" translatable="false">\u2022 v7 recyclerView library</string>
+    <string name="card" translatable="false">\u2022 v7 cardView library</string>
     <string name="glide" translatable="false">\u2022 glide</string>
     <string name="jsoup" translatable="false">\u2022 jsoup</string>
     <string name="application_info">Application info</string>
