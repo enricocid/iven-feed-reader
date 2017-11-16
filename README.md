@@ -1,7 +1,7 @@
 -# Iven News Reader
  -Simple Android news reader
 
-**NOTE: The App is now DEPRECATED do to the lack of time (in everyday life I'm a Chemist)**
+**NOTE: The App is now DEPRECATED due to the lack of time (in everyday life I'm a Chemist)**
 
 ![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/solid.png)![ScreenShot](https://raw.githubusercontent.com/enricocid/iven-feed-reader/master-as/art/round.png)
 
